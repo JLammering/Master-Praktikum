@@ -273,10 +273,46 @@ $\Delta \omega$ bezeichnet, gering ist, da dann die Funktion im Intervall annäh
   \label{fig:freqabh}
 \end{figure}
 
+\subsection{Bestimmung des Modulationsgrades einer frequenzmodulierten Schwingung}
 
+In Abbildung \ref{fig:bestmod} ist ein beispielhafter Spannungsverlauf einer getriggerten, frequenzmodulierten Schwingung
+am Oszilloskop dargestellt.
 
+\begin{figure}
+  \centering
+  \includegraphics[height=5cm]{Oszi_Pics/freqModRing.png}
+  \caption{.}
+  \label{fig:bestmod}
+\end{figure}
 
-
-
-
-\cite{anleitung}
+Die Punkte, an dem der gelbe Streifen minimale Dicke besitzt, sind die
+Intervallgrenzen für eine volle Schwingung durch die Modulationsfrequenz. Der Streifen besteht insgesamt aus
+einer Funktionenschar an Spannungsverläufen, die sich prinzipiell nur um einen Parameter, die Phasenverschiebung $\varphi$,
+unterscheiden. Die Momentanfrequenzen dieser Funktionen werden gemäß Gleichung \eqref{eqn:momentanfreq} beschrieben durch
+\begin{align}
+  f_{\varphi}(t) = \frac{w_\text{T}}{2 \pi} \bigl(1 - m \sin{(\omega_M t + \varphi)}\bigr).
+\end{align}
+Durch Integration über die Zeit folgt aus dieser Momentanfrequenz die gesamte Phase, in der sich die frequenzmodulierte
+Schwingung befindet. Dies kann ausgenutzt werden, um aus der horizontalen Breite des gelben Streifens aus Abbildung \ref{fig:bestmod}
+Rückschlüsse auf den Modulationsgrad der Schwingung zu ziehen. Es ist zweckmäßig, um den Fehler gering zu halten,
+die Breite der Linie an der breitesten Stelle abzulesen, sodass sich die beiden Zeitpunkte $t_1 = \frac{\pi}{\omega_\text{M}}$
+und $t_2 = \frac{\pi + \delta}{\omega_\text{M}}$ ergeben. Die Spannungskurve zu $t_1$ hat bis zu diesem
+Zeitpunkt im Durchschnitt die höchste Frequenz gehabt, da sie ihre Gesamtphase am ehesten erreicht. Die zugehörige Momentanfrequenz
+muss also bis zu $t_1$ den größten Integralwert besitzen. Ohne explizite Rechnung ergibt sich, dass die zugehörige
+Phasenverschiebung $\varphi_1 = \pi$ ist, da $-m\sin{(\omega_M t + \pi)}$ im Durchschnitt maximal auf diesem Intervall ist.
+Analog ergibt sich für $t_2$ die Phasenverschiebung $\varphi_2 = 0$. Die integrierten Frequenzen zu diesen Zeiten und Phasenverschiebungen lauten
+\begin{align}
+  F_1 = F_{\varphi_1}(t_1) &= \int_{0}^{\frac{\pi}{\omega_\text{M}}} f(t,\varphi_1) \symup{d}t \\
+  &= \frac{\omega_T}{\omega_M} \left( \frac12 + \frac{m}{\pi} \right) \\
+  F_2 = F_{\varphi_2}(t_2) &= \int_{0}^{\frac{\pi+\delta}{\omega_\text{M}}} f(t,\varphi_2) \symup{d}t \\
+  &= \frac{\omega_T}{\omega_M} \left( \frac{\pi + \delta}{2 \pi} + m(\cos{(\pi + \delta)} - 1) \right).
+\end{align}
+Da die horizontale Breite vermessen wird, besitzen beide Spannungskurven an den jeweiligen Zeitpunkten dieselbe Gesamtphase $F_1 = F_2$.
+Insgesamt ergibt sich daher
+\begin{align}
+  m = \frac{\delta}{2(1+\pi) + \cos{\delta}},
+\end{align}
+wobei
+\begin{align}
+  \delta = (t_2 - t_1) \omega_\text{M}.
+\end{align}
