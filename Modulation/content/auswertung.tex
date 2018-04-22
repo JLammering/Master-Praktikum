@@ -54,13 +54,78 @@ Die Abweichungen zu den erwarteten Werten betragen:
 Nach Schaltung aus Abbildung \ref{fig:???} wird hier der allgemeine Fall der Amplitudenodulation mit einer Diode gezeigt.
 
 \begin{figure}[H]
+  \centering
   \includegraphics[width=\textwidth]{Oszi_Pics/amplModDiode.png}
   \caption{Amplitudenmodulierte Schwingung erzeugt mit einer Diode.}
   \label{fig:amplModDiode}
 \end{figure}
 
 Die so entstandene Schwebung ist in Abbildung \ref{fig:amplModDiode} zu sehen.
+Außerdem wurden folgende Kenzahlen der modulierten Spannung ausgemessenen:
+die Spannungsdifferenz von der Nulllinie im Oszilloskop bis zum höchsten Wert $U_\text{T, max}$, die Differenz zwischen der höchsten und der niedrigsten Amplitude $U_\text{diff}$ sowie die Spannungsdifferenz von der Nulllinie bis zur unteren Kante also der Fehler der Diode $U_\text{fehler}$.
+Diese Werte betragen:
+\begin{align*}
+  U_\text{T, max} &= \SI{43.25(2)}{\milli\volt} & U_\text{diff} &= \SI{19.75(2)}{\milli\volt}  & U_\text{fehler} &= \SI{13.75(2)}{\milli\volt}
+\end{align*}
+Aus Bild \ref{fig:???} wird die Formel
+\begin{align}
+  m &= \frac{U_\text{T, max}}{U_{\hat T}}\\
+  \intertext{hergeleitet; mit}
+  U_{\hat T} &= U_\text{T, max} - \frac{U_\text{diff}}{2}.
+  \intertext{Das ergibt für den Modulationsgrad:}
+  m &= \num{0.2959(4)}.
+\end{align}
 
+Nun wird der Modulationsgrad aus der Frequenzspektrumsmessung abgelesenen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{Spektrum_Pics/c.jpg}
+  \caption{Spektrum der mit der Diode amplitudenmodulierten Schwingung mit einer Peaktable.}
+  \label{fig:c}
+\end{figure}
+
+Das Bild mit dem Spektrum der Frequenzen ist in Abbildung \ref{fig:c} zu sehen.
+Dabei werden die drei höchsten Peaks den Frequenzen $\omega_\text{T} - \omega_\text{M}$, $\omega_\text{T}$ und $\omega_\text{T} + \omega_\text{M}$ zugeordnet.
+Die abgelesenen Werten für die Leistungspegel $L_\text{P}$ werden nun mit Gleichung \eqref{eqn:dBmTomW} aus \cite{leistungspegel} umgerechnet in Werte für die Leistung der Frequenzen.
+\begin{align}
+  P(\si{\milli\watt}) =
+   10^{\frac{L_\text{P}(\si{dBm})}{10}} \SI{1}{\milli\watt} \label{eqn:dBmTomW}
+\end{align}
+
+Diese betragen:
+\begin{align*}
+  P_\text{links} &= \SI{0.246(1)}{\micro\watt} & P_\text{mitte} &= \SI{8.81(4)}{\micro\watt} & P_\text{rechts} &= \SI{0.258(1)}{\micro\watt}.
+\end{align*}
+
+Aus Bild \ref{fig:???} wird nun die Formel zur Bestimmung des Modulationsgrad aus einem Frequenzspektrum hergeleitet:
+\begin{align*}
+  m &= \frac{2 P_\text{lr}}{P_\text{mitte}}.
+\end{align*}
+
+Hierbei ist $P_\text{lr}$ der Mittelwert des linken und des rechten Peaks der drei Peaks mit der höchsten Leistung. Hier wird genutzt, dass $P \propto U$ und so die Leistungen eingesetzt, da ja ein Verhältnis bestimmt wird.
+So ergibt sich für $m$:
+\begin{align*}
+  m &= \num{0.0572(3)}.
+\end{align*}
+
+\subsection{Frequenzmodulierte Schwingung}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{Oszi_Pics/freqModRing.png}
+  \caption{Oszilloskopbild der frequenzmodulierten Schwingung.}
+  \label{fig:freqModRing}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{Oszi_Pics/freqModZoom.png}
+  \caption{Vergrößertes Oszilloskopbild der frequenzmodulierten Schwingung.}
+  \label{fig:freqModZoom}
+\end{figure}
+
+In Abbildung \ref{fig:freqModRing} ist die in X-Richtung verschmierte Sinuskurve der nach Schaltung \ref{fig:???} frequenzmodulierten Schwingung zu sehen. Außerdem ist in Abbildung \ref{fig:freqModZoom} eine vergrößerte Version der Schwingung zu sehen. 
 
 
 \subsection{Phasenzeugs}
