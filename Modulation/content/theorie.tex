@@ -223,7 +223,7 @@ In Abbildung \ref{fig:ampldemodschaltung2} ist eine Schaltung aufgezeigt, bei de
 
 \begin{figure}
   \centering
-  \includegraphics[height=5cm]{JasperErsterSchultag/ampldemodschaltung2.png}
+  \includegraphics[height=4cm]{JasperErsterSchultag/ampldemodschaltung2.png}
   \caption{Skizze eines Schaltkreises zur Demodulation amplitudenmodulierter Schwingungen mittels einer Diode \cite{anleitung}.}
   \label{fig:ampldemodschaltung2}
 \end{figure}
@@ -240,7 +240,8 @@ Hinter die Diode ist ein Tiefpass geschaltet, der die Modulationsfrequenz aus de
 \begin{figure}
   \centering
   \includegraphics[height=3.5cm]{JasperErsterSchultag/diodetiefpass.png}
-  \caption{\cite{anleitung}.}
+  \caption{links: Skizze des Wechselspannungsverlaufs, nachdem die negativen Halbwellen von der Diode abgeschnitten wurden \cite{anleitung}.
+  rechts: Skizze des Wechselspannungsverlaufs nach dem Tiefpass \cite{anleitung}.}
   \label{fig:diodetiefpass}
 \end{figure}
 
@@ -252,7 +253,7 @@ ist in Abbildung \ref{fig:flankendemodulator} abgebildet.
 \begin{figure}
   \centering
   \includegraphics[height=3.5cm]{JasperErsterSchultag/flankendemodulator.png}
-  \caption{\cite{anleitung}.}
+  \caption{Schaltkreis des Flankendemodulators zur Demodulation frequenzmodulierter Schwingungen \cite{anleitung}.}
   \label{fig:flankendemodulator}
 \end{figure}
 
@@ -268,20 +269,23 @@ $\Delta \omega$ bezeichnet, gering ist, da dann die Funktion im Intervall annäh
 
 \begin{figure}
   \centering
-  \includegraphics[height=6cm]{JasperErsterSchultag/freqabh.png}
-  \caption{\cite{anleitung}.}
+  \includegraphics[height=5cm]{JasperErsterSchultag/freqabh.png}
+  \caption{Skizze der Resonanzkurve des LC-Schwingkreises \cite{anleitung}. Die Trägerfrequenz sollte zur Optimierung der Demodulation
+  wie eingezeichnet mitten auf der steilen Flanke liegen.}
   \label{fig:freqabh}
 \end{figure}
 
 \subsection{Bestimmung des Modulationsgrades einer frequenzmodulierten Schwingung}
+\label{sec:bestmod}
 
 In Abbildung \ref{fig:bestmod} ist ein beispielhafter Spannungsverlauf einer getriggerten, frequenzmodulierten Schwingung
 am Oszilloskop dargestellt.
 
 \begin{figure}
   \centering
-  \includegraphics[height=5cm]{Oszi_Pics/freqModRing.png}
-  \caption{.}
+  \includegraphics[height=6cm]{Oszi_Pics/freqModRing.png}
+  \caption{Beispielhafter am Oszilloskop getriggerter Spannungsverlauf einer frequenzmodulierten Schwingung. Da das Oszilloskop
+  nur auf eine feste Spannung triggern kann, entsteht durch Phasenverschiebung ein breiter Streifen.}
   \label{fig:bestmod}
 \end{figure}
 
@@ -302,9 +306,9 @@ muss also bis zu $t_1$ den größten Integralwert besitzen. Ohne explizite Rechn
 Phasenverschiebung $\varphi_1 = \pi$ ist, da $-m\sin{(\omega_M t + \pi)}$ im Durchschnitt maximal auf diesem Intervall ist.
 Analog ergibt sich für $t_2$ die Phasenverschiebung $\varphi_2 = 0$. Die integrierten Frequenzen zu diesen Zeiten und Phasenverschiebungen lauten
 \begin{align}
-  F_1 = F_{\varphi_1}(t_1) &= \int_{0}^{\frac{\pi}{\omega_\text{M}}} f(t,\varphi_1) \symup{d}t \\
+  F_1 = F_{\varphi_1}(t_1) &= \int_{0}^{\frac{\pi}{\omega_\text{M}}} f_{\varphi_1}(t) \symup{d}t \\
   &= \frac{\omega_T}{\omega_M} \left( \frac12 + \frac{m}{\pi} \right) \\
-  F_2 = F_{\varphi_2}(t_2) &= \int_{0}^{\frac{\pi+\delta}{\omega_\text{M}}} f(t,\varphi_2) \symup{d}t \\
+  F_2 = F_{\varphi_2}(t_2) &= \int_{0}^{\frac{\pi+\delta}{\omega_\text{M}}} f_{\varphi_2}(t) \symup{d}t \\
   &= \frac{\omega_T}{\omega_M} \left( \frac{\pi + \delta}{2 \pi} + m(\cos{(\pi + \delta)} - 1) \right).
 \end{align}
 Da die horizontale Breite vermessen wird, besitzen beide Spannungskurven an den jeweiligen Zeitpunkten dieselbe Gesamtphase $F_1 = F_2$.
