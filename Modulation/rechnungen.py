@@ -42,6 +42,17 @@ if __name__ == '__main__':
     ampl_rechts = dBmTomW(ampl_rechts)
     ampl_mitte = dBmTomW(ampl_mitte)
     ampl_lr = (ampl_links+ampl_rechts)/2
-    print('amplituden=', ampl_links*1000, ampl_rechts*1000, ampl_lr*1000,  ampl_mitte*1000, 'in mW')
+    print('amplituden=', ampl_links*1000, ampl_rechts*1000, ampl_lr*1000,
+          ampl_mitte*1000, 'in mW')
     m_freq = (2*ampl_lr)/ampl_mitte
     print('m aus Frequenzspektrum = ', m_freq)
+
+    # d
+    zeitdiff = ufloat(288, 5) * 10**(-9)  # s
+    omega_M = ufloat(211.5, 0.4) * 10**3  # Hz
+    delta = zeitdiff*omega_M*2*np.pi
+    # delta = np.pi/8
+
+    m = delta/(2*(1+np.pi)+unp.cos(delta))
+    print('m aus frequenzmodulierter=', m)
+    print(delta, unp.cos(np.pi))
