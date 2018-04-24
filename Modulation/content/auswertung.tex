@@ -3,7 +3,7 @@
 
 \subsection{Amplitudenmodulierte Schwingung mit Ringmodulator}
 
-Mit Hilfe der Schaltung aus Abbildung \ref{fig:???} wird eine Amplitudenmodulierte Schwingung erzeugt.
+Mit Hilfe der Schaltung aus Abbildung \ref{fig:expab} wird eine Amplitudenmodulierte Schwingung erzeugt.
 Diese so entstandene Schwebung ist in Abbildung \ref{fig:amplModOszi} zu sehen.
 
 \begin{figure}[h]
@@ -51,7 +51,7 @@ Die Abweichungen zu den erwarteten Werten betragen:
 
 \subsection{Amplitudenmodulierte Schwingung mit Diode}
 
-Nach Schaltung aus Abbildung \ref{fig:???} wird hier der allgemeine Fall der Amplitudenodulation mit einer Diode gezeigt.
+Nach Schaltung aus Abbildung \ref{fig:expc} wird hier der allgemeine Fall der Amplitudenodulation mit einer Diode gezeigt.
 
 \begin{figure}[h]
   \centering
@@ -67,7 +67,7 @@ Diese Werte betragen:
 \begin{align*}
   U_\text{T, max} &= \SI{43.25(2)}{\milli\volt} & U_\text{diff} &= \SI{19.75(2)}{\milli\volt}  & U_\text{fehler} &= \SI{13.75(2)}{\milli\volt}
 \end{align*}
-Aus Bild \ref{fig:???} wird die Formel
+Aus Bild \ref{fig:amplmodskizze} wird die Formel
 \begin{align}
   m &= \frac{U_\text{T, max}}{U_{\hat T}}\\
   \intertext{hergeleitet; mit}
@@ -98,7 +98,7 @@ Diese betragen:
   P_\text{links} &= \SI{0.246(1)}{\micro\watt} & P_\text{mitte} &= \SI{8.81(4)}{\micro\watt} & P_\text{rechts} &= \SI{0.258(1)}{\micro\watt}.
 \end{align*}
 
-Aus Bild \ref{fig:???} wird nun die Formel zur Bestimmung des Modulationsgrad aus einem Frequenzspektrum hergeleitet:
+Aus Bild \ref{fig:freqspektrum} wird nun die Formel zur Bestimmung des Modulationsgrad aus einem Frequenzspektrum hergeleitet:
 \begin{align*}
   m &= \frac{2 P_\text{lr}}{P_\text{mitte}}.
 \end{align*}
@@ -125,19 +125,19 @@ So ergibt sich für $m$:
   \label{fig:freqModZoom}
 \end{figure}
 
-In Abbildung \ref{fig:freqModRing} ist die in X-Richtung verschmierte Sinuskurve der nach Schaltung \ref{fig:???} frequenzmodulierten Schwingung zu sehen. Außerdem ist in Abbildung \ref{fig:freqModZoom} eine vergrößerte Version der Schwingung zu sehen. Daraus wird die Zeitdifferenz bei maximaler Frequenzvariation abgelesenen:
+In Abbildung \ref{fig:freqModRing} ist die in X-Richtung verschmierte Sinuskurve der nach Schaltung \ref{fig:freqmodschaltung} frequenzmodulierten Schwingung zu sehen. Außerdem ist in Abbildung \ref{fig:freqModZoom} eine vergrößerte Version der Schwingung zu sehen. Daraus wird die Zeitdifferenz bei maximaler Frequenzvariation abgelesenen:
 \begin{align*}
   t_2 - t_1 &= \SI{288(5)}{\nano\second}.\\
 \intertext{Mit der Kenntnis der Modulationsfrequenz}
   \omega_\text{M} &= \SI{211.5(4)}{\kilo\hertz}\\
-\intertext{ergibt sich eingesetzt in Formel \eqref{eqn:???} für den Modulationsgrad}
+\intertext{ergibt sich eingesetzt in Formel \eqref{eqn:mfuerfreqmod} für den Modulationsgrad}
   m &= \num{0.0416(7)}.
 \end{align*}
 
 
 \subsection{Demodulation mithilfe eines Ringmodulators -- Überprüfung der Spannung}
 
-Mit der Schaltung aus Abbildung \ref{fig:???} wird eine Messreihe von verschiedenen Frequenzen der Trägerspannung $\omega_\text{T}$ und der am Ausgang X anliegenden Gleichspannung $U$ aufgenommen.
+Mit der Schaltung aus Abbildung \ref{fig:expef} wird eine Messreihe von verschiedenen Frequenzen der Trägerspannung $\omega_\text{T}$ und der am Ausgang X anliegenden Gleichspannung $U$ aufgenommen.
 
 Die beiden Spannungen, die an den Eingängen L und R anliegen, sind durch einen Phasenschieber mit einer Phasenverzögerung von $\Delta t = \SI{250}{\nano\second}$ zueinander verschoben.
 Die Phasenverschiebung wird berechnet mit:
@@ -181,14 +181,14 @@ In der Abbildung \ref{fig:plotphase} ist die Spannung gegen den Kosinus der Phas
 
 \begin{figure}
   \centering
-  \includegraphics{build/plotphase.pdf}
+  \includegraphics[width=.9\textwidth]{build/plotphase.pdf}
   \caption{Diagramm der Spannung in Abhängigkeit vom Kosinus der Phase. Die Unsicherheiten sind aufgrund ihrer geringen Größe nicht zu sehen.}
   \label{fig:plotphase}
 \end{figure}
 
 \subsection{Demodulation mithilfe eines Ringmodulators -- Überprüfung des Oszilloskopbild}
 
-Mit der Schaltung nach Abbildung \ref{fig:???} wird eine amplitudenmodulierte Spannung demoduliert und auf dem Oszilloskop dargestellt. Das ergebende Bild ist in Abbildung \ref{fig:demodRing} zu sehen.
+Mit der Schaltung nach Abbildung \ref{fig:ampldemodschaltung1} wird eine amplitudenmodulierte Spannung demoduliert und auf dem Oszilloskop dargestellt. Das ergebende Bild ist in Abbildung \ref{fig:demodRing} zu sehen.
 
 \begin{figure}[h]
   \centering
@@ -199,7 +199,7 @@ Mit der Schaltung nach Abbildung \ref{fig:???} wird eine amplitudenmodulierte Sp
 
 \subsection{Demodulation mithilfe einer Gleichrichterdiode}
 
-Nun wird mithilfe einer Gleichrichterdiode nach Schaltung aus Abbildung \ref{fig:???} eine amplitudenmodulierte Spannung demoduliert.
+Nun wird mithilfe einer Gleichrichterdiode nach Schaltung aus Abbildung \ref{fig:ampldemodschaltung2} eine amplitudenmodulierte Spannung demoduliert.
 Das aufgenommene Bild an der Stelle A ist in Abbildung \ref{fig:gnachA} zu finden und das nach dem Tiefpass in Abbildung \ref{fig:gnachTiefpass}.
 \begin{figure}[h]
   \centering
@@ -217,7 +217,7 @@ Zu erkennnen ist, dass die demodulierte Spannung die doppelte Frequenz der Origi
 
 \subsection{Demodulation einer frequenzmodulierten Spannung}
 
-Zum Abschluss wird erneut eine frequenzmodulierte Spannung mit Abbildung \ref{fig:???} erzeugt und mit der Schaltung nach Abbildung \ref{fig:???} demoduliert. Dann werden 3 Bilder nach den verschiedenen Bauteilen aufgenommen.
+Zum Abschluss wird erneut eine frequenzmodulierte Spannung mit Abbildung \ref{fig:freqmodschaltung} erzeugt und mit der Schaltung nach Abbildung \ref{fig:flankendemodulator} demoduliert. Dann werden 3 Bilder nach den verschiedenen Bauteilen aufgenommen.
 Diese sind in den Abbildungen \ref{fig:hnachSchwingkreis}, \ref{fig:hnachDiode} und \ref{fig:hnachTiefpass} zu sehen.
 \begin{figure}[h]
   \centering
