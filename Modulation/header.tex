@@ -49,6 +49,7 @@
   per-mode=reciprocal,       % ^-1 für inverse Einheiten
   output-decimal-marker={,},   % . statt , für Dezimalzahlen
 ]{siunitx}
+\sisetup{math-micro=\text{µ},text-micro=µ}
 
 % chemische Formeln
 \usepackage[
@@ -73,6 +74,15 @@
   section, % Floats innerhalb der Section halten
   below,   % unterhalb der Section aber auf der selben Seite ist ok
 ]{placeins}
+
+%Floats innerhalb einer Subsection halten
+\makeatletter
+\AtBeginDocument{%
+  \expandafter\renewcommand\expandafter\subsection\expandafter{%
+    \expandafter\@fb@secFB\subsection
+  }%
+}
+\makeatother
 
 % Seite drehen für breite Tabellen
 \usepackage{pdflscape}

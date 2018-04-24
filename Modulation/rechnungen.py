@@ -36,6 +36,11 @@ if __name__ == '__main__':
     ampl_links = ufloat(-36.1, 0.02)  # in dBm
     ampl_mitte = ufloat(-20.55, 0.02)
     ampl_rechts = ufloat(-35.88, 0.02)
+    ampl_lr = (ampl_links+ampl_rechts)/2
+
+    print('reales m=', 2*np.log(unp.nominal_values(ampl_lr))/np.log(unp.nominal_values(ampl_mitte)))
+
+
     # print('Umrechnung von ampl_links=', dBmTomW(ampl_links))
     # print('Umrechnung von ampl_mitte=', dBmTomW(ampl_mitte))
     ampl_links = dBmTomW(ampl_links)
@@ -43,9 +48,11 @@ if __name__ == '__main__':
     ampl_mitte = dBmTomW(ampl_mitte)
     ampl_lr = (ampl_links+ampl_rechts)/2
     print('amplituden=', ampl_links*1000, ampl_rechts*1000, ampl_lr*1000,
-          ampl_mitte*1000, 'in mW')
+          ampl_mitte*1000, 'in microW')
     m_freq = (2*ampl_lr)/ampl_mitte
     print('m aus Frequenzspektrum = ', m_freq)
+
+
 
     # d
     zeitdiff = ufloat(288, 5) * 10**(-9)  # s

@@ -18,7 +18,7 @@ def plotphase(kreisfrequenz, spannung):
     y = spannung
 
     plt.errorbar(unp.nominal_values(x), unp.nominal_values(y), xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='kx', label='Messwerte')
-    plt.xlabel(r'$\cos(\phi)$')
+    plt.xlabel(r'$\cos(\Delta\phi)$')
     plt.ylabel(r'$U \:/\: \si{\volt}$')
     plt.legend(loc='best')
 

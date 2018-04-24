@@ -6,9 +6,9 @@
 Mit Hilfe der Schaltung aus Abbildung \ref{fig:???} wird eine Amplitudenmodulierte Schwingung erzeugt.
 Diese so entstandene Schwebung ist in Abbildung \ref{fig:amplModOszi} zu sehen.
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{Oszi_Pics/amplModRing.png}
+  \includegraphics[width=.9\textwidth]{Oszi_Pics/amplModRing.png}
   \caption{Amplitudenmodulierte Schwingung(gelb) und Modulationsschwingung(grün) erzeugt mit Ringmodulator.}
   \label{fig:amplModOszi}
 \end{figure}
@@ -22,18 +22,18 @@ Die mit dem Oszilloskop außerdem ausgemessenen Werte für die Frequenzen $\omeg
 
 Die mit dem Frequenzspektrometer aufgenommenen Werte sind in den Bildern \ref{fig:b1}, \ref{fig:b2} und \ref{fig:b3} zu sehen.
 
-\begin{figure}[H]
-  \includegraphics[width=\textwidth]{Spektrum_Pics/b1.jpg}
+\begin{figure}[h]
+  \includegraphics[width=.9\textwidth]{Spektrum_Pics/b1.jpg}
   \caption{Spektrum der mit dem Ringmodulator amplitudenmodulierten Schwingung mit Markierung vom Peak $\omega_\text{T} - \omega_\text{M}$}
   \label{fig:b1}
 \end{figure}
-\begin{figure}[H]
-  \includegraphics[width=\textwidth]{Spektrum_Pics/b2.jpg}
+\begin{figure}[h]
+  \includegraphics[width=.9\textwidth]{Spektrum_Pics/b2.jpg}
   \caption{Spektrum der mit dem Ringmodulator amplitudenmodulierten Schwingung mit Markierung vom Peak $\omega_\text{T}$}
   \label{fig:b2}
 \end{figure}
-\begin{figure}[H]
-  \includegraphics[width=\textwidth]{Spektrum_Pics/b3.jpg}
+\begin{figure}[h]
+  \includegraphics[width=.9\textwidth]{Spektrum_Pics/b3.jpg}
   \caption{Spektrum der mit dem Ringmodulator amplitudenmodulierten Schwingung mit Markierung vom Peak $\omega_\text{T} + \omega_\text{M}$}
   \label{fig:b3}
 \end{figure}
@@ -53,9 +53,9 @@ Die Abweichungen zu den erwarteten Werten betragen:
 
 Nach Schaltung aus Abbildung \ref{fig:???} wird hier der allgemeine Fall der Amplitudenodulation mit einer Diode gezeigt.
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{Oszi_Pics/amplModDiode.png}
+  \includegraphics[width=.9\textwidth]{Oszi_Pics/amplModDiode.png}
   \caption{Amplitudenmodulierte Schwingung erzeugt mit einer Diode.}
   \label{fig:amplModDiode}
 \end{figure}
@@ -78,9 +78,9 @@ Aus Bild \ref{fig:???} wird die Formel
 
 Nun wird der Modulationsgrad aus der Frequenzspektrumsmessung abgelesenen.
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{Spektrum_Pics/c.jpg}
+  \includegraphics[width=.9\textwidth]{Spektrum_Pics/c.jpg}
   \caption{Spektrum der mit der Diode amplitudenmodulierten Schwingung mit einer Peaktable.}
   \label{fig:c}
 \end{figure}
@@ -111,16 +111,16 @@ So ergibt sich für $m$:
 
 \subsection{Frequenzmodulierte Schwingung}
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{Oszi_Pics/freqModRing.png}
+  \includegraphics[width=.9\textwidth]{Oszi_Pics/freqModRing.png}
   \caption{Oszilloskopbild der frequenzmodulierten Schwingung.}
   \label{fig:freqModRing}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{Oszi_Pics/freqModZoom.png}
+  \includegraphics[width=.9\textwidth]{Oszi_Pics/freqModZoom.png}
   \caption{Vergrößertes Oszilloskopbild der frequenzmodulierten Schwingung.}
   \label{fig:freqModZoom}
 \end{figure}
@@ -135,7 +135,7 @@ In Abbildung \ref{fig:freqModRing} ist die in X-Richtung verschmierte Sinuskurve
 \end{align*}
 
 
-\subsection{Demodulation mithilfe eines Ringmodulators}
+\subsection{Demodulation mithilfe eines Ringmodulators -- Überprüfung der Spannung}
 
 Mit der Schaltung aus Abbildung \ref{fig:???} wird eine Messreihe von verschiedenen Frequenzen der Trägerspannung $\omega_\text{T}$ und der am Ausgang X anliegenden Gleichspannung $U$ aufgenommen.
 
@@ -186,20 +186,54 @@ In der Abbildung \ref{fig:plotphase} ist die Spannung gegen den Kosinus der Phas
   \label{fig:plotphase}
 \end{figure}
 
-Tabelle für copy and paste:
-\begin{table}[h]
+\subsection{Demodulation mithilfe eines Ringmodulators -- Überprüfung des Oszilloskopbild}
+
+Mit der Schaltung nach Abbildung \ref{fig:???} wird eine amplitudenmodulierte Spannung demoduliert und auf dem Oszilloskop dargestellt. Das ergebende Bild ist in Abbildung \ref{fig:demodRing} zu sehen.
+
+\begin{figure}[h]
   \centering
-  \begin{tabular}{S S}
-    \toprule
-    {$k$} & {$U\:/\:\si{\milli\volt}$}\\
-    \midrule
-    1 & 637.2\\
-    3 & 212.4\\
-    5 & 127.4\\
-    7 & 91.03\\
-    9 & 70.8\\
-    \bottomrule
-  \end{tabular}
-  \caption{Amplituden Rechteckspannung.}
-  \label{tab:rechtampl}
-\end{table}
+  \includegraphics[width=.9\textwidth]{Oszi_Pics/demodRing.png}
+  \caption{Oszilloskopbild der demodulierten Spannung(grün) sowie der Original-Modulationsspannung(gelb).}
+  \label{fig:demodRing}
+\end{figure}
+
+\subsection{Demodulation mithilfe einer Gleichrichterdiode}
+
+Nun wird mithilfe einer Gleichrichterdiode nach Schaltung aus Abbildung \ref{fig:???} eine amplitudenmodulierte Spannung demoduliert.
+Das aufgenommene Bild an der Stelle A ist in Abbildung \ref{fig:gnachA} zu finden und das nach dem Tiefpass in Abbildung \ref{fig:gnachTiefpass}.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{Oszi_Pics/gnachA.png}
+  \caption{Oszilloskopbild der demodulierten Spannung(grün) sowie der Original-Modulationsspannung(gelb) an der Stelle A.}
+  \label{fig:gnachA}
+\end{figure}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{Oszi_Pics/gnachTiefpass.png}
+  \caption{Oszilloskopbild der demodulierten Spannung(grün) sowie der Original-Modulationsspannung(gelb) nach dem Tiefpass.}
+  \label{fig:gnachTiefpass}
+\end{figure}
+Zu erkennnen ist, dass die demodulierte Spannung die doppelte Frequenz der Original-Modulationsspannung hat.
+
+\subsection{Demodulation einer frequenzmodulierten Spannung}
+
+Zum Abschluss wird erneut eine frequenzmodulierte Spannung mit Abbildung \ref{fig:???} erzeugt und mit der Schaltung nach Abbildung \ref{fig:???} demoduliert. Dann werden 3 Bilder nach den verschiedenen Bauteilen aufgenommen.
+Diese sind in den Abbildungen \ref{fig:hnachSchwingkreis}, \ref{fig:hnachDiode} und \ref{fig:hnachTiefpass} zu sehen.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{Oszi_Pics/hnachSchwingkreis.png}
+  \caption{Oszilloskopbild der Spannung nach dem Schwingkreis(grün) mit der Modulatorspannung(gelb).}
+  \label{fig:hnachSchwingkreis}
+\end{figure}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{Oszi_Pics/hnachDiode?.png}
+  \caption{Oszilloskopbild der Spannung nach der Diode(grün) mit der Modulatorspannung(gelb).}
+  \label{fig:hnachDiode}
+\end{figure}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{Oszi_Pics/hnachTiefpass.png}
+  \caption{Oszilloskopbild der Spannung nach dem Tiefpass(grün) mit der Modulatorspannung(gelb).}
+  \label{fig:hnachTiefpass}
+\end{figure}
