@@ -1,0 +1,30 @@
+\section{Theorie}
+\label{sec:Theorie}
+
+\subsection{Fehlerrechnung}
+
+Für die Fehlerfortpflanzung bei Gleichungen mit $N$ fehlerbehafteten Größen
+wird jeweils die Formel zur Gaußschen Fehlerfortpflanzung
+
+\begin{equation*}
+  \sigma = \sqrt{\sum_{i=1}^{N}\biggl(\frac{\partial f(x_{\g{i}})}{\partial x_{\g{i}}}
+  \sigma_{\g{i}}\biggr)^2}
+\end{equation*}
+mit der jeweiligen Funktion $f(x_{\g{i}})$, den Messgrößen $x_{\g{i}}$ und den
+zugehörigen Fehlern $\sigma_i$ verwendet.
+Zur Berechnung des arithmetischen Mittels von $N$ Messwerten wird jeweils die
+Formel
+
+\begin{equation*}
+  \bar{x} = \frac{1}{N}\sum_{i=1}^{N}x_{\g{i}}
+\end{equation*}
+mit den Messwerten $x_i$ benutzt.
+Die Standardabweichung des Mittelwerts wird jeweils mit der Gleichung
+
+\begin{equation*}
+  \bar{\sigma} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_{\g{i}} - \bar{x})^2}
+\end{equation*}
+mit den $N$ Messwerten $x_i$ berechnet.
+
+
+\cite{anleitung}
