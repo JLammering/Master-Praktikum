@@ -30,22 +30,24 @@ def plotphase(kreisfrequenz, spannung):
     return phase
 
 
-def werteZuTabelle(*werteArray):
-    # print(len(werteArray))
-    if len(werteArray) == 2:
-        for i in range(len(werteArray[0])):
-            print(werteArray[0][i], ' & ', werteArray[1][i], '\\\\')
-    if len(werteArray) == 3:
-        for i in range(len(werteArray[0])):
-            print(werteArray[0][i], ' & ', werteArray[1][i],
-                  ' & ', round(werteArray[2][i], 2), '\\\\')
-    if len(werteArray) == 4:
-        for i in range(len(werteArray[0])):
-            print(werteArray[0][i], ' & ', werteArray[1][i],
-                  ' & ', round(werteArray[2][i], 3), ' & ', round(werteArray[3][i], 3), '\\\\')
+def werteZuTabelle(*werteArray, rundungen):
+    ''' Funktion um Werte in Tabelle auszugeben'''
+
+    if len(werteArray) != len(rundungen):  # Fehleruntersuchung
+        print('Dimension werteArray= ', len(werteArray), ' != ',
+              'Dimension rundungen= ', len(rundungen))
+        return
+
+    for i in range(len(werteArray[0])):  # geht durch die Zeilen
+        for k in range(len(werteArray)):  # geht durch die Spalten
+            if k == len(werteArray)-1:  # am Ende Backslashes
+                print(round(werteArray[k][i], rundungen[k]), end='\\\\\n')
+            else:  # vorher mit Undzeichen
+                print(round(werteArray[k][i], rundungen[k]), end=' & ')
 
 
 if __name__ == '__main__':
     kreisfrequenz, spannung = np.genfromtxt('daten/gleichspannungphase.txt', unpack='True')
     phase = plotphase(kreisfrequenz, spannung)
-    werteZuTabelle(kreisfrequenz, spannung, unp.nominal_values(phase))
+    werteZuTabelle(kreisfrequenz, spannung, unp.nominal_values(phase),
+                   rundungen=[3, 1, 2])  # , unp.nominal_values(phase))
