@@ -19,7 +19,7 @@ build/stromspannungskennlinie.pdf: stromspannungskennlinie.py stromspannungskenn
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
 build/main.pdf: build/stromspannungskennlinie.pdf
-#build/plot.pdf 
+#build/plot.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \
