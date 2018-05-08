@@ -10,21 +10,21 @@ Folgendes orientiert sich an \cite{anleitung} und \cite{goessling}.
 
 \subsection{Halbleiter}
 
-Der genutzte Silizium-Streifensensor ist ein Halbleiterdetektor. Halbleiter sind Elemente oder Verbindungen, die bei $T = \SI{0}{\kelvin}$ keinen Strom leiten. Ihre Leitfähigkeit lässt sich aber leicht manipulieren durch Anregung oder Einbringen von Fremdatomen. Diese Steuerung macht sie interessant für viele Einsatzgebiete.
+Der genutzte Silizium-Streifensensor ist ein Halbleiterdetektor. Halbleiter sind Elemente oder Verbindungen, dessen Leitfähigkeit größer ist als die von Isolatoren, aber kleiner als die von Metallen. Ihre Leitfähigkeit lässt sich leicht manipulieren durch Anregung oder Einbringen von Fremdatomen. Diese Steuerung macht sie interessant für viele Einsatzgebiete.
 Sie unterscheiden sich von Leitern und Isolatoren durch die Größe der Bandlücke zwischen Valenzband und Leitungsband. Während die Bänder sich bei Leitern überschneiden, beträgt die Größe der Bandlücke bei Isolatoren je nach Definition circa $\SI{10}{\electronvolt}$ und liegt bei Halbleitern bei wenigen $\si{\electronvolt}$. Die Bandlücke bei reinem Silizium beträgt beispielsweise $\SI{1.1}{\electronvolt}$. Das Bandschema im nicht angeregten Zustand eines Halbleiters ist in Abbildung \ref{fig:bandmodell} zu sehen.
 
 \begin{figure}
   \centering
-  \includegraphics[height=6cm]{TimosAufrisse/bandmodell.png}
+  \includegraphics[height=5cm]{TimosAufrisse/bandmodell.png}
   \caption{Bandschema eines Halbleiters\cite{anleitung}.}
   \label{fig:bandmodell}
 \end{figure}
 
-Um die Leitfähigkeit von Halbleitern gezielt zu steigern werden sie mit Fremdatomen dotiert. Das hier verwendete Silizium besitzt vier Valenzelektronen. Nun wird hier Arsen als Donator mit fünf Valenzelektronen eingeführt. Dadurch ist ein Elektron nicht an der Bindung beteiligt und kann als Ladungsträger dienen. Außerdem kann noch Bor als Akzeptor mit drei Valenzelektronen eingeführt werden. So existiert eine elektronfreie Stelle ein Loch als Ladungsträger. Dargestellt ist dies in Abbildung \ref{fig:dotierung}.
+Um die Leitfähigkeit von Halbleitern gezielt zu steigern werden sie mit Fremdatomen dotiert. Das hier verwendete Silizium besitzt vier Valenzelektronen. Nun wird hier Arsen als Donator mit fünf Valenzelektronen eingebracht. Dadurch ist ein Elektron nicht an der Bindung beteiligt und kann als Ladungsträger dienen. Außerdem kann noch Bor als Akzeptor mit drei Valenzelektronen eingebracht werden. So existiert eine elektronfreie Stelle ein Loch als Ladungsträger. Dargestellt ist dies in Abbildung \ref{fig:dotierung}.
 
 \begin{figure}
   \centering
-  \includegraphics[height=6cm]{TimosAufrisse/dotierung.png}
+  \includegraphics[height=7cm]{TimosAufrisse/dotierung.png}
   \caption{Skizze der zwei hier verwendeten Dotierungsarten \cite{anleitung}.}
   \label{fig:dotierung}
 \end{figure}
@@ -54,7 +54,7 @@ Die detektierten Teilchen in diesem Versuch sind die Elektronen aus der Umwandlu
 Dabei ist die Energieverteilung des Elektrons kontinuierlich, da die freiwerdende Energie beim Neutronzerfall zufällig auf Elektron und Neutrino aufgeteilt wird. Die Energieverteilung hat dann die Form aus Abbildung \ref{fig:elektronenergie}.
 \begin{figure}
   \centering
-  \includegraphics[height=4cm]{TimosAufrisse/elektronenenergie.png}
+  \includegraphics[height=6cm]{TimosAufrisse/elektronenenergie.png}
   \caption{Energieverteilung des Elektrons \cite{anleitung}.}
   \label{fig:elektronenergie}
 \end{figure}
@@ -62,12 +62,12 @@ Von Interesse sind in diesem Versuch nur die Elektronen aus dem ersten Teil des 
 Teil bei einer wesentlich höheren maximalen Emissionsenergie abläuft ($E = \SI{2.28}{\mega\electronvolt}$ im Vergleich zu $E = \SI{0.546}{\mega\electronvolt}$ bei
 $\ce{Sr^{90} ->[$\beta^-$] Y^{90}}$), kann durch Schneiden auf der Energie, der Einfluss auf die Messung reduziert werden.
 
-Die ausgesandten Elektronen wechselwirken beim durchdringen des Detektors mit der Materie und verlieren so einen Teil ihrer Energie.
+Die ausgesandten Elektronen wechselwirken beim Durchdringen des Detektors mit der Materie und verlieren so einen Teil ihrer Energie.
 Sie stoßen entweder elastisch und werden gestreut oder inelastisch und lösen Hüllenelektronen aus, dessen Ladungsfluss dann detektiert wird.
 Die Energiedeposition im Streifendetektor ist nicht wie bei dickeren Materialien gaußverteilt, sondern folgt der Landauverteilung; schematisch gezeigt in Abbildung \ref{fig:energiedepositionElektron}. Ein Grund dafür ist, dass die Elektronen nicht ihre geamte Energie deponieren.
 \begin{figure}
   \centering
-  \includegraphics[height=4cm]{TimosAufrisse/energiedepositionElektron.png}
+  \includegraphics[height=6cm]{TimosAufrisse/energiedepositionElektron.png}
   \caption{Energiedeposition des Elektrons in einem dünnen Sensor \cite{anleitung}.}
   \label{fig:energiedepositionElektron}
 \end{figure}
@@ -78,7 +78,7 @@ Der Detektor gibt die deponierte Energie des einfallenden Elektrons in ADC-Charg
 
 Der ADC-Count für ein Signal $k$ und den Streifen $i$ setzt sich wie folgt zusammen:
 \begin{align}
-  \text{ADC}(i, k) = \symup{P}(i) + \symup{D}(k) + \text{Signal}{i, k}.
+  \text{ADC}(i, k) = \symup{P}(i) + \symup{D}(k) + \text{Signal}(i, k).
 \end{align}
 Dabei sind die Pedestals der durchschnittliche Offset der Streifen ohne Signal:
 \begin{align}
@@ -119,8 +119,3 @@ berechnen.
 %   \bar{\sigma} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_{\g{i}} - \bar{x})^2}
 % \end{equation*}
 % mit den $N$ Messwerten $x_i$ berechnet.
-
-
-
-
-\cite{anleitung}
