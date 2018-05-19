@@ -25,36 +25,37 @@ if __name__ == '__main__':
 
     # c
     # aus Oszi_Pic
-    U_diff = ufloat(19.75, 0.02)
-    U_Tmax = ufloat(43.25, 0.02)
+    U_diff = ufloat(20, 1)
+    U_max = ufloat(43, 1)
 
-    U_Tdach = U_Tmax - U_diff/2
-    m_oszi = U_Tmax/U_Tdach - 1
+    m_oszi = U_max/(U_max - U_diff/2) - 1
     print('Aufgabe c\n')
     print('m aus Oszi_Pic = ', m_oszi)
     # aus Frequenzspektrum
-    ampl_links = ufloat(-36.1, 0.02)  # in dBm
-    ampl_mitte = ufloat(-20.55, 0.02)
-    ampl_rechts = ufloat(-35.88, 0.02)
-    ampl_lr = (ampl_links+ampl_rechts)/2
+    ampl_links = ufloat(-36.1, 0.1)  # in dBm
+    ampl_mitte = ufloat(-20.55, 0.1)
+    ampl_rechts = ufloat(-35.88, 0.1)
 
-    print('reales m=', 2*np.log(unp.nominal_values(ampl_lr))/np.log(unp.nominal_values(ampl_mitte)))
+    P_links = dBmTomW(ampl_links)
+    P_rechts = dBmTomW(ampl_rechts)
+    P_mitte = dBmTomW(ampl_mitte)
 
+    R = 1
+    U_links = unp.sqrt(P_links*R)
+    U_rechts = unp.sqrt(P_rechts*R)
+    U_mitte = unp.sqrt(P_mitte*R)
+    U_lr = (U_links+U_rechts)/2
 
-    # print('Umrechnung von ampl_links=', dBmTomW(ampl_links))
-    # print('Umrechnung von ampl_mitte=', dBmTomW(ampl_mitte))
-    ampl_links = dBmTomW(ampl_links)
-    ampl_rechts = dBmTomW(ampl_rechts)
-    ampl_mitte = dBmTomW(ampl_mitte)
-    ampl_lr = (ampl_links+ampl_rechts)/2
-    print('amplituden=', ampl_links*1000, ampl_rechts*1000, ampl_lr*1000,
-          ampl_mitte*1000, 'in microW')
-    m_freq = (2*ampl_lr)/ampl_mitte
+    print('amplituden=', P_links*1000, P_mitte*1000,
+          P_rechts*1000, 'in microW')
+    m_freq = (2*U_lr)/U_mitte
     print('m aus Frequenzspektrum = ', m_freq)
 
 
 
     # d
+    print('Aufgabe d\n')
+
     zeitdiff = ufloat(288, 5) * 10**(-9)  # s
     omega_M = ufloat(211.5, 0.4) * 10**3  # Hz
     delta = zeitdiff*omega_M*2*np.pi

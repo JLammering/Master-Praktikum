@@ -13,40 +13,32 @@ Diese so entstandene Schwebung ist in Abbildung \ref{fig:amplModOszi} zu sehen.
   \label{fig:amplModOszi}
 \end{figure}
 
-Die mit dem Oszilloskop außerdem ausgemessenen Werte für die Frequenzen $\omega$ und Amplituden $U_\text{peak to peak}$ der Modulationsspannung $M$ und der Trägerspannung $T$ sind:
+Die mit dem Oszilloskop außerdem ausgemessenen Werte für die Frequenzen $f$ und Amplituden $U_\text{peak to peak}$ der Modulationsspannung $M$ und der Trägerspannung $T$ sind:
 
 \begin{align*}
-  \omega_\text{M} &= \SI{43.8(5)}{\kilo\hertz} & U_\text{M, ptp} &= \SI{95(1)}{\milli\volt}\\
-  \omega_\text{T} &= \SI{970(1)}{\kilo\hertz} & U_\text{T, ptp} &= \SI{540(1)}{\milli\volt}.
+  f_\text{M} &= \SI{43.8(5)}{\kilo\hertz} & U_\text{M, ptp} &= \SI{95(1)}{\milli\volt}\\
+  f_\text{T} &= \SI{970(1)}{\kilo\hertz} & U_\text{T, ptp} &= \SI{540(1)}{\milli\volt}.
 \end{align*}
 
 Die mit dem Frequenzspektrometer aufgenommenen Werte sind in den Bildern \ref{fig:b1}, \ref{fig:b2} und \ref{fig:b3} zu sehen.
 
 \begin{figure}[h]
   \includegraphics[width=.9\textwidth]{Spektrum_Pics/b1.jpg}
-  \caption{Spektrum der mit dem Ringmodulator amplitudenmodulierten Schwingung mit Markierung vom Peak $\omega_\text{T} - \omega_\text{M}$}
+  \caption{Spektrum der mit dem Ringmodulator amplitudenmodulierten Schwingung mit Markierung vom Peak $f_\text{T} - f_\text{M}$}
   \label{fig:b1}
 \end{figure}
-\begin{figure}[h]
-  \includegraphics[width=.9\textwidth]{Spektrum_Pics/b2.jpg}
-  \caption{Spektrum der mit dem Ringmodulator amplitudenmodulierten Schwingung mit Markierung vom Peak $\omega_\text{T}$}
-  \label{fig:b2}
-\end{figure}
-\begin{figure}[h]
-  \includegraphics[width=.9\textwidth]{Spektrum_Pics/b3.jpg}
-  \caption{Spektrum der mit dem Ringmodulator amplitudenmodulierten Schwingung mit Markierung vom Peak $\omega_\text{T} + \omega_\text{M}$}
-  \label{fig:b3}
-\end{figure}
 
-Die aus dem Frequenzspektrum abgelesenen Frequenzen für die drei größten Peaks sind:
+
+Die aus dem Frequenzspektrum abgelesenen Frequenzen und Leistungspegel für die drei größten Peaks sind:
 \begin{align*}
-  \omega_1 &= \SI{929.3}{\kilo\hertz} & \omega_2 &= \SI{973.1}{\kilo\hertz} & \omega_3 &= \SI{1016.6}{\kilo\hertz}.\\
+  f_1 &= \SI{929.3}{\kilo\hertz} & f_2 &= \SI{973.1}{\kilo\hertz} & f_3 &= \SI{1016.6}{\kilo\hertz}.\\
+  L_{\text{P}, 1} &= \SI{-19.04}{dBm} & L_{\text{P}, 2} &= \SI{-47.6}{dBm} & L_{\text{P}, 3} &= \SI{-19.02}{dBm}
 \end{align*}
 Die Abweichungen zu den erwarteten Werten betragen:
 \begin{align*}
-  \frac{|(\omega_\text{T} - \omega_\text{M}) - \omega_1|}{\omega_\text{T} - \omega_\text{M}} &= \SI{0.3(1)}{\percent}\\
-  \frac{|\omega_\text{T} - \omega_2|}{\omega_\text{T}} &= \SI{0.3(1)}{\percent}\\
-  \frac{|(\omega_\text{T} + \omega_\text{M}) - \omega_3|}{\omega_\text{T} + \omega_\text{M}} &= \SI{0.3(1)}{\percent}.
+  \frac{|(f_\text{T} - f_\text{M}) - f_1|}{f_\text{T} - f_\text{M}} &= \SI{0.3(1)}{\percent}\\
+  \frac{|f_\text{T} - f_2|}{f_\text{T}} &= \SI{0.3(1)}{\percent}\\
+  \frac{|(f_\text{T} + f_\text{M}) - f_3|}{f_\text{T} + f_\text{M}} &= \SI{0.3(1)}{\percent}.
 \end{align*}
 
 \subsection{Amplitudenmodulierte Schwingung mit Diode}
@@ -61,33 +53,34 @@ Nach Schaltung aus Abbildung \ref{fig:expc} wird hier der allgemeine Fall der Am
 \end{figure}
 
 Die so entstandene Schwebung ist in Abbildung \ref{fig:amplModDiode} zu sehen.
-Außerdem wurden folgende Kenzahlen der modulierten Spannung ausgemessenen:
-die Spannungsdifferenz von der Nulllinie im Oszilloskop bis zum höchsten Wert $U_\text{T, max}$, die Differenz zwischen der höchsten und der niedrigsten Amplitude $U_\text{diff}$ sowie die Spannungsdifferenz von der Nulllinie bis zur unteren Kante also der Fehler der Diode $U_\text{fehler}$.
+Außerdem wurden folgende Kennzahlen der modulierten Spannung ausgemessenen:
+die Spannungsdifferenz von der Nulllinie im Oszilloskop bis zum höchsten Wert $U_\text{max}$, die Differenz zwischen der höchsten und der niedrigsten Amplitude $U_\text{diff}$ sowie die Spannungsdifferenz von der Nulllinie bis zur unteren Kante also der Fehler der Diode $U_\text{fehler}$.
 Diese Werte betragen:
 \begin{align*}
-  U_\text{T, max} &= \SI{43.25(2)}{\milli\volt} & U_\text{diff} &= \SI{19.75(2)}{\milli\volt}  & U_\text{fehler} &= \SI{13.75(2)}{\milli\volt}
+  U_\text{max} &= \SI{43(1)}{\milli\volt} & U_\text{diff} &= \SI{20(1)}{\milli\volt}  & U_\text{fehler} &= \SI{14(1)}{\milli\volt}
 \end{align*}
 Aus Bild \ref{fig:amplmodskizze} wird die Formel
 \begin{align}
-  m &= \frac{U_\text{T, max}}{U_{\hat T}}\\
-  \intertext{hergeleitet; mit}
-  U_{\hat T} &= U_\text{T, max} - \frac{U_\text{diff}}{2}.
+  m &= \frac{U_\text{max}}{U_\text{max} - \frac{U_\text{diff}}{2}}\\
+  \intertext{hergeleitet.}
   \intertext{Das ergibt für den Modulationsgrad:}
-  m &= \num{0.2959(4)}.
+  m &= \num{0.30(2)}.
 \end{align}
 
 Nun wird der Modulationsgrad aus der Frequenzspektrumsmessung abgelesenen.
-
 \begin{figure}[h]
   \centering
   \includegraphics[width=.9\textwidth]{Spektrum_Pics/c.jpg}
   \caption{Spektrum der mit der Diode amplitudenmodulierten Schwingung mit einer Peaktable.}
   \label{fig:c}
 \end{figure}
-
 Das Bild mit dem Spektrum der Frequenzen ist in Abbildung \ref{fig:c} zu sehen.
-Dabei werden die drei höchsten Peaks den Frequenzen $\omega_\text{T} - \omega_\text{M}$, $\omega_\text{T}$ und $\omega_\text{T} + \omega_\text{M}$ zugeordnet.
-Die abgelesenen Werten für die Leistungspegel $L_\text{P}$ werden nun mit Gleichung \eqref{eqn:dBmTomW} aus \cite{leistungspegel} umgerechnet in Werte für die Leistung der Frequenzen.
+Dabei werden die drei höchsten Peaks den Frequenzen $f_\text{T} - f_\text{M}$, $f_\text{T}$ und $f_\text{T} + f_\text{M}$ zugeordnet.
+Die Peaktable zeigt die Werte für die Leistungspegel $L_\text{P}$:
+\begin{align*}
+  L_\text{P, links} &= \SI{-36.1(1)}{dBm} & L_\text{P, mitte} &= \SI{-20.55(10)}{dBm} & L_\text{P, rechts} &= \SI{-35.88(10)}{dBm}.
+\end{align*}
+Diese Werte werden nun mit Gleichung \eqref{eqn:dBmTomW} aus \cite{leistungspegel} umgerechnet in Werte für die Leistung der Frequenzen.
 \begin{align}
   P(\si{\milli\watt}) =
    10^{\frac{L_\text{P}(\si{dBm})}{10}} \SI{1}{\milli\watt} \label{eqn:dBmTomW}
@@ -95,18 +88,22 @@ Die abgelesenen Werten für die Leistungspegel $L_\text{P}$ werden nun mit Gleic
 
 Diese betragen:
 \begin{align*}
-  P_\text{links} &= \SI{0.246(1)}{\micro\watt} & P_\text{mitte} &= \SI{8.81(4)}{\micro\watt} & P_\text{rechts} &= \SI{0.258(1)}{\micro\watt}.
+  P_\text{links} &= \SI{0.245(6)}{\micro\watt} & P_\text{mitte} &= \SI{8.81(2)}{\micro\watt} & P_\text{rechts} &= \SI{0.258(6)}{\micro\watt}.
 \end{align*}
-
+Diese Werte für die Leistung werden mit
+\begin{align}
+  U &= \sqrt{P R}
+\end{align}
+in die entsprechenden Spannungen umgerechnet. Dabei ist der Widerstand $R$ konstant.
 Aus Bild \ref{fig:freqspektrum} wird nun die Formel zur Bestimmung des Modulationsgrad aus einem Frequenzspektrum hergeleitet:
 \begin{align*}
-  m &= \frac{2 P_\text{lr}}{P_\text{mitte}}.
+  m &= \frac{2 U_\text{lr}}{U_\text{mitte}}.
 \end{align*}
 
-Hierbei ist $P_\text{lr}$ der Mittelwert des linken und des rechten Peaks der drei Peaks mit der höchsten Leistung. Hier wird genutzt, dass $P \propto U$ und so die Leistungen eingesetzt, da ja ein Verhältnis bestimmt wird.
+Hierbei ist $U_\text{lr}$ der Mittelwert des linken und des rechten Peaks der drei Peaks mit der höchsten Leistung.
 So ergibt sich für $m$:
 \begin{align*}
-  m &= \num{0.0572(3)}.
+  m &= \num{0.338(5)}.
 \end{align*}
 
 \subsection{Frequenzmodulierte Schwingung}
@@ -129,7 +126,7 @@ In Abbildung \ref{fig:freqModRing} ist die in X-Richtung verschmierte Sinuskurve
 \begin{align*}
   t_2 - t_1 &= \SI{288(5)}{\nano\second}.\\
 \intertext{Mit der Kenntnis der Modulationsfrequenz}
-  \omega_\text{M} &= \SI{211.5(4)}{\kilo\hertz}\\
+  f_\text{M} &= \SI{211.5(4)}{\kilo\hertz}\\
 \intertext{ergibt sich eingesetzt in Formel \eqref{eqn:mfuerfreqmod} für den Modulationsgrad}
   m &= \num{0.0416(7)}.
 \end{align*}
@@ -137,7 +134,7 @@ In Abbildung \ref{fig:freqModRing} ist die in X-Richtung verschmierte Sinuskurve
 
 \subsection{Demodulation mithilfe eines Ringmodulators -- Überprüfung der Spannung}
 
-Mit der Schaltung aus Abbildung \ref{fig:expef} wird eine Messreihe von verschiedenen Frequenzen der Trägerspannung $\omega_\text{T}$ und der am Ausgang X anliegenden Gleichspannung $U$ aufgenommen.
+Mit der Schaltung aus Abbildung \ref{fig:expef} wird eine Messreihe von verschiedenen Frequenzen der Trägerspannung $f_\text{T}$ und der am Ausgang X anliegenden Gleichspannung $U$ aufgenommen.
 
 Die beiden Spannungen, die an den Eingängen L und R anliegen, sind durch einen Phasenschieber mit einer Phasenverzögerung von $\Delta t = \SI{250}{\nano\second}$ zueinander verschoben.
 Die Phasenverschiebung wird berechnet mit:
@@ -154,7 +151,7 @@ In Tabelle \ref{tab:phase} sind die aufgenommenen Werte sowie die berechnete Pha
      S[table-format=1.2]
      }
     \toprule
-    {$\omega\:/\:\si{\mega\hertz}$} & {$U\:/\:\si{\volt}$} & {$\Delta \phi$}\\
+    {$f\:/\:\si{\mega\hertz}$} & {$U\:/\:\si{\volt}$} & {$\Delta \phi$}\\
     \midrule
     0.102  &  -0.155  &  0.03 \\
     0.299  &  -0.136  &  0.07 \\
@@ -173,7 +170,7 @@ In Tabelle \ref{tab:phase} sind die aufgenommenen Werte sowie die berechnete Pha
     5.98  &  0.153  &  1.5 \\
     \bottomrule
   \end{tabular}
-  \caption{Die Werte für die aufgenommenen Frequenzen und Spannungen sowie die berechnete Phasenverschiebung. Die  Unsicherheiten sind $\Delta \omega = \SI{0.005}{\mega\hertz}$, $\Delta U = \SI{0.001}{\volt}$ und $\Delta \phi = \num{0.001}$.}
+  \caption{Die Werte für die aufgenommenen Frequenzen und Spannungen sowie die berechnete Phasenverschiebung. Die  Unsicherheiten sind $\Delta f = \SI{0.005}{\mega\hertz}$, $\Delta U = \SI{0.001}{\volt}$ und $\Delta \phi = \num{0.001}$.}
   \label{tab:phase}
 \end{table}
 
