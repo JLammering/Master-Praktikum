@@ -1,6 +1,121 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
+\subsection{Messung einer Stromspannungskennlinie}
+
+Die Messwerte der Stromspannungskennlinie sind in Tabelle \ref{tab:stromspannungskennlinie} aufgelistet
+und in Abbildung \ref{fig:stromspannungskennlinie} graphisch dargestellt. An der Stelle der Depletionsspannung
+wird in der Kennlinie ein Knick erwartet, da der Leckstrom bei voll depletiertem Sensor schwächer mit der Spannung
+ansteigt. Ein Knick entspricht mathematisch ausgedrückt einem Maximum in der zweiten Ableitung einer Funktion.
+Die Messwerte werden daher zunächst polynomiell angenähert und im Anschluss daran wird die Nullstelle der dritte Ableitung des
+Ausgleichspolynoms bestimmt. Für das Polynom der Form
+\begin{align}
+  I(U) = a U^4 + b U^3 + c U^2 + d U + e
+\end{align}
+ergeben sich die Parameter
+\begin{align*}
+  a &= \SI{3.46e-10}{\micro\ampere\per\volt\tothe{4}} &\quad b &= \SI{-9.00e-08}{\micro\ampere\per\volt\tothe{3}} &\quad c&= \SI{-1.10e-05}{\micro\ampere\per\volt\tothe{2}} \\
+  d &= \SI{5.2e-03}{\micro\ampere\per\volt} &\quad e &= \SI{0.77}{\micro\ampere} &\quad \phantom{f}&\phantom{=10}.
+\end{align*}
+Der Knick wird an der Stelle
+\begin{align}
+  U_\text{Knick} = U_\text{Dep,I(U)} = -\frac{b}{4a} = \SI{65.09}{\volt}
+\end{align}
+lokalisiert.
+
+\begin{figure}
+  \centering
+  \includegraphics{build/stromspannungskennlinie.pdf}
+  \caption{Messwerte und Ausgleichspolynom der Stromspannungskennlinie.}
+  \label{fig:stromspannungskennlinie}
+\end{figure}
+
+\subsection{Pedestal, Common Mode Shift und Noise}
+
+In Abbildung \ref{fig:pedestals} sind die Pedestals für alle 128 Streifen graphisch dargestellt.
+Der berechnete Mittelwert lautet
+\begin{align}
+   \text{Pedestal}_\text{average} = 509.122 \pm 2.210 \, \text{ADC}.
+\end{align}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/Pedestal.pdf}
+  \caption{Berechneter Pedestal in ADC für alle Streifen $i$.}
+  \label{fig:pedestals}
+\end{figure}
+
+Der Common Mode Shift wird für alle 1000 Events aus dem Pedestal berechnet.
+Die Werte sind in Abbildung \ref{fig:cms} als normiertes Histogramm dargestellt.
+Aufgrund des zentralen Grenzwertsatzes hat das Histogramm die Form einer Normalverteilung um $\text{CMS} = 0$.
+Ein Funktionenfit mit
+\begin{align}
+  p_k(\text{CMS}) = \frac{1}{\sqrt{2 \pi \sigma^2}} \symup{e}^{-\frac{\text{CMS}/\text{ADC}}{2\sigma^2}}
+\end{align}
+liefert die Standardabweichung
+\begin{align}
+  \sigma = 2.681.
+\end{align}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/Common_Mode_Shift.pdf}
+  \caption{Berechneter Common Mode Shift in ADC dargestellt als Wahrscheinlichkeitsverteilung $p_k$.}
+  \label{fig:cms}
+\end{figure}
+
+In Abbildung \ref{fig:noise} ist der aus dem Pedestal und dem Common Mode Shift berechnete Noise für jeden Kanal
+dargestellt. Es ergibt sich ein Mittelwert von
+\begin{align}
+  \text{Noise}_\text{average} = 2.119 \pm 0.081 \, \text{ADC}.
+\end{align}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/Noise.pdf}
+  \caption{Berechneter Noise in ADC für alle Streifen $i$.}
+  \label{fig:noise}
+\end{figure}
+
+\subsection{Kalibrationsmessungen}
+
+Mittels einer Delaymessung im Calibration Run wird eine optimale Verzögerung von
+\begin{align}
+  1
+\end{align}
+bestimmt und im Calibration Fenster eingetragen. Für eine Vorspannung oberhalb der
+Depletionsspannung werden fünf Kalibrationskurven für die Kanäle 20, 40, 60, 80 und 100 aufgenommen. In Abbildung \ref{fig:kalibration}
+ist der Mittelwert dieser Kurven aufgetragen. Außerdem sind die nicht gemittelten
+Messwerte im Graphen hinzugefügt und es ist erkennbar, dass diese kaum vom Mittelwert abweichen und
+alle aufeinander liegen. Desweiteren wird die gemittelte Kalibrationskurve polynomiell angenähert.
+Das resultierende Polynom
+\begin{align}
+  K(\text{charge}) = k_1 \text{charge}^4 + k_2 \text{charge}^3 + k_3 \text{charge}^2 + k_4 \text{charge} + k_5
+\end{align}
+ist ebenfalls in Abbildung \ref{fig:kalibration} dargestellt und es ergeben sich die Parameter
+\begin{align*}
+  k_1 &= \SI{-1.56e-20}{\text{ADC}e^{-4}} &\quad k_2 &= \SI{3.91e-14}{\text{ADC}e^{-3}} \\
+  k_3 &= \SI{-2.04e-08}{\text{ADC}e^{-2}} &\quad k_4 &= \SI{3.99e-03}{\text{ADC}e^{-1}} \\
+  k_5 &= \SI{-3.71}{\text{ADC}} &\quad \phantom{f}&\phantom{=10}.
+\end{align*}
+Es wird ebenfalls eine Kalibrationskurve für eine Vorspannung von $\SI{0}{\volt}$ aufgenommen. In Abbildung
+\ref{fig:kalibration2} ist erkennbar, dass diese in einem großen Bereich von den anderen Kalibrationskurven,
+bzw. deren Mittelwert, abweicht.
+
+\begin{figure}
+  \centering
+  \includegraphics{build/kalibration.pdf}
+  \caption{Plot.}
+  \label{fig:kalibration}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/kalibration2.pdf}
+  \caption{Plot.}
+  \label{fig:kalibration2}
+\end{figure}
+
 \begin{figure}
   \centering
   \includegraphics{plotphase.pdf}
@@ -24,4 +139,38 @@ Tabelle für copy and paste:
   \end{tabular}
   \caption{Amplituden Rechteckspannung.}
   \label{tab:rechtampl}
+\end{table}
+
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{S S}
+    \toprule
+    {$U\:/\:\si{\volt}$} & {$I\:/\:\si{\micro\ampere}$} \\
+    \midrule
+    199 & 1.20 \\
+    190 & 1.20 \\
+    180 & 1.19 \\
+    170 & 1.19 \\
+    160 & 1.18 \\
+    150 & 1.18 \\
+    140 & 1.17 \\
+    130 & 1.16 \\
+    120 & 1.15 \\
+    110 & 1.14 \\
+    100 & 1.12 \\
+    90  & 1.11 \\
+    80  & 1.09 \\
+    70  & 1.06 \\
+    60  & 1.04 \\
+    50  & 1.00 \\
+    40  & 0.96 \\
+    30  & 0.91 \\
+    20  & 0.86 \\
+    10  & 0.82 \\
+    0   & 0.78 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Messwerte der Stromspannungskennlinie zur Bestimmung der Depletionsspannung.}
+  \label{tab:stromspannungskennlinie}
 \end{table}

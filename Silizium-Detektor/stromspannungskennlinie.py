@@ -21,10 +21,16 @@ a, b, c, d, e = np.polyfit(U,I,4)
 #
 #plt.plot(U_2,I_2,'rx')
 
-x = np.linspace(0,200,1000)
-plt.plot(U,I,'kx')
-plt.plot(x, a*x**4 + b*x**3 + c*x**2 + d*x + e, 'r-')
+x = np.linspace(0,205,1000)
+plt.plot(U,I,'k.', markersize = 2, label = r'Messwerte')
+plt.plot(x, a*x**4 + b*x**3 + c*x**2 + d*x + e, 'r-', linewidth = 1, label = r'Ausgleichspolynom')
 
-print(-b/(4*a))
+print('Fit-Parameter:', a, b, c, d, e)
+print('Knick im Ausgleichspolynom (stärkste Veränderung der Steigung):',-b/(4*a))
 
+plt.xlim(0,205)
+plt.legend(loc = 'best')
+plt.xlabel(r'$U/\si{\volt}$')
+plt.ylabel(r'$I/\si{\micro\ampere}$')
+plt.grid()
 plt.savefig('build/stromspannungskennlinie.pdf')
