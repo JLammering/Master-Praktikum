@@ -5,21 +5,23 @@ from scipy.optimize import curve_fit, fmin
 import uncertainties.unumpy as unp
 
 
-def plotphase(kreisfrequenz, spannung):
+def plotphase(frequenz, spannung):
     verschiebung = 250e-9  # s
-    kreisfrequenz = unp.uarray(kreisfrequenz, 0.005)
+    frequenz = unp.uarray(frequenz, 0.005)
     spannung = unp.uarray(spannung, 0.001)
-    kreisfrequenz *= 10**(6)
-    umlaufdauer = (2*np.pi)/kreisfrequenz
+    frequenz *= 10**(6)
+    umlaufdauer = 1/frequenz
     phase = 2*np.pi*verschiebung/umlaufdauer
     # print('Umlaufdauer=', umlaufdauer)
     # print('Phase= ', phase)
-    x = unp.cos(phase)
-    y = spannung
+    y = unp.cos(phase)
+    x = spannung
 
-    plt.errorbar(unp.nominal_values(x), unp.nominal_values(y), xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='kx', label='Messwerte')
-    plt.xlabel(r'$\cos(\Delta\phi)$')
-    plt.ylabel(r'$U \:/\: \si{\volt}$')
+    plt.errorbar(unp.nominal_values(x), unp.nominal_values(y),
+                 xerr=unp.std_devs(x), yerr=unp.std_devs(y),
+                 fmt='kx', label='Messwerte')
+    plt.ylabel(r'$\cos(\Delta\phi)$')
+    plt.xlabel(r'$U \:/\: \si{\volt}$')
     plt.legend(loc='best')
 
     # in matplotlibrc leider (noch) nicht möglich
@@ -47,7 +49,7 @@ def werteZuTabelle(*werteArray, rundungen):
 
 
 if __name__ == '__main__':
-    kreisfrequenz, spannung = np.genfromtxt('daten/gleichspannungphase.txt', unpack='True')
-    phase = plotphase(kreisfrequenz, spannung)
-    werteZuTabelle(kreisfrequenz, spannung, unp.nominal_values(phase),
-                   rundungen=[3, 1, 2])  # , unp.nominal_values(phase))
+    frequenz, spannung = np.genfromtxt('daten/gleichspannungphase.txt', unpack='True')
+    phase = plotphase(frequenz, spannung)
+    werteZuTabelle(frequenz, spannung, unp.nominal_values(phase),
+                   rundungen=[3, 3, 2])  # , unp.nominal_values(phase))

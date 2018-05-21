@@ -12,6 +12,7 @@ def dBmTomW(wert):
     '''rechnet Werte von dBm in mW um'''
     return (10**(wert/10))
 
+
 if __name__ == '__main__':
     #  a
     modfreq = ufloat(43.8, 0.5)
@@ -51,8 +52,6 @@ if __name__ == '__main__':
     m_freq = (2*U_lr)/U_mitte
     print('m aus Frequenzspektrum = ', m_freq)
 
-
-
     # d
     print('Aufgabe d\n')
 
@@ -62,5 +61,31 @@ if __name__ == '__main__':
     # delta = np.pi/8
 
     m = delta/(2*(1+np.pi)+unp.cos(delta))
-    print('m aus frequenzmodulierter=', m)
-    print(delta, unp.cos(np.pi))
+    print('m_oszi aus frequenzmodulierter=', m)
+    # print(delta, unp.cos(np.pi))
+
+    # aus Frequenzspektrum
+    f_T = ufloat(973, 2)  # kHz
+    f_M = ufloat(211.5, 0.4)  # kHz
+
+    ampl_links = ufloat(-22.0, 0.1)  # in dBm
+    ampl_mitte = ufloat(-9.9, 0.1)
+    ampl_rechts = ufloat(-22.2, 0.1)
+
+    P_links = dBmTomW(ampl_links)
+    P_rechts = dBmTomW(ampl_rechts)
+    P_mitte = dBmTomW(ampl_mitte)
+
+    R = 1
+    U_links = unp.sqrt(P_links*R)
+    U_rechts = unp.sqrt(P_rechts*R)
+    U_mitte = unp.sqrt(P_mitte*R)
+    U_lr = (U_links+U_rechts)/2
+
+    print('amplituden=', P_links*1000, P_mitte*1000,
+          P_rechts*1000, 'in microW')
+
+    # U_links = 1/2 m f_T/f_M *U_mitte
+    m_freq = (2*U_lr)/U_mitte * (f_M/f_T)
+    print('m aus Frequenzspektrum = ', m_freq)
+    print('m*f_T/f_M = ', m_freq*f_T/f_M)

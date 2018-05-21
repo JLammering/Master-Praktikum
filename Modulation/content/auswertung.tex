@@ -1,6 +1,8 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
+\listoftodos
+
 \subsection{Amplitudenmodulierte Schwingung mit Ringmodulator}
 
 Mit Hilfe der Schaltung aus Abbildung \ref{fig:expab} wird eine Amplitudenmodulierte Schwingung erzeugt.
@@ -42,6 +44,7 @@ Die Abweichungen zu den erwarteten Werten betragen:
 \end{align*}
 
 \subsection{Amplitudenmodulierte Schwingung mit Diode}
+\label{sec:amplModDiode}
 
 Nach Schaltung aus Abbildung \ref{fig:expc} wird hier der allgemeine Fall der Amplitudenodulation mit einer Diode gezeigt.
 
@@ -61,7 +64,7 @@ Diese Werte betragen:
 \end{align*}
 Aus Bild \ref{fig:amplmodskizze} wird die Formel
 \begin{align}
-  m &= \frac{U_\text{max}}{U_\text{max} - \frac{U_\text{diff}}{2}}\\
+  m &= \frac{U_\text{max}}{U_\text{max} - \frac{U_\text{diff}}{2}} - 1\\
   \intertext{hergeleitet.}
   \intertext{Das ergibt für den Modulationsgrad:}
   m &= \num{0.30(2)}.
@@ -108,41 +111,61 @@ So ergibt sich für $m$:
 
 \subsection{Frequenzmodulierte Schwingung}
 
+Es wurde eine frequenzmodulierte Schwingung erzeugt mit den Frequenzen:
+\begin{align*}
+  f_\text{M} &= \SI{211.5(4)}{\kilo\hertz} \quad\text{und}\quad f_\text{T} &= \SI{973(2)}{\kilo\hertz}.
+\end{align*}
 \begin{figure}[h]
   \centering
   \includegraphics[width=.9\textwidth]{Oszi_Pics/freqModRing.png}
   \caption{Oszilloskopbild der frequenzmodulierten Schwingung.}
   \label{fig:freqModRing}
 \end{figure}
-
 \begin{figure}[h]
   \centering
   \includegraphics[width=.9\textwidth]{Oszi_Pics/freqModZoom.png}
   \caption{Vergrößertes Oszilloskopbild der frequenzmodulierten Schwingung.}
   \label{fig:freqModZoom}
 \end{figure}
-
 In Abbildung \ref{fig:freqModRing} ist die in X-Richtung verschmierte Sinuskurve der nach Schaltung \ref{fig:freqmodschaltung} frequenzmodulierten Schwingung zu sehen. Außerdem ist in Abbildung \ref{fig:freqModZoom} eine vergrößerte Version der Schwingung zu sehen. Daraus wird die Zeitdifferenz bei maximaler Frequenzvariation abgelesenen:
 \begin{align*}
   t_2 - t_1 &= \SI{288(5)}{\nano\second}.\\
-\intertext{Mit der Kenntnis der Modulationsfrequenz}
-  f_\text{M} &= \SI{211.5(4)}{\kilo\hertz}\\
 \intertext{ergibt sich eingesetzt in Formel \eqref{eqn:mfuerfreqmod} für den Modulationsgrad}
   m &= \num{0.0416(7)}.
+\end{align*}\todo{mit neuer Formel ausrechnen}
+
+Der Modulationsgrad wird erneut auch mit dem Frequenzspektrum bestimmt. Das Bild des Spektrometers ist in Abbildung \ref{fig:freqModSpek} zu sehen.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{Spektrum_Pics/d.jpg}
+  \caption{Frequenzspektrum der frequenzmodulierten Schwingung.}
+  \label{fig:freqModSpek}
+\end{figure}
+Dort lassen sich für die Leistungspegel der drei höchsten Peaks die Werte mit entsprechenden Unsicherheiten ablesen:
+\begin{align*}
+  L_\text{P, links} &= \SI{-22.0(1)}{dBm} & L_\text{P, mitte} &= \SI{-9.9(1)}{dBm} & L_\text{P, rechts} &= \SI{-22.2(1)}{dBm}.
 \end{align*}
+Die Rechnung aus Kapitel \ref{sec:amplModDiode} wird nun hier mit den veränderten Amplituden für die beiden äußeren Peaks aus Gleichung \eqref{eqn:freqmod2} modifiziert. So ergibt sich für den Modulationsgrad hier:
+\begin{align*}
+  m &= \frac{2 U_\text{lr}}{U_\text{mitte}} \frac{f_\text{M}}{f_\text{T}}\\
+  &= \num{0.1067(15)}.
+\end{align*}
+Damit kann die Forderung an die Schmalband-Frequenzmoduation überprüft werden. Mit
+\begin{align*}
+  m \frac{f_T}{f_M} = \num{0.491(7)} << 1
+\end{align*}
+ist diese erfüllt.
 
-
-\subsection{Demodulation mithilfe eines Ringmodulators -- Überprüfung der Spannung}
+\subsection{Demodulation mithilfe eines Ringmodulators}
 
 Mit der Schaltung aus Abbildung \ref{fig:expef} wird eine Messreihe von verschiedenen Frequenzen der Trägerspannung $f_\text{T}$ und der am Ausgang X anliegenden Gleichspannung $U$ aufgenommen.
 
 Die beiden Spannungen, die an den Eingängen L und R anliegen, sind durch einen Phasenschieber mit einer Phasenverzögerung von $\Delta t = \SI{250}{\nano\second}$ zueinander verschoben.
 Die Phasenverschiebung wird berechnet mit:
 \begin{align}
-  \Delta \phi = 2 \pi \frac{\Delta t}{T},
+  \Delta \phi = 2\pi \Delta t  f.
 \end{align}
-wobei $T$ die Umlaufdauer der jeweils eingestellten Frequenz ist.
-In Tabelle \ref{tab:phase} sind die aufgenommenen Werte sowie die berechnete Phasenverschiebung zwischen den beiden Spannungen eingetragen.
+In Tabelle \ref{tab:phase} sind die aufgenommenen Werte sowie die berechneten Phasenverschiebungen zwischen den beiden Spannungen eingetragen.
 
 \begin{table}[h]
   \centering
@@ -153,21 +176,21 @@ In Tabelle \ref{tab:phase} sind die aufgenommenen Werte sowie die berechnete Pha
     \toprule
     {$f\:/\:\si{\mega\hertz}$} & {$U\:/\:\si{\volt}$} & {$\Delta \phi$}\\
     \midrule
-    0.102  &  -0.155  &  0.03 \\
-    0.299  &  -0.136  &  0.07 \\
-    0.599  &  -0.075  &  0.15 \\
-    1.0  &  0.012  &  0.25 \\
-    1.33  &  0.077  &  0.33 \\
-    1.675  &  0.136  &  0.42 \\
-    2.0  &  0.175  &  0.5 \\
-    2.515  &  0.108  &  0.63 \\
-    3.015  &  0.004  &  0.75 \\
-    3.5  &  -0.093  &  0.88 \\
-    3.985  &  -0.166  &  1.0 \\
-    4.495  &  -0.126  &  1.12 \\
-    4.995  &  -0.028  &  1.25 \\
-    5.5  &  0.075  &  1.37 \\
-    5.98  &  0.153  &  1.5 \\
+    0.102 & -0.155 & 0.16\\
+    0.299 & -0.136 & 0.47\\
+    0.599 & -0.075 & 0.94\\
+    1.0 & 0.012 & 1.57\\
+    1.33 & 0.077 & 2.09\\
+    1.675 & 0.136 & 2.63\\
+    2.0 & 0.175 & 3.14\\
+    2.515 & 0.108 & 3.95\\
+    3.015 & 0.004 & 4.74\\
+    3.5 & -0.093 & 5.5\\
+    3.985 & -0.166 & 6.26\\
+    4.495 & -0.126 & 7.06\\
+    4.995 & -0.028 & 7.85\\
+    5.5 & 0.075 & 8.64\\
+    5.98 & 0.153 & 9.39\\
     \bottomrule
   \end{tabular}
   \caption{Die Werte für die aufgenommenen Frequenzen und Spannungen sowie die berechnete Phasenverschiebung. Die  Unsicherheiten sind $\Delta f = \SI{0.005}{\mega\hertz}$, $\Delta U = \SI{0.001}{\volt}$ und $\Delta \phi = \num{0.001}$.}
@@ -175,6 +198,7 @@ In Tabelle \ref{tab:phase} sind die aufgenommenen Werte sowie die berechnete Pha
 \end{table}
 
 In der Abbildung \ref{fig:plotphase} ist die Spannung gegen den Kosinus der Phase aufgetragen.
+\todo{Fit in Phasenplot}
 
 \begin{figure}
   \centering
@@ -182,8 +206,6 @@ In der Abbildung \ref{fig:plotphase} ist die Spannung gegen den Kosinus der Phas
   \caption{Diagramm der Spannung in Abhängigkeit vom Kosinus der Phase. Die Unsicherheiten sind aufgrund ihrer geringen Größe nicht zu sehen.}
   \label{fig:plotphase}
 \end{figure}
-
-\subsection{Demodulation mithilfe eines Ringmodulators -- Überprüfung des Oszilloskopbild}
 
 Mit der Schaltung nach Abbildung \ref{fig:ampldemodschaltung1} wird eine amplitudenmodulierte Spannung demoduliert und auf dem Oszilloskop dargestellt. Das ergebende Bild ist in Abbildung \ref{fig:demodRing} zu sehen.
 
