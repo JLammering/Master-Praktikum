@@ -1,62 +1,37 @@
 \section{Theorie}
 \label{sec:Theorie}
 
-\subsection{Fehlerrechnung}
-
-Für die Fehlerfortpflanzung bei Gleichungen mit $N$ fehlerbehafteten Größen
-wird jeweils die Formel zur Gaußschen Fehlerfortpflanzung
-
-\begin{equation*}
-  \sigma = \sqrt{\sum_{i=1}^{N}\biggl(\frac{\partial f(x_{\g{i}})}{\partial x_{\g{i}}}
-  \sigma_{\g{i}}\biggr)^2}
-\end{equation*}
-mit der jeweiligen Funktion $f(x_{\g{i}})$, den Messgrößen $x_{\g{i}}$ und den
-zugehörigen Fehlern $\sigma_i$ verwendet.
-Zur Berechnung des arithmetischen Mittels von $N$ Messwerten wird jeweils die
-Formel
-
-\begin{equation*}
-  \bar{x} = \frac{1}{N}\sum_{i=1}^{N}x_{\g{i}}
-\end{equation*}
-mit den Messwerten $x_i$ benutzt.
-Die Standardabweichung des Mittelwerts wird jeweils mit der Gleichung
-
-\begin{equation*}
-  \bar{\sigma} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_{\g{i}} - \bar{x})^2}
-\end{equation*}
-mit den $N$ Messwerten $x_i$ berechnet.
-
 \subsection{Einleitung}
 
 Um mit elektromagnetischen Wellen Informationen zu übertragen, ist es nötig,
-diese am Ausgangsort zu modulieren und am Empfangsort zu demodulieren. Bei mehreren Verfahren,
-die im Folgenden vorgestellt werden, werden zur Modulation und Demodulation Amplitude, Frequenz und oder Phase der
-Welle abhängig vom Ausgangssignal manipuiert.
+diese am Ausgangsort zu modulieren und am Empfangsort zu demodulieren. Bei zwei Verfahren,
+die im Folgenden vorgestellt werden, werden zur Modulation und Demodulation Amplitude und Frequenz der
+Welle abhängig vom Ausgangssignal manipuliert.
 
 \subsection{Amplitudenmodulation}
 
-Zum im Folgenden vorgestellten Informationsübertrag durch die sogenannte Amplitudenmodulation sowie auch später zur Frequenzmodulation
-wird ein Träger und ein Modulationssignal benötigt. Ausgehend von einer hochfrequenten Trägerschwingung
+Sowohl für die im Folgenden vorgestellte Amplitudenmodulation, als auch für die anschließend vorgestellte Frequenzmodulation
+wird ein Träger- und ein Modulationssignal benötigt. Ausgehend von einer hochfrequenten Trägerschwingung
 \begin{align}
-  U_{\text{T}}(t) = \hat{U}_{\text{T}} \cos{\omega_{\text{T}} t}
+  U_{\text{T}}(t) = \hat{U}_{\text{T}} \cos(\omega_{\text{T}} t)
   \label{eqn:traegersch}
 \end{align}
 und einer niederfrequenten Modulationsschwingung
 \begin{align}
-  U_{\text{M}}(t) = \hat{U}_{\text{M}} \cos{\omega_{\text{M}} t},
+  U_{\text{M}}(t) = \hat{U}_{\text{M}} \cos(\omega_{\text{M}} t)
   \label{eqn:modulsch}
 \end{align}
-wobei $\omega$ jeweils die Frequenz und $\hat{U}$ jeweils die Amplitude bezeichnet,
+($\omega$ bezeichnet jeweils die Frequenz und $\hat{U}$ jeweils die Amplitude)
 ergibt sich eine amplitudenmodulierte Schwingung
 \begin{align}
-  U_3 (t) = \hat{U}_{\text{T}} \left( 1 + m \cos{\omega_{\text{M}} t} \right) \cos{\omega_{\text{T}} t}.
+  U_3 (t) = \hat{U}_{\text{T}} \left[ 1 + m \cos(\omega_{\text{M}} t) \right] \cos(\omega_{\text{T}} t).
   \label{eqn:amplmod1}
 \end{align}
 Dabei liegt der sogenannte Modulationsgrad
 \begin{align}
   m = \gamma \hat{U}_\text{M}
 \end{align}
-zwischen 0 und 1 und ist durch die Amplitude der Modulationsschwingung bestimmt.
+in der Praxis zwischen 0 und 1 und ist durch die Amplitude der Modulationsschwingung bestimmt.
 Die amplitudenmodulierte Schwingung ist in Abbildung \ref{fig:amplmodskizze}
 schematisch dargestellt.
 
@@ -68,9 +43,9 @@ schematisch dargestellt.
 \end{figure}
 
 Gleichung \eqref{eqn:amplmod1} lässt sich mit Hilfe der Additionstheoreme in einzelne
-Kosinuus zerlegen
+Kosinus-Terme zerlegen
 \begin{align}
-  U_3(t) = \hat{U}_\text{T} \cos{\omega_\text{T} t} + \frac12 m \hat{U}_\text{T} \Bigl[ \cos{(\omega_\text{T}+\omega_\text{M}) t} + \cos{(\omega_\text{T}-\omega_\text{M}) t} \Bigr].
+  U_3(t) = \hat{U}_\text{T} \left\{ \cos(\omega_\text{T} t) + \frac12 m \Bigl[ \cos{(\omega_\text{T} t +\omega_\text{M} t)} + \cos{(\omega_\text{T}t-\omega_\text{M}t)} \Bigr] \right\}.
 \end{align}
 Es ergibt sich das in Abbildung \ref{fig:freqspektrum} skizzierte Frequenzspektrum.
 
@@ -81,7 +56,7 @@ Es ergibt sich das in Abbildung \ref{fig:freqspektrum} skizzierte Frequenzspektr
   \label{fig:freqspektrum}
 \end{figure}
 
-Die mittlere Linie beinhaltet ausschließlich die Trägerabstrahlung und beinhaltet keine der zu übertragenden
+Die mittlere Linie beinhaltet ausschließlich die Trägerabstrahlung und keine der zu übertragenden
 Informationen. Sie kann und sollte durch spezielle Modulationsverfahren unterdrückt werden, um den Energieverbrauch
 zu mindern. Alle Infomationen befinden sich in jeweils beiden Bändern, sodass außerdem im Rahmen einer
 Einseitenbandmodulation eines der Bänder, beispielweise mittels eines Bandfilters, abgeschnitten werden kann.
@@ -93,7 +68,7 @@ schwieriger zu beheben.
 Bei der sogenannten Frequenzmodulation wird die Amplitude konstant gehalten und eine Frequenzschwingung im Rhytmus
 der Modulationsschwingung in eine Trägerschwingung eingebaut. Dies kann mathematisch dargestellt werden durch
 \begin{align}
-  U(t) = \hat{U} \sin \left( \omega_\text{T} t + m \frac{\omega_\text{T}}{\omega_\text{M}} \cos{ \omega_\text{M} t } \right).
+  U(t) = \hat{U} \sin \left( \omega_\text{T} t + m \frac{\omega_\text{T}}{\omega_\text{M}} \cos(\omega_\text{M} t) \right).
 \end{align}
 Eine Skizze zu dieser Schwingung ist in Abbildung \ref{fig:freqmodskizze} zu sehen.
 
@@ -106,7 +81,7 @@ Eine Skizze zu dieser Schwingung ist in Abbildung \ref{fig:freqmodskizze} zu seh
 
 Anstatt einer zeitabhängigen Amplitude ergibt sich eine zeitabhängige Momentanfrequenz
 \begin{align}
-  f(t) = \frac{w_\text{T}}{2 \pi} (1 - m \sin{\omega_M t}).
+  f(t) = \frac{w_\text{T}}{2 \pi} \left[1 - m \sin(\omega_M t)\right].
   \label{eqn:momentanfreq}
 \end{align}
 Eine wichtige Kenngröße der Frequenzmodulation ist der sogenannte Frequenzhub
@@ -124,11 +99,11 @@ bei welcher der Frequenzhub klein ist, sodass
 Durch Ausnutzen von Additionstheoremen und einer Taylorentwicklung erster Ordnung, welche
 Bedingung \eqref{eqn:schmalband} genügt, ergibt sich die umgeformte, frequenzmodulierte Schwingung
 \begin{align}
-  U(t) = \hat{U} \cos{\Bigl(\omega_\text{T} t - \frac{\pi}{2}\Bigr)} + \frac12 m \frac{\omega_\text{T}}{\omega_\text{M}}\hat{U}_\text{T} \Bigl[  \cos{(\omega_\text{T}+\omega_\text{M}) t} + \cos{(\omega_\text{T}-\omega_\text{M}) t} \Bigr].
+  U(t) = \hat{U}_\text{T} \left\{ \cos{\Bigl(\omega_\text{T} t - \frac{\pi}{2}\Bigr)} + \frac12 m \frac{\omega_\text{T}}{\omega_\text{M}} \Bigl[  \cos{(\omega_\text{T}t+\omega_\text{M}t)} + \cos{(\omega_\text{T}t-\omega_\text{M}t)} \Bigr] \right\}.
   \label{eqn:freqmod2}
 \end{align}
 An Gleichung \eqref{eqn:freqmod2} ist erkennbar, dass das Spektrum aus denselben Frequenzen besteht, jedoch
-die Phase der Trägerfrequenz $\omega_\text{T}$ um $\frac{\pi}{2}$ phasenverschoben ist.
+die Phase des Trägersignals um $\pi/2$ phasenverschoben ist.
 Die benötigte Taylorentwicklung kann auch bis zu höheren Ordnungen durchgeführt werden, um den Fall einer starken
 Frequenzmodulation, also
 \begin{align}
@@ -158,7 +133,7 @@ Problematisch bei der Idee, ein nichtlineares Bauteil einzubauen, um in der Reih
 \begin{align}
   I(U_\text{T} + U_\text{M}) = a_0 + a_1 (U_\text{T} + U_\text{M}) + a_2 (U_\text{T}^2 + U_\text{M}^2) + 2 a_2 U_\text{T} U_\text{M} + ...
 \end{align}
-einen gewünschten Term zu erhalten, ist, dass auch viele Störterme entstehen.
+den gewünschten Term $2 a_2 U_\text{T} U_\text{M}$ zu erhalten, ist, dass auch viele Störterme entstehen.
 Diese können zwar durch einen Bandfilter unterdrückt werden, da die Frequenzen  weit außerhalb des Bereichs
 $[\omega_\text{T} - \omega_\text{M},\omega_\text{T} + \omega_\text{M}]$ liegen, werden aber erzeugt,
 weshalb die Schaltung relativ unökonomisch ist.
@@ -176,21 +151,21 @@ eine Spannung mit
   U_\text{R}(t) = \Gamma U_\text{M}(t) U_\text{T}(t)
 \end{align}
 am Ausgang R erzeugen, wobei $\Gamma$ eine Konstante ist.
-Durch Einsetzen der Trägerschwingung \eqref{eqn:traegersch} und der Modulationsschwingung \eqref{eqn:modulsch} um $\varphi$
-phasenverschoben ergibt sich
+Durch Einsetzen der Trägerschwingung \eqref{eqn:traegersch} und der Modulationsschwingung \eqref{eqn:modulsch}, die eine Phasenverschiebung von $\varphi$
+erhält, ergibt sich
 \begin{align}
-  U_\text{R}(t) = \frac{\Gamma}{2} \hat{U}_\text{T} \hat{U}_\text{M} \Bigl[\cos{\bigl((\omega_\text{T}+\omega_\text{M})t + \phi \bigr)} + \cos{\bigl((\omega_\text{T}-\omega_\text{M})t - \phi \bigr)} \Bigr].
+  U_\text{R}(t) = \frac{\Gamma}{2} \hat{U}_\text{T} \hat{U}_\text{M} \Bigl\{\cos{\bigl[(\omega_\text{T}+\omega_\text{M})t + \phi \bigr]} + \cos{\bigl[(\omega_\text{T}-\omega_\text{M})t - \phi \bigr]} \Bigr\}.
 \end{align}
 Die Trägerabstrahlung wird vollständig unterdrückt und es treten nur zwei Seitenlinien mit Phasenverschiebung auf.
 
 \subsection{Schaltungen zur Frequenzmodulation}
 
 Die im Folgenden vorgestellte Schaltung eignet sich für eine Frequenzmoduation mit geringem Frequenzhub \eqref{eqn:frequenzhub}.
-Da, wie in Gleichung \eqref{eqn:freqmod2} erkennbar, zwei amplitudenmodulierte Seitenlinien und eine um $\frac{\pi}{2}$ phasenverschobene Trägerschwingung
+Da, wie in Gleichung \eqref{eqn:freqmod2} erkennbar, zwei amplitudenmodulierte Seitenlinien und eine um $\pi/2$ phasenverschobene Trägerschwingung
 benötigt werden, ist es sinnvoll, erneut den Ringmodulator zu nutzen. Zusätzlich wird noch mittels eines Laufzeitkabels am Ausgang die
-um $\frac{\pi}{2}$ verschobene Trägerschwingung addiert. Der gesamte Schaltkreis ist in Abbildung \ref{fig:freqmodschaltung} abgebildet.
+um $\pi/2$ verschobene Trägerschwingung addiert. Der gesamte Schaltkreis ist in Abbildung \ref{fig:freqmodschaltung} abgebildet.
 Um die Leistung der Trägerspannung aufzuteilen und diese später wieder mit der amplitudenmodulierten Spannung zusammenzuführen werden
-sogenannte Iso-T's verwendet.
+sogenannte Iso-Ts verwendet.
 
 \begin{figure}
   \centering
@@ -204,13 +179,13 @@ sogenannte Iso-T's verwendet.
 
 Eine durch die Ringmodulatorschaltung modulierte Spannung enthält Schwingungen der
 Frequenz $\omega_\text{T}-\omega_\text{M}$ und $\omega_\text{T}+\omega_\text{M}$.
-Da ein Ringmodulator bekanntlich die Eingangsfrequenzen addiert bzw. subtrahiert eignet er sich
+Da ein Ringmodulator bekanntlich die Eingangsfrequenzen addiert bzw. subtrahiert, eignet er sich
 hier auch zur Demodulation, da er Ausgangsspannungen mit den Frequenzen $\omega_\text{M}$, $2\omega_\text{T} - \omega_\text{M}$ und
 $2\omega_\text{T} + \omega_\text{M}$ erzeugt.
 Die gesuchte Frequenz kann im Anschluss daran mittels eines Tiefpasses herausgefiltert werden.
 Die dazugehörige Schaltung ist in Abbildung \ref{fig:ampldemodschaltung1} zu sehen.
-Problematisch ist es unter Umständen, eine phasenstarr mit dem Sender gekoppelte Trägerspannung mit der Frequenz $\omega_\text{T}$
-zu erzeugen. Dieses Problem kann mit sogenannten phase-locked-loop-Schaltungen umgangen werden.
+Problematisch ist es unter Umständen, eine phasenstarr mit dem Sender gekoppelte Trägerspannung mit der \\
+Frequenz $\omega_\text{T}$ zu erzeugen. Dieses Problem kann mit sogenannten phase-locked-loop-Schaltungen umgangen werden.
 
 \begin{figure}
   \centering
@@ -230,12 +205,12 @@ In Abbildung \ref{fig:ampldemodschaltung2} ist eine Schaltung aufgezeigt, bei de
 
 Eine Diode hat die Eigenschaft, dass sie in eine Richtung einen sehr kleinen Widerstand hat und einen Stromfluss zulässt und in die
 andere Richtung einen sehr hohen Widerstand hat und quasi isolierend wirkt. Sie kann daher ausgenutzt werden, um in einer amplitudenmodulierten
-Wechselspannung, wie sie in Abbildung \ref{fig:amplmodskizze} skizziert ist, die negativen Spannungen abzuschneiden, gemäß der linken Graphik in
-Abbildung \ref{fig:diodetiefpass}. Dabei ist zu beachten, dass diese Abbildung idealisiert ist, in der Realität hat die Diode einen zwar geringen, aber
+Wechselspannung, wie sie in Abbildung \ref{fig:amplmodskizze} skizziert ist, die negativen Spannungen abzuschneiden (gemäß der linken Graphik in
+Abbildung \ref{fig:diodetiefpass}). Dabei ist zu beachten, dass diese Abbildung idealisiert ist, in der Realität hat die Diode einen zwar geringen, aber
 endlichen Durchlass in entgegengesetzte Richtung, sodass ein Streifen mit geringer negativer Spannung nicht abgeschnitten wird.
 Desweiteren besitzt die Diode keine lineare Strom-Spannungs-Kennlinie, sodass die Ausgangsspannungen in Durchlassrichtung verzerrt sind.
 Für einen geringen Modulationsgrad, wie es in diesem Versuch der Fall ist, ist die Kennlinie
-Hinter die Diode ist ein Tiefpass geschaltet, der die Modulationsfrequenz aus der Wechselspannung herausfiltert.
+hinter die Diode ist ein Tiefpass geschaltet, der die Modulationsfrequenz aus der Wechselspannung herausfiltert.
 
 \begin{figure}
   \centering
@@ -265,7 +240,7 @@ da die Kondensatorspannung im Falle einer erzwungenen Schwingung frequenzabhäng
 mitten auf der steilen Flanke der Kurve liegt. Änderungen in der Momentanfrequenz der frequenzmodulierten Schwingung
 haben aufgrund der hohen Steigung eine Wechselspannung $U_C(\omega)$ zur Folge, die im Rhytmus der Frequenzmodulation
 schwingt. Die Demodulation ist weitestgehend unverzerrt, wenn der Frequenzhub, in Abbildung \ref{fig:freqabh} mit
-$\Delta \omega$ bezeichnet, gering ist, da dann die Funktion im Intervall annähernd linear ist.
+$\Delta \omega$ bezeichnet, gering ist, also die Aussage \eqref{eqn:schmalband} zutrifft, da dann die Funktion im Intervall annähernd linear ist.
 
 \begin{figure}
   \centering
@@ -274,6 +249,8 @@ $\Delta \omega$ bezeichnet, gering ist, da dann die Funktion im Intervall annäh
   wie eingezeichnet mitten auf der steilen Flanke liegen.}
   \label{fig:freqabh}
 \end{figure}
+
+\newpage
 
 \subsection{Bestimmung des Modulationsgrades einer frequenzmodulierten Schwingung}
 \label{sec:bestmod}
@@ -294,30 +271,31 @@ Intervallgrenzen für eine volle Schwingung durch die Modulationsfrequenz. Der S
 einer Funktionenschar an Spannungsverläufen, die sich prinzipiell nur um einen Parameter, die Phasenverschiebung $\varphi$,
 unterscheiden. Die Momentanfrequenzen dieser Funktionen werden gemäß Gleichung \eqref{eqn:momentanfreq} beschrieben durch
 \begin{align}
-  f_{\varphi}(t) = \frac{w_\text{T}}{2 \pi} \bigl(1 - m \sin{(\omega_M t + \varphi)}\bigr).
+  f_{\varphi}(t) = \frac{w_\text{T}}{2 \pi} \bigl[1 - m \sin{(\omega_M t + \varphi)}\bigr].
 \end{align}
 Durch Integration über die Zeit folgt aus dieser Momentanfrequenz die gesamte Phase, in der sich die frequenzmodulierte
 Schwingung befindet. Dies kann ausgenutzt werden, um aus der horizontalen Breite des gelben Streifens aus Abbildung \ref{fig:bestmod}
-Rückschlüsse auf den Modulationsgrad der Schwingung zu ziehen. Es ist zweckmäßig, um den Fehler gering zu halten,
-die Breite der Linie an der breitesten Stelle abzulesen, sodass sich die beiden Zeitpunkte $t_1 = \frac{\pi}{\omega_\text{M}}$
-und $t_2 = \frac{\pi + \delta}{\omega_\text{M}}$ ergeben. Die Spannungskurve zu $t_1$ hat bis zu diesem
+Rückschlüsse auf den Modulationsgrad der Schwingung zu ziehen. Um den Fehler gering zu halten, ist es zweckmäßig,
+die Breite der Linie an der breitesten Stelle abzulesen, sodass sich die beiden Zeitpunkte $t_1 = \pi/\omega_\text{M}$
+und $t_2 = (\pi + \delta)/\omega_\text{M}$ ergeben. Die Spannungskurve zu $t_1$ hat bis zu diesem
 Zeitpunkt im Durchschnitt die höchste Frequenz gehabt, da sie ihre Gesamtphase am ehesten erreicht. Die zugehörige Momentanfrequenz
 muss also bis zu $t_1$ den größten Integralwert besitzen. Ohne explizite Rechnung ergibt sich, dass die zugehörige
 Phasenverschiebung $\varphi_1 = \pi$ ist, da $-m\sin{(\omega_M t + \pi)}$ im Durchschnitt maximal auf diesem Intervall ist.
 Analog ergibt sich für $t_2$ die Phasenverschiebung $\varphi_2 = 0$. Die integrierten Frequenzen zu diesen Zeiten und Phasenverschiebungen lauten
 \begin{align}
-  F_1 = F_{\varphi_1}(t_1) &= \int_{0}^{\frac{\pi}{\omega_\text{M}}} f_{\varphi_1}(t) \symup{d}t \\
+  F_1 &= \int_{0}^{\frac{\pi}{\omega_\text{M}}} f_{\varphi_1}(t) \symup{d}t \\
   &= \frac{\omega_T}{\omega_M} \left( \frac12 + \frac{m}{\pi} \right) \\
-  F_2 = F_{\varphi_2}(t_2) &= \int_{0}^{\frac{\pi+\delta}{\omega_\text{M}}} f_{\varphi_2}(t) \symup{d}t \\
-  &= \frac{\omega_T}{\omega_M} \left( \frac{\pi + \delta}{2 \pi} + m(\cos{(\pi + \delta)} - 1) \right).
+  F_2 &= \int_{0}^{\frac{\pi+\delta}{\omega_\text{M}}} f_{\varphi_2}(t) \symup{d}t \\
+  &= \frac{\omega_T}{2 \pi \omega_M} \left( \pi + \delta + m[\cos{(\pi + \delta)} - 1] \right).
 \end{align}
 Da die horizontale Breite vermessen wird, besitzen beide Spannungskurven an den jeweiligen Zeitpunkten dieselbe Gesamtphase $F_1 = F_2$.
 Insgesamt ergibt sich daher
 \begin{align}
-  m = \frac{\delta}{2(1+\pi) + \cos{\delta}},
+  m = \frac{\mathrm{\increment} t \cdot \omega_\text{M}}{3 + \cos{(\increment t \cdot \omega_\text{M}})},
   \label{eqn:mfuerfreqmod}
 \end{align}
 wobei
 \begin{align}
-  \delta = 2 \pi (t_2 - t_1) \omega_\text{M}.
+  \increment t = t_2 - t_1
 \end{align}
+die messbare Zeitdifferenz ist.
