@@ -33,28 +33,35 @@ def f(x,a,b,c):
 a_91, b_91, c_91 = np.polyfit(x_91_parab,channel_91_parab,2)
 a_92, b_92, c_92 = np.polyfit(x_92_parab,channel_92_parab,2)
 
+print('Parabelfit 91:', a_91, b_91, c_91)
+print('Parabelfit 92:', a_92, b_92, c_92)
+
 y = np.linspace(0,350,1000)
-plt.plot(y, f(y, a_91, b_91, c_91), 'b-', linewidth = 1.0)
-plt.plot(y, f(y, a_92, b_92, c_92), 'r-', linewidth = 1.0)
+plt.plot(y, f(y, a_91, b_91, c_91), 'k-', linewidth = 1.0, label = r'Kanal 91 Parabelfit')
+plt.plot(y, f(y, a_92, b_92, c_92), 'r-', linewidth = 1.0, label = r'Kanal 92 Parabelfit')
 
 minima_91 = -b_91/(2*a_91)
 minima_92 = -b_92/(2*a_92)
 pitch = minima_92 - minima_91
 
-print('erster Streifen, zweiter Streifen, dritter Streifen:', minima_91, minima_92, pitch)
+print('erster Streifen, zweiter Streifen, pitch:', minima_91, minima_92, pitch)
 
 #plt.plot(x, channel_90, 'go', markersize=2)
-plt.plot(x[0:7], channel_91[0:7], 'bo', markersize=2.2)
-plt.plot(x[7:13], channel_91[7:13], 'b+', markersize=4.5)
-plt.plot(x[13:35], channel_91[13:35], 'bo', markersize=2.2)
+plt.plot(x[0:7], channel_91[0:7], 'ko', markersize=2.2, label = r'Kanal 91 Signal')
+plt.plot(x[7:13], channel_91[7:13], 'k+', markersize=4.5, label = r'Kanal 91 Signal Min')
+plt.plot(x[13:35], channel_91[13:35], 'ko', markersize=2.2)
 
-plt.plot(x[0:23], channel_92[0:23], 'ro', markersize=2.2)
-plt.plot(x[23:29], channel_92[23:29], 'r+', markersize=4.5)
+plt.plot(x[0:23], channel_92[0:23], 'ro', markersize=2.2, label = r'Kanal 92 Signal')
+plt.plot(x[23:29], channel_92[23:29], 'r+', markersize=4.5, label = r'Kanal 92 Signal Min')
 plt.plot(x[29:35], channel_92[29:35], 'ro', markersize=2.2)
 #plt.plot(x, channel_93, 'co', markersize=2)
 
-plt.ylim(0,180)
+plt.xlim(-5,345)
+plt.ylim(0,300)
 plt.grid()
+plt.xlabel(r'$x/\si{\micro\meter}$')
+plt.ylabel(r'$\text{Signal}/\text{ADC}$')
+plt.legend(loc='best')
 plt.savefig('build/pitch2.pdf')
 
 #Polynomfits mit polyfit (Grad 10):

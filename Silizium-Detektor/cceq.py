@@ -74,7 +74,7 @@ def f(x,a,b,c,d,e):
     return a*x**4 + b*x**3 + c*x**2 + d*x + e
 
 # Erzeuge Wertepaararray:
-anz_bins = 10001 # insgesamt 10001 bins
+anz_bins = 10001 # insgesamt 10000 bins
 
 adc_bins = np.zeros(anz_bins)
 charge_values = np.zeros(anz_bins) # von 0 bis 260 000
@@ -93,15 +93,28 @@ def adc_to_charge(adc_b, adc):
         return i-1; # in keV übersetzte Daten
 
 def average_keV(daten, adc_bins):
-    daten_av = np.sum(daten, axis = 1)
-    length = len(daten_av)
-    daten_av_keV = np.zeros(length)
+    #print(daten)
+    length = daten.shape[0]
+    daten_keV = np.zeros([length,20])
     k = 0
+    i = 0
+    p = 0
+    s = length*20
     with tqdm(total=length) as pbar:
         while k < length:
-            daten_av_keV[k] = charge_values[adc_to_charge(adc_bins,daten_av[k])] * 0.0036 # in keV
+            while i < 20:
+                if daten[k][i] == 0:
+                    daten_keV[k][i] = 0
+                    p = p+1
+                else:
+                    daten_keV[k,i] = charge_values[adc_to_charge(adc_bins,daten[k,i])] * 0.0036 # in keV
+                i = i+1
             k = k+1
+            i = 0
             pbar.update(1)
+    daten_av_keV = np.sum(daten_keV, axis = 1)
+    print(daten_av_keV)
+    return np.sum(daten_av_keV)/len(daten_av_keV)
 
     keV_av = 0 # Mittelwerte der deponierten Ladung
     anz_daten = 0 # Anzahl in keV übersetzte Werte
@@ -138,7 +151,7 @@ keV_av_U[18] = average_keV(ADC_180, adc_bins)
 keV_av_U[19] = average_keV(ADC_190, adc_bins)
 keV_av_U[20] = average_keV(ADC_200, adc_bins)
 
-print(keV_av_U)
+#print(keV_av_U)
 
 # Spannungswertearray:
 U = np.zeros(21)
@@ -146,28 +159,30 @@ U = np.zeros(21)
 for i in range(0,21):
     U[i] = i*10
 
-# Normierung:
-maximum_av = np.sum(keV_av_U[15:21])/6
-keV_av_U = keV_av_U/maximum_av
-
-plateau_150 = keV_av_U[15:21]
 plateau_140 = keV_av_U[14:21]
 plateau_130 =  keV_av_U[13:21]
+plateau_120 = keV_av_U[12:21]
 
-plateau_150_av = np.sum(plateau_130)/6
 plateau_140_av = np.sum(plateau_140)/7
-plateau_130_av = np.sum(plateau_150)/8
+plateau_130_av = np.sum(plateau_130)/8
+plateau_120_av = np.sum(plateau_120)/9
 
-m_130, m_err_130, b_130, b_err_130 = linregress(U[13:21],plateau_130)
+
 m_140, m_err_140, b_140, b_err_140 = linregress(U[14:21],plateau_140)
-m_150, m_err_150, b_150, b_err_150 = linregress(U[15:21],plateau_150)
+m_130, m_err_130, b_130, b_err_130 = linregress(U[13:21],plateau_130)
+m_120, m_err_120, b_120, b_err_120 = linregress(U[12:21],plateau_120)
 
-print(m_130, m_140, m_150)
+print('Steigung,Abzissenabschnitt(Plateau140):',m_140,'+-',m_err_140,b_140,'+-',b_err_140)
+print('Steigung,Abzissenabschnitt(Plateau130):',m_130,'+-',m_err_130,b_130,'+-',b_err_130)
+print('Steigung,Abzissenabschnitt(Plateau120):',m_120,'+-',m_err_120,b_120,'+-',b_err_120)
 
-plt.plot(U, keV_av_U, 'k+')
+plt.plot(U, keV_av_U, 'k.', markersize = 2, label = r'Messwerte gemittelt')
 t = np.linspace(0,205,15)
-plt.plot(t, m_150*t + b_150, 'b-', linewidth = 0.8)
+plt.plot(t, m_120*t + b_120, 'b-', linewidth = 0.8, label = r'Ausgleichsgerade Plateau 120')
 
-plt.xlim(0,205)
+plt.xlim(-0.9,205)
 plt.grid()
+plt.xlabel(r'$U/\si{\volt}$')
+plt.ylabel(r'$\text{E}_\text{average}/\si{\kilo\electronvolt}$')
+plt.legend(loc = 'best')
 plt.savefig('build/cceq.pdf')

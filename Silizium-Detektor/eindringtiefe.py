@@ -55,6 +55,7 @@ channel_91[20] = ADC_200[91]
 
 # Normierung:
 maximum_av = np.sum(channel_91[12:21])/9
+print('Plateauhöhe(Mittelwert):',maximum_av)
 channel_91 = channel_91/maximum_av
 
 def CCE(U,a): # a in micrometer
@@ -62,12 +63,16 @@ def CCE(U,a): # a in micrometer
 
 popt, pcov = curve_fit(CCE, x[0:11], channel_91[0:11], bounds=(50,500))
 
-print(popt)
+print('eindringtiefe(in um):',popt)
 
 y = np.linspace(0,110,1000)
-plt.plot(y, (1-np.exp(-300/popt * np.sqrt(y/110)))/(1-np.exp(-300/popt)), 'r-', linewidth = 1.0)
+plt.plot(y, (1-np.exp(-300/popt * np.sqrt(y/110)))/(1-np.exp(-300/popt)), 'r-', linewidth = 1.0, label = r'Fitfunktion')
 
-plt.plot(x, channel_91, 'ko', markersize=2)
+plt.plot(x, channel_91, 'ko', markersize=2, label = r'Messwerte gemittelt und normiert')
 plt.grid()
-plt.xlim(0,110)
+plt.xlim(-0.9,110)
+plt.ylim(-0.02,1.05)
+plt.xlabel(r'$U/\si{\volt}$')
+plt.ylabel(r'$\text{CCE}$')
+plt.legend(loc = 'best')
 plt.savefig('build/eindringtiefe.pdf')

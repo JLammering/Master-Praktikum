@@ -70,10 +70,6 @@ channel_91[18] = ADC_180[91]
 channel_91[19] = ADC_190[91]
 channel_91[20] = ADC_200[91]
 
-# Normierung:
-maximum_av = np.sum(channel_91[12:21])/9
-channel_91 = channel_91/maximum_av
-
 plateau_90 = channel_91[9:21]
 plateau_100 = channel_91[10:21]
 plateau_110 =  channel_91[11:21]
@@ -86,14 +82,19 @@ m_90, m_err_90, b_90, b_err_90 = linregress(x[9:21],plateau_90)
 m_100, m_err_100, b_100, b_err_100 = linregress(x[10:21],plateau_100)
 m_110, m_err_110, b_110, b_err_110 = linregress(x[11:21],plateau_110)
 
-print(m_90, m_100, m_110)
+print('Steigung,Abzissenabschnitt(p090):',m_90,'+-',m_err_90, b_90,'+-', b_err_90)
+print('Steigung,Abzissenabschnitt(p100):',m_100,'+-',m_err_100, b_100,'+-', b_err_100)
+print('Steigung,Abzissenabschnitt(p110):',m_110,'+-',m_err_110, b_110,'+-', b_err_110)
 
-t = np.linspace(0,205)
+t = np.linspace(-3,205)
 #plt.plot(t, m_90*t + b_90, 'r-', linewidth = 0.6)
 #plt.plot(t, m_100*t + b_100, 'g-', linewidth = 0.6)
-plt.plot(t, m_110*t + b_110, 'b-', linewidth = 0.8)
+plt.plot(t, m_110*t + b_110, 'b-', linewidth = 0.8, label = r'Ausgleichsgerade Plateau 110')
 
-plt.plot(x, channel_91, 'ko', markersize=2)
+plt.plot(x, channel_91, 'k.', markersize=2, label = r'Messwerte gemittelt')
 plt.grid()
 plt.xlim(0,205)
+plt.xlabel(r'$U/\si{\volt}$')
+plt.ylabel(r'$\text{Signal}_\text{average}/\si{ADC}$')
+plt.legend(loc='best')
 plt.savefig('build/ccel.pdf')

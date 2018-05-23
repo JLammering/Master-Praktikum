@@ -50,7 +50,8 @@ Die Werte sind in Abbildung \ref{fig:cms} als normiertes Histogramm dargestellt.
 Aufgrund des zentralen Grenzwertsatzes hat das Histogramm die Form einer Normalverteilung um $\text{CMS} = 0$.
 Ein Funktionenfit mit
 \begin{align}
-  p_k(\text{CMS}) = \frac{1}{\sqrt{2 \pi \sigma^2}} \symup{e}^{-\frac{\text{CMS}/\text{ADC}}{2\sigma^2}}
+  p_k(\text{CMS}) = \frac{1}{\sqrt{2 \pi \sigma^2}} \text{exp} \left(-\frac{(\text{CMS}/\text{ADC})^2}{2\sigma^2}\right)
+  \label{eqn:gauß}
 \end{align}
 liefert die Standardabweichung
 \begin{align}
@@ -91,12 +92,13 @@ alle aufeinander liegen. Desweiteren wird die gemittelte Kalibrationskurve polyn
 Das resultierende Polynom
 \begin{align}
   K(\text{charge}) = k_1 \text{charge}^4 + k_2 \text{charge}^3 + k_3 \text{charge}^2 + k_4 \text{charge} + k_5
+  \label{eqn:kalibrationspolynom}
 \end{align}
 ist ebenfalls in Abbildung \ref{fig:kalibration} dargestellt und es ergeben sich die Parameter
 \begin{align*}
   k_1 &= \SI{-1.56e-20}{\text{ADC}e^{-4}} &\quad k_2 &= \SI{3.91e-14}{\text{ADC}e^{-3}} \\
   k_3 &= \SI{-2.04e-08}{\text{ADC}e^{-2}} &\quad k_4 &= \SI{3.99e-03}{\text{ADC}e^{-1}} \\
-  k_5 &= \SI{-3.71}{\text{ADC}} &\quad \phantom{f}&\phantom{=10}.
+  k_5 &= \SI{-3.71}{\text{ADC}}. &\quad \phantom{f}&\phantom{=10}
 \end{align*}
 Es wird ebenfalls eine Kalibrationskurve für eine Vorspannung von $\SI{0}{\volt}$ aufgenommen. In Abbildung
 \ref{fig:kalibration2} ist erkennbar, dass diese in einem großen Bereich von den anderen Kalibrationskurven,
@@ -116,30 +118,195 @@ bzw. deren Mittelwert, abweicht.
   \label{fig:kalibration2}
 \end{figure}
 
+\subsection{Vermessung der Streifensensoren mittels eines Lasers}
+
+Mit der Option Laser Sync. wird die optimale Verzögerung zwischen Lasersignal und
+Chipauslese bestimmt. Es ergibt sich
+\begin{align}
+  1.
+\end{align}
+In Abbildung \ref{fig:pitch} sind die über die Laserverschiebung gemittelten Signal-Messwerte für jeden Streifen
+dargestellt. Es ist erkennbar, dass der Laser über die Streifen 91 und 92 bewegt wurde,
+da sich der Signal-Messwert dort im Mittel deutlich von den anderen Werten abhebt.
+Die ungemittelten Messwerte für diese beiden Streifen sind in Abbildung \ref{fig:pitch2} dargestellt.
+Die Messwerte zu beiden Streifen beschreiben eine Kurve mit zwei herausragenden Maxima.
+Das Minimum zwischen diesen beiden Maxima beschreibt jeweils den Fall, dass der Laser genau über dem jeweiligen
+Streifen positioniert ist. Um die pitch zwischen den Streifen zu bestimmen, wird zunächst das Minimum der Kanäle 91 und 92
+jeweils durch eine Parabel angenähert. Es ergeben sich für die Funktion
+\begin{align}
+  \text{Signal}_{\text{min,}i}(x) = u_i x^2 + v_i x + w_i
+\end{align}
+die Parameter
+\begin{align*}
+  u_{91} &= \SI{0.1009}{\text{ADC}\meter\tothe{-2}} &\quad v_{91} &= \SI{-19.35}{\text{ADC}\meter\tothe{-1}} &\quad w_{91} &= \SI{927.5}{\text{ADC}} \\
+  u_{92} &= \SI{0.0894}{\text{ADC}\meter\tothe{-2}} &\quad v_{92} &= \SI{-46.08}{\text{ADC}\meter\tothe{-1}} &\quad w_{92} &= \SI{5934.6}{\text{ADC}}.
+\end{align*}
+Die pitch zwischen den Streifen (hier 91 und 92) ergibt sich aus der Differenz der Scheitelpunkte der Parabeln gemäß
+\begin{align}
+  \text{pitch}_{92-91} = \frac{-v_{92}}{2u_{92}} - \frac{-v_{91}}{2u_{91}} = \SI{161.69}{\micro\meter}.
+\end{align}
+Um außerdem die Ausdehnung des Lasers zu bestimmen wird der Peak aus Abbildung \ref{fig:pitch} genauer betrachtet.
+In Abbildung \ref{fig:Ausdehnung} sind die über die Laserverschiebung gemittelten Signal-Messwerte für die Streifen
+88 bis 95 dargestellt. Es wird ein Funktionenfit mit einer Normalverteilung
+\begin{align}
+  P_\text{Laser}(z) = \frac{1}{\sqrt{2 \pi \sigma_\text{ausd}^2}} \text{exp}\left(-\frac{(z-\mu_\text{ausd})^2}{2\sigma_\text{ausd}^2}\right)
+\end{align}
+durchgeführt. Dabei ergibt sich der Mittelwert
+\begin{align}
+  \mu_\text{ausd} = 91.46
+\end{align}
+und die Standardabweichung
+\begin{align}
+  \sigma_\text{ausd} = 0.8303.
+\end{align}
+Es wird angenommen, dass die Ausdehnung des Lasers in etwa der $2\sigma$-Umgebung der Gaußfunktion abzüglich der Distanz, die der Laser bewegt wurde, entspricht.
+Insgesamt folgt daher
+\begin{align}
+  \text{Ausdehnung} = 4\sigma_\text{ausd} \cdot \text{pitch} - \SI{35}{\micro\meter} = \SI{501.96}{\micro\meter}.
+\end{align}
+
 \begin{figure}
   \centering
-  \includegraphics{plotphase.pdf}
+  \includegraphics{build/pitch.pdf}
   \caption{Plot.}
-  \label{fig:plot}
+  \label{fig:pitch}
 \end{figure}
 
-Tabelle für copy and paste:
-\begin{table}[h]
+\begin{figure}
   \centering
-  \begin{tabular}{S S}
-    \toprule
-    {$k$} & {$U\:/\:\si{\milli\volt}$}\\
-    \midrule
-    1 & 637.2\\
-    3 & 212.4\\
-    5 & 127.4\\
-    7 & 91.03\\
-    9 & 70.8\\
-    \bottomrule
-  \end{tabular}
-  \caption{Amplituden Rechteckspannung.}
-  \label{tab:rechtampl}
-\end{table}
+  \includegraphics{build/pitch2.pdf}
+  \caption{Plot.}
+  \label{fig:pitch2}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/Ausdehnung.pdf}
+  \caption{Plot.}
+  \label{fig:Ausdehnung}
+\end{figure}
+
+\subsection{Charge Collection Efficiency Messungen mit dem Laser}
+
+Um einen Zusammenhang zwischen der Charge Collection Efficiency und der Vorspannung zu erhalten,
+wird eines der Maxima um Kanal 91 bei verschiedenen Spannungen ausgemessen. Die maximal mögliche Effizienz,
+die erreicht werden kann stellt sich ab der Depletionsspannung ein. Um diese Spannung zu bestimmen muss also
+die Stelle, ab der die Signal-Messwerte ein Plateau darstellen bestimmt werden. Die über alle Events gemittelten
+Signal-Messwerte sind in Abbildung \ref{fig:ccel} gegen die Spannung aufgetragen. Es wird eine lineare Ausgleichsrechnung
+mit den Messwerten, die oberhalb der Spannungen $\SI{90}{\volt}$, $\SI{100}{\volt}$ bzw. $\SI{110}{\volt}$ liegen, da dort gemäß Abbildung \ref{fig:ccel}
+der Übergang zum Plateau erwartet wird.
+Für die Geradengleichung
+\begin{align}
+  \text{CCEL-Signal}_i(U) = m_i U + b_i
+\end{align}
+ergeben sich die Koeffizienten
+\begin{align*}
+  m_{\geq90}  &= \SI{0.0083(30)}{\text{ADC}\volt\tothe{-1}} &\quad b_{\geq90}  &= \SI{133.6(5)}{\text{ADC}} \\
+  m_{\geq100} &= \SI{0.0042(24)}{\text{ADC}\volt\tothe{-1}} &\quad b_{\geq100} &= \SI{134.3(4)}{\text{ADC}} \\
+  m_{\geq110} &= \SI{0.0012(19)}{\text{ADC}\volt\tothe{-1}} &\quad b_{\geq110} &= \SI{134.8(3)}{\text{ADC}}.
+\end{align*}
+Der Plateaubeginn wird auf die Spannung mit der geringsten Steigung und geringstem Fehler in der Steigung zurückgeführt.
+Daher ergibt sich in dieser Messung eine Depletionsspannung von etwa
+\begin{align}
+  U_\text{dep,ccel} = \SI{110(5)}{\volt}.
+\end{align}
+Zur Bestimmung der Eindringtiefe des Lasers werden zunächst alle Messwerte auf den Plateaumittelwert normiert
+\begin{align}
+  \text{Plateau}_\text{average} = \SI{135.02}{\text{ADC}},
+\end{align}
+der sich aus dem Mittelwert aller Messwerte oberhalb der Depletionsspannung ergibt.
+In Abbildung \ref{fig:eindringtiefe} ist die resultierende Charge Collection Efficiency für alle aufgenommenen Spannungen unterhalb bzw.
+auf der Depletionsspannung dargestellt. Es wird ein Funktionenfit gemäß Gleichung \eqref{eqn:cce} durchgeführt, woraus sich
+die Eindringtiefe
+\begin{align}
+  a_\text{Laser} = \SI{106.43}{\micro\meter}
+\end{align}
+ergibt.
+
+\begin{figure}
+  \centering
+  \includegraphics{build/ccel.pdf}
+  \caption{Plot.}
+  \label{fig:ccel}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/eindringtiefe.pdf}
+  \caption{Plot.}
+  \label{fig:eindringtiefe}
+\end{figure}
+
+\subsection{Charge Collection Efficiency Messungen mit der Quelle}
+
+Die gegebenen Messwerte werden im ersten Schritt von ADC in $\si{\kilo\electronvolt}$ umgerechnet.
+Da zu dem Kalibrationspolynom \eqref{eqn:kalibrationspolynom} keine Umkehrfunktion gebildet werden kann,
+wird die Umrechnung durch das Erstellen von Bins durchgeführt. Insgesamt wird die charge im relevanten Bereich
+$[0,260000\mathrm{e}]$ in 10000 Bins unterteilt und zu jedem dieser Bins der entsprechende Wert in ADC mittels
+des Kalibrationspolynoms \eqref{eqn:kalibrationspolynom} bestimmt. Die Umrechnung von ADC in $\si{\kilo\electronvolt}$
+erfolgt dann durch Finden des jeweiligen Bins in ADC, Zuordnen des jeweiligen Bins in charge und als letztes Multiplizieren
+mit dem Faktor $\num{3.6e-3}$, da zur Erzeugung eines Elektron-Loch-Paares im Detektor $\SI{3.6}{\electronvolt}$
+benötigt werden. Anschließend werden alle Energie-Werte eines Events summiert, woraus sich die jeweilige Clusterenergie ergibt.
+Im letzten Schritt werden die Clusterenergien für jede Spannung jeweils über alle Events gemittelt. Die resultierenden
+gemittelten Clusterenergien sind in Abbildung \ref{fig:cceq} in Abhängigkeit von der Spannung aufgetragen.
+Der Knick wird hier gemäß Abbildung \ref{fig:cceq} bei den Vorspannungen $U = \SI{120}{\volt}$, $U = \SI{130}{\volt}$ und
+$U = \SI{140}{\volt}$ vermutet. Es wird erneut eine lineare Ausgleichsrechnung durchgeführt.
+Für die Geradengleichung
+\begin{align}
+  \text{CCEQ-Energie}_j(U) = g_j U + h_j
+\end{align}
+ergeben sich die Parameter
+\begin{align*}
+  g_{\geq140} &= \SI{0.018(12)}{\text{ADC}\volt\tothe{-1}} &\quad b_{\geq140} &= \SI{102.1(20)}{\text{ADC}} \\
+  g_{\geq130} &=  \SI{0.024(9)}{\text{ADC}\volt\tothe{-1}} &\quad b_{\geq130} &= \SI{101.1(16)}{\text{ADC}} \\
+  g_{\geq120} &=  \SI{0.024(7)}{\text{ADC}\volt\tothe{-1}} &\quad b_{\geq120} &= \SI{101.1(12)}{\text{ADC}}.
+\end{align*}
+Die geringste Steigung ist in diesem Fall dem Plateau 140 zugeordnet, jedoch ist der Fehler hier vergleichsweise groß.
+Bei Betrachtung der Messwerte wird daher interpretiert, dass das Plateau etwa bei
+\begin{align}
+  U_\text{depl,cceq} = \SI{120}{\volt}
+\end{align}
+beginnt und nicht flach ist, sondern eine leichte Steigung von etwa
+\begin{align}
+  g_{\geq120} =  \SI{0.024(7)}{\text{ADC}\volt\tothe{-1}}
+\end{align}
+besitzt.
+
+\begin{figure}
+  \centering
+  \includegraphics{build/cceq.pdf}
+  \caption{Plot.}
+  \label{fig:cceq}
+\end{figure}
+
+\subsection{Großer Quellenscan}
+
+
+
+%\begin{figure}
+%  \centering
+%  \includegraphics{plotphase.pdf}
+%  \caption{Plot.}
+%  \label{fig:plot}
+%\end{figure}
+
+%Tabelle für copy and paste:
+%\begin{table}[h]
+%  \centering
+%  \begin{tabular}{S S}
+%    \toprule
+%    {$k$} & {$U\:/\:\si{\milli\volt}$}\\
+%    \midrule
+%    1 & 637.2\\
+%    3 & 212.4\\
+%    5 & 127.4\\
+%    7 & 91.03\\
+%    9 & 70.8\\
+%    \bottomrule
+%  \end{tabular}
+%  \caption{Amplituden Rechteckspannung.}
+%  \label{tab:rechtampl}
+%\end{table}
 
 
 \begin{table}[h]

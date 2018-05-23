@@ -38,6 +38,9 @@ build/pitch.pdf: pitch.py 18_04_30_Graesser_Lammering/Laserscan.txt matplotlibrc
 build/pitch2.pdf: pitch2.py 18_04_30_Graesser_Lammering/Laserscan.txt matplotlibrc header-matplotlib.tex | build
 	TEXINPUTS="$(call translate,$(pwd):)" python pitch2.py
 
+build/Ausdehnung.pdf: Ausdehnung.py 18_04_30_Graesser_Lammering/Laserscan.txt matplotlibrc header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python Ausdehnung.py
+
 build/ccel.pdf: ccel.py 18_04_30_Graesser_Lammering/CCEL/0CCEL.txt 18_04_30_Graesser_Lammering/CCEL/10CCEL.txt 18_04_30_Graesser_Lammering/CCEL/20CCEL.txt 18_04_30_Graesser_Lammering/CCEL/30CCEL.txt 18_04_30_Graesser_Lammering/CCEL/40CCEL.txt 18_04_30_Graesser_Lammering/CCEL/50CCEL.txt 18_04_30_Graesser_Lammering/CCEL/60CCEL.txt 18_04_30_Graesser_Lammering/CCEL/70CCEL.txt 18_04_30_Graesser_Lammering/CCEL/80CCEL.txt 18_04_30_Graesser_Lammering/CCEL/90CCEL.txt 18_04_30_Graesser_Lammering/CCEL/100CCEL.txt 18_04_30_Graesser_Lammering/CCEL/110CCEL.txt 18_04_30_Graesser_Lammering/CCEL/120CCEL.txt 18_04_30_Graesser_Lammering/CCEL/130CCEL.txt 18_04_30_Graesser_Lammering/CCEL/140CCEL.txt 18_04_30_Graesser_Lammering/CCEL/150CCEL.txt 18_04_30_Graesser_Lammering/CCEL/160CCEL.txt 18_04_30_Graesser_Lammering/CCEL/170CCEL.txt 18_04_30_Graesser_Lammering/CCEL/180CCEL.txt 18_04_30_Graesser_Lammering/CCEL/190CCEL.txt 18_04_30_Graesser_Lammering/CCEL/200CCEL.txt matplotlibrc header-matplotlib.tex | build
 	TEXINPUTS="$(call translate,$(pwd):)" python ccel.py
 
@@ -60,8 +63,7 @@ build/energiespektrum_keV.pdf: energiespektrum_keV.py 18_04_30_Graesser_Lammerin
 	TEXINPUTS="$(call translate,$(pwd):)" python energiespektrum_keV.py
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: build/stromspannungskennlinie.pdf build/kalibration.pdf build/kalibration2.pdf build/Pedestal.pdf build/Common_Mode_Shift.pdf build/Noise.pdf build/pitch.pdf build/pitch2.pdf build/ccel.pdf build/eindringtiefe.pdf build/cceq.pdf build/hitmap.pdf build/energiespektrum_adc.pdf  build/cluster_event.pdf
-#build/plot.pdf build/energiespektrum_keV.pdf
+build/main.pdf: build/stromspannungskennlinie.pdf build/kalibration.pdf build/kalibration2.pdf build/Pedestal.pdf build/Common_Mode_Shift.pdf build/Noise.pdf build/pitch.pdf build/pitch2.pdf build/Ausdehnung.pdf build/ccel.pdf build/eindringtiefe.pdf build/cceq.pdf # build/hitmap.pdf build/energiespektrum_adc.pdf  build/cluster_event.pdf build/energiespektrum_keV.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \
