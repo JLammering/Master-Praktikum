@@ -5,6 +5,10 @@ from scipy.optimize import curve_fit, fmin
 import uncertainties.unumpy as unp
 
 
+def fitfunktion(U, m, yabschnitt):
+    return m*U+yabschnitt
+
+
 def plotphase(frequenz, spannung):
     verschiebung = 250e-9  # s
     frequenz = unp.uarray(frequenz, 0.005)
@@ -20,6 +24,19 @@ def plotphase(frequenz, spannung):
     plt.errorbar(unp.nominal_values(x), unp.nominal_values(y),
                  xerr=unp.std_devs(x), yerr=unp.std_devs(y),
                  fmt='kx', label='Messwerte')
+
+    # fitten:
+    params, covariance = curve_fit(fitfunktion, unp.nominal_values(x),
+                                   unp.nominal_values(y),
+                                   p0=[-0.1, 1])
+    errors = np.sqrt(np.diag(covariance))
+    print('m= ', params[0], '±', errors[0], ' yabschnitt= ', params[1], '±',
+          errors[1])
+    x_fit = np.linspace(-0.2, 0.2)
+    plt.plot(x_fit, fitfunktion(x_fit, *params), label='Fit')
+
+    # aussehen:
+    plt.xlim(-0.19, 0.19)
     plt.ylabel(r'$\cos(\Delta\phi)$')
     plt.xlabel(r'$U \:/\: \si{\volt}$')
     plt.legend(loc='best')

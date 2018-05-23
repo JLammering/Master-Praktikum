@@ -138,7 +138,7 @@ So ergibt sich für $m$:
 
 Es wurde eine frequenzmodulierte Schwingung erzeugt mit den Frequenzen:
 \begin{align*}
-  f_\text{M} &= \SI{211.5(4)}{\kilo\hertz} \quad\text{und}\quad f_\text{T} &= \SI{973(2)}{\kilo\hertz}.
+  f_\text{M} = \SI{211.5(4)}{\kilo\hertz} \quad\text{und}\quad f_\text{T} = \SI{973(2)}{\kilo\hertz}.
 \end{align*}
 \begin{figure}[h]
   \centering
@@ -191,49 +191,23 @@ Die Phasenverschiebung wird berechnet mit:
   \Delta \phi = 2\pi \Delta t  f.
 \end{align}
 In Tabelle \ref{tab:phase} sind die aufgenommenen Werte sowie die berechneten Phasenverschiebungen zwischen den beiden Spannungen eingetragen.
-
-\begin{table}[h]
-  \centering
-  \begin{tabular}{S[table-format=1.3]
-     S[table-format=2.3]
-     S[table-format=1.2]
-     }
-    \toprule
-    {$f\:/\:\si{\mega\hertz}$} & {$U\:/\:\si{\volt}$} & {$\Delta \phi$}\\
-    \midrule
-    0.102 & -0.155 & 0.16\\
-    0.299 & -0.136 & 0.47\\
-    0.599 & -0.075 & 0.94\\
-    1.0 & 0.012 & 1.57\\
-    1.33 & 0.077 & 2.09\\
-    1.675 & 0.136 & 2.63\\
-    2.0 & 0.175 & 3.14\\
-    2.515 & 0.108 & 3.95\\
-    3.015 & 0.004 & 4.74\\
-    3.5 & -0.093 & 5.5\\
-    3.985 & -0.166 & 6.26\\
-    4.495 & -0.126 & 7.06\\
-    4.995 & -0.028 & 7.85\\
-    5.5 & 0.075 & 8.64\\
-    5.98 & 0.153 & 9.39\\
-    \bottomrule
-  \end{tabular}
-  \caption{Die Werte für die aufgenommenen Frequenzen und Spannungen sowie die berechnete Phasenverschiebung. Die  Unsicherheiten sind $\Delta f = \SI{0.005}{\mega\hertz}$, $\Delta U = \SI{0.001}{\volt}$ und $\Delta \phi = \num{0.001}$.}
-  \label{tab:phase}
-\end{table}
-
 In der Abbildung \ref{fig:plotphase} ist die Spannung gegen den Kosinus der Phase aufgetragen.
-\todo{Fit in Phasenplot}
-
 \begin{figure}
   \centering
   \includegraphics[width=.9\textwidth]{build/plotphase.pdf}
   \caption{Diagramm der Spannung in Abhängigkeit vom Kosinus der Phase. Die Unsicherheiten sind aufgrund ihrer geringen Größe nicht zu sehen.}
   \label{fig:plotphase}
 \end{figure}
+An die Messwerte wurde noch die Funktion
+\begin{align}
+  \cos(\Delta \phi) = m U + b
+\end{align}
+gefittet. Die bestimmten Fitparameter sind:
+\begin{align*}
+  m &= \SI{-6.4(2)}{\per\volt} & b &= \num{-0.01(3)}.
+\end{align*}
 
-Mit der Schaltung nach Abbildung \ref{fig:ampldemodschaltung1} wird eine amplitudenmodulierte Spannung demoduliert und auf dem Oszilloskop dargestellt. Das ergebende Bild ist in Abbildung \ref{fig:demodRing} zu sehen.
-
+Mit der Schaltung nach Abbildung \ref{fig:ampldemodschaltung1} wird eine amplitudenmodulierte Spannung demoduliert und auf dem Oszilloskop dargestellt. Das sich ergebende Bild ist in Abbildung \ref{fig:demodRing} zu sehen. Die demodulierte Spannung weist die ungefähr gleiche Frequenz auf wie die Modulationsspannung, allerdings ist ihre Amplitude deutlich kleiner.
 \begin{figure}[h]
   \centering
   \includegraphics[width=.9\textwidth]{Oszi_Pics/demodRing.png}
@@ -244,11 +218,11 @@ Mit der Schaltung nach Abbildung \ref{fig:ampldemodschaltung1} wird eine amplitu
 \subsection{Demodulation mithilfe einer Gleichrichterdiode}
 
 Nun wird mithilfe einer Gleichrichterdiode nach Schaltung aus Abbildung \ref{fig:ampldemodschaltung2} eine amplitudenmodulierte Spannung demoduliert.
-Das aufgenommene Bild an der Stelle A ist in Abbildung \ref{fig:gnachA} zu finden und das nach dem Tiefpass in Abbildung \ref{fig:gnachTiefpass}.
+Das aufgenommene Bild nach der Diode ist in Abbildung \ref{fig:gnachA} zu finden und das nach dem Tiefpass in Abbildung \ref{fig:gnachTiefpass}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=.9\textwidth]{Oszi_Pics/gnachA.png}
-  \caption{Oszilloskopbild der demodulierten Spannung(grün) sowie der Original-Modulationsspannung(gelb) an der Stelle A.}
+  \caption{Oszilloskopbild der demodulierten Spannung(grün) sowie der Original-Modulationsspannung(gelb) nach der Diode.}
   \label{fig:gnachA}
 \end{figure}
 \begin{figure}[h]
@@ -257,27 +231,28 @@ Das aufgenommene Bild an der Stelle A ist in Abbildung \ref{fig:gnachA} zu finde
   \caption{Oszilloskopbild der demodulierten Spannung(grün) sowie der Original-Modulationsspannung(gelb) nach dem Tiefpass.}
   \label{fig:gnachTiefpass}
 \end{figure}
-Zu erkennnen ist, dass die demodulierte Spannung die doppelte Frequenz der Original-Modulationsspannung hat.
+Zu erkennnen ist, dass die demodulierte Spannung die doppelte Frequenz der Original-Modulationsspannung hat. Die Amplitude der Spannung nimmt mit der Anzahl an dazwischengeschalteten Bauteilen ab.
 
 \subsection{Demodulation einer frequenzmodulierten Spannung}
 
-Zum Abschluss wird erneut eine frequenzmodulierte Spannung mit Abbildung \ref{fig:freqmodschaltung} erzeugt und mit der Schaltung nach Abbildung \ref{fig:flankendemodulator} demoduliert. Dann werden 3 Bilder nach den verschiedenen Bauteilen aufgenommen.
+Zum Abschluss wird erneut eine frequenzmodulierte Spannung mit Abbildung \ref{fig:freqmodschaltung} erzeugt und mit der Schaltung nach Abbildung \ref{fig:flankendemodulator} demoduliert. Dann werden drei Bilder nach den verschiedenen Bauteilen aufgenommen.
 Diese sind in den Abbildungen \ref{fig:hnachSchwingkreis}, \ref{fig:hnachDiode} und \ref{fig:hnachTiefpass} zu sehen.
+Die Frequenz der Modulationsspannung ist in den jeweiligen Bildern auch in den Schwingungen nach den Bauteilen ablesbar. Nach dem Schwingkreis ist die Amplitude höher als die Ausgangsamplitude, wohingegen sie von den andern beiden Bauteilen reduziert wird.
 \begin{figure}[h]
   \centering
   \includegraphics[width=.9\textwidth]{Oszi_Pics/hnachSchwingkreis.png}
-  \caption{Oszilloskopbild der Spannung nach dem Schwingkreis(grün) mit der Modulatorspannung(gelb).}
+  \caption{Oszilloskopbild der Spannung nach dem Schwingkreis(grün) mit der Modulationsspannung(gelb).}
   \label{fig:hnachSchwingkreis}
 \end{figure}
 \begin{figure}[h]
   \centering
   \includegraphics[width=.9\textwidth]{Oszi_Pics/hnachDiode?.png}
-  \caption{Oszilloskopbild der Spannung nach der Diode(grün) mit der Modulatorspannung(gelb).}
+  \caption{Oszilloskopbild der Spannung nach der Diode(grün) mit der Modulationsspannung(gelb).}
   \label{fig:hnachDiode}
 \end{figure}
 \begin{figure}[h]
   \centering
   \includegraphics[width=.9\textwidth]{Oszi_Pics/hnachTiefpass.png}
-  \caption{Oszilloskopbild der Spannung nach dem Tiefpass(grün) mit der Modulatorspannung(gelb).}
+  \caption{Oszilloskopbild der Spannung nach dem Tiefpass(grün) mit der Modulationsspannung(gelb).}
   \label{fig:hnachTiefpass}
 \end{figure}

@@ -7,28 +7,27 @@ Die Amplitudenmodulation mit dem Ringmodulator liefert die erwarteten Ergebnisse
 
 \subsection{Amplitudenmodulierte Schwingung mit Diode}
 
-Die beiden auf verschiedenen Wegen ausgerechneten Werte für den Modulationsgrad sind bei diesem Aufgabenteil leider sehr unterschiedlich. Da der Modulationsgrad auch ein Maß dafür ist, wie stark die Amplituden variieren erscheint der Wert $m = \num{0.2959(4)}$ nach Betrachtung der Abbildung \ref{fig:amplModDiode} als sinnvoller. Also muss bei der Berechnung aus der Intensität der Frequenzpeaks ein Fehler passiert sein.
+Die beiden auf verschiedenen Wegen ausgerechneten Werte für den Modulationsgrad sind ähnlich. Dabei ist der Wert, der aus dem Frequenzspektrum ausgerechnet wird, signifikanter, da dort die Oberschwingungen nicht die Messwerte beeinflussen.
 
 \subsection{Frequenzmodulierte Schwingung}
+\todo{mit neuer Formel berechnen}
 
-Die Frequenzmodulation liefert das erwartete Oszilloskopbild. Man erkennt, dass die Frequenz variiert und deshalb die Kurven der Funktionenschar bei der selben Phase zeitlich weiter vorangeschritten sein können.
-Der berechnete Wert für den Modulationsgrad ist erneut sehr klein und die Herleitung der entsprechenden Formel vermutlich falsch.
-
-\subsection{Demodulation mithilfe eines Ringmodulators -- Überprüfung der Spannung}
-
-Die Messwerte aus Abbildung \ref{fig:plotphase} zeigen nicht wie in \cite{anleitung} gefordert, dass die Spannung proportional zum Kosinus der Phasenverschiebung ist. Es zeigt sich aber ein kosinusförmiger Zusammenhang zwischen diesen Größen. Wenn diese Forderung gemeint ist, dann ist konnte ein gutes Ergebnis erzielt werden.
+Die Frequenzmodulation liefert das erwartete Oszilloskopbild. Man erkennt, dass die Frequenz variiert und deshalb die Kurven der Funktionenschar bei der selben Phase zeitlich weiter vorangeschritten sein können. Der aus dem Oszilloskopbild bestimmte Wert ...
+Der aus dem Frequenzspektrum bestimmte Wert hat die erwartete Größe. Auch die Schmalbandnäherung wird erfüllt. Erneut ist dieser Wert als signifikanter zu betrachten, da hier sogar noch mehr Oberschwingungen auftreten, als bei der Amplitudenmodulation. Diese beeinflussen die Messung mit Werten des Oszilloskopbilds.
 
 
-\subsection{Demodulation mithilfe eines Ringmodulators -- Überprüfung des Oszilloskopbild}
+\subsection{Demodulation mithilfe eines Ringmodulators}
+Die Messwerte aus Abbildung \ref{fig:plotphase} zeigen  wie in \cite{anleitung} gefordert, dass die Spannung proportional zum Kosinus der Phasenverschiebung ist. Auch der Fit zeigt dies.
 
-Es ist wie gefordert zu erkennen, dass die Modulationsfrequenz nur leicht verzerrt wiedergewonnen werden kann. Außerdem ist zu erkennen, dass die Amplitude durch die Bauteile stark abgeschwächt ist.
+Es ist wie gefordert zu erkennen, dass die Modulationsfrequenz leicht verzerrt wiedergewonnen werden kann. Außerdem ist zu erkennen, dass die Amplitude durch die Bauteile stark abgeschwächt ist.
 
 \subsection{Demodulation mithilfe einer Gleichrichterdiode}
 
-In Abbildung \ref{fig:gnachA} ist die Wirkung der Diode zu sehen, da sie die Spannung größtenteils nur in Vorzugsrichtung durchlässt und nur wenig unter der Nulllinie auf dem Oszilloskop anzeigt. 
+In Abbildung \ref{fig:gnachA} ist die Wirkung der Diode zu sehen, da sie die Spannung größtenteils nur in Vorzugsrichtung durchlässt und nur wenig unter der Nulllinie auf dem Oszilloskop anzeigt.
+Die Verdopplung der Frequenz folgt daraus, dass die Diode die unteren Halbwellen der Schwebung abschneidet. Wie in Abbildung \ref{fig:amplModOszi} in gelb gezeigt besteht die Einhüllende der Schwebung aus zwei zueinander entgegengesetzten Schwingungen. Wenn nun die untere Hälfte abgeschnitten wird, werden die jeweiligen positiven Hälften der Bäuche als eine Schwingung betrachtet. Und so gibt es dann doppelt so viele Maxima über Null und die Frequenz der einen Schwingung ist dann doppelt so groß.
 
 
 \subsection{Demodulation einer frequenzmodulierten Spannung}
 
-Im Bild nach dem Schwingkreis erkennt man, dass die Spannung schon von einer frequenzmodulierten Spannung in eine Amplitudenmodulierte überführt wurde.
-Nach der Diode ist ein ähnliches Bild wie in Abbildung \ref{fig:gnachA} zu sehen. Die ausgehende Spannung hat eine nicht symmetrische Form und eine kleine Amplitude. Dadurch hat auch die Kurve aus Abbildung \ref{fig:hnachTiefpass} eine kleine Amplitude und ist stark verzerrt. Mit diesen Bauteilen ist die Demodulation einer frequenzmodulierten Spannung also nicht optimal.
+Im Bild nach dem Schwingkreis erkennt man, dass die Spannung von einer frequenzmodulierten Spannung in eine amplitudenmodulierte überführt wurde.
+Nach der Diode ist ein ähnliches Bild wie in Abbildung \ref{fig:gnachA} zu sehen. Die ausgehende Spannung hat eine nicht symmetrische Form und eine kleine Amplitude. Dadurch hat auch die Kurve aus Abbildung \ref{fig:hnachTiefpass} nach dem Tiefpass eine kleine Amplitude und ist stark verzerrt. Mit diesen Bauteilen ist die Demodulation einer frequenzmodulierten Spannung also nicht optimal.
