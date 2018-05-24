@@ -55,12 +55,11 @@ if __name__ == '__main__':
     # d
     print('Aufgabe d\n')
 
-    zeitdiff = ufloat(288, 5) * 10**(-9)  # s
-    omega_M = ufloat(211.5, 0.4) * 10**3  # Hz
-    delta = zeitdiff*omega_M*2*np.pi
+    delta = ufloat(288, 5) * 10**(-9)  # s
+    omega_M = ufloat(211.5, 0.4) * 10**3 * 2*np.pi  # 1/s
     # delta = np.pi/8
 
-    m = delta/(2*(1+np.pi)+unp.cos(delta))
+    m = (delta*omega_M)/(3 + unp.cos(delta*omega_M))
     print('m_oszi aus frequenzmodulierter=', m)
     # print(delta, unp.cos(np.pi))
 
