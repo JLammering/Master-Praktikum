@@ -25,6 +25,14 @@ Die Effizienz der Ladungssammlung (CCE) hängt von der angelegten Spannung $U$ a
   \label{eqn:cce}
 \end{align}
 Dabei ist $d_\text{c}(U)$ die von der Spannung abhängige Dicke der Depletionszone, $a$ die Eindringtiefe des zur Messung genutzten Lasers und $D = \SI{300}{\micro\meter}$ die Dicke des Detektors.
+Die Dicke der Depletionszone $d_\text{c}(U)$ berechnet sich nach
+\begin{align}
+  d_\text{c}(U) =
+  \begin{cases}
+    D \sqrt{\frac{U}{U_\text{dep}}}, & U < U_\text{dep}\\
+    D, & U \geq U_\text{dep}
+  \end{cases}.
+\end{align}
 
 \subsection{Laser}
 Der zur Vermessung des Detektors genutzte Laser hat eine Wellenlänge von $\SI{980}{\nano\meter}$ und bedeckt eine Fläche von $\SI{20}{\micro\meter}$ im Durchmesser auf dem Detektor. Seine Spitzenleistung beträgt $\SI{0.6}{\milli\watt}$ bei einer Pulslänge von $\SI{5}{\nano\second}$. Seine Position über dem Detektor lässt sich horizontal und vertikal mit Mikrometerschrauben verstellen.
