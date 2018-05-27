@@ -8,8 +8,12 @@ x = np.zeros(128)
 for i in range(0,128):
     x[i] = i+1
 
-plt.plot(x,Hits_per_channel,'kx',markersize=2)
+plt.plot(x,Hits_per_channel,'k.',markersize=3)
 #, bins = x)
 # range=(x.min(),x.max()))
 
+plt.xlim(0,129)
+plt.xlabel(r'$i$')
+plt.ylabel(r'$\#$Ereignisse')
+plt.grid()
 plt.savefig('build/hitmap.pdf')

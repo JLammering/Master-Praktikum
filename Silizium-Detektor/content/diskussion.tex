@@ -1,2 +1,99 @@
 \section{Diskussion}
 \label{sec:Diskussion}
+
+\subsection{Messung einer Stromspannungskennlinie}
+
+Die mit der Stromspannungskennlinie bestimmte Depletionsspannung lautet
+\begin{align}
+  U_\text{Dep,I(U)} = \SI{65.09}{\volt}
+  \label{eqn:UdepI}
+\end{align}
+und liegt im Bereich der vom Hersteller genannten Depletionsspannung
+\begin{align}
+  U_\text{Dep,Hersteller} \approx \SI{60}{\volt} - \SI{80}{\volt}.
+\end{align}
+Jedoch ist an Abbildung \ref{fig:stromspannungskennlinie} erkennbar, dass
+der Leckstrom erst bei deutlich höheren Vorspannung $> \SI{100}{\volt}$ sichtbar
+linear mit der Spannung ansteigt, weshalb es sinnvoll ist, die Vorspannung in den
+anschließenden Messreihen höher als \eqref{eqn:UdepI} einzustellen.
+
+\subsection{Pedestal, Common Mode Shift und Noise}
+
+Der bestimmte mittlere Pedestal liegt im Durchschnitt bei
+\begin{align}
+  \text{Pedestal}_\text{average} = 509.122 \pm 2.210 \, \text{ADC}
+\end{align}
+und damit am erwarteten Wert $\SI{500}{\text{ADC}}$.
+
+Der Common Mode Shift ist in Abbildung \ref{fig:cms} als normiertes Histogramm dargestellt.
+Die gaußförmige Verteilung durch den zentralen Grenzwertsatz ist zwar erkennbar, allerdings
+mit sichtbaren statistischen Schwankungen. Das ist darauf zurückzuführen, dass lediglich
+1000 Events für diese Messung aufgenommen wurden.
+
+Der sich ergebende mittlere Noise liegt bei
+\begin{align}
+  \text{Noise}_\text{average} = 2.119 \pm 0.081 \, \text{ADC}.
+  \label{eqn:noise}
+\end{align}
+und schwankt mit einem relativen Fehler von $\SI{3.8}{\percent}$ schwach für
+jeden Streifen.
+
+\subsection{Kalibrationsmessungen}
+
+In Abbildung \ref{fig:kalibration} ist erkennbar, dass die Kalibrationskurven der Kanäle 20,40,60,80,100
+für eine Vorspannung oberhalb der Depletionsspannung quasi alle aufeinander liegen. Das Polynom vierten Grades
+nähert diese im Bereich $\text{charge} = [0,250000 \symup{e}]$ ausgezeichnet an, was ebenfalls in der
+Abbildung ersichtlich ist.
+
+Die Kalibrationskurve bei $\SI{0}{\volt}$ ist in Abbildung \ref{fig:kalibration2} mit den anderen Kurven
+in einem großen Bereich (in dem die Diskrepanz der Messwerte am ehesten erkennbar ist) dargestellt.
+An dieser Graphik ist erkennbar, dass das Einstellen der Depletionsspannung
+eine wichtige Rolle spielt, da Signale bei der Umrechnung ansonsten um etwa $\SI{5}{\text{ADC}}$ abweichen, was
+beispielsweise doppelt so viel wie der berechneten durchschnittliche Noise \eqref{eqn:noise} ist.
+
+\subsection{Vermessung der Streifensensoren mittels eines Lasers}
+
+Aus Abbildung \ref{fig:pitch} ist entnehmbar, dass der Laser über die Kanäle 91 und 92 bewegt wurde.
+Die berechnete pitch liegt bei
+\begin{align}
+  \text{pitch}_{92-91} = \SI{161.69}{\micro\meter}
+\end{align}
+und weicht damit relativ gering um $\SI{1}{\percent}$ von der vom Hersteller genannten pitch
+\begin{align}
+  \text{pitch}_\text{Hersteller} = \SI{160}{\micro\meter}
+\end{align}
+ab. Der Sitz der Kathode ist zur Vermessung ionisierender Strahlung irrelevant, da diese Strahlung
+kaum von der Metallisierung reflektiert wird. Beim Laserstrahl wird genau die Tatsache, dass das
+Licht reflektiert wird, zur Vermessung des Streifensensors ausgenutzt und zwar erfolgreich,
+wie an der geringen Abweichung erkennbar ist.
+
+\subsection{Charge Collection Efficiency Messungen mit dem Laser}
+
+Die mit der Charge Collection Efficiency Messung mit dem Laser berechnete Depletionsspannung
+\begin{align}
+  U_\text{dep,ccel} = \SI{110(5)}{\volt}
+\end{align}
+ist wesentlich größer als die mit der Stromspannungskennlinie bestimmte Depletionsspannung
+\begin{align}
+  U_\text{Dep,I(U)} = \SI{65.09}{\volt}.
+\end{align}
+Das ist darauf zurückzuführen, dass die Leckstrommessung zwar ein guter Indikator für das Erreichen der
+Depletionsspannung ist, aber die Vorspannung, die tatsächlich für die Signalmessung eingestellt werden sollte,
+größer ist. Der Grund dafür liegt darin, dass beim Erreichen der Depletionsspannung das äußere elektrische Feld noch nicht
+ausreichend stark ist, um jedes entstehende Elektron-Loch-Paar an der Rekombination zu hindern. Der Leckstrom steigt aus diesem
+Grund auch weiter an, wenn die Spannung über die Depletionsspannung hinausgeht: ein immer größerer Anteil der durch
+thermische Anregung erzeugten Elektron-Loch-Paaren erreicht die Pole und rekombiniert nicht.
+
+\subsection{Charge Collection Efficiency Messungen mit der Quelle}
+
+Die mit der Charge Collection Efficiency Messungen mit der Quelle berechnete Depletionsspannung
+\begin{align}
+  U_\text{depl,cceq} = \SI{120(5)}{\volt}
+\end{align}
+weicht mit $\SI{9}{\percent}$ leicht von der Messung mit dem Laser ab. Was außerdem in Abbildung
+\ref{fig:cceq} heraussticht, ist, dass das Plateau eine leichte Steigung besitzt. Das ist darauf zurückzuführen, dass
+das Elektron aus dem radioaktiven $\beta$-Zerfall im Gegensatz zu den Photonen aus dem Laser durch das
+elektrische Feld im Detektor leicht abgebremst wird. Wird die Spannung erhöht, so steigt die elektrische Feldstärke
+und das Elektron hält sich länger im Detektor auf, sodass sich die Anzahl an Stoßprozessen erhöht und die Energiedeposition steigt.
+
+\subsection{Großer Quellenscan}

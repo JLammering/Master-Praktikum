@@ -79,10 +79,11 @@ dargestellt. Es ergibt sich ein Mittelwert von
 \end{figure}
 
 \subsection{Kalibrationsmessungen}
+\label{sec:kalibration}
 
 Mittels einer Delaymessung im Calibration Run wird eine optimale Verzögerung von
 \begin{align}
-  1
+  Kalibration Delay = \SI{64.1}{\nano\second}
 \end{align}
 bestimmt und im Calibration Fenster eingetragen. Für eine Vorspannung oberhalb der
 Depletionsspannung werden fünf Kalibrationskurven für die Kanäle 20, 40, 60, 80 und 100 aufgenommen. In Abbildung \ref{fig:kalibration}
@@ -100,9 +101,8 @@ ist ebenfalls in Abbildung \ref{fig:kalibration} dargestellt und es ergeben sich
   k_3 &= \SI{-2.04e-08}{\text{ADC}e^{-2}} &\quad k_4 &= \SI{3.99e-03}{\text{ADC}e^{-1}} \\
   k_5 &= \SI{-3.71}{\text{ADC}}. &\quad \phantom{f}&\phantom{=10}
 \end{align*}
-Es wird ebenfalls eine Kalibrationskurve für eine Vorspannung von $\SI{0}{\volt}$ aufgenommen. In Abbildung
-\ref{fig:kalibration2} ist erkennbar, dass diese in einem großen Bereich von den anderen Kalibrationskurven,
-bzw. deren Mittelwert, abweicht.
+Es wird ebenfalls eine Kalibrationskurve für eine Vorspannung von $\SI{0}{\volt}$ aufgenommen. Diese ist in Abbildung
+\ref{fig:kalibration2} für einen großen Bereich mit anderen Kalibrationskurven dargestellt.
 
 \begin{figure}
   \centering
@@ -123,7 +123,7 @@ bzw. deren Mittelwert, abweicht.
 Mit der Option Laser Sync. wird die optimale Verzögerung zwischen Lasersignal und
 Chipauslese bestimmt. Es ergibt sich
 \begin{align}
-  1.
+  \SI{1.005}{\pico\second}.
 \end{align}
 In Abbildung \ref{fig:pitch} sind die über die Laserverschiebung gemittelten Signal-Messwerte für jeden Streifen
 dargestellt. Es ist erkennbar, dass der Laser über die Streifen 91 und 92 bewegt wurde,
@@ -238,11 +238,12 @@ ergibt.
 \end{figure}
 
 \subsection{Charge Collection Efficiency Messungen mit der Quelle}
+\label{sec:cceq}
 
 Die gegebenen Messwerte werden im ersten Schritt von ADC in $\si{\kilo\electronvolt}$ umgerechnet.
 Da zu dem Kalibrationspolynom \eqref{eqn:kalibrationspolynom} keine Umkehrfunktion gebildet werden kann,
 wird die Umrechnung durch das Erstellen von Bins durchgeführt. Insgesamt wird die charge im relevanten Bereich
-$[0,260000\mathrm{e}]$ in 10000 Bins unterteilt und zu jedem dieser Bins der entsprechende Wert in ADC mittels
+$[0,250000\mathrm{e}]$ in 10000 Bins unterteilt und zu jedem dieser Bins der entsprechende Wert in ADC mittels
 des Kalibrationspolynoms \eqref{eqn:kalibrationspolynom} bestimmt. Die Umrechnung von ADC in $\si{\kilo\electronvolt}$
 erfolgt dann durch Finden des jeweiligen Bins in ADC, Zuordnen des jeweiligen Bins in charge und als letztes Multiplizieren
 mit dem Faktor $\num{3.6e-3}$, da zur Erzeugung eines Elektron-Loch-Paares im Detektor $\SI{3.6}{\electronvolt}$
@@ -264,7 +265,7 @@ ergeben sich die Parameter
 Die geringste Steigung ist in diesem Fall dem Plateau 140 zugeordnet, jedoch ist der Fehler hier vergleichsweise groß.
 Bei Betrachtung der Messwerte wird daher interpretiert, dass das Plateau etwa bei
 \begin{align}
-  U_\text{depl,cceq} = \SI{120}{\volt}
+  U_\text{depl,cceq} = \SI{120(5)}{\volt}
 \end{align}
 beginnt und nicht flach ist, sondern eine leichte Steigung von etwa
 \begin{align}
@@ -281,7 +282,74 @@ besitzt.
 
 \subsection{Großer Quellenscan}
 
+Es wird ein RS Run mit $\num{e6}$ Events durchgeführt. Die gemessene relative
+Häufigkeit der Anzahl an Clustern pro Event ist in Abbildung \ref{fig:clusterevent} für eine Anzahl von 0 bis 4
+Custern aufgetragen, da die Häufigkeit für eine größere Anzahl 0 ist. Die relative Häufigkeit der Anzahl der Kanäle pro Cluster ist
+in Abbildung \ref{fig:channelevent} dargestellt. Dabei wird die relative Häufigkeit für $\# Kanäle pro Cluster > 6$
+nicht mit aufgetragen, da sie unter $h = 0.001$ liegt. Außerdem ist eine Hitmap, also die Anzahl
+Ereignisse pro Kanal in Abbildung \ref{fig:hitmap} für alle 128 Kanäle zu sehen.
 
+Das aufgenommene Energiespektrum ist in Abbildung \ref{fig:energieadc} in ADC als
+Histogramm dargestellt. Es wird eine Binbreite von $\SI{1}{\text{ADC}}$ gewählt.
+Die Messwerte werden wie in Abschnitt \ref{sec:cceq} durch ein Binningverfahren in charge und anschließend
+in $\si{\kilo\electronvolt}$ umgewandelt. Die Clusterenergien werden für jedes Event durch Aufsummieren
+bestimmt. Erneut werden die resultierenden Daten als normiertes Histogramm dargestellt, siehe Abbildung \ref{fig:energiekeV}. Dabei wird hier eine Binbreite
+von $\SI{2.5}{\kilo\electronvolt}$ gewählt. Die Kalibration aus Abschnitt \ref{sec:kalibration} lässt nur in etwa
+eine Umrechnung von $0$ ADC bis etwa $269.1$ ADC, bzw. von $0$ bis $250000$ charge, zu. Damit ist noch eine Energie von höchstens
+$\SI{900.0}{\kilo\electronvolt}$ erreichbar. Durch Mitteln der Binbreite, wobei diese mit der Binhöhe gewichtet wird,
+ergibt sich der Mittelwert der deponierten Energie
+\begin{align}
+  E_\text{average} = \SI{102.869}{\kilo\electronvolt}.
+\end{align}
+Um den MPV(Most Probable Value) zu bestimmen, wird ein Funktionenfit mit dem Peak aus Abbildung \ref{fig:energiekeV} durchgeführt.
+Um die Faltung aus einer Gauß- und einer Landauverteilung zu realisieren, wird eine linear modifizierte Gaußfunktion
+\begin{align}
+  G_\text{lin}(E) = C \cdot \text{exp}\left(-\frac{\left[(E-\mu)/\si{\kilo\electronvolt}\right]^2}{2\sigma^2} \right) + a \cdot (E-\mu)/\si{\kilo\electronvolt}
+\end{align}
+verwendet. Dabei ergeben sich die Parameter
+\begin{align}
+  C &= \num{1.42e-02} & \mu &= \SI{80.03}{\kilo\electronvolt} \\
+  \sigma &= \num{21.09} & a &= \num{6.49e-05}.
+\end{align}
+Der MPV entspricht dem Mittelwert des Funktionenfits
+\begin{align}
+  MPV = \mu = \SI{80.03}{\kilo\electronvolt}.
+\end{align}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/cluster_event.pdf}
+  \caption{Plot.}
+  \label{fig:clusterevent}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/channel_event.pdf}
+  \caption{Plot.}
+  \label{fig:channelevent}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/hitmap.pdf}
+  \caption{Plot.}
+  \label{fig:hitmap}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/energiespektrum_adc.pdf}
+  \caption{Plot.}
+  \label{fig:energieadc}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/energiespektrum_keV.pdf}
+  \caption{Plot.}
+  \label{fig:energiekeV}
+\end{figure}
 
 %\begin{figure}
 %  \centering

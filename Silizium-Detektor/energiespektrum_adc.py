@@ -14,7 +14,14 @@ daten_av = np.sum(daten, axis = 1)
 
 anz = 500
 daten_hist = np.histogram(daten_av, bins = anz, range=(0,500))
-plt.hist(daten_av, bins = daten_hist[1])
+plt.hist(daten_av, bins = daten_hist[1], normed = 'True', label = r'ADC Daten')
+plt.axvline(x=269.070094488, color = 'r', linewidth = 1, label = r'maximaler Umrechnungswert') # maximaler Wert, der noch umgerechnet werden kann mit dem Kalibrationspolynom
 
-plt.xlim(0,400)
+plt.xlim(0,350)
+plt.ylim(0,0.017)
+plt.xlabel(r'$Signal_\text{Event}/\si{\text{ADC}}$')
+plt.ylabel(r'$P_\text{ADC}$')
+plt.grid()
+plt.tight_layout()
+plt.legend(loc = 'best')
 plt.savefig('build/energiespektrum_adc.pdf')

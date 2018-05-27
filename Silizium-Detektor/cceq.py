@@ -79,9 +79,9 @@ anz_bins = 10001 # insgesamt 10000 bins
 adc_bins = np.zeros(anz_bins)
 charge_values = np.zeros(anz_bins) # von 0 bis 260 000
 for i in range(0,anz_bins): # Das ADC array beinhaltet bins; wenn ein Wert zwischen zwei einträgen liegt, wird er diesem bin zugeordnet
-    charge_values[i] = 260000/(anz_bins-1)*(i)
+    charge_values[i] = 250000/(anz_bins-1)*(i)
     adc_bins[i] = f(charge_values[i],Coeff[0], Coeff[1], Coeff[2], Coeff[3], Coeff[4])
-    charge_values[i] = 260000/(anz_bins-1)*(i+0.5)
+    charge_values[i] = 250000/(anz_bins-1)*(i+0.5)
 
 def adc_to_charge(adc_b, adc):
     if adc > adc_b[10000]:
@@ -98,14 +98,11 @@ def average_keV(daten, adc_bins):
     daten_keV = np.zeros([length,20])
     k = 0
     i = 0
-    p = 0
-    s = length*20
     with tqdm(total=length) as pbar:
         while k < length:
             while i < 20:
                 if daten[k][i] == 0:
                     daten_keV[k][i] = 0
-                    p = p+1
                 else:
                     daten_keV[k,i] = charge_values[adc_to_charge(adc_bins,daten[k,i])] * 0.0036 # in keV
                 i = i+1
@@ -120,7 +117,7 @@ def average_keV(daten, adc_bins):
     anz_daten = 0 # Anzahl in keV übersetzte Werte
 
     for k in range(0,len(daten_av_keV)):
-        if daten_av_keV[k] != 260000/(10000)*0.5/0.0036: # Alle Daten, die übersetzt werden konnten, werden gemittelt
+        if daten_av_keV[k] != 250000/(10000)*0.5/0.0036: # Alle Daten, die übersetzt werden konnten, werden gemittelt
             keV_av += daten_av_keV[k]
             anz_daten += 1
 

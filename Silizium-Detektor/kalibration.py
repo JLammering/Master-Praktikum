@@ -24,6 +24,8 @@ for i in range(0,len(ADC_20)):
 a,b,c,d,e = np.polyfit(charge_20, ADC_aver, 4)
 Coeff = np.array((a,b,c,d,e))
 print('Kalibrationskoeffizienten:', Coeff)
+maxwert = 250000 # in charge
+print('maximal umrechenbarer Wert(charge,ADC,keV)', maxwert, a*maxwert**4 + b*maxwert**3 + c*maxwert**2 + d*maxwert + e, 0.0036*maxwert)
 np.savetxt('Kalibration_Koeffizienten.txt', Coeff)
 
 x = np.linspace(0,270000,10000)

@@ -25,7 +25,7 @@ a,b,c,d,e = np.polyfit(charge_20, ADC_aver, 4)
 
 x = np.linspace(0,270000,10000)
 plt.plot(charge_20, ADC_aver, 'ko', markersize = 0.5, label = r'Kalibrationskurven oberhalb von $U_\text{dep}$')
-plt.plot(charge_50_v0, ADC_50_v0, 'bo', markersize = 0.5, label = r'Kalibrationskurve bei $U = \SI{0}{\volt}$')
+plt.plot(charge_50_v0, ADC_50_v0, 'bo', markersize = 0.5, label = r'Kalibrationskurve Kanal 50 bei $U = \SI{0}{\volt}$')
 
 plt.xlim(30000,170000)
 plt.ylim(100,270)

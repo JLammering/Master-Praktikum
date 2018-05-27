@@ -53,6 +53,9 @@ build/cceq.pdf: cceq.py 18_04_30_Graesser_Lammering/CCEQ/0_Cluster_adc_entries.t
 build/cluster_event.pdf: cluster_event.py 18_04_30_Graesser_Lammering/number_of_clusters.txt matplotlibrc header-matplotlib.tex | build
 	TEXINPUTS="$(call translate,$(pwd):)" python cluster_event.py
 
+build/channel_event.pdf: channel_event.py 18_04_30_Graesser_Lammering/cluster_size.txt matplotlibrc header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python channel_event.py
+
 build/hitmap.pdf: hitmap.py 18_04_30_Graesser_Lammering/hitmap.txt matplotlibrc header-matplotlib.tex | build
 	TEXINPUTS="$(call translate,$(pwd):)" python hitmap.py
 
@@ -63,7 +66,7 @@ build/energiespektrum_keV.pdf: energiespektrum_keV.py 18_04_30_Graesser_Lammerin
 	TEXINPUTS="$(call translate,$(pwd):)" python energiespektrum_keV.py
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: build/stromspannungskennlinie.pdf build/kalibration.pdf build/kalibration2.pdf build/Pedestal.pdf build/Common_Mode_Shift.pdf build/Noise.pdf build/pitch.pdf build/pitch2.pdf build/Ausdehnung.pdf build/ccel.pdf build/eindringtiefe.pdf build/cceq.pdf # build/hitmap.pdf build/energiespektrum_adc.pdf  build/cluster_event.pdf build/energiespektrum_keV.pdf
+build/main.pdf: build/stromspannungskennlinie.pdf build/kalibration.pdf build/kalibration2.pdf build/Pedestal.pdf build/Common_Mode_Shift.pdf build/Noise.pdf build/pitch.pdf build/pitch2.pdf build/Ausdehnung.pdf build/ccel.pdf build/eindringtiefe.pdf build/cceq.pdf build/hitmap.pdf build/energiespektrum_adc.pdf  build/cluster_event.pdf build/channel_event.pdf build/energiespektrum_keV.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \
