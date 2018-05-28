@@ -107,16 +107,16 @@ plaziert wurde. Der Messwerteverlauf deutet auf eine Normalverteilung hin.
 
 Bei der Umrechnung des Energiespektrums von ADC in $\si{\kilo\electronvolt}$ können nur Werte unterhalb der Energie $\SI{900.0}{\kilo\electronvolt}$ umgerechnet werden.
 Da die Zerfallsenergie von Strontium-90 bei $\SI{0.546}{\mega\electronvolt}$ \cite{anleitung} liegt, ist diese Grenze unproblematisch.
-Beim Vergleich der Energiespektren in ADC (Abbildung \ref{fig:energiespektrumadc}) und in $\si{\kilo\electronvolt}$ (Abbildung \ref{fig:energiespektrumkeV}) fällt auf, dass die Binhöhe vor der Umrechnungsgrenze in ADC noch deutlich sichtbar ist, während
+Beim Vergleich der Energiespektren in ADC (Abbildung \ref{fig:energiespektrum_adc}) und in $\si{\kilo\electronvolt}$ (Abbildung \ref{fig:energiespektrum_keV}) fällt auf, dass die Binhöhe vor der Umrechnungsgrenze in ADC noch deutlich sichtbar ist, während
 sie im anderen Histogramm bereits bei etwa $\SI{400}{\kilo\electronvolt}$ verschwindet. Das ist eine Bestätigung dafür, dass der Zusammenhang zwischen
 Energie, bzw. charge und ADC nicht linear ist und durch eine Kalibration bestimmt werden muss. Das Polynom vierten Grades flacht bei hohen ADC bzw. charges stark ab, sodass
 dicht liegende ADC-Werte sich im $\si{\kilo\electronvolt}$-Energiespektrum auf einen großen Bereich verteilen. Der Mittelwert der Energie
 \begin{align}
-  E_\text{average} = \SI{102.869}{\kilo\electronvolt}
+  E_\text{average} = \SI{102.9}{\kilo\electronvolt}
 \end{align}
-weicht relativ um $\SI{1}{\percent}$ von dem theoretischen Wert
+weicht relativ um $\SI{13.1}{\percent}$ von dem theoretischen Wert
 \begin{align}
-  E_\text{average,theorie} = \SI{}{},
+  E_\text{average,theorie} = \SI{116.4}{\kilo\electronvolt},
 \end{align}
 der mit Formel \eqref{eqn:energieverlustdis} bestimmt wird, ab. Ein Grund für diese Abweichung kann sein, dass beispielsweise das elektrische Feld durch die angelegte Spannung im Detektor nicht in
 der Bethe-Bloch-Formel beachtet wird. Dass der MPV
