@@ -83,7 +83,7 @@ dargestellt. Es ergibt sich ein Mittelwert von
 
 Mittels einer Delaymessung im Calibration Run wird eine optimale Verzögerung von
 \begin{align}
-  Kalibration Delay = \SI{64.1}{\nano\second}
+  \text{Kalibration Delay} = \SI{64.1}{\nano\second}
 \end{align}
 bestimmt und im Calibration Fenster eingetragen. Für eine Vorspannung oberhalb der
 Depletionsspannung werden fünf Kalibrationskurven für die Kanäle 20, 40, 60, 80 und 100 aufgenommen. In Abbildung \ref{fig:kalibration}
@@ -102,19 +102,21 @@ ist ebenfalls in Abbildung \ref{fig:kalibration} dargestellt und es ergeben sich
   k_5 &= \SI{-3.71}{\text{ADC}}. &\quad \phantom{f}&\phantom{=10}
 \end{align*}
 Es wird ebenfalls eine Kalibrationskurve für eine Vorspannung von $\SI{0}{\volt}$ aufgenommen. Diese ist in Abbildung
-\ref{fig:kalibration2} für einen großen Bereich mit anderen Kalibrationskurven dargestellt.
+\ref{fig:kalibration2} für einen großen Bereich mit den anderen Kalibrationskurven dargestellt.
 
 \begin{figure}
   \centering
   \includegraphics{build/kalibration.pdf}
-  \caption{Plot.}
+  \caption{Messwerte der Kalibrationsmessung bei einer Vorspannung oberhalb der Depletionsspannung für die Kanäle 20/40/60/80/100 und deren Mittelwert.
+  Die Werte liegen alle dicht beieinander und sind in dieser Abbildung ununterscheidbar. Die rote Kurve beschreibt das Ausgleichspolynom vierten Grades.}
   \label{fig:kalibration}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/kalibration2.pdf}
-  \caption{Plot.}
+  \caption{Messwerte der Kalibrationsmessung bei einer Vorspannung oberhalb der Depletionsspannung für die Kanäle 20/40/60/80/100 und bei $\SI{0}{\volt}$ für Kanal 50.
+  Es ist der charge-Bereich, in welchem die Messwerte am meisten voneinander abweichen, dargestellt.}
   \label{fig:kalibration2}
 \end{figure}
 
@@ -123,7 +125,7 @@ Es wird ebenfalls eine Kalibrationskurve für eine Vorspannung von $\SI{0}{\volt
 Mit der Option Laser Sync. wird die optimale Verzögerung zwischen Lasersignal und
 Chipauslese bestimmt. Es ergibt sich
 \begin{align}
-  \SI{1.005}{\pico\second}.
+  \text{Laser Delay} = \SI{1.005}{\pico\second}.
 \end{align}
 In Abbildung \ref{fig:pitch} sind die über die Laserverschiebung gemittelten Signal-Messwerte für jeden Streifen
 dargestellt. Es ist erkennbar, dass der Laser über die Streifen 91 und 92 bewegt wurde,
@@ -168,21 +170,21 @@ Insgesamt folgt daher
 \begin{figure}
   \centering
   \includegraphics{build/pitch.pdf}
-  \caption{Plot.}
+  \caption{Gemittelte Signalmesswerte für jeden Kanal. Die Kanäle zu den rot eingezeichneten Messwerten werden für die Bestimmung der pitch benutzt.}
   \label{fig:pitch}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/pitch2.pdf}
-  \caption{Plot.}
+  \caption{Messwerte für die Kanäle 91 und 92. Die "+"-Messwerte werden für die Parabelfits verwendet.}
   \label{fig:pitch2}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/Ausdehnung.pdf}
-  \caption{Plot.}
+  \caption{Messwerte der Kanäle 91 und 92 und umliegender Kanäle. Die rote Linie beschreibt den Gaußfit und die blaue die Breite der $2\sigma$-Umgebung.}
   \label{fig:Ausdehnung}
 \end{figure}
 
@@ -190,8 +192,8 @@ Insgesamt folgt daher
 
 Um einen Zusammenhang zwischen der Charge Collection Efficiency und der Vorspannung zu erhalten,
 wird eines der Maxima um Kanal 91 bei verschiedenen Spannungen ausgemessen. Die maximal mögliche Effizienz,
-die erreicht werden kann stellt sich ab der Depletionsspannung ein. Um diese Spannung zu bestimmen muss also
-die Stelle, ab der die Signal-Messwerte ein Plateau darstellen bestimmt werden. Die über alle Events gemittelten
+die erreicht werden kann, stellt sich ab der Depletionsspannung ein. Um diese Spannung zu bestimmen muss also
+die Stelle, ab der die Signal-Messwerte ein Plateau darstellen, bestimmt werden. Die über alle Events gemittelten
 Signal-Messwerte sind in Abbildung \ref{fig:ccel} gegen die Spannung aufgetragen. Es wird eine lineare Ausgleichsrechnung
 mit den Messwerten, die oberhalb der Spannungen $\SI{90}{\volt}$, $\SI{100}{\volt}$ bzw. $\SI{110}{\volt}$ liegen, da dort gemäß Abbildung \ref{fig:ccel}
 der Übergang zum Plateau erwartet wird.
@@ -226,14 +228,15 @@ ergibt.
 \begin{figure}
   \centering
   \includegraphics{build/ccel.pdf}
-  \caption{Plot.}
+  \caption{Über alle Events gemittelte Signalmesswerte. Der Plateaubeginn wird bei den Spannungen $\SI{90}{\volt}$, $\SI{100}{\volt}$ oder $\SI{110}{\volt}$ vermutet.
+  Die Ausgleichsgerade für Plateau 110 ist in blau eingezeichnet.}
   \label{fig:ccel}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/eindringtiefe.pdf}
-  \caption{Plot.}
+  \caption{CCE in Abhängigkeit von der Spannung. Die Messwerte unterhalb der berechneten Depletionsspannung werden auf den Plateaumittelwert gemittelt. Die rote Linie stellt die Fitfunktion der Messwerte für die CCE dar.}
   \label{fig:eindringtiefe}
 \end{figure}
 
@@ -276,7 +279,8 @@ besitzt.
 \begin{figure}
   \centering
   \includegraphics{build/cceq.pdf}
-  \caption{Plot.}
+  \caption{In $\si{\kilo\electronvolt}$ umgerechnete Messwerte der CCEQ-Messung. Der Plateaubeginn wird bei den Spannungen $U = \SI{120}{\volt}$, $U = \SI{130}{\volt}$ oder
+  $U = \SI{140}{\volt}$ vermutet. Die Ausgleichsgerade für Plateau 120 ist in blau eingezeichnet. Sie besitzt eine leichte Steigung.}
   \label{fig:cceq}
 \end{figure}
 
@@ -285,8 +289,8 @@ besitzt.
 Es wird ein RS Run mit $\num{e6}$ Events durchgeführt. Die gemessene relative
 Häufigkeit der Anzahl an Clustern pro Event ist in Abbildung \ref{fig:clusterevent} für eine Anzahl von 0 bis 4
 Custern aufgetragen, da die Häufigkeit für eine größere Anzahl 0 ist. Die relative Häufigkeit der Anzahl der Kanäle pro Cluster ist
-in Abbildung \ref{fig:channelevent} dargestellt. Dabei wird die relative Häufigkeit für $\# Kanäle pro Cluster > 6$
-nicht mit aufgetragen, da sie unter $h = 0.001$ liegt. Außerdem ist eine Hitmap, also die Anzahl
+in Abbildung \ref{fig:channelevent} dargestellt. Dabei wird die relative Häufigkeit für $\# \text{Kanäle pro Cluster} > 6$
+nicht mit aufgetragen, da sie unter einer Häufigkeit von $h = 0.001$ liegt. Außerdem ist eine Hitmap, also die Anzahl
 Ereignisse pro Kanal in Abbildung \ref{fig:hitmap} für alle 128 Kanäle zu sehen.
 
 Das aufgenommene Energiespektrum ist in Abbildung \ref{fig:energieadc} in ADC als
@@ -313,69 +317,44 @@ verwendet. Dabei ergeben sich die Parameter
 \end{align}
 Der MPV entspricht dem Mittelwert des Funktionenfits
 \begin{align}
-  MPV = \mu = \SI{80.03}{\kilo\electronvolt}.
+  \text{MPV} = \mu = \SI{80.03}{\kilo\electronvolt}.
 \end{align}
 
 \begin{figure}
   \centering
   \includegraphics{build/cluster_event.pdf}
-  \caption{Plot.}
+  \caption{Relative Häufigkeit $h_{\#\text{Cluster}}$ der Anzahl an Clustern pro Event beim großen Quellenscan. Die Häufigkeit für $i>4$ liegt bei $h_{\#\text{Cluster}}=0$ und wird daher nicht mit dargestellt.}
   \label{fig:clusterevent}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/channel_event.pdf}
-  \caption{Plot.}
+  \caption{Relative Häufigkeit $h_{\#\text{Kanäle}}$ der Anzahl an Kanälen pro Cluster beim großen Quellenscan. Die Häufigkeit bei $i > 6$ ist kleiner als $h = 0.001$ und wird daher nicht mit dargestellt}
   \label{fig:channelevent}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/hitmap.pdf}
-  \caption{Plot.}
+  \caption{Hitmap für den großen Quellenscan. Es ist die Anzahl an Ereignisse für den jeweiligen Kanal aufgetragen.}
   \label{fig:hitmap}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/energiespektrum_adc.pdf}
-  \caption{Plot.}
+  \caption{Energiespektrum der Strontium-90 Quelle in ADC, dargestellt in blau. Die rote Linie markiert den maximalen ADC-Wert, der noch zuverlässig mit der Kalibrationskurve umgerechnet werden kann.}
   \label{fig:energieadc}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/energiespektrum_keV.pdf}
-  \caption{Plot.}
+  \caption{Energiespektrum der Strontium-90 Quelle in $\si{\kilo\electronvolt}$, dargestellt in blau. Die rote Kurve $G_\text{lin}$ beschreibt eine asymmetrische Gaußfunktion, welche die Messwerte am Wahrscheinlichkeits-Maximum des
+  Energiespektrums approximieren soll, um den MPV zu bestimmen.}
   \label{fig:energiekeV}
 \end{figure}
-
-%\begin{figure}
-%  \centering
-%  \includegraphics{plotphase.pdf}
-%  \caption{Plot.}
-%  \label{fig:plot}
-%\end{figure}
-
-%Tabelle für copy and paste:
-%\begin{table}[h]
-%  \centering
-%  \begin{tabular}{S S}
-%    \toprule
-%    {$k$} & {$U\:/\:\si{\milli\volt}$}\\
-%    \midrule
-%    1 & 637.2\\
-%    3 & 212.4\\
-%    5 & 127.4\\
-%    7 & 91.03\\
-%    9 & 70.8\\
-%    \bottomrule
-%  \end{tabular}
-%  \caption{Amplituden Rechteckspannung.}
-%  \label{tab:rechtampl}
-%\end{table}
-
 
 \begin{table}[h]
   \centering

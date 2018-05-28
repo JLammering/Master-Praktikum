@@ -19,7 +19,7 @@ plt.axvline(x=269.070094488, color = 'r', linewidth = 1, label = r'maximaler Umr
 
 plt.xlim(0,350)
 plt.ylim(0,0.017)
-plt.xlabel(r'$Signal_\text{Event}/\si{\text{ADC}}$')
+plt.xlabel(r'$\text{Signal}_\text{Event}/\si{\text{ADC}}$')
 plt.ylabel(r'$P_\text{ADC}$')
 plt.grid()
 plt.tight_layout()

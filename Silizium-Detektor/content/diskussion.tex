@@ -97,3 +97,31 @@ elektrische Feld im Detektor leicht abgebremst wird. Wird die Spannung erhöht, 
 und das Elektron hält sich länger im Detektor auf, sodass sich die Anzahl an Stoßprozessen erhöht und die Energiedeposition steigt.
 
 \subsection{Großer Quellenscan}
+
+In Abbildung \ref{fig:clusterevent} ist erkennbar, dass die Wahrscheinlichkeit, das bei einem Event keine Cluster entstehen, sehr gering, aber nicht 0 ist.
+Ein Teil der einfallenden $\beta$-Strahlen gehen also ohne eine Ionisation auszulösen durch den Streifendetektor und werden an der Diode detektiert.
+Aus Abbildung \ref{fig:channelevent} geht hervor, dass an der Detektion eines Clusters vorwiegend ein oder zwei Kanäle beteiligt sind. Der Detektor ist mit
+$\SI{300}{\micro\meter}$ nicht sehr dick, weshalb die erzeugten Elektron-Loch-Paare etwa auf der Höhe ihres Entstehungsortes detektiert werden. Passiert dies zentral zwischen
+zwei Kanälen, so wird der Cluster mit hoher Wahrscheinlichkeit von diesen beiden Kanälen detektiert. Die Hitmap in Abbildung \ref{fig:hitmap} zeigt, dass die Quelle relativ zentral vor dem Detektor
+plaziert wurde. Der Messwerteverlauf deutet auf eine Normalverteilung hin.
+
+Bei der Umrechnung des Energiespektrums von ADC in $\si{\kilo\electronvolt}$ können nur Werte unterhalb der Energie $\SI{900.0}{\kilo\electronvolt}$ umgerechnet werden.
+Da die Zerfallsenergie von Strontium-90 bei $\SI{0.546}{\mega\electronvolt}$ \cite{anleitung} liegt, ist diese Grenze unproblematisch.
+Beim Vergleich der Energiespektren in ADC (Abbildung \ref{fig:energiespektrumadc}) und in $\si{\kilo\electronvolt}$ (Abbildung \ref{fig:energiespektrumkeV}) fällt auf, dass die Binhöhe vor der Umrechnungsgrenze in ADC noch deutlich sichtbar ist, während
+sie im anderen Histogramm bereits bei etwa $\SI{400}{\kilo\electronvolt}$ verschwindet. Das ist eine Bestätigung dafür, dass der Zusammenhang zwischen
+Energie, bzw. charge und ADC nicht linear ist und durch eine Kalibration bestimmt werden muss. Das Polynom vierten Grades flacht bei hohen ADC bzw. charges stark ab, sodass
+dicht liegende ADC-Werte sich im $\si{\kilo\electronvolt}$-Energiespektrum auf einen großen Bereich verteilen. Der Mittelwert der Energie
+\begin{align}
+  E_\text{average} = \SI{102.869}{\kilo\electronvolt}
+\end{align}
+weicht relativ um $\SI{1}{\percent}$ von dem theoretischen Wert
+\begin{align}
+  E_\text{average,theorie} = \SI{}{},
+\end{align}
+der mit Formel \eqref{eqn:energieverlustdis} bestimmt wird, ab. Ein Grund für diese Abweichung kann sein, dass beispielsweise das elektrische Feld durch die angelegte Spannung im Detektor nicht in
+der Bethe-Bloch-Formel beachtet wird. Dass der MPV
+\begin{align}
+  \text{MPV} = \SI{80.03}{\kilo\electronvolt}
+\end{align}
+und der Mittelwert nicht aufeinander liegen, ist darauf zurückzuführen, dass das Energiespektrum durch eine asymmetrische Gaußverteilung, genauer
+durch eine Faltung zwischen einer Gauß- und einer Landau-Verteilung, beschrieben wird.
