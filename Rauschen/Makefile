@@ -12,14 +12,17 @@ all: build/main.pdf
 
 # hier Python-Skripte:
 
-build/plotdurchlass.pdf: eichmessung.py daten/eichung.txt header-matplotlib.tex | build
+build/plotdurchlasseinfach.pdf: eichmessung.py daten/eichung.txt header-matplotlib.tex | build
 	TEXINPUTS="$(call translate,$(pwd):)" python eichmessung.py
 
-build/widerstand.pdf: widerstand.py daten/widerstand1.txt header-matplotlib.tex | build
+build/plotWiderstand1.pdf: widerstand.py daten/widerstand1.txt header-matplotlib.tex | build
 	TEXINPUTS="$(call translate,$(pwd):)" python widerstand.py
 
+build/plotRauschspektrumOxid.pdf: rauschspektrum.py daten/oxidkurveband.txt header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python rauschspektrum.py
+
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf:build/plotdurchlass.pdf build/widerstand.pdf
+build/main.pdf:build/plotdurchlasseinfach.pdf build/plotWiderstand1.pdf build/plotRauschspektrumOxid.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \
