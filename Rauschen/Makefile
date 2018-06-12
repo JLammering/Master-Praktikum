@@ -11,11 +11,15 @@ endif
 all: build/main.pdf
 
 # hier Python-Skripte:
-build/plot.pdf: plot.py matplotlibrc header-matplotlib.tex | build
-	TEXINPUTS="$(call translate,$(pwd):)" python plot.py
+
+build/plotdurchlass.pdf: eichmessung.py daten/eichung.txt header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python eichmessung.py
+
+build/widerstand.pdf: widerstand.py daten/widerstand1.txt header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python widerstand.py
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: build/plot.pdf
+build/main.pdf:build/plotdurchlass.pdf build/widerstand.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \
