@@ -21,8 +21,14 @@ build/plotWiderstand1.pdf: widerstand.py daten/widerstand1.txt header-matplotlib
 build/plotRauschspektrumOxid.pdf: rauschspektrum.py daten/oxidkurveband.txt header-matplotlib.tex | build
 	TEXINPUTS="$(call translate,$(pwd):)" python rauschspektrum.py
 
+build/plotElement.pdf: elementar.py daten/elementar.txt header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python elementar.py
+
+build/plotKennlinie1.pdf: kennlinie.py daten/kennlinie1.txt header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python kennlinie.py
+
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf:build/plotdurchlasseinfach.pdf build/plotWiderstand1.pdf build/plotRauschspektrumOxid.pdf
+build/main.pdf:build/plotdurchlasseinfach.pdf build/plotWiderstand1.pdf build/plotRauschspektrumOxid.pdf build/plotElement.pdf build/plotKennlinie1.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \

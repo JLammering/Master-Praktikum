@@ -16,8 +16,8 @@ def plotDurchlass(spannung, nu, V_N, amplitude, dateiname):
         plt.yscale('log')
     spannung /= amplitude**2
     plt.plot(nu, spannung, 'kx', label='Messwerte')
-    plt.xlabel(r'$\nu/\si{\kilo\hertz}$')
-    plt.ylabel(r'$U_\text{A}^2 \:/\: \si{\volt\squared}$')
+    #plt.xlabel(r'$\nu/\si{\kilo\hertz}$')
+    #plt.ylabel(r'$U_\text{A}^2 \:/\: \si{\volt\squared}$')
     plt.legend(loc='best')
 
     # in matplotlibrc leider (noch) nicht möglich

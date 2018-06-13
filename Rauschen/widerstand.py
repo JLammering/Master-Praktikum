@@ -22,7 +22,7 @@ def plotWiderstand(widerstand, spannung, V_N, dateiname):
     else:
         x = widerstand
     plt.plot(x, y, 'kx', label='Messwerte')
-    plt.xlabel(r'$R/\si{\ohm}$')
+    #plt.xlabel(r'$R/\si{\ohm}$')
 
 
 
@@ -46,7 +46,7 @@ def plotWiderstand(widerstand, spannung, V_N, dateiname):
     k_B = params[0]/(4*int*T)
     print('k_B= ', k_B)
 
-    plt.ylabel(r'$U_\text{A} \:/\: a.u.$')
+    #plt.ylabel(r'$U_\text{A} \:/\: a.u.$')
     plt.legend(loc='best')
 
     # in matplotlibrc leider (noch) nicht möglich
