@@ -1,6 +1,6 @@
 \section{Einleitung}
 
-In diesem Versuch soll das Verhalten und die Struktur eines Silizium-Streifensensors untersucht werden. Streifensensoren werden in der Teilchenphysik eingesetzt um mit schnellem Antwortverhalten die Spuren von Teilchen in Teilchenbeschleunigerexperimenten zu vermessen. Ein Beispiel für ein solches Experiment ist ATLAS am Large Hadron Collider in der Schweiz, dass in der zweiten Lage des Spurfindungssystems Streifensensoren nutzt, die den hier benutzen sehr ähnlich sind.
+In diesem Versuch soll das Verhalten und die Struktur eines Silizium-Streifensensors untersucht werden. Streifensensoren werden in der Teilchenphysik eingesetzt um mit schnellem Antwortverhalten die Spuren von Teilchen in Teilchenbeschleunigerexperimenten zu vermessen. Ein Beispiel für ein solches Experiment ist ATLAS am Large Hadron Collider in der Schweiz, das in der zweiten Lage des Spurfindungssystems Streifensensoren nutzt, die den hier benutzen sehr ähnlich sind.
 
 
 \section{Theorie}
@@ -11,7 +11,7 @@ Folgendes orientiert sich an \cite{anleitung} und \cite{goessling}.
 \subsection{Halbleiter}
 
 Der genutzte Silizium-Streifensensor ist ein Halbleiterdetektor. Halbleiter sind Elemente oder Verbindungen, dessen Leitfähigkeit größer ist als die von Isolatoren, aber kleiner als die von Metallen. Ihre Leitfähigkeit lässt sich leicht manipulieren durch Anregung oder Einbringen von Fremdatomen. Diese Steuerung macht sie interessant für viele Einsatzgebiete.
-Sie unterscheiden sich von Leitern und Isolatoren durch die Größe der Bandlücke zwischen Valenzband und Leitungsband. Während die Bänder sich bei Leitern überschneiden, beträgt die Größe der Bandlücke bei Isolatoren je nach Definition circa $\SI{10}{\electronvolt}$ und liegt bei Halbleitern bei wenigen $\si{\electronvolt}$. Die Bandlücke bei reinem Silizium beträgt beispielsweise $\SI{1.1}{\electronvolt}$. Das Bandschema im nicht angeregten Zustand eines Halbleiters ist in Abbildung \ref{fig:bandmodell} zu sehen.
+Sie unterscheiden sich von Leitern und Isolatoren durch die Größe der Bandlücke zwischen Valenzband und Leitungsband. Während die Bänder sich bei Leitern überschneiden, beträgt die Größe der Bandlücke $E_\text{G}$ bei Isolatoren je nach Definition circa $\SI{10}{\electronvolt}$ und liegt bei Halbleitern bei wenigen $\si{\electronvolt}$. Die Bandlücke bei reinem Silizium beträgt beispielsweise $\SI{1.1}{\electronvolt}$. Das Bandschema im nicht angeregten Zustand eines Halbleiters ist in Abbildung \ref{fig:bandmodell} zu sehen.
 
 \begin{figure}
   \centering
@@ -39,7 +39,7 @@ Wenn ein mit Donatoren n-dotierter Halbleiter verbunden wird mit einem mit Akzep
 \end{figure}
 
 Um hier als Detektor zu dienen, wird an den pn-Halbleiter noch eine Spannung so angelegt, dass sie die Depletionszone noch vergrößert.
-Wenn die Depletionszone den gesamten Halbleiter ausmacht, sollte theoretisch kein Strom mehr fließen, da keine freien Ladungsträger vorhanden sind. Ein einfallendes ionisierendes Teilchen erzeugt Elektronen-Loch-Paare in dieser Zone, die als Ladungsfluss detektiert werden können.
+Wenn die Depletionszone den gesamten Halbleiter ausmacht, sollte theoretisch kein Strom mehr fließen, da keine freien Ladungsträger vorhanden sind. Allerdings werden durch thermische Anregungen Elektronen-Loch-Paare erzeugt, die als Leckstrom detektiert werden. Auch ein einfallendes ionisierendes Teilchen erzeugt Elektronen-Loch-Paare in dieser Zone, die als Ladungsfluss detektiert werden können.
 
 \subsection{Einfallende Strahlung}
 
@@ -51,16 +51,16 @@ Die detektierten Teilchen in diesem Versuch sind die Elektronen aus der Umwandlu
 \begin{align*}
   n \to p + e^- + \bar \nu.
 \end{align*}
-Dabei ist die Energieverteilung des Elektrons kontinuierlich, da die freiwerdende Energie beim Neutronzerfall zufällig auf Elektron und Neutrino aufgeteilt wird. Die Energieverteilung hat dann die Form aus Abbildung \ref{fig:elektronenergie}.
+Dabei ist die Energieverteilung des Elektrons kontinuierlich, da die freiwerdende Energie beim Neutronzerfall zufällig auf Elektron und Neutrino aufgeteilt wird. Die Energieverteilung hat dann im Fall von \ce{^{32}P} die Form aus Abbildung \ref{fig:elektronenergie}.
 \begin{figure}
   \centering
   \includegraphics[height=6cm]{TimosAufrisse/elektronenenergie.png}
   \caption{Energieverteilung des Elektrons \cite{anleitung}.}
   \label{fig:elektronenergie}
 \end{figure}
-Von Interesse sind in diesem Versuch nur die Elektronen aus dem ersten Teil des Zerfalls aus \eqref{eqn:zerfall}. Da aber der zweite
-Teil bei einer wesentlich höheren maximalen Emissionsenergie abläuft ($E = \SI{2.28}{\mega\electronvolt}$ im Vergleich zu $E = \SI{0.546}{\mega\electronvolt}$ bei
-$\ce{Sr^{90} ->[$\beta^-$] Y^{90}}$), kann durch Schneiden auf der Energie, der Einfluss auf die Messung reduziert werden.
+Von Interesse sind in diesem Versuch nur die Elektronen aus dem ersten Teil des Zerfalls aus \eqref{eqn:zerfall}. Da aber der zweite Teil am wahrscheinlichsten Elektronen in einem ähnlich niedrigen Energiebereich emittiert, wird keine Unterscheidung unternommen aus welchem Zerfall die Elektronen stammen.
+% bei einer wesentlich höheren maximalen Emissionsenergie abläuft ($E_\text{max} = \SI{2.28}{\mega\electronvolt}$ im Vergleich zu $E = \SI{0.546}{\mega\electronvolt}$ bei
+%$\ce{Sr^{90} ->[$\beta^-$] Y^{90}}$), kann durch Schneiden auf der Energie, der Einfluss auf die Messung reduziert werden.
 
 Die ausgesandten Elektronen wechselwirken beim Durchdringen des Detektors mit der Materie und verlieren so einen Teil ihrer Energie.
 Sie stoßen entweder elastisch und werden gestreut oder inelastisch und lösen Hüllenelektronen aus, dessen Ladungsfluss dann detektiert wird. Der mittlere Energieverlust pro Wegstrecke wird mit der Bethe-Bloch-Gleichung für Elektronen beschrieben:
@@ -83,7 +83,7 @@ Eingesetz ergibt sich für ein Elektron, dass mit der maximalen Energie des hier
   \label{eqn:energieverlustdis}
 \end{align}
 
-Die Energiedeposition im Streifendetektor ist nicht wie bei dickeren Materialien gaußverteilt, sondern folgt der Landauverteilung; schematisch gezeigt in Abbildung \ref{fig:energiedepositionElektron}. Ein Grund dafür ist, dass die Elektronen nicht ihre geamte Energie deponieren.
+Die Energiedeposition im Streifendetektor ist nicht wie bei dickeren Materialien gaußverteilt aufgrund des Zentralen Grenzwertsatzes, sondern folgt der Landauverteilung; schematisch gezeigt in Abbildung \ref{fig:energiedepositionElektron}. Ein Grund dafür ist, dass die Elektronen nicht ihre gesamte Energie deponieren und diese Energie nach dem $\beta$-Spektrum verteilt ist.
 \begin{figure}
   \centering
   \includegraphics[height=6cm]{TimosAufrisse/energiedepositionElektron.png}
@@ -104,7 +104,7 @@ Dabei sind die Pedestals der durchschnittliche Offset der Streifen ohne Signal:
   \symup{P}(i) = \frac{1}{N} \sum_{k=1}^N \text{ADC}(i, k).
 \end{align}
 Die Streifen sind so eingestellt, dass ihr Offset bei \num{500} ADC-Counts liegt.
-Der Common Mode Shift auch Common Noise D$(k)$ ist ein globales Rauschen, das im allgemeinen gaußverteilt ist mit dem Mittelwert Null. Es berechnet sich wie folgt:
+Der Common Mode Shift, auch Common Noise D$(k)$, ist ein globales Rauschen pro Event, das im Allgemeinen gaußverteilt ist mit dem Mittelwert Null. Es berechnet sich bei Leermessungen wie folgt:
 \begin{align}
   \symup{D}(k) = \frac{1}{128} \sum_{i=1}^{128} (\text{ADC}(i, k) - \symup{P}(i)).
 \end{align}

@@ -8,18 +8,18 @@ Der Aufbau ist in Abbildung \ref{fig:aufbau} zu sehen.
   \caption{Aufbau des Alibava EASy \cite{anleitung}.}
   \label{fig:aufbau}
 \end{figure}
-Das Flachbandkabel zwischen Detektor- und Kontrolleinheit sorgt für die Stromversorgung und Datenübermittlung. Außerdem kann von der Kontrolleinheit an den Detektor noch ein Triggersignal gesendet. Wie sich dieses ergibt wird später noch beschrieben. Zusätzlich kann ein Laser an den Detektor angeschlossen werden, mit dem dessen Struktur untersucht wird.
+Das Flachbandkabel zwischen Detektor- und Kontrolleinheit sorgt für die Stromversorgung und Datenübermittlung. Außerdem kann von der Kontrolleinheit an den Detektor noch ein Triggersignal gesendet. Wie sich dieses ergibt wird später noch beschrieben. Zusätzlich kann ein Laser in der Kontrolleinheit erzeugt werden und an den Detektor angeschlossen werden und so dessen Struktur untersucht werden.
 
 \subsection{Detektoreinheit}
 Der Detektor besteht aus 128 p-dotierten Streifen, die in eine $\SI{300}{\micro\meter}$ dicke n-dotierte Basis implantiert sind.
-Dabei sind die Streifen einzelnd mit der Ausleseelektronik verbunden, sodass sie an einzelne Kanäle angeschlossen werden können und sich so die ortsaufgelöste Messung ergibt.
+Dabei sind die Streifen einzeln mit der Ausleseelektronik verbunden, sodass sie an einzelne Kanäle angeschlossen werden können und sich so die ortsaufgelöste Messung ergibt.
 \begin{figure}
   \centering
   \includegraphics[height=7cm]{TimosAufrisse/detektorStreifen.png}
   \caption{Schema des Streifendetektors mit den p-dotierten Streifen und der n-dotierten Basis \cite{anleitung}.}
   \label{fig:detektorStreifen}
 \end{figure}
-Die Effizienz der Ladungssammlung (CCE) hängt von der angelegten Spannung $U$ an den Detektor ab und ergibt den Zusammenhang:
+Die Effizienz der Ladungssammlung (CCE) hängt von der angelegten Spannung $U$ an den Detektor ab und ergibt für die Lasermessung den Zusammenhang:
 \begin{align}
   \text{CCE}(U) = \frac{1-\exp(\frac{-d_\text{c}(U)}{a})}{1-\exp(\frac{-D}{a})}.
   \label{eqn:cce}
@@ -35,7 +35,7 @@ Die Dicke der Depletionszone $d_\text{c}(U)$ berechnet sich nach
 \end{align}
 
 \subsection{Laser}
-Der zur Vermessung des Detektors genutzte Laser hat eine Wellenlänge von $\SI{980}{\nano\meter}$ und bedeckt eine Fläche von $\SI{20}{\micro\meter}$ im Durchmesser auf dem Detektor. Seine Spitzenleistung beträgt $\SI{0.6}{\milli\watt}$ bei einer Pulslänge von $\SI{5}{\nano\second}$. Seine Position über dem Detektor lässt sich horizontal und vertikal mit Mikrometerschrauben verstellen.
+Der zur Vermessung des Detektors genutzte Laser hat eine Wellenlänge von $\SI{980}{\nano\meter}$ und bedeckt eine Fläche von $\approx \SI{20}{\micro\meter}$ im Durchmesser auf dem Detektor. Seine Spitzenleistung beträgt $\SI{0.6}{\milli\watt}$ bei einer Pulslänge von $\SI{5}{\nano\second}$. Seine Position über dem Detektor lässt sich horizontal und vertikal mit Mikrometerschrauben verstellen.
 
 \subsection{Kontrolleinheit}
 An der Kontrolleinheit lässt sich die Spannung, die am Detektor anliegt, einstellen und der fließende Strom ablesen. Außerdem liefert sie den Laser und verarbeitet das Triggersignal. Das Triggersignal wird dabei durch eine Diode erzeugt, die unter dem Streifendetektor angebracht ist und nur dann ein Signal liefert, wenn die einfallende Strahlung genug Energie besitzt um den eigentlichen Detektor zu durchdringen und dann auch in der Diode Energie deponiert. Eine Skizze dieses Aufbaus ist in Abbildung \ref{fig:diodenTrigger} zu sehen.
@@ -45,10 +45,10 @@ An der Kontrolleinheit lässt sich die Spannung, die am Detektor anliegt, einste
   \caption{Die Diode als Trigger \cite{anleitung}.}
   \label{fig:diodenTrigger}
 \end{figure}
-Das Triggersignal sorgt also dafür, dass nur die Daten aufgenommen werden, die von interessantent Elektronen stammen, da niederenergetischer Background so reduziert wird.
+Das Triggersignal sorgt also dafür, dass nur die Daten aufgenommen werden, die von interessanten Elektronen stammen, da niederenergetischer Background so reduziert wird.
 
 \subsection{Computer}
-Die Kontrolleinheit wird per USB-Kabel an den Computer angeschlossen. An diesem können mit der Alibava gui Einstellungen vorgenommen werden. Außerdem werden dort die Daten gespeichert und mit einem Auswärteskript vorprozessiert.
+Die Kontrolleinheit wird per USB-Kabel an den Computer angeschlossen. An diesem können mit der Alibava gui Einstellungen vorgenommen werden. Außerdem werden dort die Daten gespeichert und mit einem Auswerteskript vorprozessiert.
 
 
 
@@ -60,10 +60,10 @@ Die Kontrolleinheit wird per USB-Kabel an den Computer angeschlossen. An diesem 
 Zur Aufnahme einer Strom-Spannungs-Kennlinie wird die Spannung, die am Detektor anliegt, an der Kontrolleinheit in \SI{10}{\volt}-Schritten in dem Bereich \SI{0}{\volt} bis \SI{200}{\volt} geregelt. Dazu ist mit der Anzeige zu jedem Spannungswert ein Wert für den Leckstrom aufzunehmen.
 
 \subsection{Pedestals und Noise}
-Um den Offset und den Common Mode Shift aufzunehmen wird ein \textit{Pedestal Run} mit 1000 Events durchgeführt.
+Um den Offset, den Common Mode Shift und den Noise aufzunehmen wird ein \textit{Pedestal Run} mit 1000 Events durchgeführt.
 
 \subsection{Kalibration}
-Mit einem \textit{Delay Scan} wird zunächst die optimale Verzögerung zwischen Signal und Auslese bestimmt. Nach dem Eintragen des so ermittelten Werts ins Kalibrationsfenster wird eine Kalibrationskurve für fünf Kanäle bei $U > U_\text{dep}$ aufgenommen. Eingestellt wird dabei der \textit{Calibration Run}. Diese Messung wird dann nochmal bei einem Kanal mit $U=\SI{0}{\volt}$ wiederholt.
+Mit einem \textit{Delay Scan} wird zunächst die optimale Verzögerung zwischen Signal und Auslese bestimmt. Nach dem Eintragen des so ermittelten Werts in das Kalibrationsfenster wird eine Kalibrationskurve für fünf Kanäle bei $U > U_\text{dep}$ aufgenommen. Eingestellt wird dabei der \textit{Calibration Run}. Diese Messung wird dann nochmal bei einem Kanal mit $U=\SI{0}{\volt}$ wiederholt.
 
 \subsection{Sensorvermessung mittels Laser}
 Für diesen Teil wird der Laser an den Detektor angeschlossen.
