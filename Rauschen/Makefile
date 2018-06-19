@@ -15,7 +15,7 @@ all: build/main.pdf
 build/plotdurchlasseinfach.pdf: eichmessung.py daten/eichung.txt header-matplotlib.tex | build
 	TEXINPUTS="$(call translate,$(pwd):)" python eichmessung.py
 
-build/plotWiderstand1.pdf: widerstand.py daten/widerstand1.txt header-matplotlib.tex | build
+build/plotWiderstand1.pdf: widerstand.py eichmessung.py daten/widerstand1.txt header-matplotlib.tex | build
 	TEXINPUTS="$(call translate,$(pwd):)" python widerstand.py
 
 build/plotRauschspektrumOxid.pdf: rauschspektrum.py daten/oxidkurveband.txt header-matplotlib.tex | build

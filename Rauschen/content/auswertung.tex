@@ -1,12 +1,154 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
+\subsection{Thermisches Rauschen eines Widerstands}
+
+\paragraph{Einfache Schaltung}
+
+Benutzt wird hier die Schaltung aus Abbildung \ref{fig:???}, die hier als einfache Schaltung bezeichnet wird. Um aus dem thermischen Rauschen eines Widerstands die Boltzmann Konstante $k$ zu bestimmen, muss zunächst eine Eichmesssung durchgeführt werden. Mit den Werten aus Tabelle \ref{tab:durchlasseinfach} ergibt sich normiert auf die Amplitude und die Nachverstärkung $V_\text{N}$ die Durchlasskurve aus Abbildung \ref{fig:plotdurchlasseinfach}.
 \begin{figure}
   \centering
-  \includegraphics{plotphase.pdf}
-  \caption{Plot.}
-  \label{fig:plot}
+  \includegraphics{build/plotdurchlasseinfach.pdf}
+  \caption{Durchlasskurve der Apparatur nach einfacher Schaltung aus Abbildung \ref{fig:???}.}
+  \label{fig:plotdurchlasseinfach}
 \end{figure}
+Es werden folgende Einstellungsparameter gewählt:
+\begin{align*}
+  U_\text{Amplitude} = \SI{200}{\milli\volt} \quad \Delta \nu_\text{Bandfilter} = \num{1}-\SI{50}{\kilo\hertz}\quad V_= = 10 \quad V_\text{V} = 1000 \quad V_\text{N} = 1.
+\end{align*}
+Außerdem wird ein Abschwächer mit $V_\text{Abschwächung} = 1/1000$ vorgeschaltet. Die Vorverstärkung und die Gleichspannungsverstärkung werden nicht rausgerechnet, da sie in der folgenden Messung gleich bleiben. Das Integral der Kurve aus Abbildung \ref{fig:plotdurchlasseinfach} ergibt, berechnet mit der Simpsonregel, die Apparatekonstante:
+\begin{align}
+  A = \SI{495496239571}{\hertz}.
+\end{align}
+
+Damit kann nun die Boltzmann Konstante berechnet werden. Mit den Widerständen $R_1$ und $R_2$ wurden die Werte aus den Tabellen \ref{tab:widerstand1} und \ref{tab:widerstand2} aufgenommen. Die Vorverstärkung, Gleichspannungsverstärkung und der Filterbereich des Bandfilters werden gleichgelassen. Die Temperatur ist $T = \SI{23(2)}{\celsius}$.
+Aus den Werten von $\overline{U_\text{a}^2}$ normiert auf die Nachverstärkung ergeben sich die Graphen in den Abbildungen \ref{fig:plotWiderstand1} und \ref{fig:plotWiderstand2}.
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plotWiderstand1.pdf}
+  \caption{Plot der Ausgangsspannung normiert auf die Nachverstärkung in Abhängigkeit vom Wert des Widerstands $R_1$.}
+  \label{fig:plotWiderstand1}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plotWiderstand2.pdf}
+  \caption{Plot der Ausgangsspannung normiert auf die Nachverstärkung in Abhängigkeit vom Wert des Widerstands $R_2$.}
+  \label{fig:plotWiderstand2}
+\end{figure}
+Ein linearer Fit nach
+\begin{align}
+  \overline{U_\text{a}^2} &= m R + b\\
+\intertext{ergibt für $R_1$:}
+  m_1 &= \SI{3.7(1)e-6}{\hertz\joule} & b_1 &= \SI{-5.4(8)e-4}{\volt\squared}
+\intertext{und für $R_2$:}
+  m_2 &= \SI{6.7(9)e-9}{\hertz\joule} & b_2 &= \SI{-4.4(4)e-9}{\volt\squared}
+\end{align}
+Aus Formel \eqref{eqn:???} ergibt sich für die Boltzmann Konstante:
+\begin{align*}
+\intertext{für $R_1$:}
+  k &= \frac{m_1}{4 A T} = \SI{6.4(2)e-21}{\joule\per\kelvin}
+\intertext{und für $R_2$:}
+  k &= \frac{m_2}{4 A T} = \SI{1.14(2)e-23}{\joule\per\kelvin}.
+\end{align*}
+
+Zuletzt wird die Schaltung noch mit einem $\SI{0}{\ohm}$ Widerstand kurzgeschlossen. Dabei ergeben sich die Messwerte aus Tabelle \ref{tab:kurzschlusseinfach}.
+\begin{table}
+  \centering
+  \begin{tabular}{S S}
+    \toprule
+    {$V_N$} & {$\overline{U_\text{a}^2}\:/\:\si{\milli\volt\squared}$}\\
+    \midrule
+    1 & -4\\
+    2 & -4\\
+    5 & -4\\
+    10 & -4\\
+    20 & -4\\
+    50 & -4\\
+    100 & -4\\
+    200 & 9\\
+    500 & 80\\
+    1000 & 315\\
+    \bottomrule
+  \end{tabular}
+  \caption{Amplituden der einfachen kurzgeschlossenen Schaltung.}
+  \label{tab:kurzschlusseinfach}
+\end{table}
+
+
+\paragraph{Korrelatorschaltung}
+
+Jetzt wird eine Schaltung nach Abbildung \ref{fig:???} aufgebaut; im Folgenden Korrelatorschaltung genannt. Zur Eichung wird erneut eine Durchlasskurve aufgenommen. Die eingestellten Parameter sind:
+\begin{align*}
+  U_\text{Amplitude} = \SI{500}{\milli\volt} \quad \nu_\text{m} = \SI{5}{\kilo\hertz}\quad V_= = 10 \quad V_\text{V} = 1000.
+\end{align*}
+Den beiden Eingängen der Vorverstärker wird jeweils ein Abschwächer mit $V_\text{Abschwächung} = 1/1000$ vorgeschaltet.
+Die Messwerte für die Eichmesssung sind in Tabelle \ref{tab:durchlasskorr} eingetragen.
+Diese Werte, normiert auf die Amplitude und die Nachverstärkung, sind als Durchlasskurve in Abbildung \ref{fig:plotdurchlasskorr} gezeigt.
+\begin{figure}
+  \centering
+  \includegraphics{build/plotdurchlassKorrelator.pdf}
+  \caption{Durchlasskurve der Apparatur nach der Korrelatorschaltung aus Abbildung \ref{fig:???}.}
+  \label{fig:plotdurchlasskorr}
+\end{figure}
+
+Damit kann nun die Boltzmann Konstante berechnet werden. Mit den Widerständen $R_1$ und $R_2$ wurden die Werte aus den Tabellen \ref{tab:widerstand1korr} und \ref{tab:widerstand2korr} aufgenommen. Die Vorverstärkung, Gleichspannungsverstärkung und die Mittenfrequenz der Selektionsverstärker werden gleichgelassen. Die Temperatur ist $T = \SI{20(2)}{\celsius}$.
+Aus den Werten von $\overline{U_\text{a}^2}$, normiert auf die Nachverstärkung sowie die hier eingestellte Verstärkungs des Selektionsverstärkers $V_\text{S} = 10$, ergeben sich die Graphen in den Abbildungen \ref{fig:plotWiderstand1korr} und \ref{fig:plotWiderstand2korr}.
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plotWiderstand1Korr.pdf}
+  \caption{Plot der Ausgangsspannung normiert auf die Nachverstärkung in Abhängigkeit vom Wert des Widerstands $R_1$.}
+  \label{fig:plotWiderstand1korr}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plotWiderstand2Korr.pdf}
+  \caption{Plot der Ausgangsspannung normiert auf die Nachverstärkung in Abhängigkeit vom Wert des Widerstands $R_2$.}
+  \label{fig:plotWiderstand2korr}
+\end{figure}
+Ein linearer Fit nach
+\begin{align}
+  \overline{U_\text{a}^2} &= m R + b\\
+\intertext{ergibt für $R_1$:}
+  m_1 &= \SI{1.166(7)e-10}{\hertz\joule} & b_1 &= \SI{-4.4(4)e-9}{\volt\squared}
+\intertext{und für $R_2$:}
+  m_2 &= \SI{1.10(1)e-9}{\hertz\joule} & b_2 &= \SI{2(1)e-8}{\volt\squared}
+\end{align}
+Aus Formel \eqref{eqn:???} ergibt sich für die Boltzmann Konstante:
+\begin{align*}
+\intertext{für $R_1$:}
+  k &= \frac{m_1}{4 A T} = \SI{1.33(1)e-23}{\joule\per\kelvin}
+\intertext{und für $R_2$:}
+  k &= \frac{m_2}{4 A T} = \SI{1.26(2)e-23}{\joule\per\kelvin}.
+\end{align*}
+
+Zuletzt wird die Schaltung noch mit einem $\SI{0}{\ohm}$ Widerstand kurzgeschlossen. Dabei ergeben sich die Messwerte aus Tabelle \ref{tab:kurzschlusskorr}.
+\begin{table}
+  \centering
+  \begin{tabular}{S S}
+    \toprule
+    {$V_N$} & {$\overline{U_\text{a}^2}\:/\:\si{\milli\volt\squared}$}\\
+    \midrule
+    50 & -5\\
+    100 & -9\\
+    200 & -26\\
+    500 & -140\\
+    1000 & -390\\
+    \bottomrule
+  \end{tabular}
+  \caption{Amplituden der einfachen Korrelatorschaltung.}
+  \label{tab:kurzschlusskorr}
+\end{table}
+
+\paragraph{Rauschzahl}
+
+Jetzt kann für die Korrelatorschaltung noch die Rauschzahl bei $R = \SI{500}{\ohm}$ bestimmt werden. Da $\nu_\text{m} = \SI{5}{\kilo\hertz}$ gewählt wird, ist $\Delta \nu = \SI{700.7}{\hertz}$. Die Temperatur ist erneut $T = \SI{20(2)}{\celsius}$. Die Verstärkungsfaktoren sind:
+\begin{align*}
+  V_\text{N} = 200 \quad V_\text{S} = 10 \quad V_= = 10 \quad V_\text{V} = 1000.
+\end{align*}
+Damit ergibt sich mit dem Messwert aus Tabelle \ref{tab:widerstand1korr} und der Formel \eqref{eqn:???} die Rauschzahl
+\begin{align}
+  F = \num{0.98(5)}.
+\end{align}
 
 Tabelle für copy and paste:
 \begin{table}[h]

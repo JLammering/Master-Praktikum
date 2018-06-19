@@ -12,6 +12,11 @@ def werteZuTabelle(*werteArray, rundungen):
 
     for i in range(len(werteArray[0])):  # geht durch die Zeilen
         for k in range(len(werteArray)):  # geht durch die Spalten
+            # if type(werteArray[k][i]) is int:
+            #     if k == len(werteArray)-1:  # am Ende Backslashes
+            #         print(int(round(werteArray[k][i], rundungen[k])), end='\\\\\n')
+            #     else:  # vorher mit Undzeichen
+            #         print(int(round(werteArray[k][i], rundungen[k])), end=' & ')
             if k == len(werteArray)-1:  # am Ende Backslashes
                 print(round(werteArray[k][i], rundungen[k]), end='\\\\\n')
             else:  # vorher mit Undzeichen
