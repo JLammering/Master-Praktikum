@@ -1,2 +1,60 @@
  \section{Durchführung}
 \label{sec:Durchführung}
+
+\begin{enumerate}
+  \item[a)] Im ersten Teil dieses Versuchs wird das thermische Widerstandsrauschen an
+  einem einfachen Spektrometer untersucht, um die Rauschzahl des Spektrometers
+  und die Boltzmannkonstante $k_\text{B}$ zu bestimmen. Dazu wird die Schaltung in
+  Abbildung \ref{fig:rauschspektro} aufgebaut. Der Frequenzbereich am Bandfilter
+  sollte dabei so gewählt sein, dass die Frequenzen $\SI{50}{\hertz}$ und $\SI{150}{\hertz}$
+  nicht im Durchlassbereich liegen, da sonst große Störspannungen entstehen. Der obere
+  Randwert für die Wahl des Frequenzbereichs sollte eine Frequenz von $\SI{500}{\kilo\hertz}$
+  nicht überschreiten. Die Verstärkung des Vorverstärkers ist konstant bei $V_\text{V} = 1000$
+  und die der anderen Verstärkerbauteile kann manuell eingestellt werden.
+
+  Es wird zunächst mittels einer Eichmessung die Größe
+  \begin{align}
+    A = \int_{0}^{\nu_\text{max}} V_{=} V_\text{V}^2(\nu) V_\text{N}^2(\nu) \mathrm{d}\nu
+  \end{align}
+  bestimmt. Dazu wird an den Eingang des Spektrometers ein (rauschfreier) Abschwächer mit dem
+  Verstärkungsfaktor $V_\text{A} = 1/1000$ und dahinter ein Sinusgenerator angeschlossen.
+  Daraufhin wird die Ausgangsspannung am Voltmeter in Abhängigkeit von der Frequenz aufgenommen.
+
+  Für die eigentliche Messung werden zwei zu untersuchende variable Widerstände mit unterschiedlichen
+  Widerstandsbereichen an das Rauschspektrometer angeschlossen und die Ausgangsspannung $U_\text{A}^2$
+  in Abhängigkeit von $R$ aufgenommen. Aus der Messreihe kann gemäß der vorgestellten theoretischen
+  Grundlagen die Rauschzahl des Spektrometers und die Boltzmannkonstante $k_\text{B}$ ermittelt werden.
+
+  \item[b)] Die im vorangegangenen Abschnitt vorgestellte Durchführung wird nun für das
+  Rauschspektrometer nach dem Korrelatorprinzip wiederholt. Dabei wird anstatt des Bandfilters
+  bei beiden Kanälen jeweils ein Selektivverstärker verwendet und die Eichmessung wiederholt.
+  Dieser hat die Durchlasskurve
+  \begin{align}
+    U_\text{A}^2 = \frac1{Q^2} \cdot \frac1{\eta^2 + \frac1{\eta^2} + \frac1{Q^2} -2} \cdot U_\text{E}^2,
+  \end{align}
+  wobei $Q = 10$ die Güte am Selektivverstärker, $\eta = \nu/\nu_0$ und $\nu_0$ die Mittenfrequenz ist.
+
+  \item[c)] Als nächstes wird das Schrotrauschen einer Hochvakuumdiode mit Reinmetallkathode untersucht,
+  um die Elementarladung $\mathrm{e}_0$ zu bestimmen.
+  Zunächst werden einige Kennlinien des Anodenstroms $I_0$ in Abhängigkeit der Anodenspannung $U_\text{An}$ bei
+  konstantem Heizstrom aufgenommen, da die Diode für diese Messung im Sättigungsbereich arbeiten soll und dieser
+  erst ermittelt werden muss. Zwar treten die Schwankungen des Schrotrauschens im Strom statt, jedoch besitzt
+  die Diode einen Arbeitswiderstand, an dem letzendlich eine Spannung $U(t) = R I(t)$ abfällt. Da diese wesentlich
+  größer als die zuvor untersuchten thermischen Rauschspannungen ist und damit das Verstärkerrauschen kaum eine Rolle spielt,
+  genügt es, das einfache Spektrometer aus Abbildung \ref{fig:rauschspektro} anzuschließen um das verstärkte
+  Spannungsquadrat in Abhängigkeit von der Mittenfrequenz aufzunehmen.
+
+  \item[d)] Außerdem wird das Frequenzspektrum $W(\nu)$ des Schrotrauschens einer Hochvakuumdiode mit Reinmetallkathode
+  aufgenommen. Dazu wird derselbe Versuchsaufbau wie in c) benutzt, mit der Änderung, dass das Bandfilter gegen
+  einen Selektivverstärker ausgetauscht wird. Dabei ist zu beachten, dass die Mittenfrequenz $\nu_0$ und der
+  Durchlassbereich $\Delta \nu$ korreliert sind.
+  Bei der Messung der Ausgangsspannung in Abhängigkeit der Mittenfrequenz muss bei niedrigen Frequenzen
+  $\nu_0 < \SI{500}{\hertz}$ die Zeitkonstante am RC-Tiefpass justiert werden. Außerdem sollte der Anodenstrom
+  unter $\SI{4}{\milli\ampere}$ liegen um Störspannungen gering zu halten.
+
+  \item[e)] Im letzten Teil dieses Experiments wird das Frequenzspektrum $W(\nu)$ einer Hochvakuumdiode mit Oxidmetallkathode
+  aufgenommen. Dazu wird erneut das einfache Rauschspektrometer verwendet. Für hohe Frequenzen zwischen $\SI{100}{\kilo\hertz}$
+  und $\SI{500}{\kilo\hertz}$ wird dabei das Bandfilter und für Frequenzen darunter bis $\SI{10}{\hertz}$ der Selektivverstärker
+  verwendet. Die Diode mit Oxidmetallkathode wird nicht im Sättigungsbereich betrieben, sodass die Frequenzspektren der
+  Aufgabenteile d) und e) nur qualitativ verglichen werden können.
+\end{enumerate}

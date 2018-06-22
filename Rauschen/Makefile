@@ -28,6 +28,7 @@ build/plotKennlinie1.pdf: kennlinie.py daten/kennlinie1.txt header-matplotlib.te
 	TEXINPUTS="$(call translate,$(pwd):)" python kennlinie.py
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
+
 build/main.pdf:build/plotdurchlasseinfach.pdf build/plotWiderstand1.pdf build/plotRauschspektrumOxid.pdf build/plotElement.pdf build/plotKennlinie1.pdf
 
 build/main.pdf: FORCE | build
