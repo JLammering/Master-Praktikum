@@ -5,7 +5,7 @@
 
 Die mit der Stromspannungskennlinie bestimmte Depletionsspannung lautet
 \begin{align}
-  U_\text{Dep,I(U)} = \SI{65.09}{\volt}
+  U_\text{Dep,I(U)} = \SI{7(5)e01}{\volt}
   \label{eqn:UdepI}
 \end{align}
 und liegt im Bereich der vom Hersteller genannten Depletionsspannung
@@ -21,7 +21,7 @@ anschließenden Messreihen höher als \eqref{eqn:UdepI} einzustellen.
 
 Der bestimmte mittlere Pedestal liegt im Durchschnitt bei
 \begin{align}
-  \text{Pedestal}_\text{average} = 509.122 \pm 2.210 \, \text{ADC}
+  \text{Pedestal}_\text{average} = 509,122 \pm 2,210 \, \text{ADC}
 \end{align}
 und damit am erwarteten Wert $\SI{500}{\text{ADC}}$.
 
@@ -32,7 +32,7 @@ mit sichtbaren statistischen Schwankungen. Das ist darauf zurückzuführen, dass
 
 Der sich ergebende mittlere Noise liegt bei
 \begin{align}
-  \text{Noise}_\text{average} = 2.119 \pm 0.081 \, \text{ADC}.
+  \text{Noise}_\text{average} = 2,119 \pm 0,081 \, \text{ADC}.
   \label{eqn:noise}
 \end{align}
 und schwankt mit einem relativen Fehler von $\SI{3.8}{\percent}$ schwach für
@@ -41,7 +41,8 @@ jeden Streifen.
 \subsection{Kalibrationsmessungen}
 
 In Abbildung \ref{fig:kalibration} ist erkennbar, dass die Kalibrationskurven der Kanäle 20,40,60,80,100
-für eine Vorspannung oberhalb der Depletionsspannung quasi alle aufeinander liegen. Das Polynom vierten Grades
+für eine Vorspannung oberhalb der Depletionsspannung quasi alle aufeinander liegen. Daher wird auch angenommen, dass
+die Kalibration bei allen Kanälen ähnlich ist. Das Polynom vierten Grades
 nähert diese im Bereich $\text{charge} = [0,250000 \symup{e}]$ ausgezeichnet an, was ebenfalls in der
 Abbildung ersichtlich ist.
 
@@ -54,13 +55,13 @@ beispielsweise doppelt so viel wie der berechneten durchschnittliche Noise \eqre
 \subsection{Vermessung der Streifensensoren mittels eines Lasers}
 
 Aus Abbildung \ref{fig:pitch} ist entnehmbar, dass der Laser über die Kanäle 91 und 92 bewegt wurde.
-Die berechnete pitch liegt bei
+Die berechnete Pitch liegt bei
 \begin{align}
-  \text{pitch}_{92-91} = \SI{161.69}{\micro\meter}
+  \text{Pitch}_{92-91} = \SI{162(14)}{\micro\meter}
 \end{align}
 und weicht damit relativ gering um $\SI{1}{\percent}$ von der vom Hersteller genannten pitch
 \begin{align}
-  \text{pitch}_\text{Hersteller} = \SI{160}{\micro\meter}
+  \text{Pitch}_\text{Hersteller} = \SI{160}{\micro\meter}
 \end{align}
 ab. Der Sitz der Kathode ist zur Vermessung ionisierender Strahlung irrelevant, da diese Strahlung
 kaum von der Metallisierung reflektiert wird. Beim Laserstrahl wird genau die Tatsache, dass das
@@ -71,18 +72,12 @@ wie an der geringen Abweichung erkennbar ist.
 
 Die mit der Charge Collection Efficiency Messung mit dem Laser berechnete Depletionsspannung
 \begin{align}
-  U_\text{dep,ccel} = \SI{110(5)}{\volt}
+  U_\text{dep,ccel} = \SI{73(4)}{\volt}
 \end{align}
-ist wesentlich größer als die mit der Stromspannungskennlinie bestimmte Depletionsspannung
+liegt bei der mit der Stromspannungskennlinie bestimmten Depletionsspannung
 \begin{align}
-  U_\text{Dep,I(U)} = \SI{65.09}{\volt}.
+  U_\text{Dep,I(U)} = \SI{7(5)e01}{\volt}.
 \end{align}
-Das ist darauf zurückzuführen, dass die Leckstrommessung zwar ein guter Indikator für das Erreichen der
-Depletionsspannung ist, aber die Vorspannung, die tatsächlich für die Signalmessung eingestellt werden sollte,
-größer ist. Der Grund dafür liegt darin, dass beim Erreichen der Depletionsspannung das äußere elektrische Feld noch nicht
-ausreichend stark ist, um jedes entstehende Elektron-Loch-Paar an der Rekombination zu hindern. Der Leckstrom steigt aus diesem
-Grund auch weiter an, wenn die Spannung über die Depletionsspannung hinausgeht: ein immer größerer Anteil der durch
-thermische Anregung erzeugten Elektron-Loch-Paaren erreicht die Pole und rekombiniert nicht.
 
 \subsection{Charge Collection Efficiency Messungen mit der Quelle}
 
@@ -90,38 +85,47 @@ Die mit der Charge Collection Efficiency Messungen mit der Quelle berechnete Dep
 \begin{align}
   U_\text{depl,cceq} = \SI{120(5)}{\volt}
 \end{align}
-weicht mit $\SI{9}{\percent}$ leicht von der Messung mit dem Laser ab. Was außerdem in Abbildung
-\ref{fig:cceq} heraussticht, ist, dass das Plateau eine leichte Steigung besitzt. Das ist darauf zurückzuführen, dass
-das Elektron aus dem radioaktiven $\beta$-Zerfall im Gegensatz zu den Photonen aus dem Laser durch das
-elektrische Feld im Detektor leicht abgebremst wird. Wird die Spannung erhöht, so steigt die elektrische Feldstärke
-und das Elektron hält sich länger im Detektor auf, sodass sich die Anzahl an Stoßprozessen erhöht und die Energiedeposition steigt.
+weicht mit $\SI{71}{\percent}$ stark von der Stromspannungskennlinienmessung ab. Was außerdem in Abbildung
+\ref{fig:cceq} heraussticht, ist, dass das Plateau eine leichte Steigung besitzt.
+Das ist darauf zurückzuführen, dass die Leckstrommessung zwar ein guter Indikator für das Erreichen der
+Depletionsspannung ist, aber die Vorspannung, die tatsächlich für die Signalmessung eingestellt werden sollte,
+größer ist. Der Grund dafür liegt darin, dass beim Erreichen der Depletionsspannung das äußere elektrische Feld noch nicht
+ausreichend stark ist, um jedes entstehende Elektron-Loch-Paar an der Rekombination zu hindern. Der Leckstrom steigt aus diesem
+Grund auch weiter an, wenn die Spannung über die Depletionsspannung hinausgeht: ein immer größerer Anteil der durch
+thermische Anregung erzeugten Elektron-Loch-Paaren erreicht die Pole und rekombiniert nicht.
+%Das ist darauf zurückzuführen, dass
+%das Elektron aus dem radioaktiven $\beta$-Zerfall im Gegensatz zu den Photonen aus dem Laser durch das
+%elektrische Feld im Detektor leicht abgebremst wird. Wird die Spannung erhöht, so steigt die elektrische Feldstärke
+%und das Elektron hält sich länger im Detektor auf, sodass sich die Anzahl an Stoßprozessen erhöht und die Energiedeposition steigt.
 
 \subsection{Großer Quellenscan}
 
 In Abbildung \ref{fig:clusterevent} ist erkennbar, dass die Wahrscheinlichkeit, das bei einem Event keine Cluster entstehen, sehr gering, aber nicht 0 ist.
-Ein Teil der einfallenden $\beta$-Strahlen gehen also ohne eine Ionisation auszulösen durch den Streifendetektor und werden an der Diode detektiert.
+Zum einen geht ein Teil der einfallenden $\beta$-Strahlen ohne eine Ionisation auszulösen durch den Streifendetektor und wird an der Diode detektiert und zum anderen
+besitzt die Diode beispielsweise auch ein eigenes Noise, sodass fälschlicherweise ein Triggersignal ausgelöst wird, obwohl keine Cluster entstanden sind.
 Aus Abbildung \ref{fig:channelevent} geht hervor, dass an der Detektion eines Clusters vorwiegend ein oder zwei Kanäle beteiligt sind. Der Detektor ist mit
 $\SI{300}{\micro\meter}$ nicht sehr dick, weshalb die erzeugten Elektron-Loch-Paare etwa auf der Höhe ihres Entstehungsortes detektiert werden. Passiert dies zentral zwischen
-zwei Kanälen, so wird der Cluster mit hoher Wahrscheinlichkeit von diesen beiden Kanälen detektiert. Die Hitmap in Abbildung \ref{fig:hitmap} zeigt, dass die Quelle relativ zentral vor dem Detektor
+zwei Kanälen, so wird der Cluster mit hoher Wahrscheinlichkeit von diesen beiden Kanälen detektiert. Die Hitmap in Abbildung \ref{fig:hitmap} zeigt, dass die Quelle relativ zentral auf dem Detektor
 plaziert wurde. Der Messwerteverlauf deutet auf eine Normalverteilung hin.
 
 Bei der Umrechnung des Energiespektrums von ADC in $\si{\kilo\electronvolt}$ können nur Werte unterhalb der Energie $\SI{900.0}{\kilo\electronvolt}$ umgerechnet werden.
-Da die Zerfallsenergie von Strontium-90 bei $\SI{0.546}{\mega\electronvolt}$ \cite{anleitung} liegt, ist diese Grenze unproblematisch.
+Da die Zerfallsenergie von Strontium-90 bei $\SI{0.546}{\mega\electronvolt}$ \cite{anleitung} liegt, ist diese Grenze unproblematisch. Der strahlende Yttrium-90-Anteil der Quelle
+ist ebenfalls unproblematisch, da die Zerfallsenergie wesentlich höher und damit der Energieverlust der emittierten Elektronen im Detektor wesentlich geringer als die Grenzenergie von $\SI{900.0}{\kilo\electronvolt}$ ist.
 Beim Vergleich der Energiespektren in ADC (Abbildung \ref{fig:energieadc}) und in $\si{\kilo\electronvolt}$ (Abbildung \ref{fig:energiekeV}) fällt auf, dass die Binhöhe vor der Umrechnungsgrenze in ADC noch deutlich sichtbar ist, während
 sie im anderen Histogramm bereits bei etwa $\SI{400}{\kilo\electronvolt}$ verschwindet. Das ist eine Bestätigung dafür, dass der Zusammenhang zwischen
 Energie, bzw. charge und ADC nicht linear ist und durch eine Kalibration bestimmt werden muss. Das Polynom vierten Grades flacht bei hohen ADC bzw. charges stark ab, sodass
 dicht liegende ADC-Werte sich im $\si{\kilo\electronvolt}$-Energiespektrum auf einen großen Bereich verteilen. Der Mittelwert der Energie
 \begin{align}
-  E_\text{average} = \SI{102.9}{\kilo\electronvolt}
+  E_\text{average} = \SI{102.87}{\kilo\electronvolt}
 \end{align}
 weicht relativ um $\SI{13.1}{\percent}$ von dem theoretischen Wert
 \begin{align}
   E_\text{average,theorie} = \SI{116.4}{\kilo\electronvolt},
 \end{align}
 der mit Formel \eqref{eqn:energieverlustdis} bestimmt wird, ab. Ein Grund für diese Abweichung kann sein, dass beispielsweise das elektrische Feld durch die angelegte Spannung im Detektor nicht in
-der Bethe-Bloch-Formel beachtet wird. Dass der MPV
+der Bethe-Bloch-Formel beachtet wird. Ein weiterer sehr relevanter Effekt für diese Abweichung ist der Signal-Noise-Cut bei kleinen Energien. Denn wie in Abbildung \ref{fig:energiekeV} erkennbar ist,
+ist vor dem Peak des MPV noch ein weiterer kleinerer Peak erkennbar, der dort nicht erwartet wird. Dass der MPV
 \begin{align}
   \text{MPV} = \SI{80.03}{\kilo\electronvolt}
 \end{align}
-und der Mittelwert nicht aufeinander liegen, ist darauf zurückzuführen, dass das Energiespektrum durch eine asymmetrische Gaußverteilung, genauer
-durch eine Faltung zwischen einer Gauß- und einer Landau-Verteilung, beschrieben wird.
+und der Mittelwert nicht aufeinander liegen, ist darauf zurückzuführen, dass das Energiespektrum durch eine (nicht symmetrische) Landau-Verteilung beschrieben wird.

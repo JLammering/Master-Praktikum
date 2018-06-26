@@ -1,9 +1,24 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import uncertainties.unumpy as unp
+from uncertainties import ufloat
 
 U,I = np.genfromtxt('stromspannungskennlinie.txt', unpack='True')
 
-a, b, c, d, e = np.polyfit(U,I,4)
+params, cov = np.polyfit(U,I,4, full= False, cov = True)
+#print(cov)
+
+a = params[0]
+b = params[1]
+c = params[2]
+d = params[3]
+e = params[4]
+
+a_with_err = ufloat(a,np.sqrt(cov[0,0]))
+b_with_err = ufloat(b,np.sqrt(cov[1,1]))
+c_with_err = ufloat(c,np.sqrt(cov[2,2]))
+d_with_err = ufloat(d,np.sqrt(cov[3,3]))
+e_with_err = ufloat(e,np.sqrt(cov[4,4]))
 
 #U_1 = np.zeros(len(U)-1)
 #I_1 = np.zeros(len(U)-1)
@@ -25,8 +40,8 @@ x = np.linspace(0,205,1000)
 plt.plot(U,I,'k.', markersize = 2, label = r'Messwerte')
 plt.plot(x, a*x**4 + b*x**3 + c*x**2 + d*x + e, 'r-', linewidth = 1, label = r'Ausgleichspolynom')
 
-print('Fit-Parameter:', a, b, c, d, e)
-print('Knick im Ausgleichspolynom (stärkste Veränderung der Steigung):',-b/(4*a))
+print('Fit-Parameter:', a_with_err, b_with_err, c_with_err, d_with_err, e_with_err)
+print('Knick im Ausgleichspolynom (stärkste Veränderung der Steigung):',-b_with_err/(4*a_with_err))
 
 plt.xlim(0,205)
 plt.legend(loc = 'best')

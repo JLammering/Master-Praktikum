@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import uncertainties.unumpy as unp
+from uncertainties import ufloat
 
 Datenmatrix = np.loadtxt('18_04_30_Graesser_Lammering/Laserscan.txt', unpack = 'True')
 
@@ -30,15 +32,33 @@ def f(x,a,b,c):
 #2 a x + b = 0
 #x = -b/(2a)
 
-a_91, b_91, c_91 = np.polyfit(x_91_parab,channel_91_parab,2)
-a_92, b_92, c_92 = np.polyfit(x_92_parab,channel_92_parab,2)
+popt_91, pcov_91 = np.polyfit(x_91_parab,channel_91_parab,2,cov = True)
+popt_92, pcov_92 = np.polyfit(x_92_parab,channel_92_parab,2,cov = True)
 
-print('Parabelfit 91:', a_91, b_91, c_91)
-print('Parabelfit 92:', a_92, b_92, c_92)
+#print(pcov_91)
+#print(pcov_92)
+
+a_91 = popt_91[0]
+b_91 = popt_91[1]
+c_91 = popt_91[2]
+
+a_92 = popt_92[0]
+b_92 = popt_92[1]
+c_92 = popt_92[2]
 
 y = np.linspace(0,350,1000)
 plt.plot(y, f(y, a_91, b_91, c_91), 'k-', linewidth = 1.0, label = r'Kanal 91 Parabelfit')
 plt.plot(y, f(y, a_92, b_92, c_92), 'r-', linewidth = 1.0, label = r'Kanal 92 Parabelfit')
+
+a_91 = ufloat(popt_91[0],np.sqrt(pcov_91[0,0]))
+b_91 = ufloat(popt_91[1],np.sqrt(pcov_91[1,1]))
+c_91 = ufloat(popt_91[2],np.sqrt(pcov_91[2,2]))
+a_92 = ufloat(popt_92[0],np.sqrt(pcov_92[0,0]))
+b_92 = ufloat(popt_92[1],np.sqrt(pcov_92[1,1]))
+c_92 = ufloat(popt_92[2],np.sqrt(pcov_92[2,2]))
+
+print('Parabelfit 91:', a_91, b_91, c_91)
+print('Parabelfit 92:', a_92, b_92, c_92)
 
 minima_91 = -b_91/(2*a_91)
 minima_92 = -b_92/(2*a_92)

@@ -52,6 +52,9 @@ with tqdm(total=length) as pbar:
         pbar.update(1)
 
 daten_av_keV = np.sum(daten_keV, axis = 1)
+
+err = np.sqrt(len(daten_av_keV)/(len(daten_av_keV)-1) * np.mean(daten_av_keV-np.mean(daten_av_keV)**2))
+print('Mittelwert deponierte Energie(1,besser):', np.mean(daten_av_keV), err)
 keV_av = 0 # Mittelwert
 anz_daten = 0 # Anzahl in keV übersetzte Werte
 
@@ -62,7 +65,7 @@ for k in range(0,len(daten_av_keV)):
 
 keV_av = keV_av/anz_daten
 
-print('Mittelwert deponierte Energie:', keV_av)
+print('Mittelwert deponierte Energie(2,schlechter):', keV_av)
 
 anz = 400
 daten_hist = np.histogram(daten_av_keV, bins = anz, range=(1,1000))
@@ -74,7 +77,12 @@ def peak_fit(x,C,mu,sigma,a):
 
 print(daten_hist[1][20:51])
 popt,pcov = curve_fit(peak_fit, daten_hist[1][20:51], n[20:51], bounds = ([0,70,10,0.00001],[1,100,1000,0.001]))
-print('Fitparameter:',popt)
+
+perr = np.zeros(len(popt))
+for i in range(0,len(popt)):
+    perr[i] = np.sqrt(pcov[i,i])
+
+print('Fitparameter, Fiterror (C,mu,sigma,a):',popt,perr)
 
 x = np.linspace(0,200,500)
 plt.plot(x, popt[0]*np.exp(-(x-popt[1])**2/(2*popt[2]**2)) + popt[3]*(x-popt[1]), 'r-',linewidth = 0.9, label = r'Fitfunktion $G_\text{lin}$')

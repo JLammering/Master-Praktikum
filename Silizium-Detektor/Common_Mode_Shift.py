@@ -37,6 +37,7 @@ for i in range(0,50):
 
 popt,pcov = curve_fit(f,m_2,n)
 
+print('Covarianz:',np.sqrt(pcov[0,0]))
 print('Gaußfit(sigma):',popt)
 
 x = np.linspace(-10,10,1000)

@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+import uncertainties.unumpy as unp
+from uncertainties import ufloat
 
 ADC_0 = np.genfromtxt('18_04_30_Graesser_Lammering/CCEL/0CCEL.txt', unpack = 'True')
 ADC_10 = np.genfromtxt('18_04_30_Graesser_Lammering/CCEL/10CCEL.txt', unpack = 'True')
@@ -53,26 +55,40 @@ channel_91[18] = ADC_180[91]
 channel_91[19] = ADC_190[91]
 channel_91[20] = ADC_200[91]
 
-# Normierung:
-maximum_av = np.sum(channel_91[12:21])/9
-print('Plateauhöhe(Mittelwert):',maximum_av)
-channel_91 = channel_91/maximum_av
+## Normierung:
+#maximum_av = np.sum(channel_91[12:21])/9
+#print('Plateauhöhe(Mittelwert):',maximum_av)
+#channel_91 = channel_91/maximum_av
 
-def CCE(U,a): # a in micrometer
-    return (1-np.exp(-300/a * np.sqrt(U/110)))/(1-np.exp(-300/a))
+def CCE(U,a,U_dep,konst): # a in micrometer
+    CCE = np.zeros(len(U))
+    #U_dep_ar = np.zeros(len(U))
+    #U_dep_ar += U_dep
+    for i in range(0,len(U)):
+        if U[i] < U_dep:
+            CCE[i] = konst*(1-np.exp(-300/a * np.sqrt(U[i]/U_dep)))/(1-np.exp(-300/a))
+        else:
+            CCE[i] = konst
+    return CCE
 
-popt, pcov = curve_fit(CCE, x[0:11], channel_91[0:11], bounds=(50,500))
+popt, pcov = curve_fit(CCE, x, channel_91, bounds=([50,50,120],[500,150,140]))
 
-print('eindringtiefe(in um):',popt)
+a_with_err = ufloat(popt[0],np.sqrt(pcov[0,0]))
+U_with_err = ufloat(popt[1],np.sqrt(pcov[1,1]))
+konst_with_err = ufloat(popt[2],np.sqrt(pcov[2,2]))
 
-y = np.linspace(0,110,1000)
-plt.plot(y, (1-np.exp(-300/popt * np.sqrt(y/110)))/(1-np.exp(-300/popt)), 'r-', linewidth = 1.0, label = r'Fitfunktion')
+print('eindringtiefe(in um), Depletionsspannung(in V), Konstante(in ADC):',a_with_err,U_with_err,konst_with_err)
+
+y = np.linspace(0,popt[1],1000)
+plt.plot(y, popt[2]*(1-np.exp(-300/popt[0] * np.sqrt(y/popt[1])))/(1-np.exp(-300/popt[0])), 'r-', linewidth = 1.0, label = r'Fitfunktion')
+z = np.linspace(popt[1],205,100)
+plt.plot(z, popt[2] + 0*z, 'r-', linewidth = 1.0)
 
 plt.plot(x, channel_91, 'ko', markersize=2, label = r'Messwerte gemittelt und normiert')
 plt.grid()
-plt.xlim(-0.9,110)
-plt.ylim(-0.02,1.05)
+plt.xlim(-0.9,203)
+#plt.ylim(-0.02,1.05)
 plt.xlabel(r'$U/\si{\volt}$')
-plt.ylabel(r'$\text{CCE}$')
+plt.ylabel(r'$\text{Signal}/\si{ADC}$')
 plt.legend(loc = 'best')
 plt.savefig('build/eindringtiefe.pdf')
