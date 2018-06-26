@@ -11,8 +11,8 @@ def plotKennlinie(anodenstrom, anodenspannung, dateiname, heizstrom):
     plt.errorbar(unp.nominal_values(x), unp.nominal_values(y),
                  xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='kx', label='Messwerte')
     # plt.plot(anodenstrom, anodenspannung, 'kx', label=('Messwerte'))
-    plt.xlabel(r'$I \:/\: \si{\milli\ampere}$')
-    plt.ylabel(r'$U \:/\: \si{\volt}$')
+    plt.ylabel(r'$I \:/\: \si{\milli\ampere}$')
+    plt.xlabel(r'$U \:/\: \si{\volt}$')
     # plt.ylim(0, 0.9)
     plt.legend(loc='best')
 

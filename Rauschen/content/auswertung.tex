@@ -5,11 +5,11 @@
 
 \paragraph{Einfache Schaltung}
 
-Benutzt wird hier die Schaltung aus Abbildung \ref{fig:???}, die hier als einfache Schaltung bezeichnet wird. Um aus dem thermischen Rauschen eines Widerstands die Boltzmann Konstante $k$ zu bestimmen, muss zunächst eine Eichmesssung durchgeführt werden. Mit den Werten aus Tabelle \ref{tab:durchlasseinfach} ergibt sich normiert auf die Amplitude und die Nachverstärkung $V_\text{N}$ die Durchlasskurve aus Abbildung \ref{fig:plotdurchlasseinfach}.
+Benutzt wird hier die Schaltung aus Abbildung \ref{fig:rauschspektro}, die hier als einfache Schaltung bezeichnet wird. Um aus dem thermischen Rauschen eines Widerstands die Boltzmann Konstante $k$ zu bestimmen, muss zunächst eine Eichmesssung durchgeführt werden. Mit den Werten aus Tabelle \ref{tab:durchlasseinfach} ergibt sich normiert auf die Amplitude und die Nachverstärkung $V_\text{N}$ die Durchlasskurve aus Abbildung \ref{fig:plotdurchlasseinfach}.
 \begin{figure}
   \centering
   \includegraphics{build/plotdurchlasseinfach.pdf}
-  \caption{Durchlasskurve der Apparatur nach einfacher Schaltung aus Abbildung \ref{fig:???}.}
+  \caption{Durchlasskurve der Apparatur nach einfacher Schaltung aus Abbildung \ref{fig:rauschspektro}.}
   \label{fig:plotdurchlasseinfach}
 \end{figure}
 Es werden folgende Einstellungsparameter gewählt:
@@ -43,7 +43,7 @@ Ein linearer Fit nach
 \intertext{und für $R_2$:}
   m_2 &= \SI{6.82(6)e-9}{\hertz\joule}
 \end{align}
-Aus Formel \eqref{eqn:???} ergibt sich für die Boltzmann Konstante:
+Aus Formel \eqref{eqn:nyquist} ergibt sich für die Boltzmann Konstante:
 \begin{align*}
 \intertext{für $R_1$:}
   k_{1,\text{B}} &= \frac{m_1}{4 A T} = \SI{5.1(3)e-21}{\joule\per\kelvin}
@@ -81,7 +81,7 @@ Zuletzt wird die Schaltung noch mit einem $\SI{0}{\ohm}$ Widerstand kurzgeschlos
 
 \paragraph{Korrelatorschaltung}
 
-Jetzt wird eine Schaltung nach Abbildung \ref{fig:???} aufgebaut; im Folgenden Korrelatorschaltung genannt. Zur Eichung wird erneut eine Durchlasskurve aufgenommen. Die eingestellten Parameter sind:
+Jetzt wird eine Schaltung nach Abbildung \ref{fig:korrelatorschaltung} aufgebaut; im Folgenden Korrelatorschaltung genannt. Zur Eichung wird erneut eine Durchlasskurve aufgenommen. Die eingestellten Parameter sind:
 \begin{align*}
   U_\text{Amplitude} = \SI{500}{\milli\volt} \quad \nu_\text{m} = \SI{5}{\kilo\hertz}\quad V_= = 10 \quad V_\text{V} = 1000.
 \end{align*}
@@ -91,7 +91,7 @@ Diese Werte, normiert auf die Amplitude und die Nachverstärkung, sind als Durch
 \begin{figure}
   \centering
   \includegraphics{build/plotdurchlassKorrelator.pdf}
-  \caption{Durchlasskurve der Apparatur nach der Korrelatorschaltung aus Abbildung \ref{fig:???}.}
+  \caption{Durchlasskurve der Apparatur nach der Korrelatorschaltung aus Abbildung \ref{fig:korrelatorschaltung}.}
   \label{fig:plotdurchlasskorr}
 \end{figure}
 Die Vorverstärkung und die Gleichspannungsverstärkung werden nicht rausgerechnet, da sie in der folgenden Messung gleich bleiben. Das Integral der Kurve aus Abbildung \ref{fig:plotdurchlasskorr} ergibt, berechnet mit der Simpsonregel, die Apparatekonstante:
@@ -121,7 +121,7 @@ Ein linearer Fit nach
 \intertext{und für $R_2$:}
   m_2 &= \SI{1.113(5)e-10}{\hertz\joule}
 \end{align}
-Aus Formel \eqref{eqn:???} ergibt sich für die Boltzmann Konstante:
+Aus Formel \eqref{eqn:nyquist} ergibt sich für die Boltzmann Konstante:
 \begin{align*}
 \intertext{für $R_1$:}
   k_{1,\text{B}} &= \frac{m_1}{4 A T} = \SI{1.26(2)e-23}{\joule\per\kelvin}\\
@@ -145,7 +145,7 @@ Zuletzt wird die Schaltung noch mit einem $\SI{0}{\ohm}$ Widerstand kurzgeschlos
     1000 & -390\\
     \bottomrule
   \end{tabular}
-  \caption{Amplituden der einfachen Korrelatorschaltung.}
+  \caption{Amplituden der kurzgeschlossenen Korrelatorschaltung.}
   \label{tab:kurzschlusskorr}
 \end{table}
 
@@ -155,7 +155,7 @@ Jetzt kann für die Korrelatorschaltung noch die Rauschzahl bei $R = \SI{500}{\o
 \begin{align*}
   V_\text{N} = 200 \quad V_\text{S} = 10 \quad V_= = 10 \quad V_\text{V} = 1000.
 \end{align*}
-Damit ergibt sich mit dem Messwert aus Tabelle \ref{tab:widerstand1korr} und der Formel \eqref{eqn:???} die Rauschzahl
+Damit ergibt sich mit dem Messwert aus Tabelle \ref{tab:widerstand1korr} und der Formel \eqref{eqn:rauschzahl} die Rauschzahl
 \begin{align}
   F = \num{0.98(5)}.
 \end{align}
@@ -190,8 +190,8 @@ und einem Anodenstrom von $I_\text{anode} = \SI{0.5}{\milli\ampere}$ gewählt.
 
 Zur Bestimmung der Elementarladung wird bei der Diode der Anodenstrom variiert und dann die Rauschspannung abgelesen. Es galten folgende Parameter:
 \begin{align*}
-  \nu_\text{m} = \SI{340}{\kilo\hertz} \quad R_\text{i} = \SI{4680(1)}{\ohm} \quad V_= = 10 \quad V_\text{V} = 1000\\
-  U_\text{anode} = \SI{140}{\volt} \quad I_\text{heiz} = \SI{0.9}{\ampere}.
+  \nu_\text{m} &= \SI{340}{\kilo\hertz} \quad R_\text{i} = \SI{4680(1)}{\ohm} \quad V_= = 10 \quad V_\text{V} = 1000\\
+  U_\text{anode} &= \SI{140}{\volt} \quad I_\text{heiz} = \SI{0.9}{\ampere}.
 \end{align*}
 Die aufgenommenen Werte sind in Tabelle \ref{tab:elementar} zu finden. Nachdem alle Verstärkungen rausgerechnet sind und $U_\text{a}^2$ nach
 \begin{align}
@@ -212,7 +212,7 @@ eine lineare Ausgleichsrechnung durchgeführt.
 Dies ergibt:
 \begin{align*}
   m &= \SI{3.54(2)e-15}{\coulomb\hertz}
-\intertext{im Vergleich mit \eqref{eqn:???} ergibt sich:}
+\intertext{im Vergleich mit \eqref{eqn:schottky} ergibt sich:}
   e_0 &= \SI{7.3(1)e-20}{\coulomb}.
 \intertext{Die Abweichung zum Theoriewert beträgt:}
   \Delta_{e_0} &= \SI{54.7(8)}{\percent}.
@@ -243,8 +243,7 @@ und nach rausrechnen aller Verstärkungen ergibt sich das Rauschspektrum aus Abb
 
 \subsection{Untersuchung einer Röhre mit Oxydkathode}
 
-Nun wird die Schaltung nach Abbildung \ref{fig:oxydschlatung}
-aufgebaut.
+Nun wird eine Röhre mit Oxydkathode verwendet.
 Die Parameter lauten hier:
 \begin{align*}
   V_= = 10 \quad V_\text{V} = 1000 \quad R = \SI{2200}{\ohm} \quad I_0 = \SI{0.9}{\ampere}.
@@ -264,28 +263,28 @@ Ein nach Fehlerbalken gewichteter Fit nach der Funktion
 \begin{align*}
   W_\text{F}(\nu) &= \text{C} \frac{1}{\nu^\alpha}
 \intertext{ergibt folgende Ergebnisse:}
-  C &= \SI{1.4(1)}{\ampere\squared\hertz}^{\alpha-1} \quad \num{0.84(7)}.
+  C &= \SI{1.4(1)e-21}{\ampere\squared\hertz}^{\alpha-1} \quad \alpha = \num{0.84(7)}.
 \end{align*}
 Die Abweichung vom erwarteten Wert $\alpha = 1$ beträgt
 \begin{align*}
   \Delta_\alpha = \SI{16(7)}{\percent}.
 \end{align*}
-
-
-Tabelle für copy and paste:
-\begin{table}[h]
-  \centering
-  \begin{tabular}{S S}
-    \toprule
-    {$k$} & {$U\:/\:\si{\milli\volt}$}\\
-    \midrule
-    1 & 637.2\\
-    3 & 212.4\\
-    5 & 127.4\\
-    7 & 91.03\\
-    9 & 70.8\\
-    \bottomrule
-  \end{tabular}
-  \caption{Amplituden Rechteckspannung.}
-  \label{tab:rechtampl}
-\end{table}
+%
+%
+% Tabelle für copy and paste:
+% \begin{table}[h]
+%   \centering
+%   \begin{tabular}{S S}
+%     \toprule
+%     {$k$} & {$U\:/\:\si{\milli\volt}$}\\
+%     \midrule
+%     1 & 637.2\\
+%     3 & 212.4\\
+%     5 & 127.4\\
+%     7 & 91.03\\
+%     9 & 70.8\\
+%     \bottomrule
+%   \end{tabular}
+%   \caption{Amplituden Rechteckspannung.}
+%   \label{tab:rechtampl}
+% \end{table}

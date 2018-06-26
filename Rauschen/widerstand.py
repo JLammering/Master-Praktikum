@@ -51,7 +51,7 @@ def plotWiderstand(widerstand, spannung, V_N, dateiname, T):
     plt.legend(loc='best')
 
     # in matplotlibrc leider (noch) nicht möglich
-    plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+    #plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
     plt.savefig('build/plotWiderstand'+dateiname+'.pdf')
     plt.close()
 

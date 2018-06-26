@@ -96,7 +96,7 @@ kurzgeschlossen wird, und diverser Annahmen aus der statistischen Thermodynamik 
 Beziehung zwischen dem quadratischen Rauschspannungsmittelwert $\overline{U^2}$ und der Temperatur
 $T$ hergeleitet werden. Diese sogenannte Nyquist-Beziehung lautet
 \begin{align}
-  \overline{U^2} = 4 k_\text{B} \cdot T \cdot R \cdot \Delta \nu.
+  \overline{U^2} = 4 k_\text{B} \cdot T \cdot R \cdot \Delta \nu. \label{eqn:nyquist}
 \end{align}
 Dabei ist $R$ der Widerstand der Rauschquelle und $\Delta \nu$ das Frequenzintervall der Rauschspannung. Da
 $\overline{U^2}$ nicht dispersiv ist, sondern nur von der Breite des Frequenzintervalls abhängig ist, wird das Rauschen des Widerstands auch weißes Rauschen genannt.
@@ -178,7 +178,7 @@ also wenn die Emissionsperiodendauer der Elektronen wesentlich größer als die 
 \end{align}
 Insgesamt ergibt sich in diesem Bereich
 \begin{align}
-  \overline{I^2} = 2 \mathrm{e}_0 I_0 \Delta \nu.
+  \overline{I^2} = 2 \mathrm{e}_0 I_0 \Delta \nu.\label{eqn:schottky}
 \end{align}
 Diese Relation wird auch Schottky-Beziehung genannt und stellt ebenfalls ein weißes Rauschen dar,
 da $\overline{I^2}$ nicht dispersiv ist. Die Voraussetzungen 3. und 4. sind im betrachteten
@@ -314,7 +314,7 @@ mit dieser Schaltung dieselbe Verstärkung erreicht werden kann.
 
 Mit Hilfe der Rauschzahl
 \begin{align}
-  F(\nu_0,Z) = \frac{\overline{U_\text{A}^2}(Z)}{4 k_\text{B} T \Delta \nu V_\text{ges}^2 \cdot \text{Re}(Z)}
+  F(\nu_0,Z) = \frac{\overline{U_\text{A}^2}(Z)}{4 k_\text{B} T \Delta \nu V_\text{ges}^2 \cdot \text{Re}(Z)}\label{eqn:rauschzahl}
 \end{align}
 können Aussagen über das Eigenrauschen und damit über die Qualität eines Verstärkers abhängig von der
 Lage $\nu_0$ des Durchlassbereichs und dem Wellenwiderstand $Z$ des angeschlossenen Rauschelements gemacht werden.

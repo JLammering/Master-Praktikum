@@ -15,8 +15,6 @@ def funkelFunk(nu, const, alpha):
 
 def plotSpektrum(nu_M, strom, V_N, delta_nu, dateiname):
 
-    # plt.errorbar(unp.nominal_values(x), unp.nominal_values(y),
-    # xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='kx', label='Messwerte')
     strom /= (V_N**2 * 1000**2 * 10)
     x = nu_M
     y = strom/delta_nu
