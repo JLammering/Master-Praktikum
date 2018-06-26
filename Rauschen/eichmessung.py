@@ -8,6 +8,7 @@ from uncertainties.unumpy import (nominal_values as noms,
                                   std_devs as stds)
 import scipy.integrate as integrate
 
+
 def plotDurchlass(spannung, nu, V_N, amplitude, dateiname):
     # plt.errorbar(unp.nominal_values(x), unp.nominal_values(y),
     # xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='kx', label='Messwerte')
@@ -21,12 +22,12 @@ def plotDurchlass(spannung, nu, V_N, amplitude, dateiname):
     y = unp.uarray(spannung, 0.005)
     plt.errorbar(unp.nominal_values(x), unp.nominal_values(y),
                  xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='kx', label='Messwerte')
-    #plt.xlabel(r'$\nu/\si{\kilo\hertz}$')
-    #plt.ylabel(r'$U_\text{A}^2 \:/\: \si{\volt\squared}$')
+    plt.xlabel(r'$\nu/\si{\kilo\hertz}$')
+    plt.ylabel(r'$U_\text{A}^2 \:/\: \si{\volt\squared}$')
     plt.legend(loc='best')
 
     # in matplotlibrc leider (noch) nicht möglich
-    plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+    #plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
     plt.savefig('build/plotdurchlass'+dateiname+'.pdf')
     plt.close()
 

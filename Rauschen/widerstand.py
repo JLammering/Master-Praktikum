@@ -9,8 +9,8 @@ from uncertainties.unumpy import (nominal_values as noms,
                                   std_devs as stds)
 
 
-def fitfunktion(U, m, yabschnitt):
-    return m*U+yabschnitt
+def fitfunktion(U, m):
+    return m*U
 
 
 def plotWiderstand(widerstand, spannung, V_N, dateiname, T):
@@ -24,10 +24,9 @@ def plotWiderstand(widerstand, spannung, V_N, dateiname, T):
     # fitten:
     params, covariance = curve_fit(fitfunktion, unp.nominal_values(x),
                                    unp.nominal_values(y),
-                                   p0=[0.1, 1])
+                                   p0=[0.1])
     errors = np.sqrt(np.diag(covariance))
-    print('m= ', params[0], '±', errors[0], ' yabschnitt= ', params[1], '±',
-          errors[1])
+    print('m= ', params[0], '±', errors[0])
     m = ufloat(params[0], errors[0])
     x_fit = np.linspace(-5, max(noms(x))+1000)
     plt.plot(x_fit, fitfunktion(x_fit, *params), label='Fit')
@@ -42,9 +41,12 @@ def plotWiderstand(widerstand, spannung, V_N, dateiname, T):
     T = ufloat(296.15, 2)  # K
     k_B = m/(4*int*T)
     print('k_B_', dateiname, " = ", k_B)
+    kBTheorie = ufloat(constants.physical_constants["Boltzmann constant"][0],
+               constants.physical_constants["Boltzmann constant"][2])
+    print("Abweichung von Theorie= ", abweichungen(kBTheorie, k_B))
 
-    #plt.xlabel(r'$R/\si{\ohm}$')
-    #plt.ylabel(r'$U_\text{A} \:/\: a.u.$')
+    plt.xlabel(r'$R/\si{\ohm}$')
+    plt.ylabel(r'$U_\text{A} \:/\: \si{\volt\squared}$')
     plt.xlim(0, 1.01*max(noms(x)))
     plt.legend(loc='best')
 

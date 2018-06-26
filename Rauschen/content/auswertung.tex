@@ -37,19 +37,23 @@ Aus den Werten von $\overline{U_\text{a}^2}$ normiert auf die Nachverstärkung e
 \end{figure}
 Ein linearer Fit nach
 \begin{align}
-  \overline{U_\text{a}^2} &= m R + b\\
+  \overline{U_\text{a}^2} &= m R\\
 \intertext{ergibt für $R_1$:}
-  m_1 &= \SI{3.7(1)e-6}{\hertz\joule} & b_1 &= \SI{-5.4(8)e-4}{\volt\squared}
+  m_1 &= \SI{3.0(1)e-6}{\hertz\joule}
 \intertext{und für $R_2$:}
-  m_2 &= \SI{6.7(9)e-9}{\hertz\joule} & b_2 &= \SI{-4.4(4)e-9}{\volt\squared}
+  m_2 &= \SI{6.82(6)e-9}{\hertz\joule}
 \end{align}
 Aus Formel \eqref{eqn:???} ergibt sich für die Boltzmann Konstante:
 \begin{align*}
 \intertext{für $R_1$:}
-  k &= \frac{m_1}{4 A T} = \SI{6.4(2)e-21}{\joule\per\kelvin}
+  k_{1,\text{B}} &= \frac{m_1}{4 A T} = \SI{5.1(3)e-21}{\joule\per\kelvin}
+\intertext{mit der Abweichung vom Theoriewert:}
+\Delta_{k_{1,\text{B}}} &= \SI{3.7(2)e4}{\percent}
 \intertext{und für $R_2$:}
-  k &= \frac{m_2}{4 A T} = \SI{1.14(2)e-23}{\joule\per\kelvin}.
+  k_{2,\text{B}} &= \frac{m_2}{4 A T} = \SI{1.16(1)e-23}{\joule\per\kelvin}.\\
+  \Delta_{k_{2,\text{B}}} &= \SI{15(1)}{\percent}
 \end{align*}
+
 
 Zuletzt wird die Schaltung noch mit einem $\SI{0}{\ohm}$ Widerstand kurzgeschlossen. Dabei ergeben sich die Messwerte aus Tabelle \ref{tab:kurzschlusseinfach}.
 \begin{table}
@@ -90,9 +94,13 @@ Diese Werte, normiert auf die Amplitude und die Nachverstärkung, sind als Durch
   \caption{Durchlasskurve der Apparatur nach der Korrelatorschaltung aus Abbildung \ref{fig:???}.}
   \label{fig:plotdurchlasskorr}
 \end{figure}
+Die Vorverstärkung und die Gleichspannungsverstärkung werden nicht rausgerechnet, da sie in der folgenden Messung gleich bleiben. Das Integral der Kurve aus Abbildung \ref{fig:plotdurchlasskorr} ergibt, berechnet mit der Simpsonregel, die Apparatekonstante:
+\begin{align}
+  A = \SI{7389018051}{\hertz}.
+\end{align}
 
 Damit kann nun die Boltzmann Konstante berechnet werden. Mit den Widerständen $R_1$ und $R_2$ wurden die Werte aus den Tabellen \ref{tab:widerstand1korr} und \ref{tab:widerstand2korr} aufgenommen. Die Vorverstärkung, Gleichspannungsverstärkung und die Mittenfrequenz der Selektionsverstärker werden gleichgelassen. Die Temperatur ist $T = \SI{20(2)}{\celsius}$.
-Aus den Werten von $\overline{U_\text{a}^2}$, normiert auf die Nachverstärkung sowie die hier eingestellte Verstärkungs des Selektionsverstärkers $V_\text{S} = 10$, ergeben sich die Graphen in den Abbildungen \ref{fig:plotWiderstand1korr} und \ref{fig:plotWiderstand2korr}.
+Aus den Werten von $\overline{U_\text{a}^2}$, normiert auf die Nachverstärkung sowie die hier eingestellte Verstärkung des Selektionsverstärkers $V_\text{S} = 10$, ergeben sich die Graphen in den Abbildungen \ref{fig:plotWiderstand1korr} und \ref{fig:plotWiderstand2korr}.
 \begin{figure}
   \centering
   \includegraphics[height=7cm]{build/plotWiderstand1Korr.pdf}
@@ -107,18 +115,20 @@ Aus den Werten von $\overline{U_\text{a}^2}$, normiert auf die Nachverstärkung 
 \end{figure}
 Ein linearer Fit nach
 \begin{align}
-  \overline{U_\text{a}^2} &= m R + b\\
+  \overline{U_\text{a}^2} &= m R\\
 \intertext{ergibt für $R_1$:}
-  m_1 &= \SI{1.166(7)e-10}{\hertz\joule} & b_1 &= \SI{-4.4(4)e-9}{\volt\squared}
+  m_1 &= \SI{1.10(1)e-10}{\hertz\joule}
 \intertext{und für $R_2$:}
-  m_2 &= \SI{1.10(1)e-9}{\hertz\joule} & b_2 &= \SI{2(1)e-8}{\volt\squared}
+  m_2 &= \SI{1.113(5)e-10}{\hertz\joule}
 \end{align}
 Aus Formel \eqref{eqn:???} ergibt sich für die Boltzmann Konstante:
 \begin{align*}
 \intertext{für $R_1$:}
-  k &= \frac{m_1}{4 A T} = \SI{1.33(1)e-23}{\joule\per\kelvin}
+  k_{1,\text{B}} &= \frac{m_1}{4 A T} = \SI{1.26(2)e-23}{\joule\per\kelvin}\\
+  \Delta_{k_{1,\text{B}}} &= \SI{9(1)}{\percent}
 \intertext{und für $R_2$:}
-  k &= \frac{m_2}{4 A T} = \SI{1.26(2)e-23}{\joule\per\kelvin}.
+  k_{2,\text{B}} &= \frac{m_2}{4 A T} = \SI{1.27(1)e-23}{\joule\per\kelvin}.\\
+  \Delta_{k_{2,\text{B}}} &= \SI{8(1)}{\percent}
 \end{align*}
 
 Zuletzt wird die Schaltung noch mit einem $\SI{0}{\ohm}$ Widerstand kurzgeschlossen. Dabei ergeben sich die Messwerte aus Tabelle \ref{tab:kurzschlusskorr}.
@@ -150,12 +160,117 @@ Damit ergibt sich mit dem Messwert aus Tabelle \ref{tab:widerstand1korr} und der
   F = \num{0.98(5)}.
 \end{align}
 
-%\begin{figure}
-%  \centering
-%  \includegraphics{plotphase.pdf}
-%  \caption{Plot.}
-%  \label{fig:plot}
-%\end{figure}
+\subsection{Untersuchung einer Hochvakuumdiode mit Reinmetallkathode}
+
+\paragraph{Kennlinien}
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plotKennlinie1.pdf}
+  \caption{Die Kennlinie der Hochvakuumdiode mit Reinmetallkathode bei einem Heizstrom von $I_\text{heiz} = \SI{0.9}{\ampere}$.}
+  \label{fig:plotKennlinie1}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plotKennlinie3.pdf}
+  \caption{Die Kennlinie der Hochvakuumdiode mit Reinmetallkathode bei einem Heizstrom von $I_\text{heiz} = \SI{0.95}{\ampere}$.}
+  \label{fig:plotKennlinie3}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plotKennlinie2.pdf}
+  \caption{Die Kennlinie der Hochvakuumdiode mit Reinmetallkathode bei einem Heizstrom von $I_\text{heiz} = \SI{1}{\ampere}$.}
+  \label{fig:plotKennlinie2}
+\end{figure}
+In den Abbildungen \ref{fig:plotKennlinie1}, \ref{fig:plotKennlinie3} und \ref{fig:plotKennlinie2} sind die Kennlinien der Diode mit Reinmetallkathode bei verschiedenen Heizströmen gezeigt. So kann abgeschätzt werden, ab welcher Anodenspannung sich die Diode im Sättigungsbereich befindet.
+Die Werte zu den Abbildungen finden sich in den Tabellen \ref{tab:kennlinie1}, \ref{tab:kennlinie2} und \ref{tab:kennlinie3}.
+In den folgenden Untersuchungen an dieser Diode wird der Heizstrom $I_\text{heiz} = \SI{0.9}{\ampere}$ bei einer Anodenspannung von $U_\text{anode} = \SI{140}{\volt}$
+und einem Anodenstrom von $I_\text{anode} = \SI{0.5}{\milli\ampere}$ gewählt.
+
+\paragraph{Bestimmung der Elementarladung}
+
+Zur Bestimmung der Elementarladung wird bei der Diode der Anodenstrom variiert und dann die Rauschspannung abgelesen. Es galten folgende Parameter:
+\begin{align*}
+  \nu_\text{m} = \SI{340}{\kilo\hertz} \quad R_\text{i} = \SI{4680(1)}{\ohm} \quad V_= = 10 \quad V_\text{V} = 1000\\
+  U_\text{anode} = \SI{140}{\volt} \quad I_\text{heiz} = \SI{0.9}{\ampere}.
+\end{align*}
+Die aufgenommenen Werte sind in Tabelle \ref{tab:elementar} zu finden. Nachdem alle Verstärkungen rausgerechnet sind und $U_\text{a}^2$ nach
+\begin{align}
+  I_\text{a}^2 = \frac{U_\text{a}^2}{R_\text{i}^2}
+\end{align}
+in den Rauschstrom umgerechnet ist, werden die Werte in Abbildung \ref{fig:plotElement} gezeigt.
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plotElement.pdf}
+  \caption{Plot der Werte für die Bestimmung der Elementarladung.}
+  \label{fig:plotElement}
+\end{figure}
+Hier wird nach
+\begin{align}
+  I_\text{a}^2 = m I_0
+\end{align}
+eine lineare Ausgleichsrechnung durchgeführt.
+Dies ergibt:
+\begin{align*}
+  m &= \SI{3.54(2)e-15}{\coulomb\hertz}
+\intertext{im Vergleich mit \eqref{eqn:???} ergibt sich:}
+  e_0 &= \SI{7.3(1)e-20}{\coulomb}.
+\intertext{Die Abweichung zum Theoriewert beträgt:}
+  \Delta_{e_0} &= \SI{54.7(8)}{\percent}.
+\end{align*}
+
+\paragraph{Rauschspektrum}
+
+Die Werte für das Rauschspektrum der Reinmetallkathode sind in Tabelle \ref{tab:rauschspektrumrein} zu sehen.
+Außerdem sind
+% für den Bandfilter, also die Frequenzen \num{460} bis \SI{120}{\kilo\hertz},
+die Parameter so gewählt:
+\begin{align*}
+  V_\text{V} = 1000 \quad V_= = 10 \quad I_0 = \SI{0.9}{\milli\ampere} \quad R = \SI{2200}{\ohm} \quad I_\text{heiz} = \SI{0.9}{\ampere}\quad U_\text{anode} = \SI{140}{\volt}.
+\end{align*}
+Für die Frequenzen von \num{100} bis \SI{0.02}{\kilo\hertz} wird ein Selektivverstärker verwendet. Bei diesem wird $V_\text{S} = 1$ und $Q = 10$ gewählt.
+
+Mit dem Frequenzspektrum
+\begin{align}
+  W(\nu) = \frac{U_\text{a}^2}{R^2 \Delta \nu}
+\end{align}
+und nach rausrechnen aller Verstärkungen ergibt sich das Rauschspektrum aus Abbildung
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plotRauschspektrumRein.pdf}
+  \caption{Das Rauschspektrum der Hochvakuumdiode mit Reinmetallkathode.}
+  \label{fig:plotRauschspektrumRein}
+\end{figure}
+
+\subsection{Untersuchung einer Röhre mit Oxydkathode}
+
+Nun wird die Schaltung nach Abbildung \ref{fig:oxydschlatung}
+aufgebaut.
+Die Parameter lauten hier:
+\begin{align*}
+  V_= = 10 \quad V_\text{V} = 1000 \quad R = \SI{2200}{\ohm} \quad I_0 = \SI{0.9}{\ampere}.
+\end{align*}
+Die Messergebnisse sind in Tabelle \ref{tab:rauschspektrumoxid} zu finden. Dann wird das Rauschspektrum so wie im Kapitel zuvor bestimmt und in Abbildung \ref{fig:plotRauschspektrumOxid} gezeigt.
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plotRauschspektrumOxid.pdf}
+  \caption{Das Rauschspektrum der Röhre mit Oxydkathode.}
+  \label{fig:plotRauschspektrumOxid}
+\end{figure}
+% Hier ist auch das Schrotrauschen in der theoretisch zu erwarteten Größe nach Gleichung \eqref{eqn:???} eingezeichnet.
+Da das Schrotrauschen frequenzunabhängig ist, werden Werte die diesen Ursprung haben als konstant angenommen. So wird abgeschätzt, dass alle Werte der Frequenz $\nu > \SI{2}{\hertz}$
+größtenteils alleinig durch das Schrotrauschen bestimmt werden und bei den restlichen diesem zusätzlich der Funkel-Effekt überlagert ist.
+
+Ein nach Fehlerbalken gewichteter Fit nach der Funktion
+\begin{align*}
+  W_\text{F}(\nu) &= \text{C} \frac{1}{\nu^\alpha}
+\intertext{ergibt folgende Ergebnisse:}
+  C &= \SI{1.4(1)}{\ampere\squared\hertz}^{\alpha-1} \quad \num{0.84(7)}.
+\end{align*}
+Die Abweichung vom erwarteten Wert $\alpha = 1$ beträgt
+\begin{align*}
+  \Delta_\alpha = \SI{16(7)}{\percent}.
+\end{align*}
+
 
 Tabelle für copy and paste:
 \begin{table}[h]
