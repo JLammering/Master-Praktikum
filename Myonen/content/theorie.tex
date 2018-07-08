@@ -1,30 +1,53 @@
 \section{Theorie}
 \label{sec:Theorie}
 
-\subsection{Fehlerrechnung}
+% \subsection{Fehlerrechnung}
+%
+% Für die Fehlerfortpflanzung bei Gleichungen mit $N$ fehlerbehafteten Größen
+% wird jeweils die Formel zur Gaußschen Fehlerfortpflanzung
+%
+% \begin{equation*}
+%   \sigma = \sqrt{\sum_{i=1}^{N}\biggl(\frac{\partial f(x_{\g{i}})}{\partial x_{\g{i}}}
+%   \sigma_{\g{i}}\biggr)^2}
+% \end{equation*}
+% mit der jeweiligen Funktion $f(x_{\g{i}})$, den Messgrößen $x_{\g{i}}$ und den
+% zugehörigen Fehlern $\sigma_i$ verwendet.
+% Zur Berechnung des arithmetischen Mittels von $N$ Messwerten wird jeweils die
+% Formel
+%
+% \begin{equation*}
+%   \bar{x} = \frac{1}{N}\sum_{i=1}^{N}x_{\g{i}}
+% \end{equation*}
+% mit den Messwerten $x_i$ benutzt.
+% Die Standardabweichung des Mittelwerts wird jeweils mit der Gleichung
+%
+% \begin{equation*}
+%   \bar{\sigma} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_{\g{i}} - \bar{x})^2}
+% \end{equation*}
+% mit den $N$ Messwerten $x_i$ berechnet.
+\subsection{Das Myon}
 
-Für die Fehlerfortpflanzung bei Gleichungen mit $N$ fehlerbehafteten Größen
-wird jeweils die Formel zur Gaußschen Fehlerfortpflanzung
+Die Physik der Elementarteilchen wird durch das Standardmodell der Teilchenphysik beschrieben. Darin werden alle Teilchen nach ihrem Spin in Fermionen und Bosonen eingeteilt, wobei Fermionen einen halbzahligen Spin und Bosonen einen ganzzahligen Spin besitzen. Die Fermionen werden wiederum nach ihrer Fähigkeit stark wechselzuwirken in Quarks und Leptonen eingeteilt. Das in diesem Versuch betrachtete Myon $\mu$ gehört zu den Leptonen, es wechselwirkt also nur über die schwache und, da es elektrisch geladen ist, über die elektromagnetische Wechselwirkung.
+Es bildet zusammen mit seinem zugehörigen Neutrino $\nu_\mu$ und ihren Antiteilchen $\mu^+, \bar \nu_\mu$ die zweite Generation der Leptonen. Seine Masse übertrifft die des Elektrons circa um den Faktor \num{207}. Aus diesem Grund ist es nicht stabil und zerfällt dominant über
+\begin{align}
+  \mu^- \to e^- + \bar \nu_e + \nu_\mu. \label{eqn:myonzerfall}
+\end{align}
 
-\begin{equation*}
-  \sigma = \sqrt{\sum_{i=1}^{N}\biggl(\frac{\partial f(x_{\g{i}})}{\partial x_{\g{i}}}
-  \sigma_{\g{i}}\biggr)^2}
-\end{equation*}
-mit der jeweiligen Funktion $f(x_{\g{i}})$, den Messgrößen $x_{\g{i}}$ und den
-zugehörigen Fehlern $\sigma_i$ verwendet.
-Zur Berechnung des arithmetischen Mittels von $N$ Messwerten wird jeweils die
-Formel
+\subsection{Myon-Zerfall}
 
-\begin{equation*}
-  \bar{x} = \frac{1}{N}\sum_{i=1}^{N}x_{\g{i}}
-\end{equation*}
-mit den Messwerten $x_i$ benutzt.
-Die Standardabweichung des Mittelwerts wird jeweils mit der Gleichung
+Dieser Zerfall ist ein statistischer Prozess, was zur Folge hat, dass jedes Myon nach einer unterschiedlich langen Zeit zerfällt. Diese individuelle Zeit hängt aber nicht von dem einzelnen Alter der Teilchen ab. Die zeitabhängige Teilchenzahl von zu Beginn $N_0$ Teilchen folgt dem Zerfallsgesetz:
+\begin{align}
+  N(t) = N_0 e^{-\lambda t}. \label{eqn:zerfallsgesetz}
+\end{align}
+Hierbei ist $\lambda$ die Teilchenspezifische Zerfallskonstante. Ihr Kehrwert definiert die mittlere Lebensdauer $\tau$. Nach der Zeit $\tau$ ist die Menge an Teilchen also auf den Bruchteil $1/e$ gesunken.
+Durch Ableitung nach der Zeit von \eqref{eqn:zerfallsgesetz} ergibt sich die Verteilungsfunktion der Lebensdauer $t$.
+\begin{align}
+  \frac{\dif \g{N}(t)}{\g{N}_0} = \lambda e^{-\lambda t} \dif t \label{eqn:expverteilung}
+\end{align}
 
-\begin{equation*}
-  \bar{\sigma} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_{\g{i}} - \bar{x})^2}
-\end{equation*}
-mit den $N$ Messwerten $x_i$ berechnet.
+\subsection{Bestimmung der Lebensdauer}
+\label{sec:Lebensdauerbestimmung}
+Die mittlere Lebensdauer des Myons lässt sich theoretisch aus dem arithmetischen Mittel aller Individuallebensdauern bestimmen. Da aber hier aus systematischen Gründen gewisse Wertebereiche (beispielsweise sehr kleine Zeiten aus Auflösungsgründen), nicht gemessen werden können, muss eine andere Methode genutzt werden. Dazu wird die Gleichung \eqref{eqn:zerfallsgesetz} mit freiem $N_0$ und $\lambda$ an die Werte gefittet.
 
-
-\cite{anleitung}
+\subsection{Messverfahren}
+Um hier die Lebensdauer des Myons zu bestimmen werden atmosphärische Myonen, die aus Pion-Zerfällen stammen, genutzt. Als Detektor wird ein Tank mit organischem Szintillatormaterial genutzt. Die einfallenden Myonen erzeugen dort einen Lichtblitz. Wenn ein Myon nun im Detektor komplett abgebremst werden kann, zerfällt es dort gemäß \eqref{eqn:myonzerfall} und das ausgesandte Elektron erzeugt bei der Wechselwirkung mit dem Szintillatormaterial einen weiteren Lichtblitz. Der zeitliche Abstand dieser beiden Blitze entspricht der Lebensdauer dieses Myons. Beachtet werden muss die Möglichkeit, dass das negativ geladene Myon von einem Atom eingefangen werden kann und dort den Platz eines Elektrons einnimmt.
