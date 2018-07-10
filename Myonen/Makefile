@@ -14,8 +14,11 @@ all: build/main.pdf
 build/plotElement.pdf: plot.py header-matplotlib.tex | build
 	TEXINPUTS="$(call translate,$(pwd):)" python plot.py
 
+build/justage_koinzidenz.pdf: justage_koinzidenz.py header-matplotlib.tex justage_koinzidenz.txt| build
+	TEXINPUTS="$(call translate,$(pwd):)" python justage_koinzidenz.py
+
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: build/plotElement.pdf
+build/main.pdf: build/plotElement.pdf build/justage_koinzidenz.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \
