@@ -16,10 +16,11 @@ Es werden folgende Einstellungsparameter gewählt:
 \begin{align*}
   U_\text{Amplitude} = \SI{200}{\milli\volt} \quad \Delta \nu_\text{Bandfilter} = \num{1}-\SI{50}{\kilo\hertz}\quad V_= = 10 \quad V_\text{V} = 1000 \quad V_\text{N} = 1.
 \end{align*}
-Außerdem wird ein Abschwächer mit $V_\text{Abschwächung} = 1/1000$ vorgeschaltet. Die Vorverstärkung und die Gleichspannungsverstärkung werden nicht rausgerechnet, da sie in der folgenden Messung gleich bleiben. Das Integral der Kurve aus Abbildung \ref{fig:plotdurchlasseinfach} ergibt, berechnet mit der Simpsonregel, die Apparatekonstante:
+Außerdem wird ein Abschwächer mit $V_\text{Abschwächung} = 1/1000$ vorgeschaltet. Die Vorverstärkung und die Gleichspannungsverstärkung werden nicht rausgerechnet, da sie in der folgenden Messung gleich bleiben. Das Integral der Kurve aus Abbildung \ref{fig:plotdurchlasseinfach} ergibt, berechnet mit der Trapezregel, die Apparatekonstante:
 \begin{align}
-  A = \SI{495496239571}{\hertz}.
+  A = \SI{4.949(1)e11}{\hertz}.
 \end{align}
+Der Fehler folgt dabei aus den fehlerbehafteten Werten $\nu$ und $U_\text{A}^2$.
 
 Damit kann nun die Boltzmann Konstante berechnet werden. Mit den Widerständen $R_1$ und $R_2$ wurden die Werte aus den Tabellen \ref{tab:widerstand1} und \ref{tab:widerstand2} aufgenommen. Die Vorverstärkung, Gleichspannungsverstärkung und der Filterbereich des Bandfilters werden gleichgelassen. Die Temperatur ist $T = \SI{23(2)}{\celsius}$.
 Aus den Werten von $\overline{U_\text{a}^2}$ normiert auf die Nachverstärkung ergeben sich die Graphen in den Abbildungen \ref{fig:plotWiderstand1} und \ref{fig:plotWiderstand2}.
@@ -51,7 +52,7 @@ Aus Formel \eqref{eqn:nyquist} ergibt sich für die Boltzmann Konstante:
 \Delta_{k_{1,\text{B}}} &= \SI{3.7(2)e4}{\percent}
 \intertext{und für $R_2$:}
   k_{2,\text{B}} &= \frac{m_2}{4 A T} = \SI{1.16(1)e-23}{\joule\per\kelvin}.\\
-  \Delta_{k_{2,\text{B}}} &= \SI{15(1)}{\percent}
+  \Delta_{k_{2,\text{B}}} &= \SI{16(1)}{\percent}
 \end{align*}
 
 
@@ -78,6 +79,17 @@ Zuletzt wird die Schaltung noch mit einem $\SI{0}{\ohm}$ Widerstand kurzgeschlos
   \label{tab:kurzschlusseinfach}
 \end{table}
 
+\paragraph{Rauschzahl}
+
+Jetzt kann für die einfache Schaltung noch die Rauschzahl bei $R = \SI{499}{\ohm}$ bestimmt werden. Der Frequenzbereich ist $\Delta \nu = \SI{49}{\kilo\hertz}$. Die Temperatur ist $T = \SI{23(2)}{\celsius}$. Die Verstärkungsfaktoren sind:
+\begin{align*}
+  V_\text{N} = 20 \quad V_= = 10 \quad V_\text{V} = 1000.
+\end{align*}
+Damit ergibt sich mit dem Messwert aus Tabelle \ref{tab:widerstand1} und der Formel \eqref{eqn:rauschzahl} die Rauschzahl
+\begin{align}
+  F = \num{308(7)}.
+\end{align}
+
 
 \paragraph{Korrelatorschaltung}
 
@@ -96,7 +108,7 @@ Diese Werte, normiert auf die Amplitude und die Nachverstärkung, sind als Durch
 \end{figure}
 Die Vorverstärkung und die Gleichspannungsverstärkung werden nicht rausgerechnet, da sie in der folgenden Messung gleich bleiben. Das Integral der Kurve aus Abbildung \ref{fig:plotdurchlasskorr} ergibt, berechnet mit der Simpsonregel, die Apparatekonstante:
 \begin{align}
-  A = \SI{7389018051}{\hertz}.
+  A = \SI{7.41(4)e9}{\hertz}.
 \end{align}
 
 Damit kann nun die Boltzmann Konstante berechnet werden. Mit den Widerständen $R_1$ und $R_2$ wurden die Werte aus den Tabellen \ref{tab:widerstand1korr} und \ref{tab:widerstand2korr} aufgenommen. Die Vorverstärkung, Gleichspannungsverstärkung und die Mittenfrequenz der Selektionsverstärker werden gleichgelassen. Die Temperatur ist $T = \SI{20(2)}{\celsius}$.
@@ -190,7 +202,7 @@ und einem Anodenstrom von $I_\text{anode} = \SI{0.5}{\milli\ampere}$ gewählt.
 
 Zur Bestimmung der Elementarladung wird bei der Diode der Anodenstrom variiert und dann die Rauschspannung abgelesen. Es galten folgende Parameter:
 \begin{align*}
-  \nu_\text{m} &= \SI{340}{\kilo\hertz} \quad R_\text{i} = \SI{4680(1)}{\ohm} \quad V_= = 10 \quad V_\text{V} = 1000\\
+  \nu_\text{m} &= \SI{340}{\kilo\hertz} \quad \Delta \nu = \SI{24.4(4)}{\kilo\hertz} \quad R_\text{i} = \SI{4680(1)}{\ohm} \quad V_= = 10 \quad V_\text{V} = 1000\\
   U_\text{anode} &= \SI{140}{\volt} \quad I_\text{heiz} = \SI{0.9}{\ampere}.
 \end{align*}
 Die aufgenommenen Werte sind in Tabelle \ref{tab:elementar} zu finden. Nachdem alle Verstärkungen rausgerechnet sind und $U_\text{a}^2$ nach
@@ -263,8 +275,9 @@ Ein nach Fehlerbalken gewichteter Fit nach der Funktion
 \begin{align*}
   W_\text{F}(\nu) &= \text{C} \frac{1}{\nu^\alpha}
 \intertext{ergibt folgende Ergebnisse:}
-  C &= \SI{1.4(1)e-21}{\ampere\squared\hertz}^{\alpha-1} \quad \alpha = \num{0.84(7)}.
+  C &= \SI{1.4(1)e-21}{\ampere\coulomb\hertz}^{\alpha} \quad \alpha = \num{0.84(7)}.
 \end{align*}
+Die Einheit für $C$ wurde so gewählt, da $W_\text{F}$ die Einheit $\si{\ampere\coulomb}$ besitzt, wie in Formel \eqref{eqn:campbell} zu erkennen ist.
 Die Abweichung vom erwarteten Wert $\alpha = 1$ beträgt
 \begin{align*}
   \Delta_\alpha = \SI{16(7)}{\percent}.

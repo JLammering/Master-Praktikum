@@ -9,6 +9,14 @@ from uncertainties.unumpy import (nominal_values as noms,
 import scipy.integrate as integrate
 
 
+def trapezFormel(x, y):
+    integral = 0
+    for i in range(len(x)):
+        if i == len(x)-1:
+            break
+        integral += (x[i+1]-x[i])*(y[i]+y[i+1])*0.5
+    return integral
+
 def plotDurchlass(spannung, nu, V_N, amplitude, dateiname):
     # plt.errorbar(unp.nominal_values(x), unp.nominal_values(y),
     # xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='kx', label='Messwerte')
@@ -33,11 +41,12 @@ def plotDurchlass(spannung, nu, V_N, amplitude, dateiname):
 
     # integration:
     x *= 10**(3)  # auf Hz umrechnen
-    int = (max(x) - min(x))/len(x) * sum(y)
-    print("Integral der Durchlasskurve= ", int)
-    int_trapez = np.trapz(noms(y), x=noms(x))
-    print("Integral mit trapz = ", int_trapez)
+    # int = (max(x) - min(x))/len(x) * sum(y)
+    # print("Integral der Durchlasskurve= ", int)
+    int_trapez = trapezFormel(x, y)
+    print("Integral mit trapez = ", int_trapez)
     int_scipy = integrate.simps(noms(y), x=noms(x))
+
     print("Integral mit scipy = ", int_scipy)
     int = ufloat(int_scipy, 0)
     file = open("build/eichung"+dateiname+".txt", "w")

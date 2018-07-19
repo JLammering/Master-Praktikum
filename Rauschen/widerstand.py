@@ -33,11 +33,13 @@ def plotWiderstand(widerstand, spannung, V_N, dateiname, T):
 
     # kBoltzmann
     if dateiname == "1" or dateiname == "2":
-        int, intf = np.genfromtxt('build/eichungeinfach.txt', unpack='True')
+        #int, intf = np.genfromtxt('build/eichungeinfach.txt', unpack='True')
+        int = ufloat(4.9486e11, 0.001e11)
     else:
-        int, intf = np.genfromtxt('build/eichungKorrelator.txt', unpack='True')
+        #int, intf = np.genfromtxt('build/eichungKorrelator.txt', unpack='True')
+        int = ufloat(7.41e9, 0.04e9)
 
-    int = ufloat(int, intf)
+    #int = ufloat(int, intf)
     T = ufloat(296.15, 2)  # K
     k_B = m/(4*int*T)
     print('k_B_', dateiname, " = ", k_B)
@@ -87,7 +89,7 @@ if __name__ == '__main__':
                    rundungen=[2, 2, 0])
     plotWiderstand(widerstand2Korr*10**3, spannung2Korr, V_N2Korr*10, "2Korr", ufloat(293.15, 2))
 
-    F = rauschzahl(0.492, ufloat(296.15, 2), 499, 49*10**3, 20)
+    F = rauschzahl(ufloat(0.492, 0.01), ufloat(296.15, 2), 499, 49*10**3, 20)
     F_korr = rauschzahl(ufloat(0.219, 0.01), ufloat(289.15, 2), 500, 0.14*5000+0.7, 10*200)
     print("rauschzahl_einfach(500 ohm) = ", F)
     print("rauschzahl_korr(500 ohm) = ", F_korr, " mit delta_nu = ", 0.14*5000+0.7)
