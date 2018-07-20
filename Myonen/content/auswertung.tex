@@ -1,27 +1,215 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
+Bei allen Myon-Counts-Messwerten wird ein $\sqrt{N}$-Fehler gemäß der Poissonstatistik
+angenommen.
+
+\subsection{Justage}
+
+In den SEVs, den Kabeln und den Diskriminatoren entstehen bei einem Myonsignal unterschiedliche Verzögerungen, sodass es vorkommen kann, dass
+am Koinzidenzschalter kein Signal weitergegeben wird, obwohl ein Myon in den Detektor eingetroffen ist. Um dies zu vermeiden werden
+vor beiden Diskriminatoren die Verzögerungen justiert. Um die optimale Verzögerung zu bestimmen werden die Verzögerungen variiert und jeweils die Myonen-Counts für ein
+$\SI{10}{\second}$-Messintervall aufgenommen. In Abbildung \ref{fig:justage} sind die Messwerte für die Zählrate
+gegen die Verzögerungszeitdifferenz aufgetragen. Für das gesamte Experiment wird eine Verzögerungszeitdifferenz von
+\begin{align*}
+  T_\text{V} = \SI{3}{\nano\second}
+\end{align*}
+eingestellt, da dieser Wert sehr zentral auf dem Plateau liegt. Von den rot markierten Messpunkten wird das arithmetische
+Mittel und die Standardabweichung bestimmt. Es ergibt sich für die Höhe des Plateaus
+\begin{align}
+  I_\text{Plateau} = \SI{187(12)e-1}{\per\second}.
+\end{align}
+Außerdem wird jeweils für die schwarz gekennzeichneten Messwerte links vom Plateau und die blau gekennzeichneten Messwerte
+rechts vom Plateau eine Ausgleichsgerade bestimmt. Für die Geradengleichung
+\begin{align}
+  I_i(\Delta t) = m_i \Delta t + b
+\end{align}
+ergeben sich die Parameter
+\begin{align}
+  m_\text{li} &= \SI{1.76(19)}{\per\nano\second\per\second} \qquad \qquad &b_\text{li} &= \SI{282(19)e-1}{\per\second}
+\end{align}
+für den linken Fit und
+\begin{align}
+  m_\text{re} &= \SI{1.63(18)}{\per\nano\second\per\second} \qquad \qquad &b_\text{re} &= \SI{401(32)e-1}{\per\second}
+\end{align}
+für den rechten Fit. Um die Halbwertsbreite des Plateaus zu bestimmen werden zunächst jeweils die Schnittpunkte zwischen
+halbem Plateaumittelwert und linkem Fit und halbem Plateaumittelwert und rechtem Fit bestimmt. Dabei ergibt sich
+\begin{align}
+  \Delta t_\text{li} &= \SI{-107(16)e-1}{\nano\second} \qquad \qquad & \Delta t_\text{re} &= \SI{189(29)e-1}{\nano\second}.
+\end{align}
+Die Halbwertsbreite entspricht etwa der doppelten Breite der Rechtsecksimpulse und lautet
+\begin{align}
+  \Delta t_{\frac12} = \SI{296(33)}{\nano\second}.
+\end{align}
+
 \begin{figure}
   \centering
-  \includegraphics{build/plotElement.pdf}
-  \caption{Plot.}
-  \label{fig:plot}
+  \includegraphics{build/justage_koinzidenz.pdf}
+  \caption{Messwerte der Justagemessung zur Bestimmung der Halbwertsbreite und der optimalen Verzögerung zwischen den beiden SEVs.
+  Die Messwerte werden aufgespalten in Plateau-,Links- und Rechts-Messwerte und es wird jeweils ein linearer Fit durchgeführt.}
+  \label{fig:justage}
 \end{figure}
 
-Tabelle für copy and paste:
+\subsection{Kalibration}
+\label{sec:kalibration}
+
+Die Myonen-Counts für diverse Zerfallszeitintervalle werden in channels gespeichert.
+Daher muss eine Kalibrationsmessung zur Umrechnung von channels in Zerfallszeiten
+durchgeführt werden. Die Messwerte sind in Tabelle \ref{tab:kalibration} aufgelistet
+und in Abbildung \ref{fig:kalibration} graphisch dargestellt. Es wird eine lineare Ausgleichsrechnung
+durchgeführt. Für die Geradengleichung
+\begin{align}
+  \Delta t (\text{channel}) = m_\text{kal} \cdot \text{channel} + b_\text{kal}
+\end{align}
+ergeben sich die Parameter
+\begin{align}
+  m_\text{kal} &= \SI{2.236(1)e-2}{\nano\second} \qquad \qquad &b_\text{kal} &= \SI{4.01(33)e-2}{\nano\second}.
+\end{align}
+Die resultierende Ausgleichsgerade ist ebenfalls in Abbildung \ref{fig:kalibration} aufgetragen.
+
+\begin{figure}
+  \centering
+  \includegraphics{build/kalibration.pdf}
+  \caption{Messwerte und Ausgleichsgerade der Kalibrationsmessung zur Umrechnung von channels in Zerfallszeiten.}
+  \label{fig:kalibration}
+\end{figure}
+
+\subsection{Berechnung der theoretischen Untergrungrate für die experimentellen Gegebenheiten}
+\label{sec:untergrundtheo}
+
+Bei der Messung der Lebensdauer kosmischer Myonen mit der in \ref{sec:Durchführung} beschriebenen Apparatur
+tritt das Problem auf, dass Stopp-signale fälschlicherweise durch ein weiteres eintreffendes Myon ausgelöst werden können,
+anstatt durch den Zerfall des eingefallenen Myons. Über die gesamte Messzeit von
+\begin{align}
+  t_\text{mess} = \SI{85721}{\second}
+  \label{eqn:Messzeit}
+\end{align}
+tritt also ein Untergrund auf, der sich etwa gleichmäßig auf alle Kanäle verteilt, da die Myonen unabhängig voneinander eintreffen.
+Die Wahrscheinlichkeit dafür, dass $n$ Myonen bei einem Erwartungswert $\mu(T_\text{S})$ in einer Zeit $T_\text{S}$ in den Detektor einfallen, ist gegeben durch die Poissonverteilung
+\begin{align}
+  p_\mu(n) = \frac{\mu}{n!} \mathrm{e}^{-\mu}.
+\end{align}
+Der Erwartungswert $\mu(T_\text{S})$ entspricht dem Wert, wie viele Myonen durchschnittlich in der Suchzeit
+\begin{align}
+  T_\text{S} = \SI{10.3}{\micro\second}
+\end{align}
+in den Detektor einfallen. Dieser lässt sich berechnen über
+\begin{align}
+  \mu(T_\text{S}) = I_\text{mess} \cdot T_\text{S},
+  \label{eqn:poisson}
+\end{align}
+wobei $I_\text{mess}$ die durchschnittliche gemessene Rate, mit der die Myonen eintreffen, ist.
+Diese folgt aus der Messzeit \eqref{eqn:Messzeit} und der gesamten gemessenen Anzahl an Startsignalen
+\begin{align}
+  N_\text{start} = \num{1456661(1207)}
+\end{align}
+mit
+\begin{align}
+  I_\text{mess} = \frac{N_\text{start}}{t_\text{mess}} = \SI{16.99(1)}{\per\second}.
+\end{align}
+Der gesamte Untergrund während der Messzeit $t_\text{mess}$ ergibt sich aus der Wahrscheinlichkeit für
+genau ein eintreffendes Myon innerhalb der Suchzeit $T_\text{S}$ gemäß Gleichung \eqref{eqn:poisson} multipliziert mit der
+gesamten Anzahl an Startereignissen
+\begin{align}
+  U_\text{ges} = p_\mu(1) N_\text{start} = \num{254.9(4)}.
+\end{align}
+Dieser Wert muss noch auf die Anzahl relevanter Kanäle, die innerhalb der Suchzeit $T_\text{S}$ echte Myonzerfallssignale
+oder Untergrund messen, normiert werden. Aus der Kalibrationsgeraden in Abschnitt \ref{sec:kalibration} ergibt sich für das
+Zeitintervall $[0,T_\text{S}]$ etwa das channel-Intervall $[2,463]$. Der normierte Untergrund lautet daher
+\begin{align}
+  U_\text{t} = \frac{U_\text{ges}}{463-2} = \num{0.5330(9)}.
+  \label{eqn:Utheo}
+\end{align}
+
+\subsection{Bestimmung der Lebensdauer kosmischer Myonen}
+
+Die Messwerte der Counts $N$ pro Zeitintervall sind in Abbildung \ref{fig:messung} graphisch dargestellt.
+Bei den ersten drei Zeitintervallen bzw. channels werden entgegen der Erwartung einer Exponentialverteilung Null Counts gemessen,
+weshalb diese channels vernachlässigt werden. Dieselbe Beobachtung wird bei den channels $>463$ bzw den Zeitintervallen
+$>\SI{10.311}{\micro\second}$ gemacht. Diese channels werden ebenfalls abgeschnitten, da die Suchzeit von $T_\text{S}$ dort weder echte Signale
+noch Untergrund-Signale zulässt. Der vierte channel wird im Folgenden ebenfalls vernachlässigt, da der gemessene Wert
+von $N = \SI{118(11)}{counts}$ sehr stark von den anderen umliegenden Messwerten abweicht, was eher auf einen Messfehler, als auf eine
+statistische Schwankung hindeutet.
+
+Mit den übrigen, in Abbildung \ref{fig:messung} in schwarz eingezeichneten Messpunkten wird ein Funktionenfit mit einer modifizierten Exponentialverteilung
+\begin{align}
+  N_\text{n}(t) = N_{0,\text{n}} \mathrm{e}^{-\lambda_\text{n} t} + U_\text{n}
+\end{align}
+durchgeführt. Es ergeben sich die Parameter
+\begin{align}
+  N_{0,\text{n}} &= \SI{40.3(4)}{counts} & \lambda_\text{n} &= \SI{0.4748(3)}{\per\micro\second} \\
+  U_\text{n} &= \SI{0.56(8)}{counts}. & &
+  \label{eqn:Unum}
+\end{align}
+Die berechnete Fitfunktion ist ebenfalls in Abbildung \ref{fig:messung} zu sehen.
+Aus der Zerfallskonstante ergibt sich die Lebensdauer der kosmischen Myonen
+\begin{align}
+  \tau_\text{n} = \frac1{\lambda_\text{n}} = \SI{2.11(7)}{\micro\second}.
+\end{align}
+Bei diesem Vorgehen wurde der Untergrund $U_\text{n}$ numerisch als Fitparameter bestimmt.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{build/messung.pdf}
+  \caption{Messwerte und Exponentialfit, welcher den Untergrund $U_\text{n}$ als Fitparameter berücksichtigt, der Lebensdauer-Messung.}
+  \label{fig:messung}
+\end{figure}
+
+Als nächstes wird die Lebensdauer mit dem in Abschnitt \ref{sec:untergrundtheo} theoretisch berechneten Untergrund
+\begin{align}
+  U_\text{t} = \SI{0.5530(9)}{counts}
+\end{align}
+bestimmt. Dazu wird dieser Untergrund von jedem nicht vernachlässigtem Messwert abgezogen und erneut ein Exponentialfit,
+dieses mal ohne zusätzliche Konstante, gemäß
+\begin{align}
+  N_\text{t}(t) = N_{0,\text{t}} \mathrm{e}^{-\lambda_\text{t} t}
+\end{align}
+durchgeführt. Sowohl die um den theoretischen Untergrund korrigierten Messwerte, als auch die neue Fitfunktion
+sind in Abbildung \ref{fig:messungtu} graphisch dargestellt. Die zugehörigen berechneten Fitparameter lauten
+\begin{align}
+  N_{0,\text{t}} &= \SI{40.3(4)}{counts} & \lambda_\text{t} &= \SI{0.4744(1)}{\per\micro\second}.
+\end{align}
+Damit ergibt sich die Lebensdauer der kosmischen Myonen
+\begin{align}
+  \tau_\text{t} = \frac1{\lambda_\text{t}} = \SI{2.11(5)}{\micro\second}.
+\end{align}
+Bei diesem Vorgehen wurde der Untergrund $U_\text{t}$ wie bereits erwähnt theoretisch berechnet.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{build/messung_t_u.pdf}
+  \caption{Um den Untergrund $U_\text{t}$ verschobene Messwerte und Exponentialfit der Lebensdauer-Messung.}
+  \label{fig:messungtu}
+\end{figure}
+
 \begin{table}[h]
   \centering
   \begin{tabular}{S S}
     \toprule
-    {$k$} & {$U\:/\:\si{\milli\volt}$}\\
+    {channel} & {$\Delta t/\si{\micro\second}$}\\
     \midrule
-    1 & 637.2\\
-    3 & 212.4\\
-    5 & 127.4\\
-    7 & 91.03\\
-    9 & 70.8\\
+    24 & 0.5 \\
+    47 & 1.0 \\
+    69 & 1.5 \\
+    91 & 2.0 \\
+    114 & 2.5 \\
+    136 & 3.0 \\
+    158 & 3.5 \\
+    181 & 4.0 \\
+    203 & 4.5 \\
+    225 & 5.0 \\
+    248 & 5.5 \\
+    270 & 6.0 \\
+    292 & 6.5 \\
+    315 & 7.0 \\
+    337 & 7.5 \\
+    360 & 8.0 \\
+    382 & 8.5 \\
+    404 & 9.0 \\
+    427 & 9.5 \\
+    445 & 9.9 \\
     \bottomrule
   \end{tabular}
-  \caption{Amplituden Rechteckspannung.}
-  \label{tab:rechtampl}
+  \caption{Messwerte der Kalibrationsmessung.}
+  \label{tab:kalibration}
 \end{table}

@@ -17,8 +17,17 @@ build/plotElement.pdf: plot.py header-matplotlib.tex | build
 build/justage_koinzidenz.pdf: justage_koinzidenz.py header-matplotlib.tex justage_koinzidenz.txt| build
 	TEXINPUTS="$(call translate,$(pwd):)" python justage_koinzidenz.py
 
+build/kalibration.pdf: kalibration.py header-matplotlib.tex matplotlibrc 20180704/kalibration.txt| build
+	TEXINPUTS="$(call translate,$(pwd):)" python kalibration.py
+
+build/messung.pdf: messung.py header-matplotlib.tex matplotlibrc 20180704/messung.txt| build
+	TEXINPUTS="$(call translate,$(pwd):)" python messung.py
+
+build/messung_t_u.pdf: messung_theorie_untergrund.py header-matplotlib.tex matplotlibrc 20180704/messung.txt| build
+	TEXINPUTS="$(call translate,$(pwd):)" python messung_theorie_untergrund.py
+
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: build/plotElement.pdf build/justage_koinzidenz.pdf
+build/main.pdf: build/plotElement.pdf build/justage_koinzidenz.pdf build/kalibration.pdf build/messung.pdf build/messung_t_u.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \
