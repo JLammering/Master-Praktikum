@@ -1,8 +1,8 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
-Bei allen Myon-Counts-Messwerten wird ein $\sqrt{N}$-Fehler gemäß der Poissonstatistik
-angenommen.
+Bei allen Zähl-Messwerten wird ein $\sqrt{N}$-Fehler gemäß der Poissonstatistik angenommen.
+Alle Funktionenfits in der Auswertung werden jeweils mit der Funktion \textit{curve fit} aus \textit{SciPy v1.1.0} durchgeführt.
 
 \subsection{Justage}
 
@@ -10,7 +10,7 @@ In den SEVs, den Kabeln und den Diskriminatoren entstehen bei einem Myonsignal u
 am Koinzidenzschalter kein Signal weitergegeben wird, obwohl ein Myon in den Detektor eingetroffen ist. Um dies zu vermeiden werden
 vor beiden Diskriminatoren die Verzögerungen justiert. Um die optimale Verzögerung zu bestimmen werden die Verzögerungen variiert und jeweils die Myonen-Counts für ein
 $\SI{10}{\second}$-Messintervall aufgenommen. In Abbildung \ref{fig:justage} sind die Messwerte für die Zählrate
-gegen die Verzögerungszeitdifferenz aufgetragen. Für das gesamte Experiment wird eine Verzögerungszeitdifferenz von
+gegen die Verzögerungszeit aufgetragen. Für das gesamte Experiment wird eine Verzögerungszeitdifferenz von
 \begin{align*}
   T_\text{V} = \SI{3}{\nano\second}
 \end{align*}
@@ -39,7 +39,7 @@ halbem Plateaumittelwert und linkem Fit und halbem Plateaumittelwert und rechtem
 \end{align}
 Die Halbwertsbreite entspricht etwa der doppelten Breite der Rechtsecksimpulse und lautet
 \begin{align}
-  \Delta t_{\frac12} = \SI{296(33)}{\nano\second}.
+  \Delta t_{\frac12} = \SI{296(33)e-1}{\nano\second}.
 \end{align}
 
 \begin{figure}
@@ -53,13 +53,13 @@ Die Halbwertsbreite entspricht etwa der doppelten Breite der Rechtsecksimpulse u
 \subsection{Kalibration}
 \label{sec:kalibration}
 
-Die Myonen-Counts für diverse Zerfallszeitintervalle werden in channels gespeichert.
-Daher muss eine Kalibrationsmessung zur Umrechnung von channels in Zerfallszeiten
+Die Messwerte der Lebensdauer der Myonen für diverse Zerfallszeitintervalle werden in Kanälen gespeichert.
+Daher muss eine Kalibrationsmessung zur Umrechnung von Kanalnummern $\text{ch}$ in Zerfallszeiten
 durchgeführt werden. Die Messwerte sind in Tabelle \ref{tab:kalibration} aufgelistet
 und in Abbildung \ref{fig:kalibration} graphisch dargestellt. Es wird eine lineare Ausgleichsrechnung
 durchgeführt. Für die Geradengleichung
 \begin{align}
-  \Delta t (\text{channel}) = m_\text{kal} \cdot \text{channel} + b_\text{kal}
+  \Delta t (\text{ch}) = m_\text{kal} \cdot \text{ch} + b_\text{kal}
 \end{align}
 ergeben sich die Parameter
 \begin{align}
@@ -70,14 +70,14 @@ Die resultierende Ausgleichsgerade ist ebenfalls in Abbildung \ref{fig:kalibrati
 \begin{figure}
   \centering
   \includegraphics{build/kalibration.pdf}
-  \caption{Messwerte und Ausgleichsgerade der Kalibrationsmessung zur Umrechnung von channels in Zerfallszeiten.}
+  \caption{Messwerte und Ausgleichsgerade der Kalibrationsmessung zur Umrechnung von Kanalnummern in Zerfallszeiten.}
   \label{fig:kalibration}
 \end{figure}
 
 \subsection{Berechnung der theoretischen Untergrungrate für die experimentellen Gegebenheiten}
 \label{sec:untergrundtheo}
 
-Bei der Messung der Lebensdauer kosmischer Myonen mit der in \ref{sec:Durchführung} beschriebenen Apparatur
+Bei der Messung der Lebensdauer kosmischer Myonen mit der in Abschnitt \ref{sec:Durchführung} beschriebenen Apparatur
 tritt das Problem auf, dass Stopp-signale fälschlicherweise durch ein weiteres eintreffendes Myon ausgelöst werden können,
 anstatt durch den Zerfall des eingefallenen Myons. Über die gesamte Messzeit von
 \begin{align}
@@ -115,7 +115,7 @@ gesamten Anzahl an Startereignissen
 \end{align}
 Dieser Wert muss noch auf die Anzahl relevanter Kanäle, die innerhalb der Suchzeit $T_\text{S}$ echte Myonzerfallssignale
 oder Untergrund messen, normiert werden. Aus der Kalibrationsgeraden in Abschnitt \ref{sec:kalibration} ergibt sich für das
-Zeitintervall $[0,T_\text{S}]$ etwa das channel-Intervall $[2,463]$. Der normierte Untergrund lautet daher
+Zeitintervall $[0,T_\text{S}]$ etwa das Kanal-Intervall $[2,463]$. Der normierte Untergrund lautet daher
 \begin{align}
   U_\text{t} = \frac{U_\text{ges}}{463-2} = \num{0.5330(9)}.
   \label{eqn:Utheo}
@@ -124,10 +124,10 @@ Zeitintervall $[0,T_\text{S}]$ etwa das channel-Intervall $[2,463]$. Der normier
 \subsection{Bestimmung der Lebensdauer kosmischer Myonen}
 
 Die Messwerte der Counts $N$ pro Zeitintervall sind in Abbildung \ref{fig:messung} graphisch dargestellt.
-Bei den ersten drei Zeitintervallen bzw. channels werden entgegen der Erwartung einer Exponentialverteilung Null Counts gemessen,
-weshalb diese channels vernachlässigt werden. Dieselbe Beobachtung wird bei den channels $>463$ bzw den Zeitintervallen
-$>\SI{10.311}{\micro\second}$ gemacht. Diese channels werden ebenfalls abgeschnitten, da die Suchzeit von $T_\text{S}$ dort weder echte Signale
-noch Untergrund-Signale zulässt. Der vierte channel wird im Folgenden ebenfalls vernachlässigt, da der gemessene Wert
+Bei den ersten drei Zeitintervallen bzw. Kanälen werden entgegen der Erwartung einer Exponentialverteilung Null Counts gemessen,
+weshalb diese Kanäle vernachlässigt werden. Dieselbe Beobachtung wird bei den Kanälen $>463$ bzw den Zeitintervallen
+$>\SI{10.311}{\micro\second}$ gemacht. Diese Kanäle werden ebenfalls abgeschnitten, da die Suchzeit von $T_\text{S}$ dort weder echte Signale
+noch Untergrund-Signale zulässt. Der vierte Kanal wird im Folgenden ebenfalls vernachlässigt, da der gemessene Wert
 von $N = \SI{118(11)}{counts}$ sehr stark von den anderen umliegenden Messwerten abweicht, was eher auf einen Messfehler, als auf eine
 statistische Schwankung hindeutet.
 
@@ -186,7 +186,7 @@ Bei diesem Vorgehen wurde der Untergrund $U_\text{t}$ wie bereits erwähnt theor
   \centering
   \begin{tabular}{S S}
     \toprule
-    {channel} & {$\Delta t/\si{\micro\second}$}\\
+    {ch} & {$\Delta t/\si{\micro\second}$}\\
     \midrule
     24 & 0.5 \\
     47 & 1.0 \\

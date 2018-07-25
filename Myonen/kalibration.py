@@ -31,7 +31,7 @@ plt.plot(x, popt[0]*x + popt[1], 'r-', linewidth = 1.1, label = r'Regressionsger
 plt.plot(channel_number,puls_diff,'k+',markersize = 8.0, label = r'Messwerte')
 np.savetxt('kalibration_table.txt',np.array(((channel_number),(puls_diff))).T)
 
-plt.xlabel(r'channel')
+plt.xlabel(r'ch')
 plt.ylabel(r'$\Delta t/\si{\nano\second}$')
 plt.xlim(0,460)
 plt.grid()
