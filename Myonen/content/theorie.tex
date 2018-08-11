@@ -35,11 +35,22 @@ Es bildet zusammen mit seinem zugehörigen Neutrino $\nu_\mu$ und ihren Antiteil
 
 \subsection{Myon-Zerfall}
 
-Dieser Zerfall ist ein statistischer Prozess, was zur Folge hat, dass jedes Myon nach einer unterschiedlich langen Zeit zerfällt. Diese individuelle Zeit hängt aber nicht von dem einzelnen Alter der Teilchen ab. Die zeitabhängige Teilchenzahl von zu Beginn $N_0$ Teilchen folgt dem Zerfallsgesetz:
+Dieser Zerfall ist ein statistischer Prozess, was zur Folge hat, dass jedes Myon nach einer unterschiedlich langen Zeit zerfällt. Diese individuelle Zeit hängt aber nicht von dem einzelnen Alter der Teilchen ab.
+Die Wahrscheinlichkeit dW, dass ein Teilchen im Zeitraum dt zerfällt, ist:
+\begin{align}
+  \dif \text{W} = \lambda \dif \text{t}.
+\end{align}
+Hierbei ist $\lambda$ die teilchenspezifische Zerfallskonstante.
+Damit kann nun die Zahl dN an Teilchen, die in dem Inervall dt zerfallen, bestimmt werden. Bei N betrachteten Teilchen ergibt sich:
+\begin{align}
+  \dif \text{N} = - \text{N} \dif \text{W} = - \lambda \text{N dt}.
+\end{align}
+Daraus ergibt sich nach Integration das Zerfallsgesetz für
+die zeitabhängige Teilchenzahl von zu Beginn $N_0$ Teilchen:
 \begin{align}
   N(t) = N_0 e^{-\lambda t}. \label{eqn:zerfallsgesetz}
 \end{align}
-Hierbei ist $\lambda$ die Teilchenspezifische Zerfallskonstante. Ihr Kehrwert definiert die mittlere Lebensdauer $\tau$. Nach der Zeit $\tau$ ist die Menge an Teilchen also auf den Bruchteil $1/e$ gesunken.
+Ihr Kehrwert definiert die mittlere Lebensdauer $\tau$. Nach der Zeit $\tau$ ist die Menge an Teilchen also auf den Bruchteil $1/e$ gesunken.
 Durch Ableitung nach der Zeit von \eqref{eqn:zerfallsgesetz} ergibt sich die Verteilungsfunktion der Lebensdauer $t$.
 \begin{align}
   \frac{\dif \g{N}(t)}{\g{N}_0} = \lambda e^{-\lambda t} \dif t \label{eqn:expverteilung}
@@ -50,4 +61,4 @@ Durch Ableitung nach der Zeit von \eqref{eqn:zerfallsgesetz} ergibt sich die Ver
 Die mittlere Lebensdauer des Myons lässt sich theoretisch aus dem arithmetischen Mittel aller Individuallebensdauern bestimmen. Da aber hier aus systematischen Gründen gewisse Wertebereiche (beispielsweise sehr kleine Zeiten aus Auflösungsgründen), nicht gemessen werden können, muss eine andere Methode genutzt werden. Dazu wird die Gleichung \eqref{eqn:zerfallsgesetz} mit freiem $N_0$ und $\lambda$ an die Werte gefittet.
 
 \subsection{Messverfahren}
-Um hier die Lebensdauer des Myons zu bestimmen werden atmosphärische Myonen, die aus Pion-Zerfällen stammen, genutzt. Als Detektor wird ein Tank mit organischem Szintillatormaterial genutzt. Die einfallenden Myonen erzeugen dort einen Lichtblitz. Wenn ein Myon nun im Detektor komplett abgebremst werden kann, zerfällt es dort gemäß \eqref{eqn:myonzerfall} und das ausgesandte Elektron erzeugt bei der Wechselwirkung mit dem Szintillatormaterial einen weiteren Lichtblitz. Der zeitliche Abstand dieser beiden Blitze entspricht der Lebensdauer dieses Myons. Beachtet werden muss die Möglichkeit, dass das negativ geladene Myon von einem Atom eingefangen werden kann und dort den Platz eines Elektrons einnimmt.
+Um hier die Lebensdauer des Myons zu bestimmen werden atmosphärische Myonen, die aus Pion-Zerfällen stammen, genutzt. Die Pionen stammen wiederum aus der Wechselwirkung von hochenergetischen Protonen aus der Höhenstrahlung mit Atomkernen der Luftmoleküle. Als Detektor wird ein Tank mit organischem Szintillatormaterial genutzt. Die einfallenden Myonen erzeugen dort einen Lichtblitz. Wenn ein Myon nun im Detektor komplett abgebremst werden kann, zerfällt es dort gemäß \eqref{eqn:myonzerfall} und das ausgesandte Elektron erzeugt bei der Wechselwirkung mit dem Szintillatormaterial einen weiteren Lichtblitz. Der zeitliche Abstand dieser beiden Blitze entspricht der Lebensdauer dieses Myons. Beachtet werden muss die Möglichkeit, dass das negativ geladene Myon von einem Atom eingefangen werden kann und dort den Platz eines Elektrons einnimmt.
