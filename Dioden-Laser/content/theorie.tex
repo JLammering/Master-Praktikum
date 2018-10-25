@@ -1,34 +1,14 @@
-\section{Theorie}
-\label{sec:Theorie}
-
-\subsection{Fehlerrechnung}
-
-Für die Fehlerfortpflanzung bei Gleichungen mit $N$ fehlerbehafteten Größen
-wird jeweils die Formel zur Gaußschen Fehlerfortpflanzung
-
-\begin{equation*}
-  \sigma = \sqrt{\sum_{i=1}^{N}\biggl(\frac{\partial f(x_{\g{i}})}{\partial x_{\g{i}}}
-  \sigma_{\g{i}}\biggr)^2}
-\end{equation*}
-mit der jeweiligen Funktion $f(x_{\g{i}})$, den Messgrößen $x_{\g{i}}$ und den
-zugehörigen Fehlern $\sigma_i$ verwendet.
-Zur Berechnung des arithmetischen Mittels von $N$ Messwerten wird jeweils die
-Formel
-
-\begin{equation*}
-  \bar{x} = \frac{1}{N}\sum_{i=1}^{N}x_{\g{i}}
-\end{equation*}
-mit den Messwerten $x_i$ benutzt.
-Die Standardabweichung des Mittelwerts wird jeweils mit der Gleichung
-
-\begin{equation*}
-  \bar{\sigma} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_{\g{i}} - \bar{x})^2}
-\end{equation*}
-mit den $N$ Messwerten $x_i$ berechnet.
+\section{Theory}
+\label{sec:theory}
 
 \subsection{introduction}
 
 Within this experiment we try to view the absorption spectrum of Rubidium with a diode laser.
+Therefor the functionality of lasers, diodes and the combination of both are presented in this theory.
+One technique to obtain a continuous spectrum is to use a piezo crystall with an alternating current, which
+will also be discussed in the following.
+Furthermore we will shortly present the procedure and the setup of this experiment.
+At the end of this report we provide our results and discuss them.
 
 \subsection{Functionality of a laser}
 \label{sec:laser}
@@ -38,7 +18,7 @@ With the schematic functionality of a laser, presented in the following, a laser
 very monochromatic and highly coherent light. To realize a laser, four components are needed: a laser medium, a pump, a cooling system and a resonator.
 
 However, the laser medium has to be a material, where a so called population inversion can be archieved by external excitation.
-Therefore it is usefull, to consider a system with three energy levels like shown in illustration \ref{fig:threelevelsystem}.
+therefor it is usefull, to consider a system with three energy levels like shown in illustration \ref{fig:threelevelsystem}.
 \begin{figure}
   \centering
   \includegraphics[height = 4.3cm]{Ordnername/threelevel_edit.pdf}
@@ -64,7 +44,7 @@ front side mirror has to be partly reflecting, because there has to be an output
 laser medium and induce other radiation transitions with the same energy as the inducing photons. We emphasize, that this so called stimulated emission
 is of great importance for the functionality of a laser, including the emission of monochromatic light. Beside this, another effect occurs:
 Because of the mirrors on both sides the laser can forms a resonator for the beam. Only light modes with certain frequencies enjoy constructive interference
-in the resonator and therefore their intensities are increased. The difference between the frequencies of two next neighbour modes is
+in the resonator and therefor their intensities are increased. The difference between the frequencies of two next neighbour modes is
 called free spectral range and given by
 \begin{align}
   \Delta \nu_\text{FSR} = \frac{\text{c}}{2 L n},
@@ -145,6 +125,7 @@ As a conclusion of this section the current-voltage characteristic of the diode 
 \end{figure}
 
 \subsection{Functionality of a diode laser}
+\label{sec:funclaser}
 
 To realize a diode laser, one has to operate with the diode in forward direction.
 Electrons from the narrow depletion zone are pulled to the plus terminal, while
@@ -158,7 +139,7 @@ Because the active layer has a larger index of refraction than the surrounding l
 and expands only within a tiny channel. To realize the resonator mentioned in section \ref{sec:laser} the front
 and back facets of the semiconductor are cleaved to act as cavity mirrors. If the pump current lies under a
 certain threshold, the stimulated gain is lower than the optical losses and the output of the diode laser is
-comparable to that of a LED. Above this threshold the stimulated emission causes a population inversion and therefore
+comparable to that of a LED. Above this threshold the stimulated emission causes a population inversion and therefor
 a strong light amplification. The intensity of the resulting coherent laser beam increases linearly with the current.
 
 However, this is not the full necessary theoretical part of this experiment, because two problems occur:
@@ -168,7 +149,7 @@ In the next section an optical instrument, which solves those problems, is prese
 
 \subsection{Optimizing the laser beam}
 
-A possible solution of the enumerated problems in the last section is presented in figure \ref{fig:diffraction}.
+A possible solution for the enumerated problems in the last section is presented in figure \ref{fig:diffraction}.
 After the output beam is collimated by a lens it hits a diffraction grating. With this optical tool, the optical
 feedback is not deactivated, but controlled. Most of the light, however, is reflected by the diffraction grating,
 but around $\SI{15}{\percent}$ strays back into the diode. So the grating and the back facet of the diode form
@@ -197,30 +178,88 @@ estimate parameter configurations to get a single mode output through adjusting.
 
 %One obtains that the wavelength increases almost linearly with the temperature.
 The position of the maximum of the broad medium gain peak depends on the temperature of the laser.
-After adjusting the temperature and therefore the wavelength to the required value, the medium gain can be neglected, because
+After adjusting the temperature and therefor the wavelength to the required value, the medium gain can be neglected, because
 of its broad peak.
 
 Like mentioned before, the diode can forms an internal resonator or optical cavity, where frequently, as shown in equation
 \eqref{eqn:freespectralrange}, certain wavelengths are amplified. The laser will tend to lase in those modes,
 because the net gain is at the maximum. One can affect the wavelength by directly increasing the temperature of the
-laser head, which is impractical, because it requires some time, or better by raising the current. The latter
-increases firstly the temperature almost instantaneous and secondly the carrier concentration inside the active layer.
+laser head, which is impractical, because it requires some time. However, the wavelength can also be manipulated, while
+raising the pump current. The latter increases firstly the temperature almost instantaneously and secondly the carrier
+concentration inside the active layer, and hence the optical path length.
+At this point we emphasize, that even though the temperature and therefor the wavelength can be varied, not every required
+wavelength can be reached with adjusting the bare laser. Because of the oscillating internal cavity gain the wavelength shifts at
+certain temperature or current positions and so called mode hops occur. This adds up to the two problems counted in section
+\ref{sec:funclaser} and can be solved by the same optical tool: a diffraction grating.
 
+The first presented contribution to the net gain by the diffraction grating is the grating feedback. The incoming light
+is dispersed by the grating and a wavelength band with narrow width is emitted back into the laser. So the net gain
+function consists of only one peak like one can view in figure \ref{fig:optgain}. Its position is determined by the horizontal grating angle,
+and the grating itself, especially the space $d$ between the grating lines. The width of this peak depends on the
+expansion of the laser beam and the amount of grating lines.
 
+The second and last contribution to the net gain by the diffraction grating is the external cavity. One can recognize in figure \ref{fig:optgain},
+that the resulting net gain function has a higher frequency than the net gain function of the internal cavity. This is constituted by
+the depending of the free spectral range, see equation \eqref{eqn:freespectralrange}, on the reciprocal length of the resonator.
+To comprehend the interaction of the contributions of the grating feedback, the internal and the external cavity one may have a
+look at the so called best guess picture in figure \ref{fig:bestguess}. In the illustrated optimal case the laser will lase in the mode, where
+the cavity and feedback contributions are at maximum, but this is of course not the general case.
 
-%This entails, that the output light
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{Ordnername/bestguess.png}
+  \caption{Best guess picture of the internal, external and grating feedback contibutions to the net gain \cite{manual}.}
+  \label{fig:bestguess}
+\end{figure}
 
+In general it results, that the broad band internal cavity modes dominate at the long scale, while the narrow band external cavity modes
+dominate at the short scale. An instance for this is presented in illustration \ref{fig:continter}.
+The net gain function of the grating feedback and the external cavity can be shifted continuously, when varying the
+horizontal grating angle. As shown in the subfigures \textbf{b} and \textbf{c} of figure \ref{fig:continter} the small changing
+of the grating angle causes firstly a continuous shifting of the frequency and secondly, when a threshold is reached, short scale
+mode hops between the external cavity modes. When a long scale threshold is reached by adjusting the laser, a broad mode hop occurs
+between the internal cavity modes, like shown in subfigure \textbf{d} of figure \ref{fig:continter}.
+As explained above the narrow band external cavity modes dominate at short scale, so if one only adjusts the grating angle, only
+a narrow frequency band around the internal modes can be reached. This can also be noticed, when viewing figure \ref{fig:continter}.
+The discussed thing seems to be a problem, but we remind the reader, that the internal modes can also be varied by changing the current.
+Together the full frequency spectrum is covered continuously.
 
+\begin{figure}
+  \centering
+  \includegraphics[height=10cm]{Ordnername/continter}
+  \caption{An Instance to comprehend the short and long scale mode hops, that occur, when adjusting the grating angle.
+  Subfigure \textbf{a} shows the starting position, \textbf{b} and \textbf{c} show external cavity mode hops and in the
+  last subfigure \textbf{d} one can see an internal cavity mode hop \cite{manual}.}
+  \label{fig:continter}
+\end{figure}
 
+\subsection{Absorption spectrum of Rubidium}
 
+The analysed Rubidium probe in this experiment consists of the isotopes $\ce{^{85}Rb}$ and $\ce{^{87}Rb}$.
+In figure \ref{fig:dopplerandterm} one can view the relevant atomic hyperfine transitions, that can be induced
+with the output wavelength of the diode laser. When the right wavelength is adjusted, the Rubidium cell
+absorbs a big part of the light and emitts it in any direction, so that the intensity of the beam decreases
+in the direction of expansion. This lack of intensity can be detected with a diode behind the Rubidium cell.
+Even though the transition energies are very precise, even when regarding the energy unsharpness,
+one obtains a relatively broad laser peak, because of the Doppler widening.
+The Rubidium atoms can move almost freely inside the cell and therefor the wavelength obtained from their inertial system
+is in general not equal to the one obtained in the labour system. As a result the absorption peak gets more broad, because atoms
+moving towards the laser beam are excited by higher wavelengths, while atoms moving in the other direction are excited
+by lower wavelengths. The Doppler broaden spectrum is also presented in figure \ref{fig:dopplerandterm}. How this can
+be monitored within this experiment is shortly described in the procedure section.
 
-%linewidth
+\begin{figure}
+  \centering
+  \includegraphics[height=5.8cm]{Ordnername/dopplerandterm.png}
+  \caption{Left subfigure: Term scheme and relevant transitions. Right subfigure: Doppler broaden spectrum \cite{manual}.}
+  \label{fig:dopplerandterm}
+\end{figure}
 
+\subsection{Piezo crystall}
 
-
-%780nanometer medium gain einstellen !
-
-
-
-% laser daten -> free spectral range output power linewidth
-%citation!!!!
+The piezoelectrical effect comprises the mutual interaction between an external deformation and an
+electrical potential inside a piezo crystal. It is used in this experiment, to vary the grating
+angle continuously, so that the required wavelengths to induce the rubidium transitions are runned through.
+Therefor a piezo crystal is placed below the diffraction grating and connected to an alternating current.
+Together with some other techniques presented in the following section one is able to obtain a
+Doppler broaden spectrum like the one in figure \ref{fig:dopplerandterm}.
