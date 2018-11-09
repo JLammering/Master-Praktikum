@@ -1,2 +1,57 @@
 \section{Diskussion}
 \label{sec:Diskussion}
+
+\subsection{Magnetfeldkalibrierung}
+
+Im ersten Versuchsteil wurde das Magnetfeld des Elektromagneten
+in Abhängigkeit von der Stromstärke ausgemessen. Es wurde ein relativ großer Fehler von
+$\SI{50}{\milli\tesla}$ angenommen, der sich dadurch begründen lässt, dass es
+durch die manuelle Messung mit der Hallsonde zu Winkelabweichungen von der waagerechten Position kommt
+und somit Schwankungen der gemessenen Flussdichte resultieren. Der angenommene Fehler
+hat auch ein sichtliches Fehlerintervall in dem resultierenden Abzissenabschnitt der Ausgleichsgeraden
+\begin{align}
+  b &= \SI{42(19)}{\milli\tesla}
+\end{align}
+zur Folge. An dem Graphen in Abbildung \ref{fig:kalib} und an dem Fehlerintervall der resultierenden Steigung
+\begin{align}
+  m &= \SI{5.39(16)e01}{\milli\tesla\per\ampere}
+\end{align}
+ist jedoch erkennbar, dass die Gerade den Messwerten sehr gut folgt. Betrachtet man den Verlauf der
+Messwerte sehr genau, so kann ein leicht S-förmiger Verlauf beobachtet werden. Dieser ist mit
+hoher Sicherheit Hysterese-Effekten im Elektromagneten zuzuschreiben, hat aber keine
+sichtlichen Konsequenzen auf die Ausgleichsrechnung.
+
+\subsection{Bestimmung der Landéfaktoren}
+
+In Tabelle \ref{tab:landefaktoren} sind Mess- und Theoriewerte der Landéschen Faktoren für
+die ausgemessenen Spektrallinien der Cd-Lampe eingetragen.
+Bei der $\sigma$-Messung handelt es sich bei dem angegebenen Theoriewert
+um den Mittelwert von den tatsächlich im Spektrum vorkommenden Landéfaktoren von
+$g_{J,\sigma,\text{theorie,I}} = 1.5$ und $g_{J,\sigma,\text{theorie,II}} = 2$,
+da die beiden Spektrallinien wie schon erwähnt in der Messung zusammenfallen.
+
+\begin{table}[H]
+  \centering
+  \caption{Messwerte $g_J$, Theoriewerte $g_{J,\text{theorie}}$ und relative Abweichungen der Landéfaktoren für
+  die rote und blaue Spektrallinie der Cd-Lampe}
+  \begin{tabular}{c S[table-format=1.2] S[table-format=1.2] @{${}\pm{}$} S[table-format=1.2] S[table-format=1.1]}
+    \toprule
+    {Linie} & {$g_{J,\text{theorie}}$} & \multicolumn{2}{c}{$g_J$} & {$\Delta_\text{rel}/\si{\percent}$}\\
+    \midrule
+    {rot}         & 1.0  & 0.96 & 0.07 & 4.0 \\
+    \midrule
+    {blau, $\pi$}    & 0.5  & 0.50 & 0.04 & 0.0 \\
+    {blau, $\sigma$} & 1.75 & 1.60 & 0.14 & 8.6 \\
+    \bottomrule
+    \label{tab:landefaktoren}
+  \end{tabular}
+\end{table}
+
+Bei der roten Spektrallinie und der blauen $\pi$-Spektrallinie konnten die Theoriewerte
+mit sehr geringen Abweichungen von nur $\SI{4}{\percent}$ und $\SI{0}{\percent}$(!)
+bestätigt werden. Hier zeigt sich, dass die Messmethode mit der Lummer-Ghercke-Platte
+gut funktioniert. Größere Abweichungen von $\SI{8.6}{\percent}$ treten bei dem
+Landéfaktor der blauen $\sigma$-Spektrallinie(n) auf. Diese Abweichung lässt sich unter anderem
+dadurch erklären, dass eben durch das Zusammenfallen zweier Spektrallinien aufgrund von
+nicht ausreichendem Auflösungsvermögen auch die Messungenauigkeit des Mittelwerts ansteigt.
+Für eng beeinander liegende Spektrallinien scheint der Versuchsaufbau daher weniger geeignet zu sein.
