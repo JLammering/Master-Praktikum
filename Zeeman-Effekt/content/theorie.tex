@@ -72,7 +72,7 @@ Je nachdem ob der Elektronenspin der Energieniveaus von Null verschieden ist ode
 
 Der Name ist hier irreführend, wo doch der normale Zeeman-Effekt weitaus seltener auftritt. Bei diesem Fall ist $S=0$. Dadurch beträgt der Energieunterschied vom aufgespalteten Niveau zu dem Ausgangsniveau für alle $L$ und $J$:
 \begin{align}
-  \Delta E = m \mu_\text{B} B.
+  \Delta E = \Delta m \mu_\text{B} B.
 \end{align}
 Da $m$ erneut die ganzzahlige Orientierungsquantenzahl ist, sind die Energieniveaus alle äquidistant. Wie sich die Niveaus unter dem normalen Zeeman-Effekt aufspalten und wie sich die drei Komponenten der abgestrahlten Spektrallinien aus den Übergängen ergeben ist in Abbildung \ref{fig:aufspaltung} zu sehen.
 \begin{figure}
@@ -82,6 +82,19 @@ Da $m$ erneut die ganzzahlige Orientierungsquantenzahl ist, sind die Energienive
   \label{fig:aufspaltung}
 \end{figure}
 Die $\pi$-Komponente ist dabei linear polarisiert. Beide $\sigma$-Komponenten sind in Feldrichtung zirkular polarisiert. Aus Gründen des leichteren Aufbaus werden hier alle Linien transversal zum Feld beobachtet. In dieser Richtung erscheinen auch die $\sigma$-Linien linear polarisiert, allerdings senkrecht zur $\pi$-Linie. Dadurch kann ein Polarisationsfilter die eine oder die andere Linie ausblenden.
+
+Die rote Linie der Cadmium-Lampe an der der normale Zeeman-Effekt untersucht wird, entsteht bei einem Übergang von $^1P_1$ nach $^1D_2$. Demnach betragen die theoretischen Landé-Faktoren:
+\begin{align}
+  g_\text{J}(J=L=1, S=0) = \num{1.0} \quad g_\text{J}(J=L=2, S=0) = \num{1.0}.
+\end{align}
+Das entsprechende Termschema ist in Abbildung \ref{fig:normalTermschema}  zu sehen.
+\begin{figure}
+  \centering
+  \includegraphics[height=10cm]{besuchInDerNacktmullAufzuchtstation/normalTermschema.pdf}
+  \caption{Termschema des hier betrachteten normalen Zeeman-Effekts. Dabei sind die sechs äußeren Linien die $\sigma$-Komponenten mit $\Delta (mg) = \pm 1$ und die drei inneren Linien zählen zur $\pi$-Komponente mit $\Delta (mg) =  0$.}
+  \label{fig:normalTermschema}
+\end{figure}
+
 
 \paragraph{Anomaler Zeeman-Effekt:}
 
@@ -95,9 +108,26 @@ In diesem Fall spielt der Elektronenspin eine Rolle, da $S\neq 0$. Hier sind die
 In Abbildung \ref{fig:anomal} ist an einem Beispiel gezeigt wie eine solche Aufspaltung aussieht.
 Die Energiedifferenz der abgestrahlten Linie zur Linie bei $B = 0$ lässt sich dann durch
 \begin{align}
-  \Delta E = [m_1 g(L_1, S_1, J_1) - m_2 g(L_2, S_2, J_2)]\mu_\text{B} B
+  \Delta E = [m_1 g(L_1, S_1, J_1) - m_2 g(L_2, S_2, J_2)]\mu_\text{B} B\label{eqn:aufspaltungAnomal}
 \end{align}
 berechnen. Wobei sich der Landé-Faktor $g$ wieder aus Formel \eqref{eqn:lande} berechnet.
+
+In diesem Fall wird der anomale Zeemaneffekt an der blauen Linie der Cadmiumlampe untersucht. Diese wird bei einem $^3S_1 \leftrightarrow ^3P_1$ Übergang transmittiert.
+Hier ergeben sich für jedes Niveau eigene Landé-Faktoren. Das S-Niveau hat einen Faktor von:
+\begin{align}
+  g_\text{J}(L=0, J=1, S=1) = \num{2.0}
+\intertext{und das P-Niveau einen von:}
+  g_\text{J}(L=1, J=1, S=1) = \num{1.5}.
+\end{align}
+Das entsprechende Termschema ist in Abbildung \ref{fig:anomalTermschema}  zu sehen.
+\begin{figure}
+  \centering
+  \includegraphics[height=10cm]{besuchInDerNacktmullAufzuchtstation/anomalTermschema.pdf}
+  \caption{Termschema des hier betrachteten anomalen Zeeman-Effekts. Dabei sind die vier äußeren Linien die $\sigma$-Komponenten mit $\Delta (mg) = \pm [2; 1.5]$ und die drei inneren Linien zählen zur $\pi$-Komponente mit $\Delta (mg) =  [-0.5; 0; 0.5]$.}
+  \label{fig:anomalTermschema}
+\end{figure}
+
+
 % \subsection{Fehlerrechnung}
 %
 % Für die Fehlerfortpflanzung bei Gleichungen mit $N$ fehlerbehafteten Größen

@@ -19,7 +19,20 @@ der LG-Platte ist
 \begin{align}
   \Delta \lambda_\text{D} = \frac{\lambda^2}{2 d} \sqrt{\frac{1}{n^2-1}}.
 \end{align}
-Es gibt an, wie groß die maximale Wellenlängendifferenz sein darf, bevor sich zwei Wellenlängen überlagern. Außerdem kann man das Auflösungsvermögen der Platte mit
+Es gibt an, wie groß die maximale Wellenlängendifferenz sein darf, bevor sich zwei Wellenlängen überlagern.
+Von diesem Dispersionsgebiet hängt über
+\begin{align}
+  \delta \lambda = \frac{1}{2}\frac{\delta s}{\Delta s} \Delta \lambda_\text{D} \label{eqn:aenderungLambda}
+\end{align}
+auch die Wellenlängenänderung ab. In Abbildung \ref{fig:deltasDeltas} ist der Unterschied zwischen $\Delta s$ und $\delta s$ zu erkennen.
+\begin{figure}
+  \centering
+  \includegraphics[height=6cm]{besuchInDerNacktmullAufzuchtstation/deltasDeltas.pdf}
+  \caption{Die Zeeman-Aufspaltung ohne (links) und mit Magnetfeld(rechts) \cite{anleitung}.}
+  \label{fig:deltasDeltas}
+\end{figure}
+
+Außerdem kann man das Auflösungsvermögen der Platte mit
 \begin{align}
   A = \frac{\lambda}{\Delta \lambda} = \frac{L}{\lambda} (n^2 - 1)
 \end{align}
@@ -31,6 +44,52 @@ Die Wellenlängen der roten und blauen Linie betragen:
 \intertext{Und die Werte der LG-Platte betragen:}
   d &= \SI{4}{\milli\meter} \quad L = \SI{120}{\milli\meter} \quad n(\SI{644}{\nano\meter}) = \num{1.4567} \quad n(\SI{480}{\nano\meter}) = \num{1.4635}.
 \end{align*}
+
+Damit ergibt sich für das Dispersionsgebiet der Platte:
+\begin{align}
+  \Delta \lambda_\text{D, rot} &= \SI{48.9}{\pico\meter} \quad \Delta \lambda_\text{D, blau} = \SI{27.2}{\pico\meter}\\
+\intertext{und für das Auflösungsvermögen:}
+  A_\text{rot} &= \num{209129} \quad A_\text{blau} = \num{280494}.
+\end{align}
+
+\subsection{Die optimale Magnetfeldstärke}
+
+Wie auch schon in Abbildung \ref{fig:deltasDeltas} zu erahnen ist, ist es möglich, dass sich die aufgespalteten Spektrallinien verschiedener Ordnungen überlagern können. Um das zu verhindern und im Gegenteil ein gut zu messendes Bild zu erhalten, wird die Forderung
+\begin{align}
+  \frac{\delta s}{\Delta s} \overset{!}{=} \frac{1}{2}
+\end{align}
+gestellt.
+Damit vereinfacht sich Formel \eqref{eqn:aenderungLambda} zu
+\begin{align}
+  \delta \lambda = \frac{1}{4} \Delta \lambda_\text{D}.\label{eqn:timoistdumm}
+\end{align}
+Außerdem gilt für die Energie einer Spektrallinie in Abhängigkeit von der Wellenlänge
+\begin{align}
+  E &= \frac{c h}{\lambda}.\\
+\intertext{Abgeleitet ergibt sich hier:}
+  \delta E &= -\frac{c h}{\lambda^2} \delta \lambda.\\
+\intertext{Durch Gleichsetzen dieser Gleichung mit der allgemeinen Gleichung für die Energieauspaltung des Zeeman-Effekts \eqref{eqn:aufspaltungAnomal} ergibt sich betragsmäßig:}
+\Delta (m g_\text{J}) \mu_\text{B} B &= \frac{c h}{\lambda^2} \delta \lambda.\\
+\intertext{Schließlich kann noch Formel \eqref{eqn:timoistdumm} eingesetzt werden und nach Umformung ergibt sich für das Magnetfeld:}
+B &= \frac{c h}{4 \lambda^2 \Delta (m g_\text{J}) \mu_\text{B}} \Delta \lambda_\text{D}.\label{eqn:optimalesMagnetfeld}
+\end{align}
+Mit dieser Formel können nun die einzustellenden Magnetfelder für die rote und die blaue Linie berechnet werden, wobei aufgrund der verschieden starken Aufspaltung von $\pi$ und $\sigma$-Linie beim anomalen Zeemaneffekt zwei verschieden starke Magnetfelder eingestellt werden.
+Die berechneten Magnetfelder betragen:
+\begin{align}
+  B_\text{rot, $\sigma$} \approx \SI{632}{\milli\tesla}\\
+  B_\text{blau, $\pi$} \approx \SI{1264}{\milli\tesla}\\
+  B_\text{blau, $\sigma$} \approx \SI{361}{\milli\tesla}.
+\end{align}
+Für die Berechnung des optimalen Magnetfelds für die blaue $\sigma$-Komponente wurde für $\Delta (m g_\text{J})$ der Mittelwert $1.75$ genommen.
+
+Damit kann nun auch die Energieaufspaltung bestimmt werden:
+\begin{align}
+  \Delta E_\text{rot, $\sigma$} \approx \pm\SI{3.658e-5}{\electronvolt}\\
+  \Delta E_\text{blau, $\pi$} \approx \pm \SI{3.658e-5}{\electronvolt}\\
+  \Delta E_\text{blau, $\sigma$, $\Delta (mg) = \pm 2$} \approx \pm \SI{4.181e-5}{\electronvolt}\\
+  \Delta E_\text{blau, $\sigma$, $\Delta (mg) = \pm 1.5$} \approx \pm \SI{3.136e-5}{\electronvolt}.
+\end{align}
+
 
 \section{Durchführung}
 \label{sec:Durchführung}
