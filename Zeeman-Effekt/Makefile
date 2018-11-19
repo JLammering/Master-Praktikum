@@ -17,11 +17,11 @@ build/plotElement.pdf: plot.py header-matplotlib.tex | build
 build/kalibrierung_b.pdf: kalibrierung_b.py header-matplotlib.tex matplotlibrc | build
 	TEXINPUTS="$(call translate,$(pwd):)" python kalibrierung_b.py
 
-#build/red_ds.pdf: g_J_red.py header-matplotlib.tex matplotlibrc | build
-#	TEXINPUTS="$(call translate,$(pwd):)" python g_J_red.py
+build/red_ds.pdf: g_J_red.py header-matplotlib.tex matplotlibrc | build
+	TEXINPUTS="$(call translate,$(pwd):)" python g_J_red.py
 
-#build/blue_ds.pdf: g_J_blue.py header-matplotlib.tex matplotlibrc | build
-#	TEXINPUTS="$(call translate,$(pwd):)" python g_J_blue.py
+build/blue_ds.pdf: g_J_blue.py header-matplotlib.tex matplotlibrc | build
+	TEXINPUTS="$(call translate,$(pwd):)" python g_J_blue.py
 
 build/red_quot.pdf: g_J_red.py header-matplotlib.tex matplotlibrc | build
 	TEXINPUTS="$(call translate,$(pwd):)" python g_J_red.py
