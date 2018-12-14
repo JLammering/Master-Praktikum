@@ -17,8 +17,8 @@ def plotElement(anodenstrom, spannung, V_N, R):
     spannung /= (V_N**2 * 1000**2 * 10)  # verstärkung rausrechnen
     x = anodenstrom*10**(-3)
     y = spannung/(R**2)  # I^2 bestimmt
-    plt.errorbar(unp.nominal_values(x), unp.nominal_values(y),
-    xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='kx', label='Messwerte')
+    plt.errorbar(noms(x), noms(y),
+    xerr=stds(x), yerr=stds(y), fmt='kx', label='Messwerte')
 
     # fitten:
     params, covariance = curve_fit(fitfunktion, unp.nominal_values(x),

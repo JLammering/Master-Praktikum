@@ -1,9 +1,92 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
+\subsection{Überprüfung der Stabilitätsbedingung}
+
+Die Stabilitätsbedingung aus Gleichung \eqref{eqn:1} wird für zwei Kombinationen der Spiegel überprüft.
+Als Auskopplungsspiegel wird ein Spiegel genutzt bei dem die reflektierende Fläche einen Krümmungsradius von $r = \SI{1400}{\milli\meter}$ besitzt. Der stark refelektierende Spiegel hat erst ebenfalls einen Krümmungsradius von $r = \SI{1400}{\milli\meter}$ und wird dann in der zweiten überprüften Kombination durch einen flachen Spiegel ersetzt.
+Die theoretisch erreichbare maximale Länge $L$ des Resonators kann in Abbildung \ref{fig:stabil} abgelesen werden. Wie auch in Formel \eqref{eqn:1} zu erkennen ist, liegt diese bei zwei krummen Spiegeln bei $r_1+r_2$ und bei der zweiten Kombination bei $r_1$.
+
 \begin{figure}
   \centering
-  \includegraphics{build/plotElement.pdf}
+  \includegraphics[height=9cm]{build/stabil.pdf}
+  \caption{Die theoretisch erreichbaren Verstärkungsfaktoren der beiden Spiegelkombinationen. }
+  \label{fig:stabil}
+\end{figure}
+
+Die experimentell erreichten maximalen Resonatorlängen sind in Tabelle \ref{tab:stabil} zu sehen.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{l l S}
+    \toprule
+    {HR-Spiegel}& {OC-Spiegel} & {$L_\text{max}\:/\:\si{\centi\meter}$}\\
+    \midrule
+    $r = \SI{1400}{\milli\meter}$/flat & $r = \SI{1400}{\milli\meter}$/flat & 215.4\\
+    flat/flat & $r = \SI{1400}{\milli\meter}$/flat & 126.5\\
+    \bottomrule
+  \end{tabular}
+  \caption{Die erreichten maximalen Resonatorlängen.}
+  \label{tab:stabil}
+\end{table}
+
+\subsection{Vermessung der TEM-Moden}
+
+\paragraph{TEM$_{00}$ Grundmode}
+
+Die gemessene Intensität der TEM$_{00}$ Grundmode in Abhängigkeit der Position der Photodiode ist in Tabelle \ref{tab:grundmode} eingetragen.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{S S}
+    \toprule
+    {$x\:/\:\si{\milli\meter}$} & {$I\:/\:\si{\micro\ampere}$}\\
+    \midrule
+    28 & 0.22\\
+    25 & 0.512\\
+    22 & 0.96\\
+    19 & 1.593\\
+    16 & 2.375\\
+    13 & 2.946\\
+    10 & 2.971\\
+    7 & 2.489\\
+    4 & 1.78\\
+    1 & 1.152\\
+    -2 & 0.667\\
+    -5 & 0.386\\
+    -8 & 0.181\\
+    \bottomrule
+  \end{tabular}
+  \caption{Messwerte der Intensitätsverteilung der TEM$_{00}$ Grundmode mit den Unsicherheiten $\sigma_x = \SI{0.5}{\milli\meter}$ und $\sigma_I = \SI{0.01}{\micro\ampere}$.}
+  \label{tab:grundmode}
+\end{table}
+
+An diese Messwerte wurde die Funktion
+\begin{align}
+  I = I_0*\exp((-2*(x+x_0)^2)/(\omega^2))
+\end{align}
+gefittet. Es ergeben sich die Werte:
+\begin{align}
+  I_0 = \SI{1.25(3)}{\micro\ampere} \quad x_0 = \SI{-11.1(1)}{\milli\meter} \quad \omega = \SI{14.7(2)}{\milli\meter}.
+\end{align}
+Die Messwerte und die Fitfunktion sind in Abbildung \ref{fig:grundmode} zu sehen.
+
+\begin{figure}
+  \centering
+  \includegraphics[height=5cm]{build/grundmode.pdf}
+  \caption{Messwerte und Fitfunktion für die TEM$_{00}$ Grundmode.}
+  \label{fig:grundmode}
+\end{figure}
+
+
+
+
+
+
+
+\begin{figure}
+  \centering
+  \includegraphics[height=5cm]{build/plotElement.pdf}
   \caption{Plot.}
   \label{fig:plot}
 \end{figure}

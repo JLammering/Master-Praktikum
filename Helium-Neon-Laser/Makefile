@@ -11,11 +11,14 @@ endif
 all: build/main.pdf
 
 # hier Python-Skripte:
-build/plotElement.pdf: plot.py header-matplotlib.tex | build
-	TEXINPUTS="$(call translate,$(pwd):)" python plot.py
+build/stabil.pdf: vorbereitung.py header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python vorbereitung.py
+
+build/polarisation.pdf: polarisation.py header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python polarisation.py
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: build/plotElement.pdf
+build/main.pdf: build/stabil.pdf build/polarisation.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \
