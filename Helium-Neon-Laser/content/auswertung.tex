@@ -2,6 +2,7 @@
 \label{sec:Auswertung}
 
 \subsection{Überprüfung der Stabilitätsbedingung}
+\label{sec:stabil}
 
 Die Stabilitätsbedingung aus Gleichung \eqref{eqn:1} wird für zwei Kombinationen der Spiegel überprüft.
 Als Auskopplungsspiegel wird ein Spiegel genutzt bei dem die reflektierende Fläche einen Krümmungsradius von $r = \SI{1400}{\milli\meter}$ besitzt. Der stark refelektierende Spiegel hat erst ebenfalls einen Krümmungsradius von $r = \SI{1400}{\milli\meter}$ und wird dann in der zweiten überprüften Kombination durch einen flachen Spiegel ersetzt.
@@ -16,7 +17,7 @@ Die theoretisch erreichbare maximale Länge $L$ des Resonators kann in Abbildung
 
 Die experimentell erreichten maximalen Resonatorlängen sind in Tabelle \ref{tab:stabil} zu sehen.
 
-\begin{table}[h]
+\begin{table}
   \centering
   \begin{tabular}{l l S}
     \toprule
@@ -36,9 +37,9 @@ Die experimentell erreichten maximalen Resonatorlängen sind in Tabelle \ref{tab
 
 Die gemessene Intensität der TEM$_{00}$ Grundmode in Abhängigkeit der Position der Photodiode ist in Tabelle \ref{tab:grundmode} eingetragen.
 
-\begin{table}[h]
+\begin{table}
   \centering
-  \begin{tabular}{S S}
+  \begin{tabular}[t]{S S}
     \toprule
     {$x\:/\:\si{\milli\meter}$} & {$I\:/\:\si{\micro\ampere}$}\\
     \midrule
@@ -48,6 +49,12 @@ Die gemessene Intensität der TEM$_{00}$ Grundmode in Abhängigkeit der Position
     19 & 1.593\\
     16 & 2.375\\
     13 & 2.946\\
+    \bottomrule
+  \end{tabular}
+  \begin{tabular}[t]{S S}
+    \toprule
+    {$x\:/\:\si{\milli\meter}$} & {$I\:/\:\si{\micro\ampere}$}\\
+    \midrule
     10 & 2.971\\
     7 & 2.489\\
     4 & 1.78\\
@@ -73,38 +80,260 @@ Die Messwerte und die Fitfunktion sind in Abbildung \ref{fig:grundmode} zu sehen
 
 \begin{figure}
   \centering
-  \includegraphics[height=5cm]{build/grundmode.pdf}
+  \includegraphics[height=8cm]{build/grundmode.pdf}
   \caption{Messwerte und Fitfunktion für die TEM$_{00}$ Grundmode.}
   \label{fig:grundmode}
 \end{figure}
 
+\paragraph{TEM$_{01}$ Mode}
 
+Die gemessene Intensität der TEM$_{01}$ Mode in Abhängigkeit der Position der Photodiode ist in Tabelle \ref{tab:transmode} eingetragen.
 
+\begin{table}
+  \centering
+  \begin{tabular}[t]{S S}
+    \toprule
+    {$x\:/\:\si{\milli\meter}$} & {$I\:/\:\si{\micro\ampere}$}\\
+    \midrule
+    -10 & 0.018\\
+    -8 & 0.044\\
+    -6 & 0.052\\
+    -4 & 0.066\\
+    -2 & 0.065\\
+    0 & 0.072\\
+    2 & 0.105\\
+    4 & 0.132\\
+    6 & 0.108\\
+    8 & 0.125\\
+    10 & 0.101\\
+    \bottomrule
+  \end{tabular}
+  \begin{tabular}[t]{S S}
+    \toprule
+    {$x\:/\:\si{\milli\meter}$} & {$I\:/\:\si{\micro\ampere}$}\\
+    \midrule
+    12 & 0.069\\
+    14 & 0.036\\
+    16 & 0.013\\
+    18 & 0.001\\
+    20 & 0.006\\
+    22 & 0.023\\
+    24 & 0.043\\
+    26 & 0.065\\
+    28 & 0.071\\
+    30 & 0.053\\
+    32 & 0.052\\
+    34 & 0.041\\
+    \bottomrule
+  \end{tabular}
+  \caption{Messwerte der Intensitätsverteilung der TEM$_{01}$ Mode mit den Unsicherheiten $\sigma_x = \SI{0.5}{\milli\meter}$ und $\sigma_I = \SI{0.01}{\micro\ampere}$.}
+  \label{tab:transmode}
+\end{table}
 
-
-
+An diese Messwerte wurde die Funktion
+\begin{align}
+  I = I_{0,1}*\exp((-2*(x+x_{0,1})^2)/(\omega_1^2)) + I_{0,2}*\exp((-2*(x+x_{0,2})^2)/(\omega_2^2))
+\end{align}
+gefittet. Es ergeben sich die Werte:
+\begin{align}
+  I_{0,1} = \SI{120(7)}{\nano\ampere} \quad x_{0,1} = \SI{-4.5(5)}{\milli\meter} \quad \omega_1 = \SI{14(1)}{\milli\meter}\\
+  I_{0,2} = \SI{71(10)}{\nano\ampere} \quad x_{0,2} = \SI{-28.2(7)}{\milli\meter} \quad \omega_2 = \SI{7(2)}{\milli\meter}
+\end{align}
+Die Messwerte und die Fitfunktion sind in Abbildung \ref{fig:transmode} zu sehen.
 
 \begin{figure}
   \centering
-  \includegraphics[height=5cm]{build/plotElement.pdf}
-  \caption{Plot.}
-  \label{fig:plot}
+  \includegraphics[height=8cm]{build/transmode.pdf}
+  \caption{Messwerte und Fitfunktion für die TEM$_{01}$ Mode.}
+  \label{fig:transmode}
 \end{figure}
 
-Tabelle für copy and paste:
-\begin{table}[h]
+\subsection{Polarisationsmessung}
+
+Die Messwerte der Polarisationsmessung sind in Tabelle \ref{tab:polarisation} zu finden.
+\begin{table}
   \centering
-  \begin{tabular}{S S}
+  \begin{tabular}[t]{S S}
     \toprule
-    {$k$} & {$U\:/\:\si{\milli\volt}$}\\
+    {$\phi\:/\:\si{\degree}$} & {$I\:/\:\si{\micro\ampere}$}\\
     \midrule
-    1 & 637.2\\
-    3 & 212.4\\
-    5 & 127.4\\
-    7 & 91.03\\
-    9 & 70.8\\
+    0 & 0.65\\
+  10 & 0.51\\
+  20 & 0.38\\
+  30 & 0.25\\
+  40 & 0.08\\
+  50 & 0.0\\
+  60 & 0.03\\
+  70 & 0.15\\
+  80 & 0.4\\
     \bottomrule
   \end{tabular}
-  \caption{Amplituden Rechteckspannung.}
-  \label{tab:rechtampl}
+  \begin{tabular}[t]{S S}
+    \toprule
+    {$\phi\:/\:\si{\degree}$} & {$I\:/\:\si{\micro\ampere}$}\\
+    \midrule
+    90 & 0.64\\
+    100 & 0.93\\
+    110 & 1.09\\
+    120 & 1.25\\
+    130 & 1.3\\
+    140 & 1.24\\
+    150 & 0.98\\
+    160 & 0.85\\
+    170 & 0.73\\
+    180 & 0.61\\
+    \bottomrule
+  \end{tabular}
+  \caption{Messwerte der Polarisationsmessung.}
+  \label{tab:polarisation}
 \end{table}
+
+An die Messwerte wird dann die Funktion
+\begin{align}
+  I = I_0*\cos^2(m*\phi + \phi_0)
+\end{align}
+gefittet.
+
+Es ergeben sich die Werte:
+\begin{align}
+  I_0 = \SI{1.25(2)}{\micro\ampere} \quad \phi_0 = \SI{98.06(3)}{\degree} \quad m = \num{0.0190(3)}.
+\end{align}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=8cm]{build/polarisation.pdf}
+  \caption{Messwerte und Fitfunktion bei der Messung der Polarisation.}
+  \label{fig:polarisation}
+\end{figure}
+
+\subsection{Wellenlängenmessung}
+\label{sec:wellenlaenge}
+
+Zur Bestimmung der Wellenlänge aus den Abständen der Beugungsmuster zur Mitte $d_\text{n}$ wird Formel \eqref{eqn:???} verwendet.
+Der Abstand von Gitter zum Schirm $L$ und die Gitterkonstante $g$ betragen:
+\begin{align}
+  L = \SI{79.8(5)} \qquad g = \SI{12.5}{\micro\meter}.
+\end{align}
+Die Abstände der Nebenmaxima vom Hauptmaximum des Musters und die zugehörige Ordnung sind in Tabelle \ref{tab:wellenlaenge} zu finden. Dort findet sich auch die jeweils berechnete Wellenlänge mit Unsicherheit. Da links und rechts vom Hauptmaximum gemessen wurde, tritt jede Ordnung zwei mal auf.
+\begin{table}[h]
+  \centering
+  \begin{tabular}{S S
+    S[table-format=3.0]
+    @{${}\pm{}$}
+    S[table-format=2.0]
+     }
+    \toprule
+    {$d_\text{n}\:/\:\si{\centi\meter}$} &{$n$}& \multicolumn{2}{c}{$\lambda\:/\:\si{\nano\meter}$}\\
+    \midrule
+    3.8 & 1 & 594 & 31\\
+    7.8 & 2 & 608 & 22\\
+    11.9 & 3 & 614 & 17\\
+    15.9 & 4 & 610 & 15\\
+    20.1 & 5 & 610 & 13\\
+    24.6 & 6 & 613 & 11\\
+    3.8 & 1 & 594 & 31\\
+    7.9 & 2 & 615 & 22\\
+    11.9 & 3 & 614 & 17\\
+    16.1 & 4 & 618 & 15\\
+    20.4 & 5 & 619 & 13\\
+    24.8 & 6 & 618 & 11\\
+    \bottomrule
+  \end{tabular}
+  \caption{Die Messwerte und Ergebnisse aus der Messung der Wellenlänge. Der Fehler der Abstände wird auf $\sigma_\text{d} = \SI{0.2}{\centi\meter}$ angenommen.}
+  \label{tab:wellenlaenge}
+\end{table}
+Mit den Werten aus Tabelle \ref{tab:wellenlaenge} wird für die Wellenlänge der Mittelwert
+\begin{align}
+  \lambda = \SI{611(12)}{\nano\meter}
+\end{align}
+berechnet. Das entspricht einer Abweichung vom erwarteten Wert $\lambda_\text{erw.} = \SI{632.8}{\nano\meter}$ von $\SI{3(2)}{\percent}$.
+
+\subsection{Longitudinale Moden}
+
+Aus den Frequenzen der stehenden Wellen zwischen den Resonatorspiegeln wird nun die Distanz der beiden Spiegel bestimmt. Die vier für jede Distanz aufgenommenen Frequenzen sind in Tabelle \ref{tab:longiModen} zu finden.
+\begin{table}
+  \centering
+  \begin{tabular}{S}
+    \toprule
+    {$\nu_{1, L = \SI{53.5}{\centi\meter}}\:/\:\si{\mega\hertz}$}\\
+    \midrule
+    278\\
+551\\
+825\\
+1099\\
+    \bottomrule
+  \end{tabular}
+  \begin{tabular}{S}
+    \toprule
+    {$\nu_{2, L = \SI{60.5}{\centi\meter}}\:/\:\si{\mega\hertz}$}\\
+    \midrule
+244\\
+488\\
+728\\
+971\\
+    \bottomrule
+  \end{tabular}
+  \begin{tabular}{S}
+    \toprule
+    {$\nu_{3, L = \SI{75.6}{\centi\meter}}\:/\:\si{\mega\hertz}$}\\
+    \midrule
+203\\
+405\\
+611\\
+814\\
+    \bottomrule
+  \end{tabular}
+  \caption{Messwerte der Frequenzmessung bei unterschiedlichen Resonatorlängen. Als Fehler der Frequenzmessung wird $\sigma_{\nu} = \SI{5}{\mega\hertz}$ angenommen.}
+  \label{tab:longiModen}
+\end{table}
+
+Daraus wird mit Formel \eqref{eqn:???} die Länge des Resonators berechnet. Dazu werden die vier Frequenzdifferenzen pro Resonatorlänge gemittelt. Die Ergebnisse, sowie die mit Bandmaß gemessene Resonatorlänge und die Abweichung davon sind in Tabelle \ref{tab:longiModenErgebnisse}.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{S[table-format=2.1]
+      @{${}\pm{}$}
+      S[table-format=1.1] S S[table-format=1.0]
+      @{${}\pm{}$}
+      S[table-format=1.0]}
+    \toprule
+    \multicolumn{2}{c}{$L_\text{ber.}\:/\:\si{\centi\meter}$} & {$L_\text{gem.}\:/\:\si{\centi\meter}$} & \multicolumn{2}{c}{$\Delta\:/\:\si{\percent}$}\\
+    \midrule
+    54.6 & 0.2 & 53.5 & 2 & 1\\
+    61.8 & 0.3 & 60.5 & 2 & 1\\
+    73.7 & 0.5 & 75.6 & 3 & 1\\
+    \bottomrule
+  \end{tabular}
+  \caption{Die Ergebnisse der Ausmessung der longitudinalen Moden. Als Fehler der Bandmassmessung wird $\sigma_{L_\text{gem.}} = \SI{0.5}{\centi\meter}$ angenommen.}
+  \label{tab:longiModenErgebnisse}
+\end{table}
+
+
+
+
+
+
+% \begin{figure}
+%   \centering
+%   \includegraphics[height=5cm]{build/plotElement.pdf}
+%   \caption{Plot.}
+%   \label{fig:plot}
+% \end{figure}
+%
+% Tabelle für copy and paste:
+% \begin{table}[h]
+%   \centering
+%   \begin{tabular}{S S}
+%     \toprule
+%     {$k$} & {$U\:/\:\si{\milli\volt}$}\\
+%     \midrule
+%     1 & 637.2\\
+%     3 & 212.4\\
+%     5 & 127.4\\
+%     7 & 91.03\\
+%     9 & 70.8\\
+%     \bottomrule
+%   \end{tabular}
+%   \caption{Amplituden Rechteckspannung.}
+%   \label{tab:rechtampl}
+% \end{table}

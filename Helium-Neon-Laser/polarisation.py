@@ -4,6 +4,7 @@ from functions import werteZuTabelle, abweichungen, mittelwert
 from scipy.optimize import curve_fit, fmin
 import uncertainties.unumpy as unp
 from uncertainties import ufloat
+from scipy import constants
 from uncertainties.unumpy import (nominal_values as noms,
                                   std_devs as stds)
 
@@ -22,9 +23,11 @@ def fitfunktion_transmode(x, I_01, r_verschieb1, omega1,
             I_02*np.exp((-2*(x+r_verschieb2)**2)/(omega2**2)))
 
 
-def plot(x, y, label, filename, x_label, y_label, fitfunktion, p_list, pname_list):
+def plot(x, y, label, filename, x_label, y_label,
+         fitfunktion, p_list, pname_list):
     plt.errorbar(unp.nominal_values(x), unp.nominal_values(y),
-                 xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='kx', label='Messwerte '+label)
+                 xerr=unp.std_devs(x), yerr=unp.std_devs(y),
+                 fmt='kx', label='Messwerte '+label)
 
     werte_start = 0
     werte_ende = len(x)-1
@@ -39,18 +42,55 @@ def plot(x, y, label, filename, x_label, y_label, fitfunktion, p_list, pname_lis
     # print('m = ', params[2], '±', errors[2])
     # m = ufloat(params[0], errors[0])
     x_fit = np.linspace(noms(x[0])-(noms(x[-1]))*0.1, (noms(x[-1]))*1.1, 1000)
-    label = 'hallo'
     plt.plot(x_fit, fitfunktion(x_fit, *params), label='Fit ' + label)
 
     # plotting
     plt.legend(loc='best')
     plt.xlim(noms(x[0])-(noms(x[-1]))*0.06, (noms(x[-1]))*1.06)
 
-    #plt.xlabel(x_label)
-    #plt.ylabel(y_label)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
     plt.savefig('build/{}.pdf'.format(filename))
     plt.close()
 
+
+def wellenlaenge(d_array, mitte, L):
+    d_links = unp.uarray(np.zeros(mitte), np.zeros(mitte))
+    d_rechts = unp.uarray(np.zeros(12-mitte), np.zeros(12-mitte))
+    for i in range(0, mitte, 1):
+        d_links[i] = np.sum(d_array[mitte-(i+1):mitte])
+    for i in range(0, 12-mitte, 1):
+        d_rechts[i] = np.sum(d_array[mitte:mitte+(i+1)])
+    g = (10**-3)/80
+    print('g = ', g*10**6, 'micro meter')
+    d_links = d_links*10**-2
+    d_rechts = d_rechts*10**-2
+    d_all = np.concatenate((noms(d_links), noms(d_rechts)))
+    n_links = np.linspace(1, 6, 6)
+    lamda_links = g * unp.sin(unp.arctan(d_links/L))/n_links
+    n_rechts = range(1, len(d_rechts)+1, 1)
+    n_all = np.concatenate((n_links, n_rechts))
+    lamda_rechts = g * unp.sin(unp.arctan(d_rechts/L))/n_rechts
+    lamda_all = np.concatenate((lamda_links, lamda_rechts))
+    werteZuTabelle(d_all*100, n_all.astype(int), (noms(lamda_all)*10**9).astype(int), (stds(lamda_all)*10**9).astype(int), rundungen=[3, 0, 0, 0])
+    print('lambda = ', (np.sum(lamda_all))/12)
+    print('Abweichung = ', abweichungen(632.8*10**-9, (np.sum(lamda_all))/12))
+    print('Mittelwert = ', np.mean(noms(lamda_all)), '±', np.std(noms(lamda_all)))
+
+
+def longitudinaleModen(f_array, L_vergleich):
+    c = ufloat(constants.physical_constants["speed of light in vacuum"][0], 0)
+    differenz = unp.uarray(np.zeros(4), np.zeros(4))
+    for i in range(len(f_array)):
+        if i == 0:
+            differenz[i] = f_array[i]
+        else:
+            differenz[i] = f_array[i] - f_array[i-1]
+    print(differenz)
+    differenz *= 10**6
+    L = c/((np.sum(differenz)/4)*2)
+    print('L = ', L)
+    print('Abweichung = ', abweichungen(L_vergleich, L))
 
 if __name__ == '__main__':
     # polarisation
@@ -59,7 +99,8 @@ if __name__ == '__main__':
     phi = np.linspace(0, 180, 19)
     phi = unp.uarray(phi, 1)
     I = unp.uarray(I, 0.005)
-    plot(phi, I, "Polarisation", "polarisation", "phi", "I", fitfunktion_pol,
+    werteZuTabelle(noms(phi).astype(int), noms(I), rundungen=[0, 2])
+    plot(phi, I, "Polarisation", "polarisation", r'$\phi/\si{\degree}$', r'$I/\si{\micro\ampere}$', fitfunktion_pol,
          [0.8, 100, 0], ["I_0", "phi_verschieb", "m"])
 
     # moden
@@ -67,7 +108,6 @@ if __name__ == '__main__':
                          unpack='True')
     x = unp.uarray(x, 0.5)
     I = unp.uarray(I, 0.01)
-
     werteZuTabelle(noms(x).astype(int), noms(I), rundungen=[0, 3])
     plot(x, I, r'TEM$_{00}$', 'grundmode', r'$x/\si{\milli\meter}$',
          r'$I/\si{\micro\ampere}$', fitfunktion_grundmode, [2.97, 13, 50],
@@ -78,7 +118,23 @@ if __name__ == '__main__':
     x = unp.uarray(x, 0.5)
     I = unp.uarray(I, 0.01)
     werteZuTabelle(noms(x).astype(int), noms(I), rundungen=[0, 3])
-    plot(x, I, r'TEM$_{00}$', 'transmode', r'$x/\si{\milli\meter}$',
+    plot(x, I, r'TEM$_{01}$', 'transmode', r'$x/\si{\milli\meter}$',
          r'$I/\si{\micro\ampere}$', fitfunktion_transmode,
          [0.12, -5, 10, 0.08, -20, 10],
          ["I_01", "x_01", "omega1", "I_02", "x_02", "omega2"])
+
+    # wellenlänge
+    nummer, d = np.genfromtxt('daten/wellenlaenge.txt',
+                              unpack='True')
+    d = unp.uarray(d, 0.2)
+    L = ufloat(0.798, 0.005)
+    wellenlaenge(d, 6, L)
+
+    # longi Moden
+    f = np.genfromtxt('daten/longiModen.txt',
+                      unpack='True')
+    f = unp.uarray(f, 5)
+    longitudinaleModen(f[0:4], ufloat(0.535, 0.005))
+    longitudinaleModen(f[4:8], ufloat(0.605, 0.005))
+    longitudinaleModen(f[8:12], ufloat(0.756, 0.005))
+    werteZuTabelle(noms(f).astype(int), rundungen=[0] )
