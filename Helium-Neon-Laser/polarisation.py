@@ -92,16 +92,20 @@ def longitudinaleModen(f_array, L_vergleich):
     print('L = ', L)
     print('Abweichung = ', abweichungen(L_vergleich, L))
 
+
 if __name__ == '__main__':
     # polarisation
     I = np.genfromtxt('daten/polarisation.txt',
                       unpack='True')
     phi = np.linspace(0, 180, 19)
     phi = unp.uarray(phi, 1)
+    phi_rad = (phi/360)*2*np.pi
     I = unp.uarray(I, 0.005)
     werteZuTabelle(noms(phi).astype(int), noms(I), rundungen=[0, 2])
-    plot(phi, I, "Polarisation", "polarisation", r'$\phi/\si{\degree}$', r'$I/\si{\micro\ampere}$', fitfunktion_pol,
-         [0.8, 100, 0], ["I_0", "phi_verschieb", "m"])
+    plot(phi_rad, I, "Polarisation", "polarisation", r'$\phi/\si{\radian}$', r'$I/\si{\micro\ampere}$', fitfunktion_pol,
+         [0.8, 2, 0], ["I_0", "phi_verschieb", "m"])
+
+
 
     # moden
     x, I = np.genfromtxt('daten/tem00.txt',
