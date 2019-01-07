@@ -4,7 +4,11 @@
 \subsection{Einleitung}
 
 Innerhalb dieses Experiments wird die Funktionsweise eines Helium-Neon Lasers untersucht.
-
+Dazu werden zunächst theoretische Grundlagen zu Lasern im Allgemeinen, auftretende
+elektomagnetische Moden und der speziellen Funktionsweise des Helium-Neon Lasers erläutert
+und im Anschluss daran der Aufbau und die Durchführung dieses Experiments beschrieben.
+Darauffolgend präsentieren wir unsere Ergebnisse in der Auswertung und diskutieren diese
+anschließend.
 
 \subsection{Funktionsweise eines Lasers}
 
@@ -67,8 +71,8 @@ die Elektronen letzlich indirekt vom Grundzustand in den ersten angeregten Zusta
 Das indirekte Pumpen hat den Vorteil, dass keine Strahlungsübergänge via induzierte Emission
 durch die Pump Photonen vom mittleren Niveau in den Grundzustand mehr auftreten, da die
 Energiedifferenz eine andere ist. Dadurch kann erreicht werden, dass die Rate, mit welcher
-das zweite Niveau befüllt wird, auch bei einer Besetzung von $n_1 = n_2 = 0.5$ noch größer,
-als die Rate mit welcher der Grundzustand befüllt wird, ist und eine Besetzungsinversion
+das zweite Niveau befüllt wird, auch bei einer Besetzung von $n_1 = n_2 = 0.5$ noch größer
+als die Rate, mit welcher der Grundzustand befüllt wird, ist und eine Besetzungsinversion
 erzeugt werden. Fällt bei diesen Gegebenheiten nun ein Strahlungsfeld $\rho$ mit
 der entsprechenden Photonenergie ein, so induziert dieses wegen der Besetzungsinversion mehr
 Emissionen als Absorptionen, sodass es sich selbst durch das Lasermedium verstärkt.
@@ -80,7 +84,7 @@ Wie genau das funktioniert wird im folgenden Abschnitt erläutert.
 \begin{figure}[H]
   \centering
   \includegraphics[height = 4.4cm]{Pics von Buddy/dreiniveau.png}
-  \caption{Strahlungsübergänge in einem Dreiniveausystem \cite{laser}.} %http://www.pci.tu-bs.de/aggericke/PC4/Kap_III/Laser.htm
+  \caption{Strahlungsübergänge in einem Dreiniveausystem \cite{laser}.}
   \label{fig:dreiniveau}
 \end{figure}
 
@@ -88,11 +92,134 @@ Der grundlegende Aufbau eines Lasers ist in Abbildung \ref{fig:laseraufbau} erke
 Zwei Spiegel, die um das Lasermedium platziert werden, reflektieren den austretenden
 Lichtstrahl zurück in das Medium, wo er sich selbst verstärkt. Einer der Spiegel ist
 teildurchlässig mit einem Transmissionskoeffizienten von etwa $1-2 \, \si{\percent}$,
-damit der erzeugte Laserstrahl ausgekoppelt werden kann. 
+damit der erzeugte Laserstrahl ausgekoppelt werden kann. Zusammen bilden die beiden
+Spiegel einen optischen Resonator für das vom Medium emittierte Licht. Dieses genießt
+abhängig von seiner Wellenlänge und der Länge des Resonators konstruktive bzw. destruktive
+Interferenz. Der optische Resonator kann
+prinzipiell aus planaren oder sphärischen Spiegeln bestehen, dabei muss allerdings auf
+die Position der Brennpunkte geachtet werden. Werden die Resonatorparameter
+\begin{align}
+  g_i = 1 - \frac{L}{r_i}
+\end{align}
+für jeden Spiegel $i$ betrachtet, wobei $L$ die Resonatorlänge und $r_i$ der Krümmungsradius
+des jeweiligen Spiegels ist, so kann hergeleitet werden, dass die Spiegel außerhalb des Intervalls
+\begin{align}
+  g_1 \cdot g_2 \in [0,1)
+\end{align}
+keinen stabilen Resonator mehr für den Lichtstrahl formen. Im Optimalfall, bei einem sogenannten
+konfokalen Resonator, fallen die Brennpunkte der Spiegel genau aufeinander. Das ist nur mit
+zwei sphärischen Spiegeln realisierbar, da der Brennpunkt eines planaren Spiegels im Unendlichen
+liegt. Abhängig von Unebenheiten und dem Abstand zwischen den Spiegeln genießen unterschiedliche
+Moden konstruktive Interferenz. Dies wird im nächsten Abschnitt genauer behandelt.
 
 \begin{figure}
   \centering
   \includegraphics[height=5cm]{Pics von Buddy/laseraufbau.png}
-  \caption{\cite{anleitung}.}
+  \caption{Schematischer Aufbau eines Lasers \cite{anleitung}.}
   \label{fig:laseraufbau}
 \end{figure}
+
+\subsection{TEM-Moden in einem Laser}
+
+Die intuitivsten Moden, die in einem Laser entstehen können sind die longitudinalen
+Moden, die sich längs der optischen Achse ausbreiten. Davon gibt es einige, da die
+Wellenlänge des emittierten Lichts wesentlich geringer als die Länge des Resonators ist.
+Wegen Unebenheiten bei den planaren Spiegeln, oder Verkippungen bei den sphärischen o.Ä.
+können aber auch transversale Moden, die sich orthogonal zur optischen Achse ausbreiten, entstehen.
+Die verschiedenen auftretenden Moden werden in Anlehnung an Hohlleiter als $\text{TEM}_{lpq}$-Moden
+bezeichnet. Dabei stehen $l$ und $p$ für die Anzahl an Knoten in x- und y-Richtung, also
+in transversale Richtung, und $q$ für die Anzahl an Knoten in z- also longitudinale
+Richtung. Für einen konfokalen Resonator mit runden Spiegeln kann die genäherte Intensitätsverteilung
+\begin{align}
+  I_{lpq}(r,\varphi,z) &= \lvert E_{lpq}(r,\varphi,z) \rvert^2 \\
+  &\propto \cos^2\left(l \varphi\right) \cdot \left(\frac{8 \pi}{r \lambda}\right)^{1-l} x^{1+l} \cdot \left(L^q_p (x)\right)^2 \cdot \mathrm{e}^{-\frac{x}{2}}
+\end{align}
+hergeleitet werden, wobei
+\begin{align}
+  x = \frac{8 \pi}{\lambda} \frac{r}{r^2 + 4 z^2} \approx \frac{2 \pi r}{\lambda z^2}
+\end{align}
+und $L^q_p(x)$ das zugeordnete Laguerrepolynom ist. Im letzten Schritt wurde $r$ um Null genähert, da der Strahlradius klein
+gegenüber der Ausbreitung in z-Richtung ist. Für die $\text{TEM}_{00}$-Mode ergibt sich damit
+\begin{align}
+  I_{\text{Grundmode}}(r) = I_0 \mathrm{e}^{\frac{-2 r^2}{\omega^2}}
+\end{align}
+wobei $I_0$ die maximale Intensität im Zentrum des Strahls und $2 \omega$ der Strahldurchmesser ist.
+Diese Mode ist die intensivste mit den wenigsten Verlusten und daher auch die beobachtbare.
+Eine weitere Mode, die ohne Weiteres nicht beobachtbar ist, ist die $\text{TEM}_{01}$-Mode
+von der Form
+\begin{align}
+  was auch immer.
+\end{align}
+Um sie zu beobachten wird eine sogenannte Modenblende benötigt. Dazu wird in diesem Versuch ein
+schmaler Wolframdraht verwendet, welcher die intensive, scharf zentrierte Grundmode optisch ausblenden soll.
+Nachdem in diesem Abschnitt eine kurze Beschreibung der auftretenden TEM-Moden in einem Laser geliefert wurde,
+wird im nächsten Abschnitt der in diesem Versuch verwendete Helium-Neon Laser vertieft.
+
+\subsection{Funktionsweise eines Helium-Neon Laser}
+
+Der Helium-Neon Laser ist ein Gaslaser bestehend aus einem länglichem Rohr, welches ein Gemisch aus Helium und Neon
+im Verhältnis 5:1 beinhaltet und an beiden Seiten jeweils durch ein Brewsterfenster abgeschlossen wird.
+Die Bedeutung der Brewsterfenster wird im nächsten Abschnitt diskutiert. Als Pumpquelle dient eine äußere
+elektrische Spannung, die an den Helium-Atomen elektrische Entladungen erzeugt. Dabei wird für das rote
+Laserlicht ein Elektron aus dem Helium-Grundzustand in den $2^1 s$-Zustand angehoben. Die angeregten Helium-Atome
+befinden sich in metastabilen Zuständen, vergleichbar mit dem oberen Pumpniveau im Dreiniveausystem, siehe Abbildung
+\ref{fig:dreiniveau}. Durch Stöße zweiter Art wird die überschüssige Energie von den Helium-Atomen auf die
+Neon-Atome übertragen. Diese befinden sich dann im metastabilen $5s$-Zustand, was genau dem oberen
+Laserniveau des Dreiniveausystems entspricht, vergleiche dazu Abbildung \ref{fig:dreiniveau}.
+Das charakteristische rote Laserlicht mit einer Wellenlänge von etwa $\lambda = \SI{632,8}{\nano\meter}$
+wird schließlich durch spontane und stimulierte Übergänge vom $5s$-Niveau in das $3p$-Niveau erzeugt.
+Dadurch, dass die Neon-Atome durch die Helium-Atome indirekt angeregt werden wird im Gegensatz zu einem
+Zweiniveausystem eine Besetzungsinversion induziert. In Abbildung \ref{fig:HeNeÜbergänge} sind die
+aufgezählten Schritte für das Entstehen des Laserlichts noch einmal graphisch dargestellt.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[height = 4.4cm]{Pics von Buddy/heneübergänge.png}
+  \caption{Niveauübergänge im Helium-Neon Laser. Relevant für diesen Versuch ist nur der rote Übergang \cite{goettingen}.}
+  \label{fig:HeNeÜbergänge}
+\end{figure}
+
+\subsection{Verwendung von Brewsterfenstern}
+
+Ein weiterer wichtiger Aspekt des Lasers ist, dass das Laserrohr, welches das Gasgemisch beinhaltet,
+an beiden Enden jeweils durch ein Brewsterfenster abgeschlossen ist. Diese ermöglichen einerseits
+eine relativ verlustfreie Transmission und andererseits filtern sie den Laserstrahl abhängig
+von dessen Polarisation. Prinzipiell hat das im Medium erzeugte Licht zwar eine feste Richtung,
+ist aber unpolarisiert. Bezüglich einer Einfallsebene, die hier durch den Einstellwinkel des
+Brewsterfensters gegeben ist, kann das unpolarisierte Licht in einen s-polarisierten und in einen
+p-polarisierten Anteil aufgeteilt werden. Dabei ist der s-polarisierte Anteil senkrecht zur Einfallsebene, die
+durch den einfallenden Lichtstrahl und (gedachtem) reflektierten Lichtstrahl am Brewsterfenster aufgespannt wird,
+und der p-polarisierte Anteil parallel zu dieser. Wie in Abbildung \ref{fig:brewster} erkennbar,
+wird der s-polarisierte Anteil an den Grenzflächen des Brewsterfensters teilweise in eine andere Richtung reflektiert,
+während der p-polarisierte Anteil vollständig transmittiert. Das s-polarisierte Licht büßt an jeder
+Grenzfläche Intensität ein, sodass es schließlich nicht mehr durch stimulierte Emission selbstverstärkt
+wird und dementsprechend nicht mehr zum Laserlicht beiträgt. Erwartet wird also, dass der resultierende
+Laserstrahl linear, parallel zur Einfallsebene der Brewsterfenster polarisiert ist. Mit Hilfe eines
+Polarisationsfilters, welcher linear polarisiertes Licht in Richtung eines bestimmten eingestellten
+Winkels durchlässt, kann dieses Resultat nachgemessen werden. Um einen Zusammenhang zwischen der
+Intensität des Laserstrahls in Abhängigkeit von der Polarisator-Einstellung zu erlangen, wird
+zunächst der p-polarisierte Lichtstrahl bezüglich der Einstellrichtung des Polarisationsfilters in einen
+parallelen und einen orthogonalen Anteil aufgespalten. Der parallele Anteil wird vollständig durchgelassen
+und der orthogonale Anteil vollständig absorbiert.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[height = 4.4cm]{Pics von Buddy/brewster.png}
+  \caption{Strahlengang am Brewsterfenster. Die Punkte stellen die s-Polarisation dar, während die
+  Striche die p-Polarisation darstellen \cite{goettingen}.}
+  \label{fig:brewster}
+\end{figure}
+
+Das transmittierte E-Feld des Laserstrahls ergibt sich also
+vollständig aus dem parallelen Anteil
+\begin{align}
+  E_{\text{pol}}(\varphi) = E_0 \cos(\varphi),
+\end{align}
+wobei $E_0$ die maximale Intensität und $\varphi$ der relative Winkel zwischen Einfallsebene des Brewsterfensters
+und Einstellrichtung des Polarisationsfilters ist. Die Intensität ergibt sich durch Quadrieren
+\begin{align}
+  I_{\text{pol}}(\varphi) = I_0 \cos^2(\varphi).
+\end{align}
+Die theoretischen Grundlagen sind damit weitestgehend behandelt. Im folgenden Kapitel werden zunächst
+Stabilitätsparameter für verschiedene Spiegelkonstellationen berechnet und im Anschluss daran der
+Aufbau und die Durchführung für das Experiment beschrieben.
