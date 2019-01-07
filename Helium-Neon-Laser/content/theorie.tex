@@ -3,7 +3,10 @@
 
 \subsection{Einleitung}
 
-Innerhalb dieses Experiments wird die Funktionsweise eines Helium-Neon Lasers untersucht.
+Innerhalb dieses Experiments werden diverse Messungen mit Hilfe eines Helium-Neon Lasers
+durchgeführt um ein besseres Verständnis von diesem zu bekommen. Darunter zählen unter anderem
+eine Polarisationsmessung, eine Doppelspaltmessung, mehrere Ausmessungen im Laser entstehender
+Moden und eine Stabilitätsmessung.
 Dazu werden zunächst theoretische Grundlagen zu Lasern im Allgemeinen, auftretende
 elektomagnetische Moden und der speziellen Funktionsweise des Helium-Neon Lasers erläutert
 und im Anschluss daran der Aufbau und die Durchführung dieses Experiments beschrieben.
@@ -105,6 +108,7 @@ für jeden Spiegel $i$ betrachtet, wobei $L$ die Resonatorlänge und $r_i$ der K
 des jeweiligen Spiegels ist, so kann hergeleitet werden, dass die Spiegel außerhalb des Intervalls
 \begin{align}
   g_1 \cdot g_2 \in [0,1)
+  \label{eqn:stab}
 \end{align}
 keinen stabilen Resonator mehr für den Lichtstrahl formen. Im Optimalfall, bei einem sogenannten
 konfokalen Resonator, fallen die Brennpunkte der Spiegel genau aufeinander. Das ist nur mit
@@ -124,6 +128,7 @@ Moden konstruktive Interferenz. Dies wird im nächsten Abschnitt genauer behande
 Die intuitivsten Moden, die in einem Laser entstehen können sind die longitudinalen
 Moden, die sich längs der optischen Achse ausbreiten. Davon gibt es einige, da die
 Wellenlänge des emittierten Lichts wesentlich geringer als die Länge des Resonators ist.
+Eine Methode zur Ausmessung dieser Moden wird im nächsten Abschnitt behandelt.
 Wegen Unebenheiten bei den planaren Spiegeln, oder Verkippungen bei den sphärischen o.Ä.
 können aber auch transversale Moden, die sich orthogonal zur optischen Achse ausbreiten, entstehen.
 Die verschiedenen auftretenden Moden werden in Anlehnung an Hohlleiter als $\text{TEM}_{lpq}$-Moden
@@ -152,7 +157,23 @@ von der Form
 \end{align}
 Um sie zu beobachten wird eine sogenannte Modenblende benötigt. Dazu wird in diesem Versuch ein
 schmaler Wolframdraht verwendet, welcher die intensive, scharf zentrierte Grundmode optisch ausblenden soll.
-Nachdem in diesem Abschnitt eine kurze Beschreibung der auftretenden TEM-Moden in einem Laser geliefert wurde,
+
+\subsection{Ausmessung longitudinaler Moden mittels Fouriertransformation}
+\label{sec:long}
+
+Wie bereits erwähnt treten einige longitudinalen Moden im Laser auf, die alle mit einem Frequenz-Abstand von etwa
+\begin{align}
+  \Delta \nu = \frac{c}{2 L} \approx \SI{100}{\mega\hertz}
+  \label{eqn:freqabstand}
+\end{align}
+beieinander liegen. Misst man die zeitlichen Intensitätschwankungen des Lasers durch die longitudinalen Moden
+so erhält man eine Schwebung all dieser Moden, aus welcher in dieser Form keine vernünftigen Ergebnisse
+abgelesen werden können. Im Fourier- oder Frequenzraum allerdings entsprechen diese Schwingungen einfach
+mehreren Deltapeaks die im durch Gleichung \eqref{eqn:freqabstand} gegebenen Abstand nebeneinander positioniert sind.
+Werden die Intensitätsschwankungen also mit einem FFT-Gerät einer Fouriertransformation unterzogen, so kann
+ein klares Bild der Frequenzen aufgenommen werden und daraus schließlich eine experimentelle Messung der
+Resonatorlänge ohne Maßband durchgeführt werden.
+Nachdem in diesen beiden Abschnitten eine kurze Beschreibung der auftretenden Moden in einem Laser geliefert wurde,
 wird im nächsten Abschnitt der in diesem Versuch verwendete Helium-Neon Laser vertieft.
 
 \subsection{Funktionsweise eines Helium-Neon Laser}
@@ -174,7 +195,7 @@ aufgezählten Schritte für das Entstehen des Laserlichts noch einmal graphisch 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[height = 4.4cm]{Pics von Buddy/heneübergänge.png}
+  \includegraphics[height = 6.5cm]{Pics von Buddy/heneübergänge.png}
   \caption{Niveauübergänge im Helium-Neon Laser. Relevant für diesen Versuch ist nur der rote Übergang \cite{goettingen}.}
   \label{fig:HeNeÜbergänge}
 \end{figure}
@@ -190,7 +211,7 @@ Brewsterfensters gegeben ist, kann das unpolarisierte Licht in einen s-polarisie
 p-polarisierten Anteil aufgeteilt werden. Dabei ist der s-polarisierte Anteil senkrecht zur Einfallsebene, die
 durch den einfallenden Lichtstrahl und (gedachtem) reflektierten Lichtstrahl am Brewsterfenster aufgespannt wird,
 und der p-polarisierte Anteil parallel zu dieser. Wie in Abbildung \ref{fig:brewster} erkennbar,
-wird der s-polarisierte Anteil an den Grenzflächen des Brewsterfensters teilweise in eine andere Richtung reflektiert,
+wird der s-polarisierte Anteil an den Grenzflächen des Brewsterfensters teilweise reflektiert,
 während der p-polarisierte Anteil vollständig transmittiert. Das s-polarisierte Licht büßt an jeder
 Grenzfläche Intensität ein, sodass es schließlich nicht mehr durch stimulierte Emission selbstverstärkt
 wird und dementsprechend nicht mehr zum Laserlicht beiträgt. Erwartet wird also, dass der resultierende
@@ -204,7 +225,7 @@ und der orthogonale Anteil vollständig absorbiert.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[height = 4.4cm]{Pics von Buddy/brewster.png}
+  \includegraphics[height = 10.0cm]{Pics von Buddy/brewster.png}
   \caption{Strahlengang am Brewsterfenster. Die Punkte stellen die s-Polarisation dar, während die
   Striche die p-Polarisation darstellen \cite{goettingen}.}
   \label{fig:brewster}
@@ -215,11 +236,10 @@ vollständig aus dem parallelen Anteil
 \begin{align}
   E_{\text{pol}}(\varphi) = E_0 \cos(\varphi),
 \end{align}
-wobei $E_0$ die maximale Intensität und $\varphi$ der relative Winkel zwischen Einfallsebene des Brewsterfensters
+wobei $E_0$ das maximale Feld und $\varphi$ der relative Winkel zwischen Einfallsebene des Brewsterfensters
 und Einstellrichtung des Polarisationsfilters ist. Die Intensität ergibt sich durch Quadrieren
 \begin{align}
   I_{\text{pol}}(\varphi) = I_0 \cos^2(\varphi).
 \end{align}
-Die theoretischen Grundlagen sind damit weitestgehend behandelt. Im folgenden Kapitel werden zunächst
-Stabilitätsparameter für verschiedene Spiegelkonstellationen berechnet und im Anschluss daran der
-Aufbau und die Durchführung für das Experiment beschrieben.
+Die theoretischen Grundlagen sind damit weitestgehend behandelt. Im folgenden Kapitel
+wird der Aufbau und die Durchführung für das Experiment beschrieben.
