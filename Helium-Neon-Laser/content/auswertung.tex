@@ -4,9 +4,9 @@
 \subsection{Überprüfung der Stabilitätsbedingung}
 \label{sec:stabil}
 
-Die Stabilitätsbedingung aus Gleichung \eqref{eqn:1} wird für zwei Kombinationen der Spiegel überprüft.
+Die Stabilitätsbedingung aus Gleichung \eqref{eqn:stab} wird für zwei Kombinationen der Spiegel überprüft.
 Als Auskopplungsspiegel wird ein Spiegel genutzt bei dem die reflektierende Fläche einen Krümmungsradius von $r = \SI{1400}{\milli\meter}$ besitzt. Der stark refelektierende Spiegel hat erst ebenfalls einen Krümmungsradius von $r = \SI{1400}{\milli\meter}$ und wird dann in der zweiten überprüften Kombination durch einen flachen Spiegel ersetzt.
-Die theoretisch erreichbare maximale Länge $L$ des Resonators kann in Abbildung \ref{fig:stabil} abgelesen werden. Wie auch in Formel \eqref{eqn:1} zu erkennen ist, liegt diese bei zwei krummen Spiegeln bei $r_1+r_2$ und bei der zweiten Kombination bei $r_1$.
+Die theoretisch erreichbare maximale Länge $L$ des Resonators kann in Abbildung \ref{fig:stabil} abgelesen werden. Wie auch in Formel \eqref{eqn:stab} zu erkennen ist, liegt diese bei zwei krummen Spiegeln bei $r_1+r_2$ und bei der zweiten Kombination bei $r_1$.
 
 \begin{figure}
   \centering
@@ -209,7 +209,11 @@ Es ergeben sich die Werte:
 \subsection{Wellenlängenmessung}
 \label{sec:wellenlaenge}
 
-Zur Bestimmung der Wellenlänge aus den Abständen der Beugungsmuster zur Mitte $d_\text{n}$ wird Formel \eqref{eqn:???} verwendet.
+Zur Bestimmung der Wellenlänge aus den Abständen der Beugungsmuster zur Mitte $d_\text{n}$ wird die Formel
+\begin{align}
+  \lambda = \frac{g \sin\left[\arctan\left(\frac{d_\text{n}}{L}\right)\right]}{n}
+\end{align}
+ verwendet. Sie folgt aus der Bragg-Bedingung
 Der Abstand von Gitter zum Schirm $L$ und die Gitterkonstante $g$ betragen:
 \begin{align}
   L = \SI{79.8(5)} \qquad g = \SI{12.5}{\micro\meter}.
@@ -287,7 +291,7 @@ Aus den Frequenzen der stehenden Wellen zwischen den Resonatorspiegeln wird nun 
   \label{tab:longiModen}
 \end{table}
 
-Daraus wird mit Formel \eqref{eqn:???} die Länge des Resonators berechnet. Dazu werden die vier Frequenzdifferenzen pro Resonatorlänge gemittelt. Die Ergebnisse, sowie die mit Bandmaß gemessene Resonatorlänge und die Abweichung davon sind in Tabelle \ref{tab:longiModenErgebnisse}.
+Daraus wird mit Formel \eqref{eqn:freqabstand} die Länge des Resonators berechnet. Dazu werden die vier Frequenzdifferenzen pro Resonatorlänge gemittelt. Die Ergebnisse, sowie die mit Bandmaß gemessene Resonatorlänge und die Abweichung davon sind in Tabelle \ref{tab:longiModenErgebnisse}.
 
 \begin{table}[h]
   \centering
