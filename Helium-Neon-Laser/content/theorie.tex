@@ -135,25 +135,15 @@ Die verschiedenen auftretenden Moden werden in Anlehnung an Hohlleiter als $\tex
 bezeichnet. Dabei stehen $l$ und $p$ für die Anzahl an Knoten in x- und y-Richtung, also
 in transversale Richtung, und $q$ für die Anzahl an Knoten in z- also longitudinale
 Richtung. Für einen konfokalen Resonator mit runden Spiegeln kann die genäherte Intensitätsverteilung
+für diverse TEM-Moden berechnet werden. Für die $\text{TEM}_{00}$-Mode ergibt sich damit
 \begin{align}
-  I_{lpq}(r,\varphi,z) &= \lvert E_{lpq}(r,\varphi,z) \rvert^2 \\
-  &\propto \cos^2\left(l \varphi\right) \cdot \left(\frac{8 \pi}{r \lambda}\right)^{1-l} x^{1+l} \cdot \left(L^q_p (x)\right)^2 \cdot \mathrm{e}^{-\frac{x}{2}}
-\end{align}
-hergeleitet werden, wobei
-\begin{align}
-  x = \frac{8 \pi}{\lambda} \frac{r}{r^2 + 4 z^2} \approx \frac{2 \pi r}{\lambda z^2}
-\end{align}
-und $L^q_p(x)$ das zugeordnete Laguerrepolynom ist. Im letzten Schritt wurde $r$ um Null genähert, da der Strahlradius klein
-gegenüber der Ausbreitung in z-Richtung ist. Für die $\text{TEM}_{00}$-Mode ergibt sich damit
-\begin{align}
-  I_{\text{Grundmode}}(r) = I_0 \mathrm{e}^{\frac{-2 r^2}{\omega^2}}
+  I(r) = I_0 \mathrm{e}^{\frac{-2 r^2}{\omega^2}}
 \end{align}
 wobei $I_0$ die maximale Intensität im Zentrum des Strahls und $2 \omega$ der Strahldurchmesser ist.
 Diese Mode ist die intensivste mit den wenigsten Verlusten und daher auch die beobachtbare.
-Eine weitere Mode, die ohne Weiteres nicht beobachtbar ist, ist die $\text{TEM}_{01}$-Mode
-von der Form
+Eine weitere Mode, die ohne Weiteres nicht beobachtbar ist, ist die $\text{TEM}_{01}$-Mode von der Form
 \begin{align}
-  was auch immer.
+  I(r) = I_0 r^2 \mathrm{e}^{\frac{-2 r^2}{\omega^2}}.
 \end{align}
 Um sie zu beobachten wird eine sogenannte Modenblende benötigt. Dazu wird in diesem Versuch ein
 schmaler Wolframdraht verwendet, welcher die intensive, scharf zentrierte Grundmode optisch ausblenden soll.
