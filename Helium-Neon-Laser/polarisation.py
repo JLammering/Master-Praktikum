@@ -17,10 +17,12 @@ def fitfunktion_grundmode(x, I_0, r_verschieb, omega):
     return I_0*np.exp((-2*(x+r_verschieb)**2)/(omega**2))
 
 
-def fitfunktion_transmode(x, I_01, r_verschieb1, omega1,
-                          I_02, r_verschieb2, omega2):
-    return (I_01*np.exp((-2*(x+r_verschieb1)**2)/(omega1**2)) +
-            I_02*np.exp((-2*(x+r_verschieb2)**2)/(omega2**2)))
+# def fitfunktion_transmode(x, I_01, r_verschieb1, omega1,
+#                           I_02, r_verschieb2, omega2):
+#     return (I_01*np.exp((-2*(x+r_verschieb1)**2)/(omega1**2)) +
+#             I_02*np.exp((-2*(x+r_verschieb2)**2)/(omega2**2)))
+def fitfunktion_transmode(x, I_0, x_0, omega):
+    return I_0*(x-x_0)**2*np.exp(-2*(x-x_0)**2/(omega**2))
 
 
 def plot(x, y, label, filename, x_label, y_label,
@@ -124,8 +126,8 @@ if __name__ == '__main__':
     werteZuTabelle(noms(x).astype(int), noms(I), rundungen=[0, 3])
     plot(x, I, r'TEM$_{01}$', 'transmode', r'$x/\si{\milli\meter}$',
          r'$I/\si{\micro\ampere}$', fitfunktion_transmode,
-         [0.12, -5, 10, 0.08, -20, 10],
-         ["I_01", "x_01", "omega1", "I_02", "x_02", "omega2"])
+         [0.12, 20, 1],
+         ["I_0_trans", "x_0", "omega"])
 
     # wellenlänge
     nummer, d = np.genfromtxt('daten/wellenlaenge.txt',
