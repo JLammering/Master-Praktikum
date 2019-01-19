@@ -11,8 +11,8 @@ def offset(x):
 for i in range(0,len(T)):
     I[i] = I[i] - offset(T[i])
 
-plt.plot(T[0:25],I[0:25],'k.',label=r'Messwerte', markersize = 4)
-plt.plot(T[2:18],I[2:18],'r.',label=r'W-Messwerte(1)', markersize = 4.4)
+plt.plot(T[0:25],I[0:25],'k.',label=r'Messwerte', markersize = 6)
+plt.plot(T[5:13],I[5:13],'r.',label=r'W-Messwerte(1)', markersize = 6.4)
 
 plt.grid()
 plt.xlabel(r'$T/\si{\celsius}$')

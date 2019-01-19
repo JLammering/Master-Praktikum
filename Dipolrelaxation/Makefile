@@ -23,23 +23,32 @@ build/heizrate_1_5schritt.pdf: heizrate_1_5schritt.py header-matplotlib.tex matp
 build/stromtemp_2.pdf: stromtemp_2.py header-matplotlib.tex matplotlibrc messung_2schritt.txt | build
 	TEXINPUTS="$(call translate,$(pwd):)" python stromtemp_2.py
 
-build/stromtemp_1_5.pdf: stromtemp_1_5.py header-matplotlib.tex matplotlibrc messung_2schritt.txt | build
+build/stromtemp_1_5.pdf: stromtemp_1_5.py header-matplotlib.tex matplotlibrc messung_1_5schritt.txt | build
 	TEXINPUTS="$(call translate,$(pwd):)" python stromtemp_1_5.py
 
 build/stromtemp_2_off.pdf: stromtemp_2_off.py header-matplotlib.tex matplotlibrc messung_2schritt.txt | build
 	TEXINPUTS="$(call translate,$(pwd):)" python stromtemp_2_off.py
 
+build/stromtemp_1_5_off.pdf: stromtemp_1_5_off.py header-matplotlib.tex matplotlibrc messung_1_5schritt.txt | build
+	TEXINPUTS="$(call translate,$(pwd):)" python stromtemp_1_5_off.py
+
 build/stromtemp_2_off_W1.pdf: stromtemp_2_off_W1.py header-matplotlib.tex matplotlibrc messung_2schritt.txt | build
 	TEXINPUTS="$(call translate,$(pwd):)" python stromtemp_2_off_W1.py
 
+build/stromtemp_1_5_off_W1.pdf: stromtemp_1_5_off_W1.py header-matplotlib.tex matplotlibrc messung_1_5schritt.txt | build
+	TEXINPUTS="$(call translate,$(pwd):)" python stromtemp_1_5_off_W1.py
+
 build/stromtemp_2_off_W2.pdf: stromtemp_2_off_W2.py header-matplotlib.tex matplotlibrc messung_2schritt.txt | build
 	TEXINPUTS="$(call translate,$(pwd):)" python stromtemp_2_off_W2.py
+
+build/stromtemp_1_5_off_W2.pdf: stromtemp_1_5_off_W2.py header-matplotlib.tex matplotlibrc messung_1_5schritt.txt | build
+	TEXINPUTS="$(call translate,$(pwd):)" python stromtemp_1_5_off_W2.py
 
 build/relax_2.pdf: relax_2.py header-matplotlib.tex matplotlibrc messung_2schritt.txt | build
 		TEXINPUTS="$(call translate,$(pwd):)" python relax_2.py
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: build/plotElement.pdf build/heizrate_2schritt.pdf build/stromtemp_2.pdf build/stromtemp_2_off.pdf build/stromtemp_2_off_W1.pdf build/stromtemp_2_off_W2.pdf build/relax_2.pdf
+build/main.pdf: build/plotElement.pdf build/heizrate_2schritt.pdf build/heizrate_1_5schritt.pdf build/stromtemp_2.pdf build/stromtemp_1_5.pdf build/stromtemp_2_off.pdf build/stromtemp_1_5_off.pdf build/stromtemp_2_off_W1.pdf build/stromtemp_1_5_off_W1.pdf build/stromtemp_2_off_W2.pdf build/stromtemp_1_5_off_W2.pdf build/relax_2.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \

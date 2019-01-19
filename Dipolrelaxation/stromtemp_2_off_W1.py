@@ -20,15 +20,15 @@ for i in range(0,a):
         I_log[i] = np.log(I[i] - offset(T[i]))
         T_rez[i] = 1/(T[i]+273.15)
 
-plt.plot(T_rez[0:a],I_log[0:a],'k.', label = r'Messwerte', markersize = 4)
+#plt.plot(T_rez[0:a],I_log[0:a],'k.', label = r'Messwerte', markersize = 4)
 
 def linfunc(x,m,b):
     return m*x+b
 
 # Messwerte, die für den Fit einbezogen werden:
-T_rez_used = np.append(T_rez[2:4],T_rez[5:10])
-I_log_used = np.append(I_log[2:4],I_log[5:10])
-plt.plot(T_rez_used,I_log_used,'r.',label = r'Fit-Messwerte', markersize = 4.4)
+T_rez_used = T_rez[5:13]
+I_log_used = I_log[5:13]
+plt.plot(T_rez_used,I_log_used,'k.',label = r'Fit-Messwerte', markersize = 4.4)
 
 popt,pcov = curve_fit(linfunc,T_rez_used,I_log_used)
 
@@ -37,17 +37,18 @@ print('Steigung:', m)
 print('Abzisse:', popt[1],'+-',np.sqrt(pcov[1,1]))
 
 k_B = 1.38065*10**(-23)
+e = 1.602177*10**(-19)
 W = -m*k_B
-print('berechnete Aktivierungsenergie:', -W)
+print('berechnete Aktivierungsenergie (Joule, eV):', W, W/e)
 
 d = np.linspace(0,1,10)
-plt.plot(d,linfunc(d,*popt), 'r-', label = r'Fit')
+plt.plot(d,linfunc(d,*popt), 'r-', label = r'Fit', linewidth = 1.2)
 
 plt.grid()
 plt.xlabel(r'$\frac{1}{T}/\si{\kelvin}^{-1}$')
 plt.ylabel(r'$\log \left( I/\si{\pico\ampere} \right)$')
-plt.xlim(0.0038,0.0044)
-plt.ylim(-4,4)
+plt.xlim(0.0039,0.00425)
+plt.ylim(-2,3)
 
 plt.legend(loc = 'best')
 plt.tight_layout()
