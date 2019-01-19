@@ -23,6 +23,7 @@ ergeben. Aus den Steigungen folgen sofort die Heizraten
 \begin{align}
   b_{2} &= \SI{0.03233(5)}{\celsius\per\second} \approx \SI{2}{\celsius\per\minute} \\
   b_{1.5} &= \SI{0.02411(3)}{\celsius\per\second} \approx \SI{1.5}{\celsius\per\minute}.
+  \label{eqn:heizrate}
 \end{align}
 
 \begin{figure}
@@ -49,7 +50,7 @@ werden jeweils Messwerte vor dem ersten Peak und zwischen den beiden erkennbaren
 Peaks ausgewählt und exponentiell gefittet. Die selektierten Messwerte sind in beiden
 Graphen jeweils rot dargestellt. Beim Fit mit der Exponentialfunktion
 \begin{align}
-  I_\text{offset}(T) = \mathrm{e}^{\alpha(T-\mu)}
+  I_\text{offset}(T)/\si{\pico\ampere} = \mathrm{e}^{\alpha(T-\mu)}
 \end{align}
 ergeben sich die Parameter
 \begin{align}
@@ -65,9 +66,10 @@ In den Abbildungen \ref{fig:messwerte2off} und \ref{fig:messwerte15off} sind
 jeweils die bereinigten Messwerte für den ersten Peak zu sehen. Der zweite Peak ist
 für die Auswertung uninteressant, da er nicht aus der in diesem Experiment
 betrachteten Dipolrelaxation der Strontium-Leerstellen-Dipole resultiert.
-Die bei letzeren Graphen rot dargestellten Messwerte beschreiben jeweils den
+Die bei den letzteren Graphen rot dargestellten Messwerte beschreiben jeweils den
 Stromstärkeanstieg des Relaxationspeaks und werden für die erste Bestimmung der
-Aktivierungsenergie $W$ hinzugezogen.
+Aktivierungsenergie $W$ hinzugezogen. Die eingezeichneten Parabelfits sind relevant
+für die Bestimmung der charakteristischen Relaxationszeit.
 
 \begin{figure}
   \centering
@@ -124,7 +126,7 @@ für die Steigungen ergeben. Aus den Steigungen ergeben sich die Aktivierungsene
 Wird nun noch das arithmetische Mittel gebildet, so ergibt sich die mit der ersten
 Auswertungsmethode bestimmte Aktivierungsenergie
 \begin{align}
-  W_{I} &= \SI{2.1(6)e-19}{\joule} = \SI{1.3(4)}{\electronvolt}.
+  W_{\text{I}} &= \SI{2.1(6)e-19}{\joule} = \SI{1.3(4)}{\electronvolt}.
 \end{align}
 
 \begin{figure}
@@ -161,7 +163,7 @@ abgefallen sein sollte, werden auf
 gesetzt und entsprechen den letzten noch eingezeichneten Messpunkten in den Abbildungen
 \ref{fig:messwerte2off} und \ref{fig:messwerte15off}. Für die folgenden Auswertungsschritte
 werden bei der ersten Heizrate $b \approx \SI{2}{\celsius\per\minute}$ die ersten beiden
-und bei der zweiten Heizrate $b \approx \SI{2}{\celsius\per\minute}$ die ersten neun Messwerte
+und bei der zweiten Heizrate $b \approx \SI{1.5}{\celsius\per\minute}$ die ersten neun Messwerte
 nicht berücksichtigt, da die reziproke Stromstärke und der Logarithmus auf der rechten Seite
 von Gleichung \eqref{eqn:W2formel} divergieren bzw. nicht definiert sind.
 In den Abbildungen \ref{fig:messwerte2offW2} und \ref{fig:messwerte15offW2} sind die Ergebnisse
@@ -186,7 +188,8 @@ für die Steigungen. Daraus ergeben sich die Aktivierungsenergien
 \end{align}
 Mitteln führt auf die mit der zweiten Auswertungsmethode berechnete Aktivierungsenergie
 \begin{align}
-  W_{II} = &= \SI{1.7(2)e-19}{\joule} = \SI{1.1(1)}{\electronvolt}.
+  W_{\text{II}} = &= \SI{1.7(2)e-19}{\joule} = \SI{1.1(1)}{\electronvolt}.
+\label{eqn:akt2}
 \end{align}
 
 \begin{figure}
@@ -201,4 +204,63 @@ Mitteln führt auf die mit der zweiten Auswertungsmethode berechnete Aktivierung
   \includegraphics{build/stromtemp_1_5_off_W2.pdf}
   \caption{Plot.}
   \label{fig:messwerte15offW2}
+\end{figure}
+
+\subsection{Bestimmung der charakteristischen Relaxationszeit}
+
+Um die charakteristische Relaxationszeit $\tau_0$ aus den Messdaten zu bestimmen muss
+zunächst ein Zusammenhang zur kritischen Temperatur, an welcher der Strom-Peak
+sein Maximum erreicht, hergeleitet werden: Differenzieren der Stromstärke aus
+Gleichung \eqref{eqn:allgjt} führt auf
+\begin{align}
+  I'(T) &= I(T) \cdot \left(\frac{W}{k_\text{B} T^2} - \frac1{b \tau_0} \frac{\mathrm{d}}{\mathrm{d}T} \int_{T_0}^{T} \mathrm{e}^{-\frac{W}{k_\text{B} T'}} \mathrm{d}{T'}\right) \\
+  &= I(T) \cdot \left(\frac{W}{k_\text{B} T^2} - \frac1{b \tau_0} \frac{\mathrm{d}}{\mathrm{d}T} \left(F(T) - F(T_0)\right)\right) \\
+  &= I(T) \cdot \left(\frac{W}{k_\text{B} T^2} - \frac1{b \tau_0} \mathrm{e}^{-\frac{W}{k_\text{B} T}}\right)
+\end{align}
+und nach Gleichsetzen mit Null auf die Relation
+\begin{align}
+  \tau_0 = \frac{k_\text{B} T_\text{max}^2}{W b} \mathrm{e}^{-\frac{W}{k_\text{B} T_\text{max}}}.
+  \label{eqn:tau0}
+\end{align}
+Um die kritische Temperatur $T_\text{max}$ zu ermitteln werden Parabelfits mit den offsetbereinigten
+Messwerten des jeweils ersten Peaks durchgeführt. In den Abbildungen \ref{fig:messwerte2off} und \ref{fig:messwerte15off}
+sind die für den Fit genutzten Messwerte in hellblau und die berechneten Fitfunktionen in dunkelblau dargestellt.
+Zur Funktionsvorschrift
+\begin{align}
+  P(T) = a T^2 + b T + c
+\end{align}
+ergeben sich die Fitparameter
+\begin{align*}
+  a_{2} &= \SI{-0.177(8)}{\pico\ampere\per\celsius\squared} & b_{2} &= \SI{-2.8(2)}{\pico\ampere\per\celsius} & c_{2} &= \SI{-3(1)}{\pico\ampere} \\
+  a_{1.5} &= \SI{-0.099(7)}{\pico\ampere\per\celsius\squared} & b_{1.5} &= \SI{-2.9(2)}{\pico\ampere\per\celsius} & c_{1.5} &= \SI{-11(1)}{\pico\ampere}
+\end{align*}
+und daraus die kritischen Temperaturen
+\begin{align}
+  T_{\text{max},2} &= -\frac{b_{2}}{2 a_{2}} = \SI{-12(1)}{\celsius} = \SI{285(1)}{\kelvin}\\
+  T_{\text{max},15} &= -\frac{b_{1.5}}{2 a_{1.5}} = \SI{-15(2)}{\celsius} = \SI{288(2)}{\kelvin}.
+\end{align}
+Werden nun die kritischen Temperaturen, die jeweiligen Heizraten aus Gleichung \eqref{eqn:heizrate} und die
+Aktivierungsenergie aus Gleichung \eqref{eqn:akt2} in die rechte Seite von Formel \eqref{eqn:tau0}
+eingesetzt, so ergeben sich die charakteristischen Relaxationszeiten
+\begin{align}
+  \tau_{0,(2)} &= \SI{1(3)e-3}{\femto\second} \\
+  \tau_{0,(1.5)} &= \SI{1(3)e-3}{\femto\second}.
+\end{align}
+Diese entsprechen ihrem arithmetischen Mittel
+\begin{align}
+  \tau_0 &= \SI{1(3)e-3}{\femto\second}.
+  \label{eqn:tau0}
+\end{align}
+Abschließend zur Auswertung ist in Abbildung \ref{fig:relaxationszeit} noch einmal die Relaxationszeit
+\begin{align}
+  \tau(T) = \tau_0 \cdot \mathrm{e}^{\frac{W}{k_\text{B} T}}
+\end{align}
+mit durch Gleichung \eqref{eqn:tau0} gegebenem $\tau_0$ und durch Gleichung \eqref{eqn:akt2} gegebenem
+$W$ graphisch dargestellt.
+
+\begin{figure}
+  \centering
+  \includegraphics{build/relax.pdf}
+  \caption{Plot.}
+  \label{fig:relaxationszeit}
 \end{figure}
