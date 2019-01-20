@@ -28,15 +28,17 @@ ergeben. Aus den Steigungen folgen sofort die Heizraten
 
 \begin{figure}
   \centering
-  \includegraphics{build/heizrate_1_5schritt.pdf}
-  \caption{Plot.}
+  \includegraphics{build/heizrate_2schritt.pdf}
+  \caption{Temperaturmesswerte aufgetragen gegen die Zeit für die angestrebte Heizrate von $\SI{2}{\celsius\per\minute}$. Die Steigung
+  des Fits entspricht der Heizrate $b_{2}$.}
   \label{fig:heizrate2}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics{build/heizrate_2schritt.pdf}
-  \caption{Plot.}
+  \includegraphics{build/heizrate_1_5schritt.pdf}
+  \caption{Temperaturmesswerte aufgetragen gegen die Zeit für die angestrebte Heizrate von $\SI{1.5}{\celsius\per\minute}$. Die Steigung
+  des Fits entspricht der Heizrate $b_{1.5}$.}
   \label{fig:heizrate15}
 \end{figure}
 
@@ -74,28 +76,34 @@ für die Bestimmung der charakteristischen Relaxationszeit.
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_2.pdf}
-  \caption{Plot.}
+  \caption{Strommesswerte aufgetragen gegen die Temperatur für die Heizrate $b_{2}$. Es ist ein exponentieller
+  Untergrund an die Messwerte, die ohne Offset vermeindlich bei Null liegen, gefittet.}
   \label{fig:messwerte2}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_1_5.pdf}
-  \caption{Plot.}
+  \caption{Strommesswerte aufgetragen gegen die Temperatur für die Heizrate $b_{1.5}$. Es ist ein exponentieller
+  Untergrund an die Messwerte, die ohne Offset vermeindlich bei Null liegen, gefittet.}
   \label{fig:messwerte15}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_2_off.pdf}
-  \caption{Plot.}
+  \caption{Offsetbereinigte Messwerte des ersten Peaks für die Heizrate $b_{2}$. Die Messwerte, die zur Berechnung der Aktivierungsenergie mit der
+  ersten Methode benötigt werden, sind in rot dargestellt. Die hellblauen Messwerte werden durch eine Parabel angenähert um
+  die Stelle des Peakmaximums zu ermitteln.}
   \label{fig:messwerte2off}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_1_5_off.pdf}
-  \caption{Plot.}
+  \caption{Offsetbereinigte Messwerte des ersten Peaks für die Heizrate $b_{1.5}$. Die Messwerte, die zur Berechnung der Aktivierungsenergie mit der
+  ersten Methode benötigt werden, sind in rot dargestellt. Die hellblauen Messwerte werden durch eine Parabel angenähert um
+  die Stelle des Peakmaximums zu ermitteln.}
   \label{fig:messwerte15off}
 \end{figure}
 
@@ -132,14 +140,16 @@ Auswertungsmethode bestimmte Aktivierungsenergie
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_2_off_W1.pdf}
-  \caption{Plot.}
+  \caption{Bestimmung der Aktivierungsenergie aus dem Anstieg des ersten Peaks für die Heizrate $b_{2}$.
+  Die Messwerte werden logarithmiert, gegen die reziproke Temperatur aufgetragen und schließlich linear gefittet.}
   \label{fig:messwerte2offW1}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_1_5_off_W1.pdf}
-  \caption{Plot.}
+  \caption{Bestimmung der Aktivierungsenergie aus dem Anstieg des ersten Peaks für die Heizrate $b_{1.5}$.
+  Die Messwerte werden logarithmiert, gegen die reziproke Temperatur aufgetragen und schließlich linear gefittet.}
   \label{fig:messwerte15offW1}
 \end{figure}
 
@@ -168,7 +178,8 @@ nicht berücksichtigt, da die reziproke Stromstärke und der Logarithmus auf der
 von Gleichung \eqref{eqn:W2formel} divergieren bzw. nicht definiert sind.
 In den Abbildungen \ref{fig:messwerte2offW2} und \ref{fig:messwerte15offW2} sind die Ergebnisse
 \begin{align}
-  \ln \left(\frac{\int_{T_i}^{T^*} I(T)\dif T}{I_i}\right)
+  f(I) = \ln \left(\frac{\int_{T_i}^{T^*} I(T)\dif T}{I_i}\right)
+  \label{eqn:auftrag}
 \end{align}
 der übrigen Messwerte $I_{i}$ gegen die reziproke Temperatur aufgetragen. Es wird erneut
 jeweils für beide Heizraten ein linearer Fit durchgeführt. Dabei ergibt sich
@@ -195,14 +206,18 @@ Mitteln führt auf die mit der zweiten Auswertungsmethode berechnete Aktivierung
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_2_off_W2.pdf}
-  \caption{Plot.}
+  \caption{Ermittlung der Aktivierungsenergie aus dem gesamten ersten Peak für die Heizrate $b_{2}$. Die Messwerte
+  werden mit Relation \eqref{eqn:auftrag} umgeformt, gegen die reziproke Temperatur aufgetragen und anschließend
+  linear gefittet.}
   \label{fig:messwerte2offW2}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_1_5_off_W2.pdf}
-  \caption{Plot.}
+  \caption{Ermittlung der Aktivierungsenergie aus dem gesamten ersten Peak für die Heizrate $b_{1.5}$. Die Messwerte
+  werden mit Relation \eqref{eqn:auftrag} umgeformt, gegen die reziproke Temperatur aufgetragen und anschließend
+  linear gefittet.}
   \label{fig:messwerte15offW2}
 \end{figure}
 
@@ -261,6 +276,7 @@ $W$ graphisch dargestellt.
 \begin{figure}
   \centering
   \includegraphics{build/relax.pdf}
-  \caption{Plot.}
+  \caption{Relaxationszeit in Abhängigkeit von der Temperatur für die ermittelten Konstanten $\tau_0$ aus
+  Gleichung \eqref{eqn:tau0} und $W$ aus Gleichung \eqref{eqn:akt2}.}
   \label{fig:relaxationszeit}
 \end{figure}
