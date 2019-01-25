@@ -79,12 +79,12 @@ if __name__ == '__main__':
                    rundungen=[0, 3, 0])
     plotWiderstand(widerstand2*10**3, spannung2 * 10**(-3), V_N2, "2", ufloat(296.15, 2))
 
-    widerstand1Korr, spannung1Korr, V_N1Korr = np.genfromtxt('daten/widerstand1Korr.txt', unpack='True')
+    widerstand1Korr, spannung1Korr, V_N1Korr = np.genfromtxt('daten/widerstand1korr.txt', unpack='True')
     werteZuTabelle(widerstand1Korr, spannung1Korr, V_N1Korr,
                    rundungen=[1, 3, 0])
     plotWiderstand(widerstand1Korr, spannung1Korr, V_N1Korr*10, "1Korr", ufloat(293.15, 2))  # *10 wegen der Verstärkung des selektivverstärkers
 
-    widerstand2Korr, spannung2Korr, V_N2Korr = np.genfromtxt('daten/widerstand2Korr.txt', unpack='True')
+    widerstand2Korr, spannung2Korr, V_N2Korr = np.genfromtxt('daten/widerstand2korr.txt', unpack='True')
     werteZuTabelle(widerstand2Korr, spannung2Korr, V_N2Korr,
                    rundungen=[2, 2, 0])
     plotWiderstand(widerstand2Korr*10**3, spannung2Korr, V_N2Korr*10, "2Korr", ufloat(293.15, 2))
