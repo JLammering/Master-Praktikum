@@ -5,17 +5,19 @@ Beim Einbau von zweiwertigen Kationen in ein Gitter bestehend aus einwertigen Io
 \section{Theorie}
 \label{sec:Theorie}
 
+Im Folgenden werden zunächst die theoretischen Grundlagen gelegt und dann das Messverfahren erläutert.
+
 \subsection{Grundlagen}
 
 
 \begin{figure}
   \centering
   \includegraphics[height= 7cm]{BestNippelpiercings/gitter.pdf}
-  \caption{Der elektrische Dipol in einem Ionenkristall nach Einbringung eines zweiwertigen Kations. \cite{anleitung}}
+  \caption{Der elektrische Dipol in einem Ionenkristall nach Einbringung eines zweiwertigen Kations \cite{anleitung}.}
   \label{fig:gitter}
 \end{figure}
 
-In diesem Versuch wird Kaliumbromid untersucht, das mit Strontium dotiert ist. Durch die Dotierung entsteht aus Gründen der Ladungserhaltung eine Kationen-Leerstelle. Diese bildet mit dem Kation einen Dipol diskreter Ausrichtung wie in Abbildung \ref{fig:gitter} gezeigt. Es wurde gezeigt, dass unter \SI{500}{\celsius} nur Leerstellen in Kristallen wandern können \cite{wjost}. Damit eine Leerstelle wandern kann und sich somit die Ausrichtung des Dipols ändert, muss die Energie $W$ aufgewendet werden. Die temperaturabhängige mittlere Zeit zwischen zwei Umorientierungen eines Dipols heißt Relaxationszeit. Sie folgt der Formel \eqref{eqn:relzeit}.
+In diesem Versuch wird Kaliumbromid untersucht, das mit Strontium dotiert ist. Durch die Dotierung entsteht aus Gründen der lokalen Ladungsneutralität eine Kationen-Leerstelle. Diese bildet mit dem Kation einen Dipol diskreter Ausrichtung wie in Abbildung \ref{fig:gitter} gezeigt. Es wurde gezeigt, dass unter \SI{500}{\celsius} nur Leerstellen in Kristallen wandern können \cite{wjost}. Damit eine Leerstelle wandern kann und sich somit die Ausrichtung des Dipols ändert, muss die Aktivierungsenergie $W$ aufgewendet werden. Die temperaturabhängige mittlere Zeit zwischen zwei Umorientierungen eines Dipols heißt Relaxationszeit. Sie folgt der Formel \eqref{eqn:relzeit}.
 \begin{align}
   \tau(T) = \tau_0 \exp\left(\frac{W}{k_\text{B} T}\right) \label{eqn:relzeit}
 \end{align}
@@ -24,7 +26,7 @@ Außerdem ist $k_\text{B}$ die Boltzmann-Konstante und $\tau_0$ die charakterist
 
 \subsection{Messverfahren}
 
-Um zunächst die Dipole in der benutzten kreisförmigen Probe auszurichten, wird sie in das Feld eines Plattenkondensators eingebracht. Diese Ausrichtung wird allerdings durch thermische Bewegeungen gestört, sodass letzendlich nur der Bruchteil $y$ der Dipole ausgerichtet ist. Bei den gegebenen Versuchsbedingungen folgt dieser Anteil der Gleichung
+Um zunächst die Dipole in der benutzten kreisförmigen Probe auszurichten, wird sie in das Feld eines Plattenkondensators eingebracht. Diese Ausrichtung wird allerdings durch thermische Bewegeungen gestört, sodass letzendlich nur der Bruchteil $y$ der Dipole ausgerichtet ist. Bei den gegebenen Versuchsbedingungen folgt dieser Anteil der Gleichung:
 \begin{align}
   y(T) = \frac{pE}{3k_\text{B}T}.
 \end{align}
@@ -35,7 +37,7 @@ Wenn nun die Probe mit konstanter Heizrate $b$ erwärmt wird, sinkt die Relaxati
 \begin{figure}
   \centering
   \includegraphics[height= 7cm]{BestNippelpiercings/stromTemp.pdf}
-  \caption{Der Verlauf des temperaturabhängigen Depolarisationsstroms. \cite{anleitung}}
+  \caption{Der Verlauf des temperaturabhängigen Depolarisationsstroms \cite{anleitung}.}
   \label{fig:stromTemp}
 \end{figure}
 Um aus den Strom-Temperatur-Messwertpaaren $W$ und auch $\tau_0$ zu bestimmen können zwei Wege unterschiedlicher Genauigkeit genutzt werden.
@@ -44,7 +46,7 @@ Um aus den Strom-Temperatur-Messwertpaaren $W$ und auch $\tau_0$ zu bestimmen k�
     \begin{align}
       j(T) = \frac{p^2 E N_\text{p}}{3k_\text{B} T_\text{p}\tau_0}
       \exp\left(-\frac{1}{b\tau_0} \int_{T_0}^T\exp\left(-\frac{W}{k_\text{B}T'}\dif T'\right)\right)
-      \exp\left(-\frac{W}{k_\text{B}T}\right) \label{eqn:allgjt}
+      \exp\left(-\frac{W}{k_\text{B}T}\right). \label{eqn:allgjt}
     \end{align}
     Hierbei ist $N_\text{p}$ die Anzahl an Dipolen zu Beginn des Aufheizens.
     Für den Anfangsteil der Kurve kann die Näherung
@@ -58,13 +60,13 @@ Um aus den Strom-Temperatur-Messwertpaaren $W$ und auch $\tau_0$ zu bestimmen k�
       \frac{W}{k_\text{B}T} = \ln\left(\frac{\int_{T}^{\infty} j(T')\dif T'}{j(T)\tau_0 b}\right)
       \label{eqn:W2formel}
     \end{align}
-    hergeleitet werden. Wenn man nun
+    hergeleitet werden. Durch Auftragen von
     \begin{align*}
       \ln\left(\frac{\int_T^{T^*} j(T')\dif T'}{j(T) \text{const}}\right)
     \end{align*}
-    gegen $1/T$ aufträgt, kann $W$ aus dem Anstieg der ausgleichenden Geraden bestimmt werden. Dabei ist $T^*$ eine beliebige, feste Temperatur für die $i(T^*) \approx 0$ gilt.
+    gegen $1/T$, kann $W$ aus dem Anstieg der ausgleichenden Geraden bestimmt werden. Dabei ist $T^*$ eine beliebige, feste Temperatur für die $i(T^*) \approx 0$ gilt, da dann der Relaxationsvorgang abgeschlossen ist.
 \end{enumerate}
-Die noch benötigte Größe $\tau_0$ kann durch Differentation der Gleichung \eqref{eqn:allgjt} erhalten werden. So kann $T_\text{max}$ der Relaxationszeit $\tau_\text{max}$ zugeordnet werden. Nach Einsetzen der beiden Werte in \eqref{eqn:relzeit} erhält man $\tau_0$.
+Die noch benötigte Größe $\tau_0$ kann durch Differentation der Gleichung \eqref{eqn:allgjt} erhalten werden. So kann $T_\text{max}$ der Relaxationszeit $\tau_\text{max}$ zugeordnet werden. Nach Einsetzen der beiden Werte in \eqref{eqn:relzeit} kann $\tau_0$ bestimmt werden.
 
 % \subsection{Fehlerrechnung}
 %
