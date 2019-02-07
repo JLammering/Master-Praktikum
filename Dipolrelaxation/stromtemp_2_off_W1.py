@@ -28,7 +28,7 @@ def linfunc(x,m,b):
 # Messwerte, die für den Fit einbezogen werden:
 T_rez_used = T_rez[5:13]
 I_log_used = I_log[5:13]
-plt.plot(T_rez_used,I_log_used,'k.',label = r'Fit-Messwerte', markersize = 4.4)
+plt.plot(T_rez_used,I_log_used,'k.',label = r'Anpassungs-Messwerte', markersize = 4.4)
 
 popt,pcov = curve_fit(linfunc,T_rez_used,I_log_used)
 
@@ -42,7 +42,7 @@ W = -m*k_B
 print('berechnete Aktivierungsenergie (Joule, eV):', W, W/e)
 
 d = np.linspace(0,1,10)
-plt.plot(d,linfunc(d,*popt), 'r-', label = r'Fit', linewidth = 1.2)
+plt.plot(d,linfunc(d,*popt), 'r-', label = r'Anpassung', linewidth = 1.2)
 
 plt.grid()
 plt.xlabel(r'$\frac{1}{T}/\si{\kelvin}^{-1}$')

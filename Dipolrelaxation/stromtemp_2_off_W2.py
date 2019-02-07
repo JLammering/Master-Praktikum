@@ -59,7 +59,7 @@ W = m*k_B
 print('berechnete Aktivierungsenergie (Joule, eV):', W, W/e)
 
 d = np.linspace(0,1,10)
-plt.plot(d,linfunc(d,*popt), 'r-', label = r'Fit')
+plt.plot(d,linfunc(d,*popt), 'r-', label = r'Anpassung')
 
 plt.grid()
 plt.xlabel(r'$\frac{1}{T}/\si{\kelvin}^{-1}$')

@@ -9,19 +9,19 @@ und \ref{tab:mess2} zu finden. Alle Messwerte liegen dabei zeitlich eine Minute
 auseinander. In den Abbildungen \ref{fig:heizrate2} und \ref{fig:heizrate15} sind
 die Temperaturmesswerte gegen die Zeit für die beiden angestrebten Heizraten
 von $\SI{2}{\celsius\per\minute}$ und $\SI{1.5}{\celsius\per\minute}$ aufgetragen.
-Es wird jeweils ein linearer Fit durchgeführt, wobei sich die Abzissenabschnitte
+Es wird jeweils eine lineare Anpassung durchgeführt, wobei sich die Abzissenabschnitte
 \begin{align}
-  n_{2} &= \SI{-46.4(1)}{\celsius}\\
+  n_{2} &= \SI{-46.4(1)}{\celsius},\\
   n_{1.5} &= \SI{-49.7(1)}{\celsius}
 \end{align}
 und die Steigungen
 \begin{align}
-  m_{2} &= \SI{0.03233(5)}{\celsius\per\second}\\
+  m_{2} &= \SI{0.03233(5)}{\celsius\per\second},\\
   m_{1.5} &= \SI{0.02411(3)}{\celsius\per\second}
 \end{align}
 ergeben. Aus den Steigungen folgen sofort die Heizraten
 \begin{align}
-  b_{2} &= \SI{0.03233(5)}{\celsius\per\second} \approx \SI{2}{\celsius\per\minute} \\
+  b_{2} &= \SI{0.03233(5)}{\celsius\per\second} \approx \SI{2}{\celsius\per\minute}, \\
   b_{1.5} &= \SI{0.02411(3)}{\celsius\per\second} \approx \SI{1.5}{\celsius\per\minute}.
   \label{eqn:heizrate}
 \end{align}
@@ -30,7 +30,7 @@ ergeben. Aus den Steigungen folgen sofort die Heizraten
   \centering
   \includegraphics{build/heizrate_2schritt.pdf}
   \caption{Temperaturmesswerte aufgetragen gegen die Zeit für die angestrebte Heizrate von $\SI{2}{\celsius\per\minute}$. Die Steigung
-  des Fits entspricht der Heizrate $b_{2}$.}
+  der Anpassung entspricht der Heizrate $b_{2}$.}
   \label{fig:heizrate2}
 \end{figure}
 
@@ -38,48 +38,48 @@ ergeben. Aus den Steigungen folgen sofort die Heizraten
   \centering
   \includegraphics{build/heizrate_1_5schritt.pdf}
   \caption{Temperaturmesswerte aufgetragen gegen die Zeit für die angestrebte Heizrate von $\SI{1.5}{\celsius\per\minute}$. Die Steigung
-  des Fits entspricht der Heizrate $b_{1.5}$.}
+  der Anpassung entspricht der Heizrate $b_{1.5}$.}
   \label{fig:heizrate15}
 \end{figure}
 
-\subsection{Offsetbereinigung der Messwerte}
+\subsection{Untergrundbereinigung der Messwerte}
 
 Die Stromtemperaturmesswerte sind in den Abbildungen \ref{fig:messwerte2} und
 \ref{fig:messwerte15} graphisch für beide Heizraten aufgetragen. Es wird
 aufgrund des Verlaufs der Messwerte und der erwarteten Theoriekurve ein
-exponentieller Offset angenommen. Um die Messwerte um diesen Offset zu bereinigen
-werden jeweils Messwerte vor dem ersten Peak und zwischen den beiden erkennbaren
-Peaks ausgewählt und exponentiell gefittet. Die selektierten Messwerte sind in beiden
-Graphen jeweils rot dargestellt. Beim Fit mit der Exponentialfunktion
+exponentieller Untergrund angenommen. Um die Messwerte um diesen Untergrund zu bereinigen
+werden jeweils Messwerte vor dem ersten Maximum und zwischen den beiden erkennbaren
+Maxima ausgewählt und exponentiell angenähert. Die selektierten Messwerte sind in beiden
+Graphen jeweils rot dargestellt. Bei der Anpassung mit der Exponentialfunktion
 \begin{align}
-  I_\text{offset}(T)/\si{\pico\ampere} = \mathrm{e}^{\alpha(T-\mu)}
+  I_\text{Untergrund}(T)/\si{\pico\ampere} = \mathrm{e}^{\alpha(T-\mu)}
 \end{align}
 ergeben sich die Parameter
 \begin{align}
-  \mu_{2} &= \SI{-46(1)}{\celsius} \\
+  \mu_{2} &= \SI{-46(1)}{\celsius}, \\
   \mu_{1.5} &= \SI{-45(2)}{\celsius}
   \label{eqn:disk1}
 \end{align}
 und
 \begin{align}
-  \alpha_{2} &= \SI{0.0382(8)}{\per\celsius} \\
+  \alpha_{2} &= \SI{0.0382(8)}{\per\celsius}, \\
   \alpha_{1.5} &= \SI{0.034(2)}{\per\celsius}.
   \label{eqn:disk2}
 \end{align}
 In den Abbildungen \ref{fig:messwerte2off} und \ref{fig:messwerte15off} sind
-jeweils die bereinigten Messwerte für den ersten Peak zu sehen. Der zweite Peak ist
+jeweils die bereinigten Messwerte für das erste Maximum zu sehen. Das zweite Maximum ist
 für die Auswertung uninteressant, da er nicht aus der in diesem Experiment
 betrachteten Dipolrelaxation der Strontium-Leerstellen-Dipole resultiert.
 Die bei den letzteren Graphen rot dargestellten Messwerte beschreiben jeweils den
-Stromstärkeanstieg des Relaxationspeaks und werden für die erste Bestimmung der
-Aktivierungsenergie $W$ hinzugezogen. Die eingezeichneten Parabelfits sind relevant
+Stromstärkeanstieg des Relaxationsmaximums und werden für die erste Bestimmung der
+Aktivierungsenergie $W$ hinzugezogen. Die eingezeichneten Parabelanpassungen sind relevant
 für die Bestimmung der charakteristischen Relaxationszeit.
 
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_2.pdf}
   \caption{Strommesswerte aufgetragen gegen die Temperatur für die Heizrate $b_{2}$. Es ist ein exponentieller
-  Untergrund an die Messwerte, die ohne Offset vermeindlich bei Null liegen, gefittet.}
+  Untergrund an die Messwerte, die ohne Untergrund vermeindlich bei Null liegen, angenähert.}
   \label{fig:messwerte2}
 \end{figure}
 
@@ -87,50 +87,50 @@ für die Bestimmung der charakteristischen Relaxationszeit.
   \centering
   \includegraphics{build/stromtemp_1_5.pdf}
   \caption{Strommesswerte aufgetragen gegen die Temperatur für die Heizrate $b_{1.5}$. Es ist ein exponentieller
-  Untergrund an die Messwerte, die ohne Offset vermeindlich bei Null liegen, gefittet.}
+  Untergrund an die Messwerte, die ohne Untergrund vermeindlich bei Null liegen, angenähert.}
   \label{fig:messwerte15}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_2_off.pdf}
-  \caption{Offsetbereinigte Messwerte des ersten Peaks für die Heizrate $b_{2}$. Die Messwerte, die zur Berechnung der Aktivierungsenergie mit der
+  \caption{Untergrundbereinigte Messwerte des ersten Maximums für die Heizrate $b_{2}$. Die Messwerte, die zur Berechnung der Aktivierungsenergie mit der
   ersten Methode benötigt werden, sind in rot dargestellt. Die hellblauen Messwerte werden durch eine Parabel angenähert um
-  die Stelle des Peakmaximums zu ermitteln.}
+  die Stelle des Maximums zu ermitteln.}
   \label{fig:messwerte2off}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_1_5_off.pdf}
-  \caption{Offsetbereinigte Messwerte des ersten Peaks für die Heizrate $b_{1.5}$. Die Messwerte, die zur Berechnung der Aktivierungsenergie mit der
+  \caption{Untergrundbereinigte Messwerte des ersten Maximums für die Heizrate $b_{1.5}$. Die Messwerte, die zur Berechnung der Aktivierungsenergie mit der
   ersten Methode benötigt werden, sind in rot dargestellt. Die hellblauen Messwerte werden durch eine Parabel angenähert um
-  die Stelle des Peakmaximums zu ermitteln.}
+  die Stelle des Maximums zu ermitteln.}
   \label{fig:messwerte15off}
 \end{figure}
 
-\subsection{Bestimmung der Aktivierungsenergie aus dem Anstieg des Peaks}
+\subsection{Bestimmung der Aktivierungsenergie aus dem Anstieg des Maximums}
 
 Die in den Abbildungen \ref{fig:messwerte2off} und \ref{fig:messwerte15off} rot
 eingezeichneten Messwerte sind in den Abbildungen \ref{fig:messwerte2offW1} und
 \ref{fig:messwerte15offW1} logarithmisch gegen die reziproke Temperatur
 aufgetragen. Nach der theoretisch hergeleiteten Gleichung \eqref{eqn:W1formel}
 ergibt sich für die entsprechend aufgetragenen Messwerte ein linearer Verlauf.
-Im Folgenden werden Temperaturen in $\si{\kelvin}$ angegeben, da die reziproke
+Im Folgenden werden Temperaturen in Kelvin angegeben, da die reziproke
 Temperatur nur so sinnvoll definiert ist. Es wird eine lineare Regression durchgeführt,
 bei welcher sich die Parameter
 \begin{align}
-  n_{2} &= \num{54(2)} \\
+  n_{2} &= \num{54(2)}, \\
   n_{1.5} &= \num{72(6)}
 \end{align}
 für die Abzissenabschnitte und
 \begin{align}
-  m_{2} &= \SI{-1.32(5)e04}{\per\kelvin} \\
+  m_{2} &= \SI{-1.32(5)e04}{\per\kelvin}, \\
   m_{1.5} &= \SI{-1.8(1)e04}{\per\kelvin}
 \end{align}
 für die Steigungen ergeben. Aus den Steigungen ergeben sich die Aktivierungsenergien
 \begin{align}
-  W_{2} &= m_{2} \, \cdot k_\text{B} = \SI{1.82(7)e-19}{\joule} = \SI{1.13(4)}{\electronvolt} \\
+  W_{2} &= m_{2} \, \cdot k_\text{B} = \SI{1.82(7)e-19}{\joule} = \SI{1.13(4)}{\electronvolt}, \\
   W_{1.5} &= m_{1.5} \cdot k_\text{B} = \SI{2.4(2)e-19}{\joule} = \SI{1.5(1)}{\electronvolt}.
 \end{align}
 Wird nun noch das arithmetische Mittel gebildet, so ergibt sich die mit der ersten
@@ -142,22 +142,22 @@ Auswertungsmethode bestimmte Aktivierungsenergie
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_2_off_W1.pdf}
-  \caption{Bestimmung der Aktivierungsenergie aus dem Anstieg des ersten Peaks für die Heizrate $b_{2}$.
-  Die Messwerte werden logarithmiert, gegen die reziproke Temperatur aufgetragen und schließlich linear gefittet.}
+  \caption{Bestimmung der Aktivierungsenergie aus dem Anstieg des ersten Maximums für die Heizrate $b_{2}$.
+  Die Messwerte werden logarithmiert, gegen die reziproke Temperatur aufgetragen und schließlich linear angenähert.}
   \label{fig:messwerte2offW1}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_1_5_off_W1.pdf}
-  \caption{Bestimmung der Aktivierungsenergie aus dem Anstieg des ersten Peaks für die Heizrate $b_{1.5}$.
-  Die Messwerte werden logarithmiert, gegen die reziproke Temperatur aufgetragen und schließlich linear gefittet.}
+  \caption{Bestimmung der Aktivierungsenergie aus dem Anstieg des ersten Maximums für die Heizrate $b_{1.5}$.
+  Die Messwerte werden logarithmiert, gegen die reziproke Temperatur aufgetragen und schließlich linear angenähert.}
   \label{fig:messwerte15offW1}
 \end{figure}
 
-\subsection{Bestimmung der Aktivierungsenergie aus dem gesamten Peak}
+\subsection{Bestimmung der Aktivierungsenergie aus dem gesamten Maximum}
 
-Um die Aktivierungsenergie mit Hilfe des gesamten Peaks, also letzlich mit Hilfe
+Um die Aktivierungsenergie mit Hilfe des gesamten Maximums, also letzlich mit Hilfe
 von Gleichung \ref{eqn:W2formel} zu ermitteln, muss zunächst eine numerische Methode
 gefunden werden, mit welcher das auftretende Integral mit Hilfe der Messwerte
 approximiert werden kann. Dazu werden aufeinander folgende Messwerte linear
@@ -166,10 +166,10 @@ verbunden und die Fläche der eingeschlossenen Trapeze gemäß
   \int_{T_1}^{T_N} I(T) \mathrm{d}T \approx \sum_{i=1}^{N-1} \frac12 \frac{I_{i+1}+I_{i}}{T_{i+1}-T{i}},
 \end{align}
 wobei die Summe über alle Messpunkte innerhalb der Integrationsgrenzen läuft, berechnet.
-Die Cutoff-Temperaturen, an welchen die Stromstärke nach dem Peak näherungsweise wieder auf Null
+Die Cutoff-Temperaturen, an welchen die Stromstärke nach dem Maximum näherungsweise wieder auf Null
 abgefallen sein sollte, werden auf
 \begin{align}
-  T^*_{2} &= \SI{1.7}{\celsius} \\
+  T^*_{2} &= \SI{1.7}{\celsius}, \\
   T^*_{1.5} &= \SI{1.0}{\celsius}
 \end{align}
 gesetzt und entsprechen den letzten noch eingezeichneten Messpunkten in den Abbildungen
@@ -184,19 +184,19 @@ In den Abbildungen \ref{fig:messwerte2offW2} und \ref{fig:messwerte15offW2} sind
   \label{eqn:auftrag}
 \end{align}
 der übrigen Messwerte $I_{i}$ gegen die reziproke Temperatur aufgetragen. Es wird erneut
-jeweils für beide Heizraten ein linearer Fit durchgeführt. Dabei ergibt sich
+jeweils für beide Heizraten eine lineare Ausgleichsrechnung durchgeführt. Dabei ergibt sich
 \begin{align}
-  n_{2} &= \num{-48(2)} \\
+  n_{2} &= \num{-48(2)}, \\
   n_{1.5} &= \num{-42(1)}
 \end{align}
 für die Abzissenabschnitte und
 \begin{align}
-  m_{2} &= \SI{1.29(4)e04}{\per\kelvin} \\
+  m_{2} &= \SI{1.29(4)e04}{\per\kelvin}, \\
   m_{1.5} &= \SI{1.14(3)e04}{\per\kelvin}
 \end{align}
 für die Steigungen. Daraus ergeben sich die Aktivierungsenergien
 \begin{align}
-  W_{2} &= m_{2} \, \cdot k_\text{B} = \SI{1.78(6)e-19}{\joule} = \SI{1.11(4)}{\electronvolt} \\
+  W_{2} &= m_{2} \, \cdot k_\text{B} = \SI{1.78(6)e-19}{\joule} = \SI{1.11(4)}{\electronvolt}, \\
   W_{1.5} &= m_{1.5} \cdot k_\text{B} = \SI{1.57(5)e-19}{\joule} = \SI{0.98(3)}{\electronvolt}.
 \end{align}
 Mitteln führt auf die mit der zweiten Auswertungsmethode berechnete Aktivierungsenergie
@@ -208,59 +208,61 @@ Mitteln führt auf die mit der zweiten Auswertungsmethode berechnete Aktivierung
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_2_off_W2.pdf}
-  \caption{Ermittlung der Aktivierungsenergie aus dem gesamten ersten Peak für die Heizrate $b_{2}$. Die Messwerte
+  \caption{Ermittlung der Aktivierungsenergie aus dem gesamten ersten Maximum für die Heizrate $b_{2}$. Die Messwerte
   werden mit Relation \eqref{eqn:auftrag} umgeformt, gegen die reziproke Temperatur aufgetragen und anschließend
-  linear gefittet.}
+  linear angenähert.}
   \label{fig:messwerte2offW2}
 \end{figure}
 
 \begin{figure}
   \centering
   \includegraphics{build/stromtemp_1_5_off_W2.pdf}
-  \caption{Ermittlung der Aktivierungsenergie aus dem gesamten ersten Peak für die Heizrate $b_{1.5}$. Die Messwerte
+  \caption{Ermittlung der Aktivierungsenergie aus dem gesamten ersten Maximum für die Heizrate $b_{1.5}$. Die Messwerte
   werden mit Relation \eqref{eqn:auftrag} umgeformt, gegen die reziproke Temperatur aufgetragen und anschließend
-  linear gefittet.}
+  linear angenähert.}
   \label{fig:messwerte15offW2}
 \end{figure}
 
 \subsection{Bestimmung der charakteristischen Relaxationszeit}
 
 Um die charakteristische Relaxationszeit $\tau_0$ aus den Messdaten zu bestimmen muss
-zunächst ein Zusammenhang zur kritischen Temperatur, an welcher der Strom-Peak
+zunächst ein Zusammenhang zur kritischen Temperatur, an welcher der Strom
 sein Maximum erreicht, hergeleitet werden: Differenzieren der Stromstärke aus
 Gleichung \eqref{eqn:allgjt} führt auf
-\begin{align}
+\begin{equation}
+\begin{aligned}
   I'(T) &= I(T) \cdot \left(\frac{W}{k_\text{B} T^2} - \frac1{b \tau_0} \frac{\mathrm{d}}{\mathrm{d}T} \int_{T_0}^{T} \mathrm{e}^{-\frac{W}{k_\text{B} T'}} \mathrm{d}{T'}\right) \\
   &= I(T) \cdot \left(\frac{W}{k_\text{B} T^2} - \frac1{b \tau_0} \frac{\mathrm{d}}{\mathrm{d}T} \left(F(T) - F(T_0)\right)\right) \\
   &= I(T) \cdot \left(\frac{W}{k_\text{B} T^2} - \frac1{b \tau_0} \mathrm{e}^{-\frac{W}{k_\text{B} T}}\right)
-\end{align}
+\end{aligned}
+\end{equation}
 und nach Gleichsetzen mit Null auf die Relation
 \begin{align}
   \tau_0 = \frac{k_\text{B} T_\text{max}^2}{W b} \mathrm{e}^{-\frac{W}{k_\text{B} T_\text{max}}}.
   \label{eqn:tau0}
 \end{align}
-Um die kritische Temperatur $T_\text{max}$ zu ermitteln werden Parabelfits mit den offsetbereinigten
-Messwerten des jeweils ersten Peaks durchgeführt. In den Abbildungen \ref{fig:messwerte2off} und \ref{fig:messwerte15off}
-sind die für den Fit genutzten Messwerte in hellblau und die berechneten Fitfunktionen in dunkelblau dargestellt.
+Um die kritische Temperatur $T_\text{max}$ zu ermitteln werden Parabelanpassungen mit den untergrundbereinigten
+Messwerten des jeweils ersten Maximums durchgeführt. In den Abbildungen \ref{fig:messwerte2off} und \ref{fig:messwerte15off}
+sind die für die Anpassung genutzten Messwerte in hellblau und die berechneten Anpassungsfunktionen in dunkelblau dargestellt.
 Zur Funktionsvorschrift
 \begin{align}
   P(T) = a T^2 + b T + c
 \end{align}
-ergeben sich die Fitparameter
+ergeben sich die Anpassungsparameter
 \begin{align*}
-  a_{2} &= \SI{-0.177(8)}{\pico\ampere\per\celsius\squared} & b_{2} &= \SI{-2.8(2)}{\pico\ampere\per\celsius} & c_{2} &= \SI{-3(1)}{\pico\ampere} \\
+  a_{2} &= \SI{-0.177(8)}{\pico\ampere\per\celsius\squared} & b_{2} &= \SI{-2.8(2)}{\pico\ampere\per\celsius} & c_{2} &= \SI{-3(1)}{\pico\ampere}, \\
   a_{1.5} &= \SI{-0.099(7)}{\pico\ampere\per\celsius\squared} & b_{1.5} &= \SI{-2.9(2)}{\pico\ampere\per\celsius} & c_{1.5} &= \SI{-11(1)}{\pico\ampere}
 \end{align*}
 und daraus die kritischen Temperaturen
 \begin{align}
-  T_{\text{max},2} &= -\frac{b_{2}}{2 a_{2}} = \SI{-12(1)}{\celsius} = \SI{285(1)}{\kelvin}\\
+  T_{\text{max},2} &= -\frac{b_{2}}{2 a_{2}} = \SI{-12(1)}{\celsius} = \SI{285(1)}{\kelvin},\\
   T_{\text{max},15} &= -\frac{b_{1.5}}{2 a_{1.5}} = \SI{-15(2)}{\celsius} = \SI{288(2)}{\kelvin}.
 \end{align}
 Werden nun die kritischen Temperaturen, die jeweiligen Heizraten aus Gleichung \eqref{eqn:heizrate} und die
 Aktivierungsenergie aus Gleichung \eqref{eqn:akt2} in die rechte Seite von Formel \eqref{eqn:tau0}
 eingesetzt, so ergeben sich die charakteristischen Relaxationszeiten
 \begin{align}
-  \tau_{0,(2)} &= \SI{1(3)e-3}{\femto\second} \\
+  \tau_{0,(2)} &= \SI{1(3)e-3}{\femto\second}, \\
   \tau_{0,(1.5)} &= \SI{1(3)e-3}{\femto\second}.
 \end{align}
 Diese entsprechen ihrem arithmetischen Mittel

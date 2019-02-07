@@ -64,7 +64,7 @@ W_mitt = ufloat(W_mean.nominal_value, W_std.nominal_value + W_std.std_dev)
 print('gemittelte Aktivierungsenergie (joule, eV):',W_mitt, W_mitt/e)
 
 d = np.linspace(0,1,10)
-plt.plot(d,linfunc(d,*popt), 'r-', label = r'Fit')
+plt.plot(d,linfunc(d,*popt), 'r-', label = r'Anpassung')
 
 plt.grid()
 plt.xlabel(r'$\frac{1}{T}/\si{\kelvin}^{-1}$')

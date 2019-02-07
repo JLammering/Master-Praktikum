@@ -20,7 +20,7 @@ plt.plot(T[5:13],I[5:13],'r.',label=r'W-Messwerte(1)', markersize = 6.4)
 # Parabelfit zur Bestimmung des Maximums
 I_parabfit = I[14:20]
 T_parabfit = T[14:20]
-plt.plot(T_parabfit,I_parabfit,'c.',label=r'Fit-Messwerte', markersize = 6.4)
+plt.plot(T_parabfit,I_parabfit,'c.',label=r'Anpassungs-Messwerte', markersize = 6.4)
 
 def parab(x,a,b,c):
     return a*x**2 +b*x +c
@@ -44,7 +44,7 @@ tau_0 = k_B * T_max**2/(heizrate*W) *unp.exp(- W/(k_B * T_max))
 print('char.Relaxationszeit:', tau_0)
 
 d = np.linspace(-30,0,500)
-plt.plot(d, parab(d,*popt), 'b-', label = r'Parabelfit', linewidth = 1.0)
+plt.plot(d, parab(d,*popt), 'b-', label = r'Parabelanpassung', linewidth = 1.0)
 
 plt.grid()
 plt.xlabel(r'$T/\si{\celsius}$')

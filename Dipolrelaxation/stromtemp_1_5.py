@@ -25,7 +25,7 @@ def offset(T,m,u):
 popt,pcov = curve_fit(offset,np.append(T_beg,T_mid),np.append(I_beg,I_mid))
 
 x = np.linspace(-50,63,500)
-plt.plot(x, offset(x,*popt), 'r-', linewidth = 1.0, label = r'Exponential-Fit')
+plt.plot(x, offset(x,*popt), 'r-', linewidth = 1.0, label = r'Exponentielle Anpassung')
 
 print('exp-Faktor:', popt[0],'+-', np.sqrt(pcov[0,0]))
 print('Verschiebung:', popt[1],'+-', np.sqrt(pcov[1,1]))

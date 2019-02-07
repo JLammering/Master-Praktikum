@@ -43,7 +43,7 @@ W_mitt = ufloat(W_mean.nominal_value, W_std.nominal_value + W_std.std_dev) # Feh
 print('Mittelwert Aktivierungsenergie (Joule, eV):', W_mitt, W_mitt/e)
 
 d = np.linspace(0.003,0.005,10)
-plt.plot(d,linfunc(d,*popt), 'r-', label = r'Fit', linewidth = 1.2)
+plt.plot(d,linfunc(d,*popt), 'r-', label = r'Anpassung', linewidth = 1.2)
 
 plt.grid()
 plt.xlabel(r'$\frac{1}{T}/\si{\kelvin}^{-1}$')

@@ -3,30 +3,30 @@
 
 Die Heizraten können mit einem relativen Fehler von
 \begin{align}
-  \Delta_{b,2} &= \SI{0.2}{\percent} \\
+  \Delta_{b,2} &= \SI{0.2}{\percent}, \\
   \Delta_{b,2} &= \SI{0.1}{\percent}
 \end{align}
 sehr genau angegeben werden. Allerdings sind in den Ergebnissen trotzdem statistische Fehler,
 die aus der Schwankung der Heizraten resultieren, zu erwarten. Das liegt unter anderem
 daran, dass die Stromstärke des Heizstroms regelmäßig korrigiert werden musste und sich erst
 nach einiger Zeit herausstellte, ob die eingestellte Stromstärke optimal für die angestrebte
-Heizrate war. Das bereinigen der Messwerte um einen exponentiellen Offset hat ebenfalls gut funktioniert,
-was an den geringen Fehlern der Fitparameter aus den Gleichungen \eqref{eqn:disk1} und \eqref{eqn:disk2} deutlich
-wird. Der Grund für den mit der Temperatur ansteigenden Offsetstrom ist möglicherweise, dass
+Heizrate war. Das bereinigen der Messwerte um einen exponentiellen Untergrund hat ebenfalls gut funktioniert,
+was an den geringen Fehlern der Anpassungsparameter aus den Gleichungen \eqref{eqn:disk1} und \eqref{eqn:disk2} deutlich
+wird. Der Grund für den mit der Temperatur ansteigenden Untergrundstrom ist möglicherweise, dass
 Elektronen aus der erhitzten Probe und umliegendem Kondensator thermisch angeregt werden und als
-Untergrundstrom messbar sind. Werden die Messwerte des zweiten Peaks betrachtet, so fällt auf, dass der
-gefittete Offset dort über den Werten liegt. Dies ist allerdings irrelevant, da diese Messwerte ohnehin
+Untergrundstrom messbar sind. Werden die Messwerte des zweiten Maximums betrachtet, so fällt auf, dass der
+angenähert Untergrund dort über den Werten liegt. Dies ist allerdings irrelevant, da diese Messwerte ohnehin
 nicht einbezogen werden.
 
-Die Ermittlung der Aktivierungsenergie aus dem Peakanstieg ist wesentlich
-unzuverlässiger als die Ermittlung der Aktivierungsenergie aus dem gesamten Peak. Das ist vor Allem an
+Die Ermittlung der Aktivierungsenergie aus dem Maximumsanstieg ist wesentlich
+unzuverlässiger als die Ermittlung der Aktivierungsenergie aus dem gesamten Maximum. Das ist vor Allem an
 den relativen Fehlern
 \begin{align}
-  \Delta_{W,\text{I}} &= \SI{30.8}{\percent} \\
+  \Delta_{W,\text{I}} &= \SI{30.8}{\percent}, \\
   \Delta_{W,\text{II}} &= \SI{9.1}{\percent}
 \end{align}
 erkennbar. Der Grund dafür, dass die zweite Methode ein genaueres Ergebnis liefert, ist einerseits, dass wesentlich
-mehr Messwerte einbezogen werden können und andererseits, dass die zu fittende Theoriegleichung nahezu exakt ist.
+mehr Messwerte einbezogen werden können und andererseits, dass die zugehörige Theoriegleichung nahezu exakt ist.
 Bei der Auswertung mit der ersten Methode müssen die Messwerte sorgfältig ausgewählt werden, sodass
 die Näherungsformel \eqref{eqn:W1formel} gültig ist.
 
@@ -34,7 +34,7 @@ Die Bestimmung der Relaxationszeit stellt sich als sehr ungenau heraus, wenn man
 \begin{align}
   \Delta_{\tau} = \SI{300}{\percent}
 \end{align}
-betrachtet. Das liegt weniger an Messungenauigkeiten beim Parabelfit, sondern eher an der Tatsache, dass
+betrachtet. Das liegt weniger an Messungenauigkeiten bei der Parabelanpassung, sondern eher an der Tatsache, dass
 die Aktivierungsenergie exponentiell eingeht und der Fehler sich entsprechend vergrößert. Hinzu kommt, dass
 der Wert der charakteristischen Relaxationszeit im Bereich $\SI{e-18}{\second}$ liegt und entsprechend
 schwierig genau zu ermitteln ist.
