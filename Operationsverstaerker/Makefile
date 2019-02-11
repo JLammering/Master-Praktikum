@@ -11,11 +11,11 @@ endif
 all: build/main.pdf
 
 # hier Python-Skripte:
-build/plotElement.pdf: plot.py header-matplotlib.tex | build
-	TEXINPUTS="$(call translate,$(pwd):)" python plot.py
+build/gegen.pdf: gegen.py header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python gegen.py
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: build/plotElement.pdf
+build/main.pdf: build/gegen.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \
