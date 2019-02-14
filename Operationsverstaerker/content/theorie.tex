@@ -105,7 +105,7 @@ und schließlich auch die Ausgangsspannung reduziert wird. Dadurch wird insgesam
 den eingebauten Widerständen $R_1$ und $R_\text{N}$ erreicht. Mit den Kirchhoffschen Regeln lässt sich für den idealen
 Operationsverstärker, für welchen $U_\text{N}$ und $I_\text{N}$ gegen Null gehen, der Verstärkungsfaktor
 \begin{align}
-  V_\text{lin,ideal} = \frac{U_\text{A}}{U_\text{1}} = \frac{R_\text{N}}{R_1}
+  V_\text{id} = \frac{U_\text{A}}{U_\text{1}} = \frac{R_\text{N}}{R_1}
 \end{align}
 herleiten. Dieser hängt nur von der äußeren Beschaltung des Operationsverstärkers und nicht von ihm selbst ab.
 Beim realen Operationsverstärker kann mit der Korrektur, dass die Leerlaufverstärkung endlich ist, der
@@ -120,34 +120,161 @@ hergeleitet werden, wobei $V$ wieder die Leerlaufverstärkung ist. Für den Fall
 geht der reale in den idealen Wert über und der Verstärkungsfaktor ist wieder unabängig von dem Operationsverstärker selbst.
 Werden also die Widerstände entsprechend gewählt, so arbeitet der Operationsverstärker stabiler gegen Temperaturschwankungen
 und Exemplarstreuungen, sofern die äußere Beschaltung gegenüber diesen stabil ist.
+Des Weiteren wird, wie in Abbildung \ref{fig:frequenzband} dargestellt, durch die Gegenkopplungsschaltung ein größeres Frequenzband unverzerrt verstärkt.
+Der Vergrößerungsfaktor beträgt dabei
+\begin{align}
+  g = \frac{V'}{V}.
+\end{align}
 
+\begin{figure}
+  \centering
+  \includegraphics[height=6.5cm]{ImmerDieseNorweger/frequenzband.png}
+  \caption{\cite{anleitung}.}
+  \label{fig:frequenzband}
+\end{figure}
 
+\subsection{Umkehr-Integrator}
 
+In Abbildung \ref{fig:integrator} ist eine Beschaltung für die Verwendung des Operationsverstärkers
+als Umkehr-Integrator abgebildet. Dieser integriert nun eine zeitabhängige Eingangsspannung auf
+und skaliert diese mit einem negativen Vorfaktor.
+Über die Kirchhoffschen Gesetze kann für den Idealfall einer verschwindenden Differenzeingangsspannung
+$U_\text{N} \approx 0$ die Relation
+\begin{align}
+  U_\text{A}(t) = - \frac1{R C} \int U_1(t') \mathrm{d}t'
+\end{align}
+zwischen Ausgangsspannung $U_\text{A}$ und Eingangsspannung $U_1$ hergeleitet werden.
 
-\subsection{Fehlerrechnung}
+\begin{figure}
+  \centering
+  \includegraphics[height=5cm]{ImmerDieseNorweger/integrator.png}
+  \caption{Beschaltung für den Operationsverstärker um ihn als Umkehr-Integrator zu verwenden \cite{anleitung}.}
+  \label{fig:integrator}
+\end{figure}
 
-Für die Fehlerfortpflanzung bei Gleichungen mit $N$ fehlerbehafteten Größen
-wird jeweils die Formel zur Gaußschen Fehlerfortpflanzung
+Für eine sinusförmige Eingangsspannung
+\begin{align}
+  U_1(t) = U_0 \sin \left( \omega t \right)
+  \label{eqn:sinus}
+\end{align}
+ergibt sich eine Ausgangsspannung mit antiproportionaler Frequenzabhängigkeit
+\begin{align}
+  U_\text{A}(t) = \frac{U_0}{\omega R C} \cos \left( \omega t \right).
+\end{align}
 
-\begin{equation*}
-  \sigma = \sqrt{\sum_{i=1}^{N}\biggl(\frac{\partial f(x_{\g{i}})}{\partial x_{\g{i}}}
-  \sigma_{\g{i}}\biggr)^2}
-\end{equation*}
-mit der jeweiligen Funktion $f(x_{\g{i}})$, den Messgrößen $x_{\g{i}}$ und den
-zugehörigen Fehlern $\sigma_i$ verwendet.
-Zur Berechnung des arithmetischen Mittels von $N$ Messwerten wird jeweils die
-Formel
+\subsection{Umkehr-Differentiator}
 
-\begin{equation*}
-  \bar{x} = \frac{1}{N}\sum_{i=1}^{N}x_{\g{i}}
-\end{equation*}
-mit den Messwerten $x_i$ benutzt.
-Die Standardabweichung des Mittelwerts wird jeweils mit der Gleichung
+Durch Tauschen von Kondensator und Widerstand in der Umkehr-Integrator-Schaltung aus Abbildung \ref{fig:integrator}
+wird der Operationsverstärker zum Umkehr-Differentiator umfunktioniert.
+Für diese Beschaltung gilt entsprechend
+\begin{align}
+  U_\text{A}(t) = - RC \frac{\mathrm{d} U_1(t)}{\mathrm{d}t}.
+\end{align}
+Außerdem ergibt sich für eine sinusförmige Eingangsspannung wie in Gleichung \eqref{eqn:sinus}
+eine Ausgangsspannung mit linearer Frequenzabhängigkeit
+\begin{align}
+  U_\text{A}(t) = - \omega R C U_0 \cos \left( \omega t \right).
+\end{align}
 
-\begin{equation*}
-  \bar{\sigma} = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_{\g{i}} - \bar{x})^2}
-\end{equation*}
-mit den $N$ Messwerten $x_i$ berechnet.
+\subsection{Schmitt-Trigger}
 
+Anstatt den Operationsverstärker wie beim Linearverstärker mit Hilfe eines Widerstands gegenzukoppeln kann
+er auch mitgekoppelt werden, wie es beim sogenannten Schmitt-Trigger der Fall ist. Dazu wird der Rückkopplungszweig
+auf den nicht-invertierenden anstatt auf den invertierenden Eingang
+gegeben. Die Funktionsweise ändert sich dabei drastisch, da anstatt einer Abschwächung des Verstärkungsfaktors
+eine Verstärkung auftritt. Beim Erreichen bestimmter Schwellenspannungen kippt die Ausgangsspannung dann sofort auf
+die Maximalwerte $\pm U_\text{B}$ und der beschaltete Operationsverstärker kann als Komparator verwendet werden.
+Die Beschaltung ist in Abbildung \ref{fig:schmitttrigger} skizziert.
 
-\cite{anleitung}
+\begin{figure}
+  \centering
+  \includegraphics[height=5cm]{ImmerDieseNorweger/schmitttrigger.png}
+  \caption{Beschaltung des Operationsverstärkers, damit dieser als Schmitt-Trigger arbeitet \cite{anleitung}.}
+  \label{fig:schmitttrigger}
+\end{figure}
+
+Die Kippvorgänge finden an den Schwelleneingangsspannungen
+\begin{align}
+  U_\text{1,krit} = \pm \frac{R_1}{R_\text{p}} U_\text{B}
+\end{align}
+statt, da genau an diesen Punkten die Eingangsspannung $U_\text{p}$ ihr Vorzeichen
+wechselt. Wird also beispielsweise bei einer Ausgangsspannung $-U_\text{B}$ die Eingangsspannnung
+auf den positiven Wert $U_\text{1,krit}$ erhöht, so wird $U_\text{p}$ gerade positiv
+und verstärkt sich schließlich über den Operationsverstärker mit Rückkopplung selbst,
+sodass schlagartig die Ausgangsspannung auf $+U_\text{B}$ kippt. Dieser von der
+Vergangenheit der Eingangsspannung abhängende Prozess wird entsprechend auch als Schalthysterese
+bezeichnet. Mit Hilfe des Schmitt-Triggers ist es beispielsweise möglich, eine sinusförmige
+Eingangsspannung in eine Rechteckspannung mit einer Amplitude von $2 U_\text{B}$ umzuwandeln.
+Dies wird bei dem im folgendem Abschnitt präsentierten Signalgenerator ausgenutzt.
+
+\subsection{Signalgenerator}
+
+Mit Hilfe der in Abbildung \ref{fig:signalgen} aufgezeigten Schaltung können Rechteck- und
+Dreieckspannungen erzeugt werden. Der Schmitt-Trigger überführt ein periodisches Eingangssignal,
+welches die Schwellenwerte $U_\text{1,krit}$ überschreitet, in eine Rechteckspannung.
+Die produzierte Rechteckspannung wird auf den Eingang eines Umkehr-Integrators gegeben, welcher
+durch integrieren eine Dreieckspannung erzeugt. Da die Dreieckspannung direkt mit dem Eingang des
+Schmitt-Triggers gekoppelt ist, bleibt der gesamte Generator auch ohne externes
+periodisches Eingangssignal, also nur mit Hilfe der Betriebsspannungen $U_\text{B}$ in Betrieb.
+Es muss also nur ein kurzes periodisches Eingangssignal in das System gebracht werden um
+den Generator einzuschalten. Wird das periodische Eingangssignal schließlich abgeschaltet, so ist die
+Schwingung im System nicht mehr extern erzwungen und es stellt sich eine neue Frequenz und eine
+neue Amplitude bei der Dreieckspannung ein, abhängig von den Bauteilen in der Beschaltung.
+Dies wird im Folgenden hergeleitet.
+
+\begin{figure}
+  \centering
+  \includegraphics[height=5cm]{ImmerDieseNorweger/signalgenerator.png}
+  \caption{Beschaltung zweier Operationsverstärker als Signalgenerator für eine Rechtecks- und Dreieckspannung \cite{anleitung}.}
+  \label{fig:signalgen}
+\end{figure}
+
+Sobald am Schmitt-Trigger-Ausgang die Spannung $U_\text{B}$ vorliegt, wird diese
+durch den Integrator so lange integriert, gemäß
+\begin{align}
+  U_\text{A}(t) = -\frac1{RC} U_\text{B} t,
+\end{align}
+bis am Integrator-Ausgang bzw. am Schmitt-Trigger-Eingang die Spannung
+\begin{align}
+  U_\text{1,krit} = - \frac{R_1}{R_\text{p}} U_\text{B}
+\end{align}
+vorliegt. An diesem Punkt kippt die Ausgangsspannung des Schmitt-Triggers, bzw. die Eingangsspannung
+des Integrators auf $-U_\text{B}$, sodass der Integrator in Folge eine negative Spannung
+aufintegriert. Dies tut er gemäß
+\begin{align}
+  U_\text{A}(t) = + \frac1{RC} U_\text{B}
+\end{align}
+solange, bis der Schwellenwert
+\begin{align}
+  U_\text{1,krit} = + \frac{R_1}{R_\text{p}} U_\text{B}
+\end{align}
+erreicht ist und so weiter. Die Periodendauer entspricht genau der Zeit, in der das Integral positiv ist, addiert mit
+der gleichlangen Zeit, in der das Integral negativ ist, da nach diesen Integrationen der Prozess von
+Neuem beginnt. Bei der halben Periodendauer hat die Ausgangsspannung am Integrator den
+Schwellenwert erreicht, also
+\begin{align}
+  U_\text{A}\left( \frac{\tau}{2} \right) = -\frac{\tau}{2RC} U_\text{B} \stackrel{!}{=} -\frac{R_1}{R_\text{P}} U_\text{B}.
+\end{align}
+Daraus folgt die Kreisfrequenz der Rechteck- sowie der Dreieckspannung sofern diese nicht durch ein
+äußeres Signal erzwungen werden
+\begin{align}
+  \omega = \frac{2\pi}{\tau} = \frac{\pi R_\text{p}}{R C R_1}.
+\end{align}
+Da die Dreieckspannung genau bei den Umschaltpunkten extremal wird ist ihre Amplitude gleich dem
+doppelten Schwellenwert
+\begin{align}
+  A = \frac{2 R_1}{R_\text{p}} U_\text{B}.
+\end{align}
+
+\subsection{Erzeugung von Sinusschwingungen mit exponentiell veränderter Amlitude}
+
+In Abbildung \ref{fig:expsin} ist eine Beschaltung von Operationsverstärkern dargestellt, mit welcher
+eine exponentiell zu- bzw. abnehmende Sinusschwingung erzeugt werden kann.
+
+\begin{figure}
+  \centering
+  \includegraphics[height=6cm]{ImmerDieseNorweger/expsin.png}
+  \caption{beschaltung dreier Operationsverstärker als Generator von Sinusschwingungen mit exponentiell
+  variierenden Amplituden \cite{anleitung}.}
+  \label{fig:expsin}
+\end{figure}
