@@ -11,11 +11,13 @@ endif
 all: build/main.pdf
 
 # hier Python-Skripte:
-#build/gegen.pdf: gegen.py header-matplotlib.tex | build
-#	TEXINPUTS="$(call translate,$(pwd):)" python gegen.py
+build/gegen.pdf: gegen.py header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python gegen.py
+build/integrator.pdf: inte_diff.py header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python inte_diff.py
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: #build/gegen.pdf
+build/main.pdf: build/gegen.pdf build/integrator.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \
