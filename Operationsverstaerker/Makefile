@@ -16,8 +16,12 @@ build/gegen.pdf: gegen.py header-matplotlib.tex | build
 build/integrator.pdf: inte_diff.py header-matplotlib.tex | build
 	TEXINPUTS="$(call translate,$(pwd):)" python inte_diff.py
 
+build/gedaempft.pdf: gedaempft.py header-matplotlib.tex | build
+	TEXINPUTS="$(call translate,$(pwd):)" python gedaempft.py
+
+
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: build/gegen.pdf build/integrator.pdf
+build/main.pdf: build/gegen.pdf build/integrator.pdf build/gedaempft.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \

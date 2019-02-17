@@ -13,27 +13,32 @@ def fitfunktion_int(omega, k):
     return 1/(omega * k)
 
 
-def plot(x, y, file, R, C):
+def fitfunktion_diff(omega, k):
+    return omega*k
+
+
+def plot(x, y, file, R, C, fitfunktion, k_guess, x_fit, xlim=None, ylim=None):
     plt.errorbar(unp.nominal_values(x), unp.nominal_values(y),
     xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='x', label='Messwerte')
 
     # fitten:
-    params, covariance = curve_fit(fitfunktion_int, unp.nominal_values(x),
+    params, covariance = curve_fit(fitfunktion, unp.nominal_values(x),
                                    unp.nominal_values(y),
-                                   p0=[0.1])
+                                   p0=[k_guess])
     errors = np.sqrt(np.diag(covariance))
     print('k= ', params[0], '±', errors[0])
     k = ufloat(params[0], errors[0])
 
     print('Abweichung von R*C = ', abweichungen(R*C, k), '%')
-    x_fit = np.linspace(4, 1000)
-    plt.plot(x_fit, fitfunktion_int(x_fit, *params), label='Fit')
+    x_fit = np.linspace(x_fit[0], x_fit[1])
+    plt.plot(x_fit, fitfunktion(x_fit, *params), label='Fit')
 
-    plt.xlim(0, 990)
-    plt.ylim(0, 0.6)
+    if xlim is not None:
+        plt.xlim(xlim[0], xlim[1])
+        plt.ylim(ylim[0], ylim[1])
     xlabel = r'$\omega\:/\:\si{\hertz}$'
     ylabel = r"$V'$"
-    xlabel, ylabel = 'test', 'test'
+    #xlabel, ylabel = 'test', 'test'
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.legend(loc='best')
@@ -55,4 +60,16 @@ if __name__ == '__main__':
     U_a_int = unp.uarray(U_a_int, 5)
     U_1_int = unp.uarray(U_1_int, 5)
     nu_int = unp.uarray(nu_int, 5)
-    plot(2*np.pi*nu_int, U_a_int/U_1_int, 'integrator', R_int, C_int)
+    plot(2*np.pi*nu_int, U_a_int/U_1_int, 'integrator', R_int, C_int, fitfunktion_int, 0.1, (4, 1000), (0, 990), (0, 0.6))
+
+    #Differentiator
+    C_diff = ufloat(970e-9, 10e-9)#nF
+    R_diff = ufloat(1.002e3, 0.05e3)#kohm
+    print('R*C = ', C_diff*R_diff)
+    nu_diff, U_a_diff, U_1_diff = np.genfromtxt('daten/differentiator.txt', unpack='True')
+    ind_sort = np.argsort(nu_diff)
+    werteZuTabelle(2*np.pi*noms(nu_diff)[ind_sort], noms(U_a_diff)[ind_sort], noms(U_1_diff)[ind_sort].astype('int'), noms(U_a_diff/U_1_diff)[ind_sort], rundungen=[2, 1, 0, 2])
+    U_a_diff = unp.uarray(U_a_diff, 5)
+    U_1_diff = unp.uarray(U_1_diff, 5)
+    nu_diff = unp.uarray(nu_diff, 5)
+    plot(2*np.pi*nu_diff, U_a_diff/U_1_diff, 'differentiator', R_diff, C_diff, fitfunktion_diff, 0.01, (-100, 7000), (-1, 6900), (-0.2, 7))

@@ -34,7 +34,7 @@ def fitten(axes, x, y, fitfunktion, p_list, pname_list, color, label, schnittwer
 
 
 def plot(axes, x, y, V_strich_theorie, label, filename, x_label, y_label, grenze, ylim=None, logy=None):
-    label = 'test'
+    #label = 'test'
     axes.errorbar(noms(x[grenze:]), noms(y[grenze:]),
                  xerr=stds(x[grenze:]), yerr=stds(y[grenze:]),
                  fmt='rx', label=f'Messwerte Flanke bei {label}')
@@ -44,7 +44,7 @@ def plot(axes, x, y, V_strich_theorie, label, filename, x_label, y_label, grenze
     print(V_strich_theorie.n)
     V_strich_theorie_halb = unp.log(V_strich_theorie / unp.sqrt(2)) if V_strich_theorie.n >= 1 else unp.log(V_strich_theorie * unp.sqrt(2))
     label_v_halb = r"$V_\text{theorie}' / \sqrt{2}$" if V_strich_theorie.n >= 1 else r"$V_\text{theorie}' \cdot \sqrt{2}$"
-    label_v_halb = 'test'
+    #label_v_halb = 'test'
     axes.plot((min(noms(x)), max(noms(x))), (noms(V_strich_theorie_halb), noms(V_strich_theorie_halb)), '-', label=label_v_halb)
     grenzfrequenz = fitten(axes, x[grenze:], y[grenze:], linear, [-1, 5], ['m', 'b'], 'r', 'Flanke', schnittwert=V_strich_theorie_halb)
     print('grenzfrequenz = ', grenzfrequenz)
@@ -58,7 +58,7 @@ def plot(axes, x, y, V_strich_theorie, label, filename, x_label, y_label, grenze
     axes.set_xlim(min(noms(x)) - max(noms(x)) * 0.06, (max(noms(x))) * 1.06)
     if ylim is not None:
         axes.set_ylim(ylim[0], ylim[1])
-    x_label, y_label = 'test', 'test'
+    #x_label, y_label = 'test', 'test'
     axes.set_xlabel(x_label)
     axes.set_ylabel(y_label)
     plt.close()
@@ -80,8 +80,8 @@ def plotphase(nu_1, phi_1, nu_2, phi_2, nu_3, phi_3, nu_4, phi_4):
 
     xlabel = r'$\ln(\nu\:/\:\si{\kilo\hertz})$'
     ylabel = r'$\phi\:/\:\si{\degree}$'
-    xlabel = 'test'
-    ylabel = 'test'
+    # xlabel = 'test'
+    # ylabel = 'test'
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.legend(loc='best')

@@ -112,6 +112,7 @@ Beim realen Operationsverstärker kann mit der Korrektur, dass die Leerlaufverst
 Verstärkungsfaktor
 \begin{align}
   V' \approx \left( \frac1{V} + \frac{R_\text{N}}{R_1} \right)^{-1}
+  \label{eqn:leerlaufverst}
 \end{align}
 hergeleitet werden, wobei $V$ wieder die Leerlaufverstärkung ist. Für den Fall eines großen Widerstandsquotienten
 \begin{align}
@@ -160,6 +161,7 @@ Für eine sinusförmige Eingangsspannung
 ergibt sich eine Ausgangsspannung mit antiproportionaler Frequenzabhängigkeit
 \begin{align}
   U_\text{A}(t) = \frac{U_0}{\omega R C} \cos \left( \omega t \right).
+  \label{eqn:int_aus}
 \end{align}
 
 \subsection{Umkehr-Differentiator}
@@ -174,6 +176,7 @@ Außerdem ergibt sich für eine sinusförmige Eingangsspannung wie in Gleichung 
 eine Ausgangsspannung mit linearer Frequenzabhängigkeit
 \begin{align}
   U_\text{A}(t) = - \omega R C U_0 \cos \left( \omega t \right).
+  \label{eqn:diff_aus}
 \end{align}
 
 \subsection{Schmitt-Trigger}
@@ -259,11 +262,13 @@ Daraus folgt die Kreisfrequenz der Rechteck- sowie der Dreieckspannung sofern di
 äußeres Signal erzwungen werden
 \begin{align}
   \omega = \frac{2\pi}{\tau} = \frac{\pi R_\text{p}}{R C R_1}.
+  \label{eqn:freq_signalgen}
 \end{align}
 Da die Dreieckspannung genau bei den Umschaltpunkten extremal wird ist ihre Amplitude gleich dem
 doppelten Schwellenwert
 \begin{align}
   A = \frac{2 R_1}{R_\text{p}} U_\text{B}.
+  \label{eqn:ampl_drei}
 \end{align}
 
 \subsection{Erzeugung von Sinusschwingungen mit exponentiell veränderter Amlitude}
