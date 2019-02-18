@@ -85,6 +85,7 @@ Operationsverstärker sind sie selbstverständlich alle Null. In den nächsten A
 Beschaltungen von Operationsverstärkern mit unterschiedlichen Wirkungen präsentiert.
 
 \subsection{Linearverstärker}
+\label{sec:linv}
 
 Um den Operationsverstärker als Linearverstärker verwenden zu können muss zunächst eine Möglichkeit gefunden werden,
 den Verstärkungsfaktor zu reduzieren. Das ist nötig, da der Leerlaufverstärkungsfaktor bei realen Operationsverstärkern
@@ -245,15 +246,14 @@ vorliegt. An diesem Punkt kippt die Ausgangsspannung des Schmitt-Triggers, bzw. 
 des Integrators auf $-U_\text{B}$, sodass der Integrator in Folge eine negative Spannung
 aufintegriert. Dies tut er gemäß
 \begin{align}
-  U_\text{A}(t) = + \frac1{RC} U_\text{B}
+  U_\text{A}(t) = + \frac1{RC} U_\text{B} t
 \end{align}
-solange, bis der Schwellenwert
+so lange, bis der Schwellenwert
 \begin{align}
   U_\text{1,krit} = + \frac{R_1}{R_\text{p}} U_\text{B}
 \end{align}
-erreicht ist und so weiter. Die Periodendauer entspricht genau der Zeit, in der das Integral positiv ist, addiert mit
-der gleichlangen Zeit, in der das Integral negativ ist, da nach diesen Integrationen der Prozess von
-Neuem beginnt. Bei der halben Periodendauer hat die Ausgangsspannung am Integrator den
+erreicht ist und der gesamte Prozess beginnt von Neuem. Die Periodendauer entspricht genau der Zeit, in der das Integral positiv ist, addiert mit
+der gleichlangen Zeit, in der das Integral negativ ist. Bei der halben Periodendauer hat die Ausgangsspannung am Integrator den
 Schwellenwert erreicht, also
 \begin{align}
   U_\text{A}\left( \frac{\tau}{2} \right) = -\frac{\tau}{2RC} U_\text{B} \stackrel{!}{=} -\frac{R_1}{R_\text{P}} U_\text{B}.
@@ -271,15 +271,55 @@ doppelten Schwellenwert
   \label{eqn:ampl_drei}
 \end{align}
 
-\subsection{Erzeugung von Sinusschwingungen mit exponentiell veränderter Amlitude}
+\subsection{Erzeugung von Sinusschwingungen mit exponentiell variierender Amlitude}
 
 In Abbildung \ref{fig:expsin} ist eine Beschaltung von Operationsverstärkern dargestellt, mit welcher
-eine exponentiell zu- bzw. abnehmende Sinusschwingung erzeugt werden kann.
+eine exponentiell zu- bzw. abnehmende Sinusschwingung erzeugt werden kann. Die ersten beiden Operationsverstärker
+sind als Umkehr-Integratoren beschaltet, während die Beschaltung des letzten Operationsverstärker ein
+Eingangssignal einfach invertiert. Mit Hilfe eines Potentiometers kann außerdem ein Teil der Ausgangsspannung
+des Invertierer auf den zweiten Umkehr-Integrator gegeben werden, was genau über die exponentielle Variation
+der Sinusamplitude entscheidet. Wird die zurückgegebene Spannung entsprechend auf Null gesetzt, so ist es plausibel,
+dass die Eigenschwingung des System ein Sinus ist, da diese Funktion gerade sich selbst ergibt, wenn
+zweifach integriert und anschließend ein Vorzeichenwechsel durchgeführt wird.
 
 \begin{figure}
   \centering
   \includegraphics[height=6cm]{ImmerDieseNorweger/expsin.png}
-  \caption{beschaltung dreier Operationsverstärker als Generator von Sinusschwingungen mit exponentiell
+  \caption{Beschaltung dreier Operationsverstärker als Generator von Sinusschwingungen mit exponentiell
   variierenden Amplituden \cite{anleitung}.}
   \label{fig:expsin}
 \end{figure}
+
+Für die Eingangs- und Ausgangsspannungen der Integratoren gelten die Beziehungen
+\begin{align}
+  U_1 = - \frac1{RC} \int U_\text{A} \mathrm{d}t
+\end{align}
+und
+\begin{align}
+  U_2 = - \frac1{RC} \int \left(U_\text{A} +\frac{\eta}{10} U_\text{A} \right) \mathrm{d}t,
+\end{align}
+wobei $\eta$ mit
+\begin{align}
+  -1 \leq \eta \leq 1
+\end{align}
+gerade den Bruchteil der Spannung angibt, welcher mittels Potentiometer auf den Eingang des
+zweiten Umkehr-Integrators gegeben wird. Aus diesen Gleichungen und der Relation für den Invertierer
+\begin{align}
+  U_\text{A} = - U_2,
+\end{align}
+folgt schließlich die Differentialgleichung
+\begin{align}
+  \ddot{U}_\text{A} - \frac{\eta}{10 RC} \dot{U}_A + \frac1{R^2 C^2} U_A = 0,
+\end{align}
+welche durch einen Sinus mit exponentiell variierender Amplitude
+\begin{align}
+  U_\text{A}(t) = U_0 \, \text{exp} \left( \frac{\eta t}{20 RC} \right) \sin \left( \frac{t}{RC} \right)
+\end{align}
+gelöst wird. Wie bereits im vorangegangegen Abschnitt plausibel gemacht ergibt sich eine einfache
+Sinusschwingung für $\eta = 0$, wenn also keine Spannung über das Potentiometer auf den zweiten
+Operationsverstärkereingang zurückgegeben wird. Für $\eta < 0$ ergibt sich eine gedämpfte, während sich für
+$\eta > 0$ eine entdämpfte Sinusschwingung mit der Abkling- bzw. Zunahmedauer
+\begin{align}
+  \tau = \frac{20 RC}{\lvert\eta\rvert}
+\end{align}
+ergibt.
