@@ -131,7 +131,7 @@ Der Vergrößerungsfaktor beträgt dabei
 \begin{figure}
   \centering
   \includegraphics[height=6.5cm]{ImmerDieseNorweger/frequenzband.png}
-  \caption{\cite{anleitung}.}
+  \caption{Schematischer Frequenzverlauf beim gegengekoppelten Linearverstärker \cite{anleitung}.}
   \label{fig:frequenzband}
 \end{figure}
 
@@ -315,11 +315,17 @@ welche durch einen Sinus mit exponentiell variierender Amplitude
 \begin{align}
   U_\text{A}(t) = U_0 \, \text{exp} \left( \frac{\eta t}{20 RC} \right) \sin \left( \frac{t}{RC} \right)
 \end{align}
-gelöst wird. Wie bereits im vorangegangegen Abschnitt plausibel gemacht ergibt sich eine einfache
+gelöst wird. Die Frequenz dieser Schwingung beträgt
+\begin{align}
+  \nu = \frac1{2 \pi R C}.
+  \label{eqn:freqexp}
+\end{align}
+Wie bereits im vorangegangegen Abschnitt plausibel gemacht ergibt sich eine einfache
 Sinusschwingung für $\eta = 0$, wenn also keine Spannung über das Potentiometer auf den zweiten
 Operationsverstärkereingang zurückgegeben wird. Für $\eta < 0$ ergibt sich eine gedämpfte, während sich für
 $\eta > 0$ eine entdämpfte Sinusschwingung mit der Abkling- bzw. Zunahmedauer
 \begin{align}
   \tau = \frac{20 RC}{\lvert\eta\rvert}
+  \label{eqn:tauentdämpft}
 \end{align}
 ergibt.

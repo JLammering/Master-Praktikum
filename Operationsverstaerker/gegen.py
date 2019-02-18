@@ -37,10 +37,10 @@ def plot(axes, x, y, V_strich_theorie, label, filename, x_label, y_label, grenze
     #label = 'test'
     axes.errorbar(noms(x[grenze:]), noms(y[grenze:]),
                  xerr=stds(x[grenze:]), yerr=stds(y[grenze:]),
-                 fmt='rx', label=f'Messwerte Flanke bei {label}')
+                 fmt='rx', label=r'Messwerte Flanke bei {label}')
     axes.errorbar(noms(x[:grenze]), noms(y[:grenze]),
                  xerr=stds(x[:grenze]), yerr=stds(y[:grenze]),
-                 fmt='bx', label=f'Messwerte Plateau bei {label}')
+                 fmt='bx', label=r'Messwerte Plateau bei {label}')
     print(V_strich_theorie.n)
     V_strich_theorie_halb = unp.log(V_strich_theorie / unp.sqrt(2)) if V_strich_theorie.n >= 1 else unp.log(V_strich_theorie * unp.sqrt(2))
     label_v_halb = r"$V_\text{theorie}' / \sqrt{2}$" if V_strich_theorie.n >= 1 else r"$V_\text{theorie}' \cdot \sqrt{2}$"
@@ -70,13 +70,13 @@ def plotphase(nu_1, phi_1, nu_2, phi_2, nu_3, phi_3, nu_4, phi_4):
     nu_1, nu_2, nu_3, nu_4 = unp.log(nu_1), unp.log(nu_2), unp.log(nu_3), unp.log(nu_4)
     # phi_1, phi_2, phi_3, phi_4 = unp.abs(phi_1), unp.abs(phi_2), unp.abs(phi_3), unp.abs(phi_4)
     plt.errorbar(noms(nu_1), np.abs(noms(phi_1)),
-                  xerr=stds(nu_1), yerr=stds(phi_1), label=f'Messwerte bei 1. Widerstandskombination')
+                  xerr=stds(nu_1), yerr=stds(phi_1), label=r'Messwerte bei 1. Widerstandskombination')
     plt.errorbar(noms(nu_2), np.abs(noms(phi_2)),
-                  xerr=stds(nu_2), yerr=stds(phi_2), label=f'Messwerte bei 2. Widerstandskombination')
+                  xerr=stds(nu_2), yerr=stds(phi_2), label=r'Messwerte bei 2. Widerstandskombination')
     plt.errorbar(noms(nu_3), np.abs(noms(phi_3)),
-                  xerr=stds(nu_3), yerr=stds(phi_3), label=f'Messwerte bei 3. Widerstandskombination')
+                  xerr=stds(nu_3), yerr=stds(phi_3), label=r'Messwerte bei 3. Widerstandskombination')
     plt.errorbar(noms(nu_4), np.abs(noms(phi_4)),
-                  xerr=stds(nu_4), yerr=stds(phi_4), label=f'Messwerte bei 4. Widerstandskombination')
+                  xerr=stds(nu_4), yerr=stds(phi_4), label=r'Messwerte bei 4. Widerstandskombination')
 
     xlabel = r'$\ln(\nu\:/\:\si{\kilo\hertz})$'
     ylabel = r'$\phi\:/\:\si{\degree}$'
