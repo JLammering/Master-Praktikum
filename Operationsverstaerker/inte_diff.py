@@ -9,35 +9,57 @@ from uncertainties.unumpy import (nominal_values as noms,
                                   std_devs as stds)
 
 
-def fitfunktion_int(omega, k):
-    return 1/(omega * k)
+def fitfunktion_int(omega, m, b):
+    return m * omega + b
 
 
 def fitfunktion_diff(omega, k):
     return omega*k
 
 
-def plot(x, y, file, R, C, fitfunktion, k_guess, x_fit, xlim=None, ylim=None):
+def plot(x, y, file, R, C, fitfunktion, k_guess, x_fit, xlim=None, ylim=None, int=False):
+
+    if int:
+        x = unp.log(x)
+        y = unp.log(y)
     plt.errorbar(unp.nominal_values(x), unp.nominal_values(y),
-    xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='x', label='Messwerte')
+                 xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='x', label='Messwerte')
 
     # fitten:
-    params, covariance = curve_fit(fitfunktion, unp.nominal_values(x),
-                                   unp.nominal_values(y),
-                                   p0=[k_guess])
-    errors = np.sqrt(np.diag(covariance))
-    print('k= ', params[0], '±', errors[0])
-    k = ufloat(params[0], errors[0])
+    if int:
+        params, covariance = curve_fit(fitfunktion, unp.nominal_values(x),
+                                       unp.nominal_values(y),
+                                       p0=[-1, -1 * np.log(R.n *C.n)])
+        errors = np.sqrt(np.diag(covariance))
+        print('m= ', params[0], '±', errors[0])
+        print('b= ', params[1], '±', errors[1])
+        m = ufloat(params[0], errors[0])
+        b = ufloat(params[1], errors[1])
+        rc_bestimmt = unp.exp(b / m)
+        print('k = ', rc_bestimmt)
+        print('Abweichung von R*C = ', abweichungen(R*C, rc_bestimmt), '%')
+        x_fit = np.linspace(x_fit[0], x_fit[1])
+    else:
+        params, covariance = curve_fit(fitfunktion, unp.nominal_values(x),
+                                       unp.nominal_values(y),
+                                       p0=[k_guess])
+        errors = np.sqrt(np.diag(covariance))
+        print('m= ', params[0], '±', errors[0])
+        k = ufloat(params[0], errors[0])
 
-    print('Abweichung von R*C = ', abweichungen(R*C, k), '%')
-    x_fit = np.linspace(x_fit[0], x_fit[1])
+        print('Abweichung von R*C = ', abweichungen(R*C, k), '%')
+        x_fit = np.linspace(x_fit[0], x_fit[1])
     plt.plot(x_fit, fitfunktion(x_fit, *params), label='Fit')
 
     if xlim is not None:
         plt.xlim(xlim[0], xlim[1])
         plt.ylim(ylim[0], ylim[1])
-    xlabel = r'$\omega\:/\:\si{\hertz}$'
-    ylabel = r"$V'$"
+    if int:
+        xlabel = r'$\ln(\omega\:/\:\si{\hertz})$'
+        ylabel = r"$\ln(V')$"
+    else:
+        xlabel = r'$\omega\:/\:\si{\hertz}$'
+        ylabel = r"$V'$"
     #xlabel, ylabel = 'test', 'test'
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
@@ -60,7 +82,7 @@ if __name__ == '__main__':
     U_a_int = unp.uarray(U_a_int, 5)
     U_1_int = unp.uarray(U_1_int, 5)
     nu_int = unp.uarray(nu_int, 5)
-    plot(2*np.pi*nu_int, U_a_int/U_1_int, 'integrator', R_int, C_int, fitfunktion_int, 0.1, (4, 1000), (0, 990), (0, 0.6))
+    plot(2*np.pi*nu_int, U_a_int/U_1_int, 'integrator', R_int, C_int, fitfunktion_int, 0.1, (2, 7), int=True)
 
     #Differentiator
     C_diff = ufloat(970e-9, 10e-9)#nF

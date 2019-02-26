@@ -3,74 +3,98 @@
 
 \subsection{Gegengekoppelter Verstärker}
 
-Die Werte der vier verschiedenen Widerstandskombinationen sind in den Tabellen \ref{tab:gegen_kombi_1}, \ref{tab:gegen_kombi_2}, \ref{tab:gegen_kombi_3} und \ref{tab:gegen_kombi_4} eingetragen.
-Die Fehler werden wie folgt angenommen: $\sigma_\nu = \num{0.1} \nu, \sigma_U = \SI{10}{\milli\volt}$. Graphisch dargestellt sind die Messwerte sowie ein Fit an die Messwerte, die händisch der Flanke zugeordnet werden, in Abbildung \ref{fig:gegen} zu sehen.
+Die Messwerte, die mit den vier verschiedenen Widerstandskombinationen aufgenommen wurden, sind in den Tabellen \ref{tab:gegen_kombi_1}, \ref{tab:gegen_kombi_2}, \ref{tab:gegen_kombi_3} und \ref{tab:gegen_kombi_4} eingetragen. Dort sind die Kombinationen einer Nummer zugeordnet mit der sie im folgenden bezeichnet werden.
+Die Fehler werden wie folgt angenommen: $\Delta_\nu = \num{0.1} \nu, \sigma_U = \SI{10}{\milli\volt}$. Graphisch dargestellt sind die Messwerte sowie ein Fit an die Messwerte, die händisch der Flanke zugeordnet werden, in Abbildung \ref{fig:gegen} zu sehen. Außerdem wurden bei Notwendigkeit Werte dem Übergang zwischen Plateau und Flanke zugeordnet oder nicht berücksichtigt, wenn die Abweichung von den anderen Werten zu stark den Fit verfälscht hätte.
 \begin{figure}
   \centering
   \includegraphics[width=1.2\textwidth]{build/gegen.pdf}
-  \caption{Messwerte und Flankenfit aller vier Widerstandskombinationen mit $V'_\text{Theorie} = R_N / R_1$.}
+  \caption{Messwerte und Flankenfit aller vier Widerstandskombinationen.}
   \label{fig:gegen}
 \end{figure}
 Dieser Fit folgt der Gleichung:
 \begin{align}
   \ln(V') = m \ln(\nu/\si{\kilo\hertz}) + b.
 \end{align}
-Dabei ergeben sich die Werte aus Tabelle \ref{tab:gegen_ergebnisse}. Dort ist auch die Grenzfrequenz eingetragen, die aus dem Schnittpunkt der gefitteten Graden mit der Linie auf Höhe von $V'_\text{Theorie}/\sqrt{2}$ beziehungsweise $V'_\text{Theorie}\cdot\sqrt{2}$ gewonnen wird. Außerdem ist in Tabelle \ref{tab:gegen_ergebnisse} der Mittelwert der Messwerte der Plateaus angegeben, sowie die prozentuale Abweichung von $V'_\text{Theorie}$.
+Dabei ergeben sich die Werte aus Tabelle \ref{tab:gegen_fits}. Außerdem ist in Tabelle \ref{tab:gegen_ergebnisse} der Mittelwert der Messwerte der Plateaus angegeben, sowie die prozentuale Abweichung von $V'_\text{Theorie}$. Dort ist auch die Grenzfrequenz eingetragen, die aus dem Schnittpunkt der gefitteten Graden mit der Linie auf Höhe von $V'_\text{Plateau}/\sqrt{2}$ beziehungsweise $V'_\text{Plateau}\cdot\sqrt{2}$ gewonnen wird.
 
+%Fits
 \begin{table}[h]
   \centering
   \begin{tabular}{S[table-format=1.0]
     S[table-format=2.3] @{${}\pm{}$} S[table-format=1.3]
-    S[table-format=2.2] @{${}\pm{}$} S[table-format=1.2]
+    S[table-format=2.2] @{${}\pm{}$} S[table-format=1.2]}
+    \toprule
+    {i} & \multicolumn{2}{c}{$m$} & \multicolumn{2}{c}{$b$}\\
+    \midrule
+    1 & -0.841 & 0.006 & 4.55 & 0.04 \\
+    2 & 0.29 & 0.03 & -3.6 & 0.2 \\
+    3 & -0.74 & 0.08 & 4.2 & 0.5 \\
+    4 & -0.87 & 0.04 & 4.7 & 0.2 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Ergebnisse aus der Messung mit gegengeschaltetem Operationsverstärker. Dabei ist $i$ die Nummer der Widerstandskombination; definiert in den Tabellen der Messwerte im Anhang.}
+  \label{tab:gegen_fits}
+\end{table}
+
+
+
+Nun wird das Verstärkungs-Bandbreite-Produkt mit der Beziehung $VB = \nu'_\text{g} V'_\text{Plateau}=$ const überprüft. Es ergeben sich die Werte aus Tabelle \ref{tab:gegen_ergebnisse}. Da die zweite Kombination sich stark von den anderen unterscheidet, dadurch dass sie abschwächt und nicht verstärkt, wird sie zur Überprüfung der Konstanz nicht herangezogen.
+Der Mittelwert aus den anderen Kombinationen beträgt:
+\begin{align*}
+  \frac{1}{3}\sum_{i=1, i\neq2}^4 \nu'_{\text{g}, \text{i}} V'_\text{i} = \SI{324(58)}{\kilo\hertz}.
+\end{align*}
+
+Außerdem wird für den gegengekoppelten Verstärker die endliche Leerlaufverstärkung $V$ mit
+\begin{align}
+  V = \left(\frac{1}{V'_\text{Plateau}} - \frac{R_1}{R_\text{N}}\right)^{-1}
+\end{align}
+nach Formel \eqref{eqn:leerlaufverst} abgeschätzt. Die Werte finden sich ebenfalls in Tabelle \ref{tab:gegen_ergebnisse}.
+% \begin{align*}
+%   V_1 = \num{-70(10)} \quad V_2 = \num{-3(5)} \quad V_3 = \num{32(26)} \quad V_4 = \num{300(500)}.
+% \end{align*}
+
+Zuletzt wird in Abbildung \ref{fig:phase} die Abhängigkeit der Phasendifferenz zwischen Eingangs- und Ausgangsspannung von der Frequenz dargestellt.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{build/phasen.pdf}
+  \caption{Messwerte der Phasendifferenz zwischen Eingangs- und Ausgangsspannung aller vier Widerstandskombinationen.}
+  \label{fig:phase}
+\end{figure}
+
+%Ergebnisse
+\begin{table}[h]
+  \centering
+  \begin{tabular}{S[table-format=1.0]
     S[table-format=3.0]
     S[table-format=1.4] @{${}\pm{}$} S[table-format=1.4]
-    S[table-format=1.0] @{${}\pm{}$} S[table-format=1.0]}
+    S[table-format=1.0] @{${}\pm{}$} S[table-format=1.0]
+    S[table-format=3.0] @{${}\pm{}$} S[table-format=2.0]
+    S[table-format=3.0] @{${}\pm{}$} S[table-format=3.0]}
     \toprule
-    {i} & \multicolumn{2}{c}{$m$} & \multicolumn{2}{c}{$b$} & {$\nu'_\text{g}\:/\:\si{\kilo\hertz}$} & \multicolumn{2}{c}{$\bar V'_\text{Plateau}$} &
-    \multicolumn{2}{c}{$\Delta_{V'}\:/\:\si{\percent}$}\\
+    {i} & {$\nu'_\text{g}\:/\:\si{\kilo\hertz}$} & \multicolumn{2}{c}{$\bar V'_\text{Plateau}$} &
+    \multicolumn{2}{c}{$\Delta_{V'}\:/\:\si{\percent}$} & \multicolumn{2}{c}{$VB\:/\:\si{\kilo\hertz}$}& \multicolumn{2}{c}{$V$}\\
     \midrule
-    1 & -0.832 & 0.007 & 4.49 & 0.05 & 335 & 1.01 & 0.02 & 1 & 3\\
-    2 & 0.16 & 0.07 & -2.9 & 0.5 & 368 & 0.1038 & 0.0004 & 3 & 5\\
-    3 & -0.5 & 0.1 & 3.1 & 0.7 & 154 & 2.00 & 0.02 & 6 & 5\\
-    4 & -0.87 & 0.04 & 4.7 & 0.2 & 25 & 9.6 & 0.2 & 3 & 5\\
+    1 & 334 & 1.001 & 0.02 & 1 & 3 & 338 & 8 & -70 & 10\\
+    2 & 369 & 0.1038 & 0.0004 & 3 & 5 & 38.2 & 0.1 & -3 & 5\\
+    3 & 193 & 2.00 & 0.02 & 6 & 5 & 386 & 4 & 32 & 26\\
+    4 & 25 & 9.6 & 0.2 & 3 & 5 & 247 & 4 & 300 & 500\\
     \bottomrule
   \end{tabular}
   \caption{Ergebnisse aus der Messung mit gegengeschaltetem Operationsverstärker. Dabei ist $i$ die Nummer der Widerstandskombination; definiert in den Tabellen der Messwerte im Anhang.}
   \label{tab:gegen_ergebnisse}
 \end{table}
 
-Nun wird die Beziehung $\nu'_\text{g} V'=$ const überprüft. Es ergeben sich die Werte:
-\begin{align*}
-  \nu'_{\text{g}, 1} V'_1 = \SI{335(2)}{\kilo\hertz} \quad \nu'_{\text{g}, 2} V'_2 = \SI{37(2)}{\kilo\hertz}\\ \nu'_{\text{g}, 3} V'_3 = \SI{328(17)}{\kilo\hertz} \quad \nu'_{\text{g}, 4} V'_4 = \SI{245(12)}{\kilo\hertz},
-\end{align*}
-wobei der Index die jeweilige Widerstandskombination angibt. Da die zweite Kombination sich stark von den anderen unterscheidet, dadurch dass sie abschwächt und nicht verstärkt, wird sie zur Überprüfung der Konstanz nicht herangezogen.
-Der Mittelwert aus den anderen Kombinationen beträgt:
-\begin{align*}
-  \frac{1}{3}\sum_{i=1, i\neq2}^4 \nu'_{\text{g}, \text{i}} V'_\text{i} = \SI{303(40)}{\kilo\hertz}.
-\end{align*}
+\subsection{Umkehr-Integrator und -Differentiator}
 
-Außerdem wird für den gegengekoppelten Verstärker die endliche Leerlaufverstärkung $V$ mit Formel \eqref{eqn:leerlaufverst} abgeschätzt. Die vier einzelnen Werte sind:
-\begin{align*}
-  V_1 = \num{-70(10)} \quad V_2 = \num{-3(5)} \quad V_3 = \num{32(26)} \quad V_4 = \num{300(500)}.
-\end{align*}
-
-Zuletzt wird in Abbildung \ref{fig:phase} die Abhängigkeit der Phasendifferenz zwischen Eingangs- und Ausgangsspannung von der Frequenz dargestellt.
-
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{build/phasen.pdf}
-  \caption{Messwerte der Phasendifferenz zwischen Eingangs- und Ausgangsspannung aller vier Widerstandskombinationen.}
-  \label{fig:phase}
-\end{figure}
-
-\subsection{Umkehr-Integrator}
+\paragraph{Umkehr-Integrator}
 
 Zunächst werden auf die Schaltung des Umkehr-Integrators drei verschiedene Eingangsspannung gegeben.
 In der Schaltung werden für Widerstand und Kondensator Bauteile mit folgenden  Werten verwendet:
 \begin{align*}
   R = \SI{99.7(5)}{\kilo\ohm} \quad C = \SI{970(10)}{\nano\farad}.
 \end{align*}
-Der Verlauf der Ausgangsspannung sowie der Eingangsspannung sind in den Abbildungen \ref{fig:int_recht}, \ref{fig:int_drei} und \ref{fig:int_sin} zu sehen. Dabei ist die Eingangsspannung in orange und die Ausgangsspannung in grün abgebildet.
+Der Verlauf der Ausgangsspannung sowie der Eingangsspannung sind in den Abbildungen \ref{fig:int_recht}, \ref{fig:int_drei} und \ref{fig:int_sin} zu sehen. Dabei ist die Eingangsspannung in orange und die Ausgangsspannung in grün abgebildet. In Abbildung \ref{fig:int_recht} ist die Eingangsspannung eine Rechteckspannung und der Integrator integriert den die konstanten Spannungsplateaus dieser auf, sodass die Ausgangsspannung als Dreieckspannung zu erkennen ist. Im nächsten Bild wird eine Dreieckspannung integriert. Da dort die Spannung eine Anstiegszeit besitzt, nimmt die Spannung des Integrals erst langsam zu, wird dann steiler und nimmt wieder ab, wenn die Spannung des Dreieckssignals den Scheitelpunkt erreicht hat. Das Ergebnis ist eine Sinusspannung. Beim hier letzten Bild geht eine Sinusspannung ein und der Integrator liefert aus gleichen Gründen wie oben auch eine Sinusspannung.
 
 \begin{figure}
   \centering
@@ -91,16 +115,22 @@ Der Verlauf der Ausgangsspannung sowie der Eingangsspannung sind in den Abbildun
   \label{fig:int_sin}
 \end{figure}
 
-Außerdem wird die Verstärkung $V' = U_\text{A}/U_0$ gegen die Kreisfrequenz $\omega$ aufgetragen. Dabei ist die Eingangsspannung sinusförmig. Die Messwerte sind in Tabelle \ref{tab:int_werte} zu finden.
-Die Fitfunktion nach Formel \eqref{eqn:int_aus} lautet:
+Außerdem wird die Verstärkung $V' = U_\text{A}/U_0$ gegen die Kreisfrequenz $\omega$ aufgetragen. Dabei ist die Eingangsspannung sinusförmig. Die Messwerte sind in Tabelle \ref{tab:int_werte} zu finden. Zum Fitten und Abbilden werden jetzt allerdings die Werte logarithmiert. Damit ergibt sich als Fitfunktion nach Formel \eqref{int_aus}:
 \begin{align}
-  V' = \frac{1}{k \omega}.
+  \begin{split}
+  \ln(V') &= \ln\left((k\omega)^m\right)\\
+          &= m \ln(\omega) + m \ln(k)\\
+          &= m \ln(\omega) + b
+    \end{split}
 \end{align}
 Aus dem Fit, der zusammen mit den Messwerten in Abbildung \ref{fig:int_fit} zu sehen ist, folgt:
 \begin{align*}
-  k = \SI{0.062(3)}{\ohm\farad}.
+  m &= \num{-0.86(7)}\\
+  b &= (\num{2.1(4)})\: \ln(\Omega \text{F}).
+\intertext{Damit ist}
+k &= \exp\left(\frac{b}{m}\right) = \SI{0.09(4)}{\ohm\farad}
 \intertext{Die prozentuale Abweichung von dem nach Formel \eqref{eqn:int_aus} erwarteten Wert beträgt:}
-  \Delta_{k, RC} = \SI{36(3)}{\percent}.
+  \Delta_{k, RC} &= \SI{10(40)}{\percent}.
 \end{align*}
 
 \begin{figure}
@@ -110,7 +140,7 @@ Aus dem Fit, der zusammen mit den Messwerten in Abbildung \ref{fig:int_fit} zu s
   \label{fig:int_fit}
 \end{figure}
 
-\subsection{Umkehr-Differentiator}
+\paragraph{Umkehr-Differentiator}
 
 Zunächst werden auf die Schaltung des Umkehr-Differentiators drei verschiedene Eingangsspannung gegeben.
 In der Schaltung werden für Widerstand und Kondensator Bauteile mit folgenden  Werten verwendet:

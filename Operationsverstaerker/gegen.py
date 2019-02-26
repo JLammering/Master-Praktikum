@@ -33,23 +33,36 @@ def fitten(axes, x, y, fitfunktion, p_list, pname_list, color, label, schnittwer
                 break
 
 
-def plot(axes, x, y, V_strich_theorie, label, filename, x_label, y_label, grenze, ylim=None, logy=None):
+def plot(axes, x, y, V_strich_theorie, label, filename, x_label, y_label, grenze, ylim=None, logy=None, uebergang=None, letzter_wert_kacke=False):
     #label = 'test'
-    axes.errorbar(noms(x[grenze:]), noms(y[grenze:]),
-                 xerr=stds(x[grenze:]), yerr=stds(y[grenze:]),
-                 fmt='rx', label=r'Messwerte Flanke bei {label}')
+    flanke_grenze = grenze
+    flanke_grenze_oben = None
+    if letzter_wert_kacke:
+        flanke_grenze_oben = -1
+        axes.errorbar(noms(x[-1:]), noms(y[-1:]),
+                     xerr=stds(x[-1:]), yerr=stds(y[-1:]),
+                     fmt='kx', label='Unberücksichtigt bei {}'.format(label))
+    if uebergang is not None:
+        flanke_grenze = grenze + 1
+        axes.errorbar(noms(x[uebergang:uebergang+1]), noms(y[uebergang:uebergang+1]),
+                     xerr=stds(x[uebergang:uebergang+1]), yerr=stds(y[uebergang:uebergang+1]),
+                     fmt='gx', label='Messwerte Übergang bei {}'.format(label))
+
+    axes.errorbar(noms(x[flanke_grenze:flanke_grenze_oben]), noms(y[flanke_grenze:flanke_grenze_oben]),
+                 xerr=stds(x[flanke_grenze:flanke_grenze_oben]), yerr=stds(y[flanke_grenze:flanke_grenze_oben]),
+                 fmt='rx', label='Messwerte Flanke bei {}'.format(label))
     axes.errorbar(noms(x[:grenze]), noms(y[:grenze]),
                  xerr=stds(x[:grenze]), yerr=stds(y[:grenze]),
-                 fmt='bx', label=r'Messwerte Plateau bei {label}')
-    print(V_strich_theorie.n)
-    V_strich_theorie_halb = unp.log(V_strich_theorie / unp.sqrt(2)) if V_strich_theorie.n >= 1 else unp.log(V_strich_theorie * unp.sqrt(2))
-    label_v_halb = r"$V_\text{theorie}' / \sqrt{2}$" if V_strich_theorie.n >= 1 else r"$V_\text{theorie}' \cdot \sqrt{2}$"
+                 fmt='bx', label='Messwerte Plateau bei {}'.format(label))
+    plateau_mittel = ufloat(np.mean(np.exp(noms(y[:grenze]))), np.std(np.exp(noms(y[:grenze]))))
+    plateau_mittel_halb = unp.log(plateau_mittel / unp.sqrt(2)) if plateau_mittel.n >= 1 else unp.log(plateau_mittel * unp.sqrt(2))
+    label_v_halb = r"$V_\text{Plateau}' / \sqrt{2}$" if plateau_mittel.n >= 1 else r"$V_\text{Plateau}' \cdot \sqrt{2}$"
     #label_v_halb = 'test'
-    axes.plot((min(noms(x)), max(noms(x))), (noms(V_strich_theorie_halb), noms(V_strich_theorie_halb)), '-', label=label_v_halb)
-    grenzfrequenz = fitten(axes, x[grenze:], y[grenze:], linear, [-1, 5], ['m', 'b'], 'r', 'Flanke', schnittwert=V_strich_theorie_halb)
+    axes.plot((min(noms(x)), max(noms(x))), (noms(plateau_mittel_halb), noms(plateau_mittel_halb)), '-', label=label_v_halb)
+    grenzfrequenz = fitten(axes, x[flanke_grenze:flanke_grenze_oben], y[flanke_grenze:flanke_grenze_oben], linear, [-1, 5], ['m', 'b'], 'r', 'Flanke', schnittwert=plateau_mittel_halb)
     print('grenzfrequenz = ', grenzfrequenz)
     # fitten(x[:grenze], y[:grenze], linear, [0, 0], ['m', 'b'], 'g', 'Plateau')
-    plateau_mittel = ufloat(np.mean(np.exp(noms(y[:grenze]))), np.std(np.exp(noms(y[:grenze]))))
+
     print('Mittelwert Plateau = ', plateau_mittel, 'Abweichung von ', abweichungen(V_strich_theorie, plateau_mittel))
 
 
@@ -70,18 +83,18 @@ def plotphase(nu_1, phi_1, nu_2, phi_2, nu_3, phi_3, nu_4, phi_4):
     nu_1, nu_2, nu_3, nu_4 = unp.log(nu_1), unp.log(nu_2), unp.log(nu_3), unp.log(nu_4)
     # phi_1, phi_2, phi_3, phi_4 = unp.abs(phi_1), unp.abs(phi_2), unp.abs(phi_3), unp.abs(phi_4)
     plt.errorbar(noms(nu_1), np.abs(noms(phi_1)),
-                  xerr=stds(nu_1), yerr=stds(phi_1), label=r'Messwerte bei 1. Widerstandskombination')
+                  xerr=stds(nu_1), yerr=stds(phi_1), label='Messwerte bei 1. Widerstandskombination')
     plt.errorbar(noms(nu_2), np.abs(noms(phi_2)),
-                  xerr=stds(nu_2), yerr=stds(phi_2), label=r'Messwerte bei 2. Widerstandskombination')
+                  xerr=stds(nu_2), yerr=stds(phi_2), label='Messwerte bei 2. Widerstandskombination')
     plt.errorbar(noms(nu_3), np.abs(noms(phi_3)),
-                  xerr=stds(nu_3), yerr=stds(phi_3), label=r'Messwerte bei 3. Widerstandskombination')
+                  xerr=stds(nu_3), yerr=stds(phi_3), label='Messwerte bei 3. Widerstandskombination')
     plt.errorbar(noms(nu_4), np.abs(noms(phi_4)),
-                  xerr=stds(nu_4), yerr=stds(phi_4), label=r'Messwerte bei 4. Widerstandskombination')
+                  xerr=stds(nu_4), yerr=stds(phi_4), label='Messwerte bei 4. Widerstandskombination')
 
     xlabel = r'$\ln(\nu\:/\:\si{\kilo\hertz})$'
     ylabel = r'$\phi\:/\:\si{\degree}$'
-    # xlabel = 'test'
-    # ylabel = 'test'
+    #xlabel = 'test'
+    #ylabel = 'test'
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.legend(loc='best')
@@ -107,8 +120,8 @@ if __name__ == '__main__':
     R_N_1, R_1_1 = ufloat(9.96e3, 0.05e3), ufloat(9.96e3, 0.05e3)
     V_strich_theorie_1 = R_N_1 / R_1_1
     phi_1 = unp.uarray(phi_1, 5)[sort_inds_1]
-    grenzfrequenz_1, plateau_mittel_1 = plot(axs[0][0], unp.log(nu_1), unp.log(V_strich_1), V_strich_theorie_1, '1. Widerstandskombination', 'gegen_1', r'$\ln(\nu\:/\:\si{\kilo\hertz})$', r"$\ln(V')$", 4, (-2, 0.25))
-    verst_bandbreite.append(grenzfrequenz_1 * V_strich_theorie_1)
+    grenzfrequenz_1, plateau_mittel_1 = plot(axs[0][0], unp.log(nu_1), unp.log(V_strich_1), V_strich_theorie_1, '1. Widerstandskombination', 'gegen_1', r'$\ln(\nu\:/\:\si{\kilo\hertz})$', r"$\ln(V')$", 4, (-2, 0.25), uebergang=4)
+    verst_bandbreite.append(grenzfrequenz_1 * plateau_mittel_1)
     V_1 = 1 / ((1 / plateau_mittel_1) - (R_1_1/R_N_1))
     print('V_1= ', V_1)
 
@@ -124,8 +137,8 @@ if __name__ == '__main__':
     R_N_2, R_1_2 = ufloat(1.002e3, 0.05e3), ufloat(9.96e3, 0.05e3)
     V_strich_theorie_2 = R_N_2 / R_1_2
     phi_2 = unp.uarray(phi_2, 5)[sort_inds_2]
-    grenzfrequenz_2, plateau_mittel_2 = plot(axs[0][1], unp.log(nu_2), unp.log(V_strich_2), V_strich_theorie_2, '2. Widerstandskombination', 'gegen_2', r'$\ln(\nu\:/\:\si{\kilo\hertz})$', r"$\ln(V')$", 3, (-2.5, -1.5))
-    verst_bandbreite.append(grenzfrequenz_2 * V_strich_theorie_2)
+    grenzfrequenz_2, plateau_mittel_2 = plot(axs[0][1], unp.log(nu_2), unp.log(V_strich_2), V_strich_theorie_2, '2. Widerstandskombination', 'gegen_2', r'$\ln(\nu\:/\:\si{\kilo\hertz})$', r"$\ln(V')$", 3, (-2.5, -1.5), letzter_wert_kacke=True)
+    verst_bandbreite.append(grenzfrequenz_2 * plateau_mittel_2)
     V_2 = 1 / ((1 / plateau_mittel_2) - (R_1_2/R_N_2))
     print('V_2= ', V_2)
 
@@ -141,8 +154,8 @@ if __name__ == '__main__':
     R_N_3, R_1_3 = ufloat(1.002e3, 0.05e3), ufloat(470, 5)
     V_strich_theorie_3 = R_N_3 / R_1_3
     phi_3 = unp.uarray(phi_3, 5)[sort_inds_3]
-    grenzfrequenz_3, plateau_mittel_3 = plot(axs[1][0], unp.log(nu_3), unp.log(V_strich_3), V_strich_theorie_3, '3. Widerstandskombination', 'gegen_3', r'$\ln(\nu\:/\:\si{\kilo\hertz})$', r"$\ln(V')$", 6, (-1.5, 1))
-    verst_bandbreite.append(grenzfrequenz_3 * V_strich_theorie_3)
+    grenzfrequenz_3, plateau_mittel_3 = plot(axs[1][0], unp.log(nu_3), unp.log(V_strich_3), V_strich_theorie_3, '3. Widerstandskombination', 'gegen_3', r'$\ln(\nu\:/\:\si{\kilo\hertz})$', r"$\ln(V')$", 6, (-1.5, 1), uebergang=6, letzter_wert_kacke=True)
+    verst_bandbreite.append(grenzfrequenz_3 * plateau_mittel_3)
     V_3 = 1 / ((1 / plateau_mittel_3) - (R_1_3/R_N_3))
     print('V_3= ', V_3)
 
@@ -159,7 +172,7 @@ if __name__ == '__main__':
     V_strich_theorie_4 = R_N_4 / R_1_4
     phi_4 = unp.uarray(phi_4, 5)[sort_inds_4]
     grenzfrequenz_4, plateau_mittel_4 = plot(axs[1][1], unp.log(nu_4), unp.log(V_strich_4), V_strich_theorie_4, '4. Widerstandskombination', 'gegen_4', r'$\ln(\nu\:/\:\si{\kilo\hertz})$', r"$\ln(V')$", 4, (-3, 3))
-    verst_bandbreite.append(grenzfrequenz_4 * V_strich_theorie_4)
+    verst_bandbreite.append(grenzfrequenz_4 * plateau_mittel_4)
     V_4 = 1 / ((1 / plateau_mittel_4) - (R_1_4/R_N_4))
     print('V_4= ', V_4)
 
