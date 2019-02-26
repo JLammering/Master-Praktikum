@@ -50,6 +50,7 @@ def plot(x, y, label, filename, x_label, y_label,
     plt.legend(loc='best')
     plt.xlim(noms(x[0])-(noms(x[-1]))*0.06, (noms(x[-1]))*1.06)
 
+    # y_label, x_label= 'test', 'x_label'
     plt.xlabel(x_label)
     plt.ylabel(y_label)
     plt.savefig('build/{}.pdf'.format(filename))
@@ -144,3 +145,11 @@ if __name__ == '__main__':
     longitudinaleModen(f[4:8], ufloat(0.605, 0.005))
     longitudinaleModen(f[8:12], ufloat(0.756, 0.005))
     werteZuTabelle(noms(f).astype(int), rundungen=[0] )
+
+    c = constants.physical_constants["speed of light in vacuum"][0]
+    v_neon = 601.957 #m/s
+    v_neon /= np.sqrt(3)
+    f_neon = c/632.816e-9
+    f_beobacht = f_neon * c/(c-v_neon)
+    delta_f = 2* (f_beobacht-f_neon)/1e6
+    print('f_neon = ', f_neon/1e12, 'freq beobachtet = ', f_beobacht/1e12, 'delta f = ', delta_f)

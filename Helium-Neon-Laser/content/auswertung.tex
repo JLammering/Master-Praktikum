@@ -255,7 +255,29 @@ berechnet. Das entspricht einer Abweichung vom erwarteten Wert $\lambda_\text{er
 
 \subsection{Longitudinale Moden}
 
-Aus den Frequenzen der stehenden Wellen zwischen den Resonatorspiegeln wird nun die Distanz der beiden Spiegel bestimmt. Die vier für jede Distanz aufgenommenen Frequenzen sind in Tabelle \ref{tab:longiModen} zu finden.
+Aus den Frequenzen der stehenden Wellen zwischen den Resonatorspiegeln wird nun die Distanz der beiden Spiegel bestimmt. Die vier für jede Distanz aufgenommenen Frequenzen sind in Tabelle \ref{tab:longiModen} zu finden. Dass die Schwebung mehrerer Frequenzen auftreten kann, folgt aus der gaußförmigen Einhüllenden der Kammzinken der Emissionslinie \cite{longimodenText}.
+Dargestellt ist dies in Abbildung \ref{fig:LaserModes}. Im Fall von Neon soll die Breite des Peaks abgeschätzt werden. Dass die Emissionslinie keine scharfe Linie ist, liegt an der Dopplerverbreiterung aufgrund der thermalen Bewegung der Neonatome. Nach \cite{thermal} ist die thermale Geschwindigkeit von Neon als Effektivwert in drei Dimensionen $v_\text{3D, eff.} = \SI{602}{\meter\per\second}$. Dort wird die Formel
+\begin{align}
+  v_\text{3D, eff.} = \sqrt{\frac{3 k_\text{B} T}{m}}
+\end{align}
+benutzt, wobei $k_\text{B}$ die Boltzmannkonstante, $T$ die Temperatur ist und $m$ die Masse eines Neonatoms. Zur Umrechnung in eine Dimension muss also noch durch $\sqrt{3}$ geteilt werden. Wenn dieser Wert dann in die Formel für Dopplerverbreiterung:
+\begin{align}
+  f_\text{gemessen} = f_\text{Neon} \frac{c}{c - v_\text{1D, eff.}}
+\end{align}
+eingesetzt wird, kann die Breite des Gauss durch
+\begin{align*}
+  \delta_\text{f} &= 2 (f_\text{gemessen} - f_\text{Neon})
+                  \quad = 2 (\SI{473.744035}{\tera\hertz} - \SI{473.743486}{\tera\hertz})\\
+                  &= \SI{1098}{\mega\hertz}
+\end{align*}
+abgeschätzt werden. Dabei ist $f_\text{Neon}$ die Frequenz, der theoretischen Emissionslinie von Neon. Da $\delta_\text{f}$ also größer ist als die Frequenzdifferenzen der longitudinalen Moden, die von der Länge des Resonators bestimmt werden, können mehrere Moden verstärkt werden und die Schwebung so entstehen.
+\begin{figure}
+  \centering
+  \includegraphics[height=8cm]{Pics von Buddy/LaserModes.jpg}
+  \caption{Longitudinale Lasermoden bei gaußförmigem Verstärkungsprofil in einem Resonator. Darstellung: Amplitude als Funktion der Frequenz \cite{longimodenBild}.}
+  \label{fig:LaserModes}
+\end{figure}
+
 \begin{table}
   \centering
   \begin{tabular}{S}
