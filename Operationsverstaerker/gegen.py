@@ -80,7 +80,7 @@ def plot(axes, x, y, V_strich_theorie, label, filename, x_label, y_label, grenze
 
 
 def plotphase(nu_1, phi_1, nu_2, phi_2, nu_3, phi_3, nu_4, phi_4):
-    nu_1, nu_2, nu_3, nu_4 = unp.log(nu_1), unp.log(nu_2), unp.log(nu_3), unp.log(nu_4)
+    # nu_1, nu_2, nu_3, nu_4 = unp.log(nu_1), unp.log(nu_2), unp.log(nu_3), unp.log(nu_4)
     # phi_1, phi_2, phi_3, phi_4 = unp.abs(phi_1), unp.abs(phi_2), unp.abs(phi_3), unp.abs(phi_4)
     plt.errorbar(noms(nu_1), np.abs(noms(phi_1)),
                   xerr=stds(nu_1), yerr=stds(phi_1), label='Messwerte bei 1. Widerstandskombination')
@@ -91,12 +91,13 @@ def plotphase(nu_1, phi_1, nu_2, phi_2, nu_3, phi_3, nu_4, phi_4):
     plt.errorbar(noms(nu_4), np.abs(noms(phi_4)),
                   xerr=stds(nu_4), yerr=stds(phi_4), label='Messwerte bei 4. Widerstandskombination')
 
-    xlabel = r'$\ln(\nu\:/\:\si{\kilo\hertz})$'
+    xlabel = r'$\nu\:/\:\si{\kilo\hertz}$'
     ylabel = r'$\phi\:/\:\si{\degree}$'
     #xlabel = 'test'
     #ylabel = 'test'
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
+    plt.xscale('log')
     plt.legend(loc='best')
 
     plt.savefig('build/phasen.pdf')

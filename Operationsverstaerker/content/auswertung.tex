@@ -69,7 +69,7 @@ Zuletzt wird in Abbildung \ref{fig:phase} die Abhängigkeit der Phasendifferenz 
     S[table-format=3.0]
     S[table-format=1.4] @{${}\pm{}$} S[table-format=1.4]
     S[table-format=1.0] @{${}\pm{}$} S[table-format=1.0]
-    S[table-format=3.0] @{${}\pm{}$} S[table-format=2.0]
+    S[table-format=3.1] @{${}\pm{}$} S[table-format=1.1]
     S[table-format=3.0] @{${}\pm{}$} S[table-format=3.0]}
     \toprule
     {i} & {$\nu'_\text{g}\:/\:\si{\kilo\hertz}$} & \multicolumn{2}{c}{$\bar V'_\text{Plateau}$} &
@@ -115,7 +115,7 @@ Der Verlauf der Ausgangsspannung sowie der Eingangsspannung sind in den Abbildun
   \label{fig:int_sin}
 \end{figure}
 
-Außerdem wird die Verstärkung $V' = U_\text{A}/U_0$ gegen die Kreisfrequenz $\omega$ aufgetragen. Dabei ist die Eingangsspannung sinusförmig. Die Messwerte sind in Tabelle \ref{tab:int_werte} zu finden. Zum Fitten und Abbilden werden jetzt allerdings die Werte logarithmiert. Damit ergibt sich als Fitfunktion nach Formel \eqref{int_aus}:
+Außerdem wird die Verstärkung $V' = U_\text{A}/U_0$ gegen die Kreisfrequenz $\omega$ aufgetragen. Dabei ist die Eingangsspannung sinusförmig. Die Messwerte sind in Tabelle \ref{tab:int_werte} zu finden. Zum Fitten und Abbilden werden jetzt allerdings die Werte logarithmiert. Damit ergibt sich als Fitfunktion nach Formel \eqref{eqn:int_aus}:
 \begin{align}
   \begin{split}
   \ln(V') &= \ln\left((k\omega)^m\right)\\
@@ -145,9 +145,9 @@ k &= \exp\left(\frac{b}{m}\right) = \SI{0.09(4)}{\ohm\farad}
 Zunächst werden auf die Schaltung des Umkehr-Differentiators drei verschiedene Eingangsspannung gegeben.
 In der Schaltung werden für Widerstand und Kondensator Bauteile mit folgenden  Werten verwendet:
 \begin{align*}
-  R = \SI{1.002(50)}{\kilo\ohm} \quad C = \SI{970(10)}{\nano\farad}.
+  R = \SI{1.00(5)}{\kilo\ohm} \quad C = \SI{970(10)}{\nano\farad}.
 \end{align*}
-Der Verlauf der Ausgangsspannung sowie der Eingangsspannung sind in den Abbildungen \ref{fig:diff_recht}, \ref{fig:diff_drei} und \ref{fig:diff_sin} zu sehen. Dabei ist die Eingangsspannung in orange und die Ausgangsspannung in grün abgebildet.
+Der Verlauf der Ausgangsspannung sowie der Eingangsspannung sind in den Abbildungen \ref{fig:diff_recht}, \ref{fig:diff_drei} und \ref{fig:diff_sin} zu sehen. Dabei ist die Eingangsspannung in orange und die Ausgangsspannung in grün abgebildet. In Abbildung \ref{fig:diff_recht} wird eine Rechteckspannung auf die Schaltung gegeben. Der Differentiator liefert dann an den Stellen maximaler Steigung Delta-Peak-ähnliche Ausschläge. Dies ist verständlich, da er das Eingangssignal ableitet. So wird im nächsten Bild eine Dreieckspannung in eine Rechteckspannung überführt, da sie eine konstante Steigung besitzt, dessen Vorzeichen wechselt. In Abbildung \ref{fig:diff_sin} wird eine eingehende Sinusspannung abgeleitet zu einer Cosinusspannung genau wie erwartet.
 
 \begin{figure}
   \centering
@@ -198,15 +198,15 @@ Die Schaltung nach Abbildung \ref{fig:schmitttrigger} liefert das Oszilloskopbil
 \end{figure}
 Der Wert der eingebauten Widerstände beträgt:
 \begin{align*}
-  R_1 = \SI{1.002(50)}{\kilo\ohm} \quad R_\text{p} = \SI{99.7(5)}{\kilo\ohm}
+  R_1 &= \SI{1.00(5)}{\kilo\ohm} \quad R_\text{p} = \SI{99.7(5)}{\kilo\ohm}
   \intertext{Die Betriebsspannung beträgt:}
-  U_\text{B} = \SI{14.125(50)}{\volt}.
+  U_\text{B} &= \SI{14.13(5)}{\volt}.
 \end{align*}
 Die aus Abbildung \ref{fig:schmitt} abgelesenen Werte für die Schwellenspannung sind:
 \begin{align*}
-  U_\text{e, Schwelle, 1} = \SI{151(5)}{\milli\volt} \quad U_\text{e, Schwelle, 2} = \SI{-168(5)}{\milli\volt}.
+  U_\text{e, Schwelle, 1} &= \SI{151(5)}{\milli\volt} \quad U_\text{e, Schwelle, 2} = \SI{-168(5)}{\milli\volt}.
 \intertext{Die Abweichung von dem erwarteten Wert $R_1/R_\text{p} U_\text{B}$ betragen:}
-  \Delta_{1} = \SI{7(6)}{\percent} \quad \Delta_{2} = \SI{18(7)}{\percent}.
+  \Delta_{1} &= \SI{7(6)}{\percent} \quad \Delta_{2} = \SI{18(7)}{\percent}.
 \end{align*}
 
 Außerdem kann in Abbildung \ref{fig:schmitt2} noch die Amplitude der Ausgangsspannung abgelesen werden. Ihr Wert und die Abweichung vom erwarteten Wert $2 U_\text{B}$ betragen:
@@ -225,7 +225,7 @@ Die Schaltung nach Abbildung \ref{fig:signalgen} liefert das Oszilloskopbild aus
 \end{figure}
 Dabei haben die Bauteile folgende Werte:
 \begin{align*}
-  R_1 &= \SI{1.002(50)}{\kilo\ohm} \quad R_\text{p} = \SI{99.7(5)}{\kilo\ohm}\\
+  R_1 &= \SI{1.00(5)}{\kilo\ohm} \quad R_\text{p} = \SI{99.7(5)}{\kilo\ohm}\\
   R &= \SI{100.0(5)}{\kilo\ohm}\quad C = \SI{970(10)}{\nano\farad}.
 \end{align*}
 
@@ -234,7 +234,7 @@ Die gemessenen Werte sind:
 \begin{align*}
   U_\text{Dreieck} = \SI{345(5)}{\milli\volt} \quad U_\text{Rechteck} = \SI{26.3(5)}{\volt} \quad \omega = \SI{1.357(6)}{\kilo\hertz}
 \end{align*}
-Zur Berechnung der erwarteten Dreiecksspannung wird Formel \eqref{eqn:ampl_drei} und für die Frequenz Formel \eqref{eqn:freq_signalgen} genutzt. Der erwartete Wert der Rechteckspannung beträgt erneut $2 U_\text{B}$.
+Zur Berechnung der erwarteten Dreiecksspannung wird Formel \eqref{eqn:ampl_drei} und für die Frequenz Formel \eqref{eqn:freq_signalgen} \todo{richtige Formel benutzen} genutzt. Der erwartete Wert der Rechteckspannung beträgt erneut $2 U_\text{B}$.
 Die erwarteten Werte sind also:
 \begin{align*}
   U_\text{Dreieck, erw.} &= \SI{284(14)}{\milli\volt} \quad U_\text{Rechteck, erw.} = \SI{28.25(10)}{\volt} \quad \omega_\text{erw.} = \SI{3.22(17)}{\kilo\hertz}
@@ -242,7 +242,9 @@ Die erwarteten Werte sind also:
  \Delta_\text{$U_\text{Dreieck}$} &= \SI{22(6)}{\percent} \quad \Delta_\text{$U_\text{Rechteck}$} = \SI{7(2)}{\percent} \quad \Delta_{\omega} = \SI{58(2)}{\percent}.
 \end{align*}
 
-\subsection{Entdämpfte Schwingung}
+\subsection{Entdämpfte und Gedämpfte Schwingung}
+
+\paragraph{Entdämpfte Schwingung}
 
 \begin{figure}
   \centering
@@ -264,7 +266,7 @@ Die gemessene Frequenz beträgt:
   \Delta_\nu = \SI{8(5)}{\percent}.
 \end{align*}
 
-\subsection{Gedämpfte Schwingung}
+\paragraph{Gedämpfte Schwingung}
 
 \begin{figure}
   \centering
@@ -274,9 +276,9 @@ Die gemessene Frequenz beträgt:
 \end{figure}
 In Abbildung \ref{fig:gedaempft} ist das Oszilloskopbild der gedämpften Schwingung zu sehen.
 Die Werte für den Widerstand $R$ und den Kondensator $C$ sind dieselben wie im Kapitel zuvor.
-An die Werte einer abschwingenden Schwingung wird nun folgende Formel gefittet:
+An die Maximawerte einer abschwingenden Schwingung wird nun folgende Formel gefittet:
 \begin{align}
-  U_\text{A} = U_0 \text{e}^{k t}.
+  U_\text{A} = U_0 \text{e}^{- \frac{t}{\tau}}.
 \end{align}
 In Abbildung \ref{fig:gedaempft_fit} sind die Messwerte sowie der Fit zu sehen.
 \begin{figure}
@@ -287,15 +289,13 @@ In Abbildung \ref{fig:gedaempft_fit} sind die Messwerte sowie der Fit zu sehen.
 \end{figure}
 Die Werte aus dem Fit sind:
 \begin{align*}
-  k &= \SI{-209(3)}{\per\second} \quad U_0 = \SI{1.7(2)e-5}{\volt}
+  \tau &= \SI{4.78(6)}{\per\second} \quad U_0 = \SI{1.7(2)e-5}{\volt}
 % \intertext{Der für $k$ erwartete Wert nach Formel \eqref{eqn:???} sowie die Abweichung des gemessenen davon betragen:}
 %   20 R C &= \SI{4.4(3)e-3}{\ohm\farad} \quad \Delta_{k} = \SI{9(8)}{\percent}.
 \end{align*}
-Außerdem wird die Abklingzeit $\tau$ bestimmt. Sie beträgt:
 \begin{align*}
-  \tau = \SI{4.7}{\milli\second}
   \intertext{Der für $\tau$ erwartete Wert nach Formel \eqref{eqn:tauentdämpft} sowie die Abweichung des gemessenen davon betragen:}
-  20 R C &= \SI{4.4(3)}{\milli\second} \quad \Delta_{\tau} = \SI{8(7)}{\percent}.
+  20 R C &= \SI{4.4(3)}{\milli\second} \quad \Delta_{\tau} = \SI{9(8)}{\percent}.
 \end{align*}
 
 

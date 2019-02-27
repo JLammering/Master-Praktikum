@@ -53,6 +53,7 @@ def plot(x, y, file, R, C, fitfunktion, k_guess, x_fit, xlim=None, ylim=None, in
 
     if xlim is not None:
         plt.xlim(xlim[0], xlim[1])
+    if ylim is not None:
         plt.ylim(ylim[0], ylim[1])
     if int:
         xlabel = r'$\ln(\omega\:/\:\si{\hertz})$'
@@ -78,19 +79,19 @@ if __name__ == '__main__':
     print('R*C = ', C_int*R_int)
     nu_int, U_a_int, U_1_int = np.genfromtxt('daten/integrator.txt', unpack='True')
     ind_sort = np.argsort(nu_int)
-    werteZuTabelle(2*np.pi*noms(nu_int)[ind_sort], noms(U_a_int)[ind_sort], noms(U_1_int)[ind_sort].astype('int'), noms(U_a_int/U_1_int)[ind_sort], rundungen=[2, 1, 0, 2])
+    werteZuTabelle(2*np.pi*noms(nu_int)[ind_sort], noms(U_1_int)[ind_sort].astype('int'), noms(U_a_int)[ind_sort], noms(U_a_int/U_1_int)[ind_sort], rundungen=[2, 1, 0, 2])
     U_a_int = unp.uarray(U_a_int, 5)
     U_1_int = unp.uarray(U_1_int, 5)
     nu_int = unp.uarray(nu_int, 5)
-    plot(2*np.pi*nu_int, U_a_int/U_1_int, 'integrator', R_int, C_int, fitfunktion_int, 0.1, (2, 7), int=True)
+    plot(2*np.pi*nu_int, U_a_int/U_1_int, 'integrator', R_int, C_int, fitfunktion_int, 0.1, (1, 8), xlim=(2, 7), int=True)
 
     #Differentiator
     C_diff = ufloat(970e-9, 10e-9)#nF
-    R_diff = ufloat(1.002e3, 0.05e3)#kohm
+    R_diff = ufloat(1.00e3, 0.05e3)#kohm
     print('R*C = ', C_diff*R_diff)
     nu_diff, U_a_diff, U_1_diff = np.genfromtxt('daten/differentiator.txt', unpack='True')
     ind_sort = np.argsort(nu_diff)
-    werteZuTabelle(2*np.pi*noms(nu_diff)[ind_sort], noms(U_a_diff)[ind_sort], noms(U_1_diff)[ind_sort].astype('int'), noms(U_a_diff/U_1_diff)[ind_sort], rundungen=[2, 1, 0, 2])
+    werteZuTabelle(2*np.pi*noms(nu_diff)[ind_sort], noms(U_1_diff)[ind_sort].astype('int'), noms(U_a_diff)[ind_sort], noms(U_a_diff/U_1_diff)[ind_sort], rundungen=[2, 1, 0, 2])
     U_a_diff = unp.uarray(U_a_diff, 5)
     U_1_diff = unp.uarray(U_1_diff, 5)
     nu_diff = unp.uarray(nu_diff, 5)

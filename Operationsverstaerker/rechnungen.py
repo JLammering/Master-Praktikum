@@ -4,9 +4,9 @@ from functions import abweichungen
 
 if __name__ == '__main__':
     # schalter
-    R_1 = ufloat(1.002e3, 0.05e3)  #kohm
+    R_1 = ufloat(1.00e3, 0.05e3)  #kohm
     R_p = ufloat(99.7e3, 0.5e3)  #kohm
-    U_B = ufloat(14.125, 0.05)  #volt
+    U_B = ufloat(14.13, 0.05)  #volt
     U_A = ufloat(26.3, 0.5)  #volt
 
     umkipp_1 = ufloat(151.25e-3, 5e-3)  #mV

@@ -9,15 +9,15 @@ from uncertainties.unumpy import (nominal_values as noms,
                                   std_devs as stds)
 
 
-def fitfunktion_daempf(t, k, U_0):
-    return U_0*np.exp(k*t)
+def fitfunktion_daempf(t, tau, U_0):
+    return U_0 * np.exp(-t / tau)
 
 
-def plot(x, y, file, fitfunktion, k_guess, abklingzeit_erw, x_fit=None, xlim=None, ylim=None):
+def plot(x, y, file, fitfunktion, tau_erw, abklingzeit_erw, x_fit=None, xlim=None, ylim=None):
     plt.errorbar(unp.nominal_values(x), unp.nominal_values(y),
-    xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='-', label='Messwerte')
+                 xerr=unp.std_devs(x), yerr=unp.std_devs(y), fmt='-', label='Messwerte')
 
-    #maxima finden
+    # maxima finden
     x_nom = noms(x)
     y_nom = noms(y)
     left_right = 1
@@ -38,14 +38,14 @@ def plot(x, y, file, fitfunktion, k_guess, abklingzeit_erw, x_fit=None, xlim=Non
     if x_fit is not None:
         params, covariance = curve_fit(fitfunktion, maxima_x,
                                         maxima_y,
-                                        p0=[k_guess.n, U_0])
+                                        p0=[tau_erw.n, U_0])
         errors = np.sqrt(np.diag(covariance))
-        print('k= ', params[0], '±', errors[0])
+        print('tau= ', params[0] * 1e3, '±', errors[0] * 1e3)
         k = ufloat(params[0], errors[0])
         print('U_0= ', params[1], '±', errors[1])
         U_0 = ufloat(params[1], errors[1])
 
-        print('Abweichung von k_erw = ', abweichungen(k_guess, k), '%')
+        print('Abweichung von tau_erw = ', abweichungen(tau_erw, k), '%')
         x_fit = np.linspace(x_fit[0], x_fit[1], 10000)
         plt.plot(x_fit, fitfunktion(x_fit, *params), label='Fit')
         label=r'Maximum$\:/\:e$'
@@ -80,6 +80,6 @@ if __name__ == '__main__':
     print(t, U_recht, U_daempf)
     R = ufloat(9.96e3, 0.5e3)
     C = ufloat(22e-9, 1e-9)
-    k_erw = -1/(20*R*C)
-    print('kerw = ', k_erw)
-    plot(t, U_daempf, 'gedaempft', fitfunktion_daempf, k_erw, 20*R*C, (-0.05, -0.03), xlim=(-0.05, -0.03))#(-0.05, -0.03)
+    tau_erw = 20 * R * C
+    print('kerw = ', tau_erw)
+    plot(t, U_daempf, 'gedaempft', fitfunktion_daempf, tau_erw, 20*R*C, (-0.05, -0.03), xlim=(-0.05, -0.03))#(-0.05, -0.03)
