@@ -26,10 +26,10 @@ if __name__ == '__main__':
     nu = ufloat(216, 1)
     U_A_drei_theo = 2*R_1/R_p *U_B
     U_A_recht_theo = 2*U_B
-    omega_drei_theo = (np.pi*R_p)/(R*C*R_1)
+    nu_drei_theo = (R_p)/(4*R*C*R_1)
     print('U_A_drei', U_A_drei, U_A_drei_theo, abweichungen(U_A_drei_theo, U_A_drei))
     print('U_A_recht', U_A_recht, U_A_recht_theo, abweichungen(U_A_recht_theo, U_A_recht))
-    print('omega_drei', 2*np.pi*nu, omega_drei_theo, abweichungen(omega_drei_theo, 2*np.pi*nu))
+    print('nu_drei', nu, nu_drei_theo, abweichungen(nu_drei_theo, nu))
 
     #entdämpft
     R = ufloat(9.96e3, 0.05e3)  #kOhm
