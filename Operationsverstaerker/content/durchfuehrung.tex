@@ -7,16 +7,9 @@ Die im Versuch verwendeten Operationsverstärker mit dem Gehäuse DIL 8 haben de
 beschriebenen Beschaltungsplan. Wenn der Operationsverstärker so gedreht wird, dass die Einkerbung
 nach oben zeigt, so werden die acht Anschlüsse oben links beginnend bis unten links und anschließend
 von unten rechts bis oben rechts durchnummeriert. Dabei ist Anschluss 2 der invertierende und
-Anschluss 3 der nicht-invertierende Eingang. Die Betriebsspannungen werden an den Anschlüssen 4 (V-) und 7 (V+)
+Anschluss 3 der nicht-invertierende Eingang. Die Betriebsspannungen werden an den Anschlüssen 4 ($-U_\text{B}$) und 7 ($+U_\text{B}$)
 angelegt. Die Ausgangsspannung des Operationsverstärkers kann an Anschluss 6 abgegriffen werden. Die Anschlüsse
-1 und 5 können an Erden angeschlossen werden, während 8 unbelegt ist.
-
-%\begin{figure}
-%  \centering
-%  \includegraphics{ImmerDieseNorweger/DIL8.png}
-%  \caption{Beschaltungsplan der im versuch verwendeten Operationsverstärker mit dem Gehäuse DIL 8 \cite{folgt}.}
-%  \label{fig:opvbeschalt}
-%\end{figure}
+1, 5 und 8 sind in diesem Versuch unbelegt.
 
 \subsection{Messprogramm}
 
@@ -26,15 +19,14 @@ angelegt. Die Ausgangsspannung des Operationsverstärkers kann an Anschluss 6 ab
   Zehnerpotenzen erstrecken soll, ausgemessen. Dazu wird die Schaltung aus Abbildung \ref{fig:gegenkopplung} aufgebaut
   und an ihren Eingang ein Wechselspannungsgerät angeschlossen. Ferner wird die Ausgangsspannung des Linearverstärkers
   an ein Oszilloskop angeschlossen um zu kontrollieren, dass die oszillierende Eingangsspannung unverzerrt
-  verstärkt wird. Ist dies nicht der Fall, so kann die Verzerrung korrigiert werden, indem die
-  Offseteingangsspannung (DC-Offset) am Wechselspannungsgerät variiert wird. Es werden sowohl Verstärkungsfaktoren,
-  als auch Phasenverschiebungen zwischen Eingangs- und Ausgangsspannungen aufgenommen.
+  verstärkt wird. Es werden sowohl Verstärkungsfaktoren, als auch Phasenverschiebungen zwischen Eingangs-
+  und Ausgangsspannungen aufgenommen.
 
   \item Als nächstes wird ein Umkehr-Integrator nach Abbildung \ref{fig:integrator} aufgebaut und jeweils ein
   Oszilloskopbild der Ausgangsspannung bei einer sinus-, rechteck- und dreieckförmigen Eingangsspannung aufgenommen.
   Anschließend wird der Verstärkungsfaktor in Abhängigkeit von der Frequenz bei der sinusförmigen Eingangsspannung
   ausgemessen um die Frequenzabhängigkeit nach Gleichung \eqref{eqn:int_aus} zu überprüfen.
-  Hier ist es wichtig, die Offseteingangsspannung am Wechselspannungsgerät sorgfältig zu variieren, da
+  Hier ist es wichtig, die Offseteingangsspannung (DC-Offset) am Wechselspannungsgerät sorgfältig zu variieren, da
   auch kleine Gleichströme vom Integrator aufintegriert werden und entsprechend die Ausgangsspannung
   drastisch verändern.
 
@@ -54,8 +46,7 @@ angelegt. Die Ausgangsspannung des Operationsverstärkers kann an Anschluss 6 ab
   Zunächst wird der Schmitt-Trigger bzw. Rechteckgenerator aufgebaut, an den Eingang eine beliebige Wechselspannung mit ausreichend
   großer Amplitude angelegt und mit einem Oszillokop die Funktion überprüft. Ist diese Überprüfung erfolgreich, so
   wird der Umkehrintegrator dazugeschaltet und überprüft, ob am Ausgang eine Dreieckspannung anliegt. Anschließend
-  wird das anliegende Wechselspannungsgerät ausgeschaltet und ein Bild der nicht mehr erzwungenen Rechteck-
-  bzw. Dreieckspannung aufgenommen.
+  wird das anliegende Wechselspannungsgerät ausgeschaltet und ein Bild der Rechteck- bzw. Dreieckspannung aufgenommen.
 
   \item Im letzten Versuchsteil wird der Signalgenerator nach Abbildung \ref{fig:expsin} untersucht. Für die
   Schaltung werden Kondensatoren mit $C \approx \SI{20}{\nano\farad}$ verwendet. Es wird ein Bild der
