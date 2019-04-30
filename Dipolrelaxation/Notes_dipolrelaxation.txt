@@ -1,0 +1,29 @@
+
+1. Problem:
+	-zweiwertige Kationen in Ionenkristall aus einwertigen Ionen -> elektrischer Dipol, da Leerstelle<-> Kation WW
+	-Dipol hat definierte Richtung
+	-Umkehrung nur durch Leerstellendifusion
+	-tau(T) = tau_0 exp(W/kT)
+	 W ist Aktivierungsenergie
+	 tau ist Relaxationszeit=Zeit um zwei mal umzuorientieren
+	 tau_0 ist char. Relaxationszeit
+	 niedrige Temp -> hohe Relaxationszeit
+	 hohe Temp -> tau_0=tau
+
+2. Messverfahren:
+	-Platte in Kondensator
+	->el. Feld in Platte
+	-durch therm. Störung nur kleiner Anteil der Dipole in Feldrichtung
+	-Anteil: y = pE/(3kT)
+	-Feld lange eingeschaltet->abkühlen->Einfrieren des Zustands->Kondensator kurz schließen->Ladung nur noch durch Dipole erzeugt->heizen der Platte->Depolarisationsstrom fließt->aus der Steigung von ln(Depolarisationsstromdichte) gegen 1/T kann man W berechnen
+	Oder aus der Polarisation, die einen Strom hervorruft durch Integration kann W daraus bestimmt werden. tau_0 aus indirekt aus Lage des Strommaximums
+
+3. Aufgabe:
+	-eine der drei Proben bei zwei verschiedenen Heizraten heizen. Strom-temperaturkurven aufnehmen
+	-Probe in Vakuum
+	-900 s elektrisches Feld an die Probe
+	-kühlen mit flüssigem Stickstoff
+	-einige Minuten Kondensator kurzschließen
+	-Piccoamperemeter anschließen, warten bis wert konstant 
+	-aufheizen
+	

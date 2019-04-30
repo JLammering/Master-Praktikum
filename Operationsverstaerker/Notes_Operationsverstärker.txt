@@ -1,0 +1,44 @@
+1.
+- Ausgangsspannung U_A proportional zu Differenz der beiden Eingangsspannungen
+- nur im Bereich der Betriebsspannung U_B danach Sättigung
+- U_p in Phase mit U_A 'nicht invertierend'
+- U_n gegenphasig -> 'invertierend'
+- idealer Opverstärker: Leerlaufverstärkung V = unendlich (sonst tempabhängig), Eingangswiderstände = unendlich, Ausgangswiderstand = 0
+- nur real: Gleichtaktverstärkung: aufgrund geringer Asymmetrien auch Verstärkung bei gleicher Spannung an beiden Eingängen
+Außerdem: eingangsruhestrom (durch Widerstände an den Eingängen) und Differrenzeingangswiderstand (delta U_p/delta I_p bei U_n =0) und Gleichtakteingangswiderstand + Offsetspannung (die Anliegen müsste, damit U_A =0 gilt)
+-realer Verstärker erzeugt leichte Korrekturen zu idealem
+
+3. Beispiele
+- Linearverstärker: Opverstärker nur kleiner Bereich->Lösung: kleiner Anteil des Ausgangs zurück auf invertierenden Eingang (kleinere Verstärkung, aber größerer Bereich)
+Verstärkungsgrad hängt von Widerstandverhältnis R_N/R_1 ab. Aber wenn R_N/R_1 << V hat Opverstärker zwar kleinen Verstärkungsgrad aber Verstärkung konstant+Klirrfaktor verringert
+Nachteil ist geringer Eingangswiderstand->Verfälschung bei hochohmigen Quellen
+-Bsp.: linverst. Elektrometerverstärker
+-Linearverst. Mit kleinem Eingangswiderstand um kleine Ströme messen zu können ohne Spannungsabfall. Ausgangsspannung prop zu Strom I
+
+- Umkehrintegrator: Integriert Eingangsspannung. Ausgangsspannung und Frequenz umgekehrt proportional
+
+- Umkehr-Differentiator: Ausgangsspannung prop to Differenzialqutient der Eingangsspannung. Bei Sinusspannung: Amplitude Ausgangsspannung prop to Frequenz 
+
+- Schalter (Schmitt-Trigger): Mitkopplung(Spannung auf nicht-invertierenden Eingang) zurück-> instabiles Verhalten, Spannung bei gewissen Grenzwerten auf Sättigung ±U_B 
+
+-Signalgenerator: Schmitt-Trigger mit Integrator: konstante Ausgangsspannung U_B wird integriert und fällt solange bis anderer Triggerpegel erreicht wird. Dann Umschlag auf -U_B
+
+-Sinusschwingung mit veränderlicher Amplitude: erzeugt gedämpfte oder verstärkte Sinusschwingung
+
+-Logarithmierer und Exponentialgenerator: Signal, dass Proportional zum ln oder exp  der Eingangsspannung ist. Dazu Halbleiterdiode mit exponentieller Kennlinie. 
+
+4. Messprogramm:
+a) Frequenzgang für 4 verschiedene Verstärkungsgrade V'. Abfall der Verstärkung sichtbar.
+b) Klemmenspannung eines NF-Generators messen mit gegengekoppeltem Verstärker + Elektrometer-Verstärkung
+c) Amperemeter mit niedrigem Innenwiderstand: Eingangswiderstand +Leerlaufverstärkung messen. U_e schwierig zu messen in niedrigem Frequenzbereich -> Verstärken mit Linearverstärker + Selektivverstärker unterdrückt Rauschfrequenzen
+d) Frequenzbereich des Umkehrintegrators untersuchen. Dann Dreieck, Rechteck, Sinusspannung auf Opverstärker geben -> Eingangs. Und Ausgangsspannung vergleichen
+e) gleiche wie d) mit Umkehr-Differentiator-Schaltung
+f) Schmitt-Trigger mit Sinusspannung untersuchen. Umkippen beobachten
+g) Dreiecksgenerator: Beobachten mit Oszilloskop+Frequenz und Amplitude messen
+h) Schwingungsdifferentialschaltung aufbauen. Für theta >0: Frequenz der ungedämpften Schwingung messen. Für theta <0: Schwingung darstellen. Dazu anregen mit Rechteckgenerator.
+i) ln + expo aufbauen: Ausgangsspannung in Abhängigkeit von Eingangsspannung messen
+j) Phasenbeziehung zwischen eingangs und Ausgangsspannung bei gegengekoppeltem Verstärkerssssssss
+
+
+
+
